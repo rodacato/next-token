@@ -2432,3 +2432,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+.measure-sheet > .button {
+  justify-self: start;
+}
