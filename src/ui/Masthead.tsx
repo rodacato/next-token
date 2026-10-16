@@ -9,7 +9,7 @@ const plannedActOneChapters = 4;
 
 export function Masthead({ currentChapterId, onOpenChapter }: { currentChapterId: string; onOpenChapter: (id: string) => void }) {
   const { t, locale } = useI18n();
-  const { update, reset, progressOf } = useCourse();
+  const { state, update, reset, progressOf } = useCourse();
   const dialog = useRef<HTMLDialogElement>(null);
 
   return (
@@ -68,6 +68,14 @@ export function Masthead({ currentChapterId, onOpenChapter }: { currentChapterId
             </button>
           ))}
         </div>
+        <button
+          className="sound-toggle"
+          aria-pressed={state.pressSound}
+          onClick={() => update((s) => ({ ...s, pressSound: !s.pressSound }))}
+          data-testid="sound-toggle"
+        >
+          {t("shell.sound")}: {state.pressSound ? t("shell.soundOn") : t("shell.soundOff")}
+        </button>
         <button className="button button--quiet" onClick={() => dialog.current?.showModal()}>
           {t("shell.reset")}
         </button>

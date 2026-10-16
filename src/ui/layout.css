@@ -749,3 +749,355 @@
     display: none;
   }
 }
+
+/* ---- Chapter 3: the composing stick fills ------------------------------- */
+.stick-bench {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-areas:
+    "rules facts"
+    "actions facts"
+    "stick facts"
+    "measure measure";
+  gap: 22px 32px;
+  align-items: start;
+}
+
+.stick-bench .rule-plates { grid-area: rules; }
+.stick-bench .stick-actions { grid-area: actions; display: flex; flex-wrap: wrap; gap: 10px; }
+.stick-bench .window-stick { grid-area: stick; margin: 0; }
+.stick-bench .facts-slip { grid-area: facts; }
+.stick-bench .measure-sheet { grid-area: measure; }
+
+.rule-plates {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rule-plates legend {
+  margin-bottom: 8px;
+}
+
+.rule-plate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--brass-dark);
+  background: color-mix(in oklab, var(--paper) 80%, var(--brass));
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.rule-plate input {
+  accent-color: var(--vermilion);
+}
+
+.rule-plate.is-chosen {
+  background: var(--brass);
+  border-color: var(--ink);
+}
+
+.window-stick__rail {
+  display: flex;
+  background: var(--brass);
+  border: 2px solid var(--brass-dark);
+  padding: 8px 8px 8px 0;
+  min-height: 150px;
+  overflow: hidden;
+}
+
+.window-stick__sorts {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+  padding: 6px;
+  background: color-mix(in oklab, var(--brass-dark) 45%, var(--brass));
+}
+
+.window-sort {
+  display: inline-block;
+  padding: 4px 5px;
+  font: 500 12px/1 var(--face-mono);
+  white-space: pre;
+  background: var(--metal);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+}
+
+.window-sort--system {
+  background: var(--ink);
+  color: var(--brass-light);
+}
+
+.window-sort--assistant {
+  background: color-mix(in oklab, var(--slate) 75%, var(--paper));
+  color: var(--ink);
+}
+
+.window-sort--summary {
+  background: var(--paper);
+  color: var(--ink);
+  border-style: dashed;
+}
+
+.window-sort.is-pinned {
+  box-shadow: inset 0 -3px 0 var(--brass);
+}
+
+.window-stick__meter {
+  height: 8px;
+  margin-top: 6px;
+  background: var(--rule);
+}
+
+.window-stick__meter span {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+}
+
+.window-stick__fallen {
+  margin: 10px 0 4px;
+  font-size: 14px;
+}
+
+.window-stick__fallen strong {
+  font-family: var(--face-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--vermilion);
+  margin-right: 6px;
+}
+
+.facts-slip {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 1px 2px 0 var(--rule);
+  padding: 14px 16px;
+  transform: rotate(0.6deg);
+}
+
+.facts-slip ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.fact {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+}
+
+.fact__status {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.fact--off span:first-child {
+  text-decoration: line-through;
+  text-decoration-color: var(--vermilion);
+}
+
+.fact--off .fact__status {
+  color: var(--vermilion);
+}
+
+.facts-slip__verdict {
+  font-family: var(--face-display);
+  font-size: 19px;
+  line-height: 1.3;
+  margin: 12px 0 0;
+}
+
+.facts-slip__verdict.is-unsafe {
+  color: var(--vermilion);
+}
+
+.measure-sheet__heading {
+  font-size: 26px;
+}
+
+.measure-sheet__finding {
+  font-family: var(--face-display);
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.actions--row {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.needle-chart {
+  margin: 0;
+  max-width: 720px;
+}
+
+.needle-chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.needle-chart__value,
+.needle-chart__depth {
+  font-family: var(--face-mono);
+  font-size: 11px;
+  fill: var(--slate);
+}
+
+.needle-chart__finding {
+  font-family: var(--face-display);
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+/* ---- Chapter 4: fluent is not true -------------------------------------- */
+.fabrication-bench {
+  display: grid;
+  gap: 22px;
+  max-width: 900px;
+}
+
+.prompt-slip {
+  margin: 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+}
+
+.prompt-slip pre,
+.contrast-slip pre {
+  font: 400 13px/1.55 var(--face-mono);
+  white-space: pre-wrap;
+  margin: 8px 0 0;
+}
+
+.ink-galley {
+  background: color-mix(in oklab, var(--paper) 70%, white);
+  border: 1px solid var(--rule);
+  border-left: 6px solid var(--brass);
+  padding: 18px 22px;
+  font: 400 15px/1.7 var(--face-mono);
+  white-space: pre-wrap;
+  min-height: 120px;
+}
+
+.ink-sort {
+  color: var(--ink);
+}
+
+.ink-galley__source {
+  margin: 12px 0 0;
+  white-space: normal;
+}
+
+.reference-proof {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.reference-proof li {
+  border-top: 1px solid var(--ink);
+  padding-top: 10px;
+}
+
+.reference-proof__text {
+  font-family: var(--face-display);
+  font-size: 19px;
+  line-height: 1.35;
+  margin: 4px 0 8px;
+}
+
+.reference-proof li.is-not-found .reference-proof__text {
+  text-decoration: line-through;
+  text-decoration-color: var(--vermilion);
+  text-decoration-thickness: 2px;
+}
+
+.reference-proof__verdict {
+  margin: 6px 0 0;
+}
+
+.reference-proof__verdict strong {
+  color: var(--vermilion);
+}
+
+.contrast-slip {
+  border: 1px dashed var(--slate);
+  padding: 14px 16px;
+}
+
+.contrast-slip p {
+  margin: 6px 0;
+}
+
+@media (max-width: 900px) {
+  .stick-bench {
+    grid-template-columns: 1fr;
+    grid-template-areas: "rules" "actions" "stick" "facts" "measure";
+  }
+}
+
+.sound-toggle {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: 500 11px/1 var(--face-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  cursor: pointer;
+}
+
+.sound-toggle[aria-pressed="true"] {
+  color: var(--ink);
+}
+
+.needle-chart__legend {
+  display: flex;
+  gap: 18px;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.needle-chart__key::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  vertical-align: -1px;
+  background: var(--brass);
+  border: 1px solid var(--brass-dark);
+}
+
+.needle-chart__key--other::before {
+  background: var(--slate-light);
+  border-color: var(--slate);
+}
+
+.ink-sort--given {
+  color: var(--brass-dark);
+  font-weight: 600;
+}

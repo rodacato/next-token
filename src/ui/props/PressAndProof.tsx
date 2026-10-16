@@ -7,10 +7,11 @@ type PressAndProofProps = {
   readonly pressLabel: string;
   readonly proofLabel: string;
   readonly empty: ReactNode;
+  readonly onContact?: () => void;
 };
 
 // The platen drops onto the proof, jolts, and lifts; the newest sort is inked only on contact.
-export function PressAndProof({ impression, impressionCount, pressLabel, proofLabel, empty }: PressAndProofProps) {
+export function PressAndProof({ impression, impressionCount, pressLabel, proofLabel, empty, onContact }: PressAndProofProps) {
   const platen = useAnimationControls();
   const reduceMotion = useReducedMotion();
   const [inkedCount, setInkedCount] = useState(impressionCount);
@@ -23,10 +24,12 @@ export function PressAndProof({ impression, impressionCount, pressLabel, proofLa
       if (impressionCount > inkedCount && !reduceMotion) {
         await platen.start({ y: "calc(100% + 18px)", transition: { duration: 0.3, ease: [0.55, 0, 0.9, 0.45] } });
         if (cancelled) return;
+        onContact?.();
         setInkedCount(impressionCount);
         await platen.start({ y: "calc(100% + 20px)", transition: { duration: 0.12 } });
         await platen.start({ y: 0, transition: { duration: 0.45, ease: [0.3, 0, 0.2, 1] } });
       } else {
+        if (impressionCount > inkedCount) onContact?.();
         await Promise.resolve();
         if (!cancelled) setInkedCount(impressionCount);
       }
@@ -34,7 +37,7 @@ export function PressAndProof({ impression, impressionCount, pressLabel, proofLa
     return () => {
       cancelled = true;
     };
-  }, [impressionCount, inkedCount, platen, reduceMotion]);
+  }, [impressionCount, inkedCount, platen, reduceMotion, onContact]);
 
   return (
     <section className="press-proof" aria-label={proofLabel}>

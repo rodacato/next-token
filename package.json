@@ -18,7 +18,9 @@
     "boards:capture": "node design/step-0/capture.mjs",
     "record:runs": "node scripts/record-runs.ts",
     "record:llm": "node scripts/record-llm.ts",
-    "manifest": "node scripts/build-manifest.ts"
+    "manifest": "node scripts/build-manifest.ts",
+    "record:experiments": "node scripts/record-experiments.ts",
+    "record:serve": "vite --config vite.record.config.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

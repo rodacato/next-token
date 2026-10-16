@@ -1,0 +1,599 @@
+{
+  "model": "Qwen2.5-0.5B",
+  "repo": "onnx-community/Qwen2.5-0.5B",
+  "dtype": "q8",
+  "device": "webgpu",
+  "recordedAt": "2026-10-16",
+  "locale": "en",
+  "prompt": "Bibliography: tokenization and the cost of languages other than English\n\n1. Petrov, A., La Malfa, E., Torr, P. H. S., & Bibi, A. (2023). Language Model Tokenizers Introduce Unfairness Between Languages. In Advances in Neural Information Processing Systems 36.\n2. Ahia, O., Kumar, S., Gonen, H., Kasai, J., Mortensen, D. R., Smith, N. A., & Tsvetkov, Y. (2023). Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models. In Proceedings of EMNLP 2023.\n3.",
+  "sampling": {
+    "temperature": 0.8,
+    "topP": 0.92,
+    "seed": 2,
+    "repetitionPenalty": 1.1
+  },
+  "sorts": [
+    {
+      "text": " P",
+      "probability": 0.005736239732221256
+    },
+    {
+      "text": "ev",
+      "probability": 0.25725067863291123
+    },
+    {
+      "text": "on",
+      "probability": 0.10530011617118126
+    },
+    {
+      "text": ",",
+      "probability": 0.9441887810403816
+    },
+    {
+      "text": " S",
+      "probability": 0.036397903324342326
+    },
+    {
+      "text": ".,",
+      "probability": 0.7807998952246967
+    },
+    {
+      "text": " Ko",
+      "probability": 0.022630615887281488
+    },
+    {
+      "text": "iv",
+      "probability": 0.08246585443400528
+    },
+    {
+      "text": "k",
+      "probability": 0.011182162461381696
+    },
+    {
+      "text": ",",
+      "probability": 0.9874386762445757
+    },
+    {
+      "text": " B",
+      "probability": 0.03727466257176782
+    },
+    {
+      "text": ".",
+      "probability": 0.1182707185124637
+    },
+    {
+      "text": " R",
+      "probability": 0.08675748594090106
+    },
+    {
+      "text": ".,",
+      "probability": 0.8594705052647622
+    },
+    {
+      "text": " Tor",
+      "probability": 0.050719393362933185
+    },
+    {
+      "text": "r",
+      "probability": 0.23021465917657058
+    },
+    {
+      "text": ",",
+      "probability": 0.988368823365077
+    },
+    {
+      "text": " A",
+      "probability": 0.10031863854676752
+    },
+    {
+      "text": ".",
+      "probability": 0.44779220826695
+    },
+    {
+      "text": " H",
+      "probability": 0.21906994714177128
+    },
+    {
+      "text": ".",
+      "probability": 0.4004838561176691
+    },
+    {
+      "text": " (",
+      "probability": 0.1594435114771564
+    },
+    {
+      "text": "2",
+      "probability": 0.9837918050537044
+    },
+    {
+      "text": "0",
+      "probability": 0.999573239150402
+    },
+    {
+      "text": "2",
+      "probability": 0.986792479546117
+    },
+    {
+      "text": "3",
+      "probability": 0.6103784275626329
+    },
+    {
+      "text": ").",
+      "probability": 0.9120349206255526
+    },
+    {
+      "text": " The",
+      "probability": 0.0690374680043051
+    },
+    {
+      "text": " COST",
+      "probability": 0.0013980137935129134
+    },
+    {
+      "text": " of",
+      "probability": 0.6498826315074409
+    },
+    {
+      "text": " Languages",
+      "probability": 0.2094310263053312
+    },
+    {
+      "text": " Other",
+      "probability": 0.3021826433374547
+    },
+    {
+      "text": " Than",
+      "probability": 0.5759569628511971
+    },
+    {
+      "text": " English",
+      "probability": 0.9773657864852864
+    },
+    {
+      "text": ":",
+      "probability": 0.13688540726208265
+    },
+    {
+      "text": " A",
+      "probability": 0.19523179776248656
+    },
+    {
+      "text": " Computational",
+      "probability": 0.0025647547381240244
+    },
+    {
+      "text": " Model",
+      "probability": 0.039668626767635
+    },
+    {
+      "text": " for",
+      "probability": 0.198757615553936
+    },
+    {
+      "text": " Generating",
+      "probability": 0.0025532138498430665
+    },
+    {
+      "text": " Text",
+      "probability": 0.05288966845210557
+    },
+    {
+      "text": "\n4.",
+      "probability": 1,
+      "given": true
+    },
+    {
+      "text": " T",
+      "probability": 0.03169801311729076
+    },
+    {
+      "text": "sv",
+      "probability": 0.94842326358495
+    },
+    {
+      "text": "et",
+      "probability": 0.9542599243213977
+    },
+    {
+      "text": "kov",
+      "probability": 0.9897500364980794
+    },
+    {
+      "text": ",",
+      "probability": 0.9785215694654082
+    },
+    {
+      "text": " A",
+      "probability": 0.1462061574492176
+    },
+    {
+      "text": ".",
+      "probability": 0.4169706967731416
+    },
+    {
+      "text": " R",
+      "probability": 0.054785117077228725
+    },
+    {
+      "text": ".,",
+      "probability": 0.5250498351969484
+    },
+    {
+      "text": " Ko",
+      "probability": 0.07097156216786496
+    },
+    {
+      "text": "iv",
+      "probability": 0.9800474004685178
+    },
+    {
+      "text": "k",
+      "probability": 0.9407858761544875
+    },
+    {
+      "text": ",",
+      "probability": 0.9950963884890817
+    },
+    {
+      "text": " S",
+      "probability": 0.25036915467961257
+    },
+    {
+      "text": ".,",
+      "probability": 0.5980477511955298
+    },
+    {
+      "text": " Mort",
+      "probability": 0.18457964185617562
+    },
+    {
+      "text": "ensen",
+      "probability": 0.9557433110880894
+    },
+    {
+      "text": ",",
+      "probability": 0.9951718086699695
+    },
+    {
+      "text": " D",
+      "probability": 0.5429542739308673
+    },
+    {
+      "text": ".",
+      "probability": 0.8040602654880923
+    },
+    {
+      "text": " G",
+      "probability": 0.01023812793226178
+    },
+    {
+      "text": ".",
+      "probability": 0.22747831794993753
+    },
+    {
+      "text": " (",
+      "probability": 0.24518395000728915
+    },
+    {
+      "text": "2",
+      "probability": 0.9756277476852309
+    },
+    {
+      "text": "0",
+      "probability": 0.9989564593014497
+    },
+    {
+      "text": "2",
+      "probability": 0.9947964526362923
+    },
+    {
+      "text": "3",
+      "probability": 0.9360353186640576
+    },
+    {
+      "text": ").",
+      "probability": 0.9112154067710819
+    },
+    {
+      "text": " Language",
+      "probability": 0.06571285636643574
+    },
+    {
+      "text": " Token",
+      "probability": 0.13690759760505306
+    },
+    {
+      "text": "ization",
+      "probability": 0.189401427474878
+    },
+    {
+      "text": ":",
+      "probability": 0.15927673750645618
+    },
+    {
+      "text": " Do",
+      "probability": 0.09382068318124266
+    },
+    {
+      "text": " All",
+      "probability": 0.9473259602568755
+    },
+    {
+      "text": " Languages",
+      "probability": 0.976153830738696
+    },
+    {
+      "text": " Cost",
+      "probability": 0.9236570287972207
+    },
+    {
+      "text": " The",
+      "probability": 0.12496592093585002
+    },
+    {
+      "text": " Same",
+      "probability": 0.9977076732156279
+    },
+    {
+      "text": "?",
+      "probability": 0.7713150260044492
+    },
+    {
+      "text": " In",
+      "probability": 0.4577427160823107
+    },
+    {
+      "text": " Advances",
+      "probability": 0.4779662696153423
+    },
+    {
+      "text": " in",
+      "probability": 0.8975010342425896
+    },
+    {
+      "text": " Neural",
+      "probability": 0.8314582781227771
+    },
+    {
+      "text": " Information",
+      "probability": 0.9340364903924099
+    },
+    {
+      "text": " Processing",
+      "probability": 0.9150675379661323
+    },
+    {
+      "text": " Systems",
+      "probability": 0.946994111144008
+    },
+    {
+      "text": " ",
+      "probability": 0.3492611154344292
+    },
+    {
+      "text": "1",
+      "probability": 0.06876737856142143
+    },
+    {
+      "text": "5",
+      "probability": 0.10242459497001381
+    },
+    {
+      "text": ".",
+      "probability": 0.1162871166688505
+    },
+    {
+      "text": "\n5.",
+      "probability": 1,
+      "given": true
+    },
+    {
+      "text": " Ko",
+      "probability": 0.15269549705929533
+    },
+    {
+      "text": "iv",
+      "probability": 0.9948817859914808
+    },
+    {
+      "text": "k",
+      "probability": 0.9907447531191642
+    },
+    {
+      "text": ",",
+      "probability": 0.9933966929173266
+    },
+    {
+      "text": " B",
+      "probability": 0.298339146815343
+    },
+    {
+      "text": ".,",
+      "probability": 0.6260926097861389
+    },
+    {
+      "text": " T",
+      "probability": 0.06908455840942211
+    },
+    {
+      "text": "sv",
+      "probability": 0.9861364720840379
+    },
+    {
+      "text": "et",
+      "probability": 0.9950409027387562
+    },
+    {
+      "text": "kov",
+      "probability": 0.9981936123124526
+    },
+    {
+      "text": ",",
+      "probability": 0.9961719792195862
+    },
+    {
+      "text": " A",
+      "probability": 0.9616477374123714
+    },
+    {
+      "text": ".",
+      "probability": 0.6945508298107534
+    },
+    {
+      "text": " R",
+      "probability": 0.41496755957595594
+    },
+    {
+      "text": ".,",
+      "probability": 0.7606022230688845
+    },
+    {
+      "text": " Kot",
+      "probability": 0.0036933658606809108
+    },
+    {
+      "text": "ev",
+      "probability": 0.011837325867781865
+    },
+    {
+      "text": ",",
+      "probability": 0.9303207740376858
+    },
+    {
+      "text": " V",
+      "probability": 0.05393561529601048
+    },
+    {
+      "text": ".",
+      "probability": 0.4123497357722098
+    },
+    {
+      "text": " (",
+      "probability": 0.5603944679810438
+    },
+    {
+      "text": "2",
+      "probability": 0.991112254830578
+    },
+    {
+      "text": "0",
+      "probability": 0.9991279034337218
+    },
+    {
+      "text": "2",
+      "probability": 0.9939544148560964
+    },
+    {
+      "text": "3",
+      "probability": 0.8881650772616362
+    },
+    {
+      "text": ").",
+      "probability": 0.9306164496677659
+    },
+    {
+      "text": " Language",
+      "probability": 0.12770569814276755
+    },
+    {
+      "text": " Token",
+      "probability": 0.5728411698002387
+    },
+    {
+      "text": "izers",
+      "probability": 0.1425263150515343
+    },
+    {
+      "text": ":",
+      "probability": 0.5140541233227233
+    },
+    {
+      "text": " Do",
+      "probability": 0.8307738328236745
+    },
+    {
+      "text": " All",
+      "probability": 0.9647384179360544
+    },
+    {
+      "text": " Languages",
+      "probability": 0.9837168721866301
+    },
+    {
+      "text": " Cost",
+      "probability": 0.9148055957609915
+    },
+    {
+      "text": " The",
+      "probability": 0.8874288179291621
+    },
+    {
+      "text": " Same",
+      "probability": 0.9983974047391272
+    },
+    {
+      "text": "?",
+      "probability": 0.8433021780411826
+    },
+    {
+      "text": " In",
+      "probability": 0.7347699749921061
+    },
+    {
+      "text": " Advances",
+      "probability": 0.6527712774311142
+    },
+    {
+      "text": " in",
+      "probability": 0.9498192881649229
+    },
+    {
+      "text": " Neural",
+      "probability": 0.820197125650742
+    },
+    {
+      "text": " Information",
+      "probability": 0.9752079716748193
+    },
+    {
+      "text": " Processing",
+      "probability": 0.8579966468930282
+    },
+    {
+      "text": " Systems",
+      "probability": 0.969558522481902
+    },
+    {
+      "text": " ",
+      "probability": 0.8944266967679672
+    },
+    {
+      "text": "5",
+      "probability": 0.032316123541832026
+    },
+    {
+      "text": ".",
+      "probability": 0.4077938456489814
+    }
+  ],
+  "references": [
+    {
+      "text": "Pevon, S., Koivk, B. R., Torr, A. H. (2023). The COST of Languages Other Than English: A Computational Model for Generating Text",
+      "verdict": "not-found",
+      "checkedAt": "2026-10-16",
+      "checkedWith": "semantic-scholar-title-match"
+    },
+    {
+      "text": "Tsvetkov, A. R., Koivk, S., Mortensen, D. G. (2023). Language Tokenization: Do All Languages Cost The Same? In Advances in Neural Information Processing Systems 15.",
+      "verdict": "not-found",
+      "checkedAt": "2026-10-16",
+      "checkedWith": "semantic-scholar-title-match"
+    },
+    {
+      "text": "Koivk, B., Tsvetkov, A. R., Kotev, V. (2023). Language Tokenizers: Do All Languages Cost The Same? In Advances in Neural Information Processing Systems 5.",
+      "verdict": "not-found",
+      "checkedAt": "2026-10-16",
+      "checkedWith": "semantic-scholar-title-match"
+    }
+  ]
+}

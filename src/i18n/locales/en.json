@@ -33,7 +33,10 @@
       "debrief": "Debrief"
     },
     "stageNumber": "{number} of 4",
-    "honor": "Nothing here does the exercise for you. You predict first; the bench checks after."
+    "honor": "Nothing here does the exercise for you. You predict first; the bench checks after.",
+    "sound": "Press sound",
+    "soundOn": "on",
+    "soundOff": "off"
   },
   "bench": {
     "copy": "Copy",
@@ -204,6 +207,62 @@
         },
         "voice": "Fluent is not the same as correct."
       }
+    },
+    "context-window": {
+      "title": "The composing stick",
+      "kicker": "The context window",
+      "problem": {
+        "heading": "The refund nobody approved.",
+        "body": "A long chat with Mercadito's support assistant ended in an automatic refund of $2,450. The system prompt says refunds over $2,000 need a supervisor. The model had followed that rule all week. On this chat it didn't.",
+        "task": "Find out where the rule went."
+      },
+      "bench": {
+        "heading": "Fill the stick.",
+        "body": "The model reads everything it is given, system message included, from one composing stick of fixed length. Set the conversation one message at a time and watch what happens when the stick is full.",
+        "observe": "Change the shop rule for a full stick and set the conversation again."
+      },
+      "measure": {
+        "heading": "Where things get lost.",
+        "body": "Even what stays on the stick isn't read equally well everywhere. Predict first, then look at a real measurement."
+      },
+      "debrief": {
+        "heading": "What doesn't fit, doesn't exist.",
+        "points": {
+          "one": "A model's context window is a fixed number of tokens. System prompt, conversation, documents and the reply all share it.",
+          "two": "When it fills, something has to go. Which thing is a product decision your code makes, not the model.",
+          "three": "Pin what must never fall off (rules, identity), and summarize what can be shortened. Summaries lose detail too.",
+          "four": "Staying in the window is not the same as being used: position matters, and how much depends on the model. Measure yours."
+        },
+        "voice": "The stick is full. Something falls off the end."
+      }
+    },
+    "fluent-not-true": {
+      "title": "Fluent is not true",
+      "kicker": "Fabrication",
+      "problem": {
+        "heading": "Three studies, one real.",
+        "body": "Mercadito's marketing team drafted a blog post about why the Spanish assistant costs more. It cites three studies. Legal wants to know if they exist before it goes out.",
+        "task": "Watch where citations like these come from, then check them."
+      },
+      "bench": {
+        "heading": "Let it write references.",
+        "body": "The compositor is given the start of a reference list with one real paper. It continues the list the way reference lists usually continue.",
+        "observe": "Mark each reference before you check it."
+      },
+      "measure": {
+        "heading": "Check the catalog.",
+        "body": "Each reference is looked up by title. Compare what you marked with what the catalog says, and how confident the compositor was."
+      },
+      "debrief": {
+        "heading": "The compositor doesn't know what's true.",
+        "points": {
+          "one": "A language model produces likely text. A plausible reference and a real reference look the same to it.",
+          "two": "Confidence (high probability) measures fluency, not truth. Invented titles can be set with dark ink.",
+          "three": "Instruction tuning and newer training can teach models to hedge or decline, as the larger model did. It reduces fabrication; it doesn't remove it.",
+          "four": "Never trust a citation, number or quote from a model without checking it against a source. Make the check part of the product."
+        },
+        "voice": "The compositor doesn't know what's true. It knows what usually comes next."
+      }
     }
   },
   "readNext": {
@@ -215,10 +274,92 @@
       "anthropic-token-counting": "How to get exact Claude token counts before you send a request.",
       "holtzman-2019": "Where top-p (nucleus sampling) comes from, and why pure greedy text degenerates.",
       "karpathy-gpt": "Builds a small GPT and shows logits, softmax and sampling in a few hundred lines.",
-      "vaswani-2017": "The transformer paper. Dense, but this is where the compositor's machinery starts."
+      "vaswani-2017": "The transformer paper. Dense, but this is where the compositor's machinery starts.",
+      "liu-2023": "The study behind \"lost in the middle\": accuracy by position across models and context lengths.",
+      "anthropic-long-context": "Practical advice on placing long documents and questions in a prompt.",
+      "kalai-2025": "Argues models hallucinate because training and evaluation reward guessing over admitting uncertainty.",
+      "ji-2023": "A broad survey of hallucination: kinds, causes, metrics and mitigations.",
+      "anthropic-hallucinations": "Concrete techniques to reduce made-up answers, including letting the model say it doesn't know."
     }
   },
   "units": {
     "megabytes": "{value} MB"
+  },
+  "stick": {
+    "capacity": "Capacity · {count} sorts",
+    "used": "{used} of {capacity} sorts",
+    "full": "The stick is full. Something falls off the end.",
+    "fell": "{count} sorts fell off the end",
+    "nextMessage": "Set the next message",
+    "allMessages": "Set the whole conversation",
+    "clear": "Empty the stick",
+    "roles": {
+      "system": "system",
+      "customer": "customer",
+      "assistant": "assistant"
+    },
+    "rule": "Shop rule for a full stick",
+    "rules": {
+      "drop-oldest": "Drop the oldest sorts",
+      "pin-system": "Clamp the system message",
+      "pin-summary": "Clamp the system message, replace old turns with a summary"
+    },
+    "summaryNote": "The summary was written for this exercise, not by a model.",
+    "factsHeading": "What the reply needs",
+    "facts": {
+      "refund-rule": "Refunds over $2,000 need a supervisor",
+      "order-number": "The order number",
+      "amount": "The amount: $2,450"
+    },
+    "onStick": "still on the stick",
+    "offStick": "fell off",
+    "verdict": {
+      "safe": "Everything the reply needs is still on the stick.",
+      "unsafe": "The reply will be set without: {missing}."
+    },
+    "tokenizerNote": "Counted with o200k_base. The capacity is tiny on purpose; real windows hold hundreds of thousands of sorts and still fill up."
+  },
+  "needle": {
+    "heading": "Lost in the middle?",
+    "body": "One note says who the courier for order 4471 is. It is hidden among {count} other notes, at nine depths, and the compositor is asked the courier's name. The bars show the probability it gives to the right first sort of the answer.",
+    "predict": "Where will the compositor find it hardest?",
+    "options": {
+      "start": "At the start",
+      "middle": "In the middle",
+      "end": "At the end",
+      "same": "No difference"
+    },
+    "run": "Show the measurement",
+    "runLive": "Run it yourself on the live model",
+    "running": "Reading the notes at depth {depth}…",
+    "depth": "depth",
+    "start": "start",
+    "end": "end",
+    "lowest": "Lowest at {depth} ({probability}). You predicted: {guess}.",
+    "contextSize": "About {tokens} sorts of context.",
+    "caveat": "One model, one fact, one run. Liu et al. found a U-shape across many models and tasks; a small context like this one may not show it. Read the bars, not the paper.",
+    "languages": "Brass is your language; slate is the other one. Same notes, same question, same model."
+  },
+  "fabrication": {
+    "prompt": "Prompt",
+    "write": "Let the compositor write",
+    "writing": "Setting sort {count}…",
+    "inkNote": "Ink density is confidence: the darker the sort, the more probable it was.",
+    "reference": "Reference {number}",
+    "mark": "Before checking: real or invented?",
+    "marks": {
+      "real": "Real",
+      "invented": "Invented",
+      "unsure": "Can't tell"
+    },
+    "check": "Check the catalog",
+    "found": "In the catalog: {title}",
+    "notFound": "No such title in the catalog.",
+    "checkedWith": "Checked by title against Semantic Scholar on {date}. Authors and venues are not checked: a real title can carry invented authors.",
+    "confidence": "average confidence {value}",
+    "contrastHeading": "The same question to a larger model",
+    "contrastBody": "Asked for three such papers, a larger instruction-tuned model named real ones and flagged what it could not verify.",
+    "summary": "{invented} of {total} references are not in the catalog. Average confidence on those: {confidence}.",
+    "samplingNote": "Sampled at temperature {temperature}, top-p {topP}, repetition penalty {penalty}, seed {seed}. Numbers in brass were set by the shop; the compositor wrote the rest."
   }
 }

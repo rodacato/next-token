@@ -30,6 +30,20 @@
         "en": "The next sort",
         "es-MX": "El siguiente tipo"
       }
+    },
+    {
+      "id": "context-window",
+      "title": {
+        "en": "The composing stick",
+        "es-MX": "El componedor"
+      }
+    },
+    {
+      "id": "fluent-not-true",
+      "title": {
+        "en": "Fluent is not true",
+        "es-MX": "Fluido no es verdadero"
+      }
     }
   ],
   "capabilities": [

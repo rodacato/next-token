@@ -6,6 +6,8 @@ import { I18nProvider, useI18n } from "../i18n/I18nProvider";
 import { ChapterFrame } from "./ChapterFrame";
 import { NextTokenChapter } from "./chapters/NextTokenChapter";
 import { TokensChapter } from "./chapters/TokensChapter";
+import { StickChapter } from "./chapters/StickChapter";
+import { FabricationChapter } from "./chapters/FabricationChapter";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
@@ -63,6 +65,8 @@ function Course() {
       <Masthead currentChapterId={chapter.id} onOpenChapter={openChapter} />
       {chapter.kind === "tokens" && <TokensChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "next-token" && <NextTokenChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "stick" && <StickChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "fabrication" && <FabricationChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
     </div>
   );
 }

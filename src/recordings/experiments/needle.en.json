@@ -1,0 +1,65 @@
+{
+  "model": "Qwen2.5-0.5B",
+  "repo": "onnx-community/Qwen2.5-0.5B",
+  "dtype": "q8",
+  "device": "webgpu",
+  "recordedAt": "2026-10-16",
+  "locale": "en",
+  "answer": " Ram",
+  "results": [
+    {
+      "depth": 0,
+      "contextTokens": 341,
+      "probability": 0.6463756314753986,
+      "rank": 1
+    },
+    {
+      "depth": 0.125,
+      "contextTokens": 341,
+      "probability": 0.709306428419106,
+      "rank": 1
+    },
+    {
+      "depth": 0.25,
+      "contextTokens": 341,
+      "probability": 0.1447872904768789,
+      "rank": 1
+    },
+    {
+      "depth": 0.375,
+      "contextTokens": 341,
+      "probability": 0.547557165827134,
+      "rank": 1
+    },
+    {
+      "depth": 0.5,
+      "contextTokens": 341,
+      "probability": 0.12438018674373923,
+      "rank": 2
+    },
+    {
+      "depth": 0.625,
+      "contextTokens": 341,
+      "probability": 0.10654482029701645,
+      "rank": 1
+    },
+    {
+      "depth": 0.75,
+      "contextTokens": 341,
+      "probability": 0.09690273153933299,
+      "rank": 2
+    },
+    {
+      "depth": 0.875,
+      "contextTokens": 341,
+      "probability": 0.06317135599848224,
+      "rank": 1
+    },
+    {
+      "depth": 1,
+      "contextTokens": 341,
+      "probability": 0.5783800887747553,
+      "rank": 1
+    }
+  ]
+}

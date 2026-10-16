@@ -1,0 +1,24 @@
+{
+  "id": "fluent-not-true",
+  "kind": "fabrication",
+  "act": "compositor",
+  "number": 4,
+  "referencePrompt": {
+    "en": "Bibliography: tokenization and the cost of languages other than English\n\n1. Petrov, A., La Malfa, E., Torr, P. H. S., & Bibi, A. (2023). Language Model Tokenizers Introduce Unfairness Between Languages. In Advances in Neural Information Processing Systems 36.\n2. Ahia, O., Kumar, S., Gonen, H., Kasai, J., Mortensen, D. R., Smith, N. A., & Tsvetkov, Y. (2023). Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models. In Proceedings of EMNLP 2023.\n3.",
+    "es-MX": "Bibliografía: tokenización y el costo de los idiomas distintos del inglés\n\n1. Petrov, A., La Malfa, E., Torr, P. H. S. y Bibi, A. (2023). Language Model Tokenizers Introduce Unfairness Between Languages. In Advances in Neural Information Processing Systems 36.\n2. Ahia, O., Kumar, S., Gonen, H., Kasai, J., Mortensen, D. R., Smith, N. A. y Tsvetkov, Y. (2023). Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models. In Proceedings of EMNLP 2023.\n3."
+  },
+  "maxTokens": 70,
+  "references": 3,
+  "contrastRecipe": "fabricated-citations",
+  "readNext": [
+    "kalai-2025",
+    "ji-2023",
+    "anthropic-hallucinations"
+  ],
+  "sampling": {
+    "temperature": 0.8,
+    "topP": 0.92,
+    "seed": 2,
+    "repetitionPenalty": 1.1
+  }
+}

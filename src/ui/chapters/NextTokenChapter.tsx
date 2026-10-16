@@ -22,9 +22,10 @@ import { useDebounced } from "../hooks";
 import { ComposingStick } from "../props/ComposingStick";
 import { Lever } from "../props/Lever";
 import { PressAndProof } from "../props/PressAndProof";
+import { playPressThunk } from "../props/pressSound";
 import { Sort } from "../props/Sort";
 import { TypeCase } from "../props/TypeCase";
-import { FAN_SIZE, FAN_VIEWBOX, TypographicFan } from "../props/TypographicFan";
+import { FAN_LAYOUTS, FAN_SIZE, TypographicFan, type FanLayout } from "../props/TypographicFan";
 import { useCompositor } from "../useCompositor";
 import { CompositorPanel } from "./CompositorPanel";
 
@@ -113,6 +114,7 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
   const fanArea = useRef<HTMLDivElement>(null);
   const nextSlot = useRef<HTMLSpanElement>(null);
   const [originX, setOriginX] = useState(260);
+  const [fanLayout, setFanLayout] = useState<FanLayout>("wide");
   useLayoutEffect(() => {
     const area = fanArea.current;
     if (!area) return;
@@ -120,7 +122,9 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
       const slot = nextSlot.current?.getBoundingClientRect();
       const box = area.getBoundingClientRect();
       if (!slot || box.width === 0) return;
-      setOriginX(((slot.left + slot.width / 2 - box.left) / box.width) * FAN_VIEWBOX.width);
+      const layout: FanLayout = box.width < 600 ? "compact" : "wide";
+      setFanLayout(layout);
+      setOriginX(((slot.left + slot.width / 2 - box.left) / box.width) * FAN_LAYOUTS[layout].width);
     };
     measure();
     const observer = new ResizeObserver(measure);
@@ -174,6 +178,7 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
             <TypographicFan
               distribution={distribution}
               originX={originX}
+              layout={fanLayout}
               chosenTokenId={chosenTokenId}
               onPick={commit}
               label={t("fan.label")}
@@ -220,6 +225,7 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
             pressLabel={t("bench.press")}
             proofLabel={`${t("bench.proof")} · ${t("bench.impression", { count: setCount })}`}
             impressionCount={setCount}
+            {...(course.pressSound ? { onContact: playPressThunk } : {})}
             empty={t("bench.proofEmpty")}
             impression={
               <>

@@ -1,0 +1,185 @@
+{
+  "id": "context-window",
+  "kind": "stick",
+  "act": "compositor",
+  "number": 3,
+  "capacity": 96,
+  "conversation": {
+    "en": [
+      {
+        "role": "system",
+        "fact": "refund-rule",
+        "text": "You are Mercadito's support assistant. Refunds over $2,000 MXN need a supervisor's approval."
+      },
+      {
+        "role": "customer",
+        "fact": "order-number",
+        "text": "Hi, my order is 4471. The blender arrived broken."
+      },
+      {
+        "role": "assistant",
+        "text": "Sorry about that. Can you send a photo of the damage?"
+      },
+      {
+        "role": "customer",
+        "text": "Sent. The jar is cracked down the side."
+      },
+      {
+        "role": "assistant",
+        "text": "Thanks, I can see it. Do you want a replacement or a refund?"
+      },
+      {
+        "role": "customer",
+        "text": "Let me think. Do you have it in red?"
+      },
+      {
+        "role": "assistant",
+        "text": "Red is out of stock until next month. Black and steel are available."
+      },
+      {
+        "role": "customer",
+        "text": "Then no. How long do refunds take?"
+      },
+      {
+        "role": "assistant",
+        "text": "Usually five business days after we approve them."
+      },
+      {
+        "role": "customer",
+        "fact": "amount",
+        "text": "It cost $2,450. Please refund it now."
+      }
+    ],
+    "es-MX": [
+      {
+        "role": "system",
+        "fact": "refund-rule",
+        "text": "Eres el asistente de soporte de Mercadito. Los reembolsos de más de $2,000 MXN necesitan aprobación de un supervisor."
+      },
+      {
+        "role": "customer",
+        "fact": "order-number",
+        "text": "Hola, mi pedido es el 4471. La licuadora llegó rota."
+      },
+      {
+        "role": "assistant",
+        "text": "Lo siento. ¿Me mandas una foto del daño?"
+      },
+      {
+        "role": "customer",
+        "text": "Listo. El vaso está estrellado de lado a lado."
+      },
+      {
+        "role": "assistant",
+        "text": "Gracias, ya lo vi. ¿Prefieres un reemplazo o un reembolso?"
+      },
+      {
+        "role": "customer",
+        "text": "Déjame pensar. ¿La tienen en rojo?"
+      },
+      {
+        "role": "assistant",
+        "text": "El rojo está agotado hasta el próximo mes. Hay en negro y en acero."
+      },
+      {
+        "role": "customer",
+        "text": "Entonces no. ¿Cuánto tarda un reembolso?"
+      },
+      {
+        "role": "assistant",
+        "text": "Normalmente cinco días hábiles después de aprobarlo."
+      },
+      {
+        "role": "customer",
+        "fact": "amount",
+        "text": "Costó $2,450. Reembólsamela ya, por favor."
+      }
+    ]
+  },
+  "summary": {
+    "en": "Summary so far: order 4471, a blender that arrived with a cracked jar; photo received; the customer declined a replacement.",
+    "es-MX": "Resumen hasta ahora: pedido 4471, licuadora con el vaso estrellado; foto recibida; el cliente no quiso reemplazo."
+  },
+  "needle": {
+    "positions": 9,
+    "fact": {
+      "en": "The courier for order 4471 is named Ramiro.",
+      "es-MX": "El repartidor del pedido 4471 se llama Ramiro."
+    },
+    "question": {
+      "en": "Question: What is the name of the courier for order 4471?\nAnswer: The courier for order 4471 is named",
+      "es-MX": "Pregunta: ¿Cómo se llama el repartidor del pedido 4471?\nRespuesta: El repartidor del pedido 4471 se llama"
+    },
+    "answer": " Ramiro",
+    "haystack": {
+      "en": [
+        "Order 3302 left the Guadalajara warehouse on Monday.",
+        "The Monterrey warehouse closes at nine on weekdays.",
+        "Blenders are the most returned item this quarter.",
+        "Customers in Puebla prefer cash on delivery.",
+        "The red kettle is back in stock next month.",
+        "Order 5120 was split into two boxes.",
+        "Refund requests rose after the holiday sale.",
+        "The help center answers chats until midnight.",
+        "Order 2894 was delivered to a neighbor.",
+        "Steel pans ship in reinforced cardboard.",
+        "Tuesday deliveries in Mérida run late during the rains.",
+        "Order 6011 needs a signature on arrival.",
+        "The loyalty program adds points after delivery.",
+        "Coffee grinders come with a one-year warranty.",
+        "Order 3987 was returned unopened.",
+        "Saturday pickups are free in Querétaro.",
+        "The new packaging uses less plastic.",
+        "Order 7240 is waiting for customs.",
+        "Damaged items are photographed before refunds.",
+        "The Tijuana route changed carriers in March.",
+        "Order 1508 was upgraded to express shipping.",
+        "Most complaints mention late tracking updates.",
+        "Toasters are sold in three colors.",
+        "Order 8833 was cancelled by the customer.",
+        "Gift wrapping adds one day to dispatch.",
+        "The warehouse audit is scheduled for Friday.",
+        "Order 4002 shipped with the wrong lid.",
+        "Express orders leave before noon.",
+        "Kitchen scales are excluded from the sale.",
+        "Order 9154 was delivered on the first attempt."
+      ],
+      "es-MX": [
+        "El pedido 3302 salió del almacén de Guadalajara el lunes.",
+        "El almacén de Monterrey cierra a las nueve entre semana.",
+        "Las licuadoras son el artículo más devuelto este trimestre.",
+        "Los clientes de Puebla prefieren pagar contra entrega.",
+        "La tetera roja vuelve a estar disponible el próximo mes.",
+        "El pedido 5120 se dividió en dos cajas.",
+        "Las solicitudes de reembolso subieron después de la venta navideña.",
+        "El centro de ayuda contesta chats hasta la medianoche.",
+        "El pedido 2894 se entregó a un vecino.",
+        "Los sartenes de acero se envían en cartón reforzado.",
+        "Las entregas de los martes en Mérida se retrasan en temporada de lluvias.",
+        "El pedido 6011 necesita firma al recibirlo.",
+        "El programa de lealtad suma puntos después de la entrega.",
+        "Los molinos de café tienen un año de garantía.",
+        "El pedido 3987 se devolvió sin abrir.",
+        "Las recolecciones del sábado son gratis en Querétaro.",
+        "El nuevo empaque usa menos plástico.",
+        "El pedido 7240 está esperando en aduana.",
+        "Los artículos dañados se fotografían antes de reembolsar.",
+        "La ruta de Tijuana cambió de paquetería en marzo.",
+        "El pedido 1508 se cambió a envío exprés.",
+        "La mayoría de las quejas mencionan rastreo atrasado.",
+        "Los tostadores se venden en tres colores.",
+        "El pedido 8833 lo canceló el cliente.",
+        "La envoltura de regalo agrega un día al despacho.",
+        "La auditoría del almacén está programada para el viernes.",
+        "El pedido 4002 se envió con la tapa equivocada.",
+        "Los pedidos exprés salen antes del mediodía.",
+        "Las básculas de cocina no entran en la promoción.",
+        "El pedido 9154 se entregó al primer intento."
+      ]
+    }
+  },
+  "readNext": [
+    "liu-2023",
+    "anthropic-long-context"
+  ]
+}

@@ -28,7 +28,7 @@
     "authors": "Anthropic",
     "title": "Token counting",
     "year": 2024,
-    "url": "https://docs.anthropic.com/en/docs/build-with-claude/token-counting",
+    "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
     "kind": "docs"
   },
   {
@@ -46,6 +46,46 @@
     "year": 2023,
     "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
     "kind": "video"
+  },
+  {
+    "id": "liu-2023",
+    "authors": "Liu, Lin, Hewitt, Paranjape, Bevilacqua, Petroni, Liang",
+    "title": "Lost in the Middle: How Language Models Use Long Contexts",
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2307.03172",
+    "kind": "paper"
+  },
+  {
+    "id": "anthropic-long-context",
+    "authors": "Anthropic",
+    "title": "Prompting best practices: long context",
+    "year": 2026,
+    "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#long-context-prompting",
+    "kind": "docs"
+  },
+  {
+    "id": "kalai-2025",
+    "authors": "Kalai, Nachum, Vempala, Zhang",
+    "title": "Why Language Models Hallucinate",
+    "year": 2025,
+    "url": "https://arxiv.org/abs/2509.04664",
+    "kind": "paper"
+  },
+  {
+    "id": "ji-2023",
+    "authors": "Ji et al.",
+    "title": "Survey of Hallucination in Natural Language Generation",
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2202.03629",
+    "kind": "paper"
+  },
+  {
+    "id": "anthropic-hallucinations",
+    "authors": "Anthropic",
+    "title": "Reduce hallucinations",
+    "year": 2026,
+    "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations",
+    "kind": "docs"
   },
   {
     "id": "vaswani-2017",

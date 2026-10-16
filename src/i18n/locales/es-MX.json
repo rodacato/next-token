@@ -33,7 +33,10 @@
       "debrief": "Repaso"
     },
     "stageNumber": "{number} de 4",
-    "honor": "Aquí nada hace el ejercicio por ti. Primero predices; el banco comprueba después."
+    "honor": "Aquí nada hace el ejercicio por ti. Primero predices; el banco comprueba después.",
+    "sound": "Sonido de prensa",
+    "soundOn": "sí",
+    "soundOff": "no"
   },
   "bench": {
     "copy": "Original",
@@ -204,6 +207,62 @@
         },
         "voice": "Fluido no es lo mismo que correcto."
       }
+    },
+    "context-window": {
+      "title": "El componedor",
+      "kicker": "La ventana de contexto",
+      "problem": {
+        "heading": "El reembolso que nadie aprobó.",
+        "body": "Una conversación larga con el asistente de soporte de Mercadito terminó en un reembolso automático de $2,450. El prompt de sistema dice que los reembolsos de más de $2,000 necesitan un supervisor. El modelo siguió esa regla toda la semana. En esta conversación, no.",
+        "task": "Averigua a dónde se fue la regla."
+      },
+      "bench": {
+        "heading": "Llena el componedor.",
+        "body": "El modelo lee todo lo que se le da, incluido el mensaje de sistema, de un solo componedor de largo fijo. Compón la conversación mensaje por mensaje y mira qué pasa cuando el componedor se llena.",
+        "observe": "Cambia la regla del taller para un componedor lleno y vuelve a componer la conversación."
+      },
+      "measure": {
+        "heading": "Dónde se pierden las cosas.",
+        "body": "Aun lo que se queda en el componedor no se lee igual de bien en todas partes. Primero predice, luego mira una medición real."
+      },
+      "debrief": {
+        "heading": "Lo que no cabe, no existe.",
+        "points": {
+          "one": "La ventana de contexto de un modelo es un número fijo de tokens. Prompt de sistema, conversación, documentos y respuesta la comparten.",
+          "two": "Cuando se llena, algo tiene que salir. Qué sale es una decisión de producto que toma tu código, no el modelo.",
+          "three": "Sujeta lo que nunca debe caerse (reglas, identidad) y resume lo que se puede acortar. Los resúmenes también pierden detalle.",
+          "four": "Quedarse en la ventana no es lo mismo que ser usado: la posición importa, y cuánto depende del modelo. Mide el tuyo."
+        },
+        "voice": "El componedor está lleno. Algo se cae por la punta."
+      }
+    },
+    "fluent-not-true": {
+      "title": "Fluido no es verdadero",
+      "kicker": "Fabricación",
+      "problem": {
+        "heading": "Tres estudios, uno real.",
+        "body": "El equipo de marketing de Mercadito escribió un borrador de blog sobre por qué el asistente en español cuesta más. Cita tres estudios. Jurídico quiere saber si existen antes de publicarlo.",
+        "task": "Mira de dónde salen citas como esas y luego revísalas."
+      },
+      "bench": {
+        "heading": "Que escriba referencias.",
+        "body": "Al cajista se le da el inicio de una lista de referencias con un artículo real. Continúa la lista como suelen continuar las listas de referencias.",
+        "observe": "Marca cada referencia antes de revisarla."
+      },
+      "measure": {
+        "heading": "Revisa el catálogo.",
+        "body": "Cada referencia se busca por título. Compara lo que marcaste con lo que dice el catálogo, y qué tan seguro estaba el cajista."
+      },
+      "debrief": {
+        "heading": "El cajista no sabe qué es verdad.",
+        "points": {
+          "one": "Un modelo de lenguaje produce texto probable. Para él, una referencia plausible y una real se ven igual.",
+          "two": "La confianza (probabilidad alta) mide fluidez, no verdad. Los títulos inventados también se imprimen con tinta oscura.",
+          "three": "El entrenamiento con instrucciones y los métodos más nuevos pueden enseñar a un modelo a dudar o a negarse, como hizo el modelo grande. Reduce la fabricación; no la elimina.",
+          "four": "Nunca confíes en una cita, número o frase de un modelo sin revisarla contra una fuente. Haz que la revisión sea parte del producto."
+        },
+        "voice": "El cajista no sabe qué es verdad. Sabe qué suele seguir."
+      }
     }
   },
   "readNext": {
@@ -215,10 +274,92 @@
       "anthropic-token-counting": "Cómo obtener conteos exactos de tokens de Claude antes de enviar una solicitud.",
       "holtzman-2019": "De dónde viene top-p (nucleus sampling) y por qué el texto puramente codicioso se degenera.",
       "karpathy-gpt": "Construye un GPT pequeño y muestra logits, softmax y muestreo en unos cientos de líneas.",
-      "vaswani-2017": "El artículo del transformer. Denso, pero aquí empieza la maquinaria del cajista."
+      "vaswani-2017": "El artículo del transformer. Denso, pero aquí empieza la maquinaria del cajista.",
+      "liu-2023": "El estudio detrás de \"perdido en medio\": precisión según la posición en varios modelos y largos de contexto.",
+      "anthropic-long-context": "Consejos prácticos para acomodar documentos largos y preguntas dentro de un prompt.",
+      "kalai-2025": "Argumenta que los modelos alucinan porque el entrenamiento y la evaluación premian adivinar sobre admitir duda.",
+      "ji-2023": "Un panorama amplio de la alucinación: tipos, causas, métricas y mitigaciones.",
+      "anthropic-hallucinations": "Técnicas concretas para reducir respuestas inventadas, incluido dejar que el modelo diga que no sabe."
     }
   },
   "units": {
     "megabytes": "{value} MB"
+  },
+  "stick": {
+    "capacity": "Capacidad · {count} tipos",
+    "used": "{used} de {capacity} tipos",
+    "full": "El componedor está lleno. Algo se cae por la punta.",
+    "fell": "{count} tipos se cayeron por la punta",
+    "nextMessage": "Componer el siguiente mensaje",
+    "allMessages": "Componer toda la conversación",
+    "clear": "Vaciar el componedor",
+    "roles": {
+      "system": "sistema",
+      "customer": "cliente",
+      "assistant": "asistente"
+    },
+    "rule": "Regla del taller para un componedor lleno",
+    "rules": {
+      "drop-oldest": "Tirar los tipos más viejos",
+      "pin-system": "Sujetar el mensaje de sistema",
+      "pin-summary": "Sujetar el mensaje de sistema y cambiar los turnos viejos por un resumen"
+    },
+    "summaryNote": "El resumen se escribió para este ejercicio, no lo escribió un modelo.",
+    "factsHeading": "Lo que la respuesta necesita",
+    "facts": {
+      "refund-rule": "Reembolsos de más de $2,000 necesitan supervisor",
+      "order-number": "El número de pedido",
+      "amount": "El monto: $2,450"
+    },
+    "onStick": "sigue en el componedor",
+    "offStick": "se cayó",
+    "verdict": {
+      "safe": "Todo lo que la respuesta necesita sigue en el componedor.",
+      "unsafe": "La respuesta se compondrá sin: {missing}."
+    },
+    "tokenizerNote": "Contado con o200k_base. La capacidad es diminuta a propósito; las ventanas reales caben cientos de miles de tipos y aun así se llenan."
+  },
+  "needle": {
+    "heading": "¿Perdido en medio?",
+    "body": "Una nota dice quién es el repartidor del pedido 4471. Está escondida entre otras {count} notas, en nueve profundidades, y se le pregunta al cajista el nombre del repartidor. Las barras muestran la probabilidad que le da al primer tipo correcto de la respuesta.",
+    "predict": "¿Dónde le costará más encontrarla al cajista?",
+    "options": {
+      "start": "Al inicio",
+      "middle": "En medio",
+      "end": "Al final",
+      "same": "No hay diferencia"
+    },
+    "run": "Mostrar la medición",
+    "runLive": "Correrla tú en el modelo en vivo",
+    "running": "Leyendo las notas a profundidad {depth}…",
+    "depth": "profundidad",
+    "start": "inicio",
+    "end": "final",
+    "lowest": "Lo más bajo está en {depth} ({probability}). Predijiste: {guess}.",
+    "contextSize": "Unos {tokens} tipos de contexto.",
+    "caveat": "Un modelo, un dato, una corrida. Liu et al. encontraron una forma de U en muchos modelos y tareas; un contexto chico como este puede no mostrarla. Lee las barras, no el artículo.",
+    "languages": "Latón es tu idioma; pizarra es el otro. Mismas notas, misma pregunta, mismo modelo."
+  },
+  "fabrication": {
+    "prompt": "Prompt",
+    "write": "Que el cajista escriba",
+    "writing": "Componiendo el tipo {count}…",
+    "inkNote": "La densidad de la tinta es la confianza: entre más oscuro el tipo, más probable era.",
+    "reference": "Referencia {number}",
+    "mark": "Antes de revisar: ¿real o inventada?",
+    "marks": {
+      "real": "Real",
+      "invented": "Inventada",
+      "unsure": "No sé"
+    },
+    "check": "Revisar el catálogo",
+    "found": "En el catálogo: {title}",
+    "notFound": "Ese título no está en el catálogo.",
+    "checkedWith": "Revisado por título contra Semantic Scholar el {date}. No se revisan autores ni revistas: un título real puede llevar autores inventados.",
+    "confidence": "confianza promedio {value}",
+    "contrastHeading": "La misma pregunta a un modelo más grande",
+    "contrastBody": "Al pedirle tres artículos así, un modelo más grande y entrenado con instrucciones nombró artículos reales y marcó lo que no pudo verificar.",
+    "summary": "{invented} de {total} referencias no están en el catálogo. Confianza promedio en esas: {confidence}.",
+    "samplingNote": "Muestreado a temperatura {temperature}, top-p {topP}, penalización por repetición {penalty}, semilla {seed}. Los números en latón los puso el taller; el cajista escribió el resto."
   }
 }
