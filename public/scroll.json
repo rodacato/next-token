@@ -102,6 +102,13 @@
       }
     },
     {
+      "id": "kinds",
+      "title": {
+        "en": "Kinds of training",
+        "es-MX": "Tipos de entrenamiento"
+      }
+    },
+    {
       "id": "data-workshop",
       "title": {
         "en": "The data workshop",

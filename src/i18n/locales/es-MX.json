@@ -552,6 +552,34 @@
         },
         "voice": "Una forma armada con un tipo equivocado imprime el tipo equivocado mil veces."
       }
+    },
+    "kinds": {
+      "title": "Tipos de entrenamiento",
+      "kicker": "Qué cambia cada método",
+      "problem": {
+        "heading": "\"Hay que entrenarlo\" puede significar siete trabajos distintos.",
+        "body": "El equipo de Mercadito repite que hay que entrenar al modelo: con el catálogo, con el tono, con la política, para que salga más barato. Cada uno es un tipo distinto de entrenamiento, con datos distintos, un costo distinto y una falla distinta.",
+        "task": "Aprende qué necesita cada tipo y qué no puede hacer."
+      },
+      "bench": {
+        "heading": "El libro de cuentas.",
+        "body": "Siete métodos, los datos que necesita cada uno y qué cambia cada uno. La última columna está oculta. Adivina qué no puede hacer cada uno antes de abrirla.",
+        "observe": "Luego lee el proceso de MiniCPM5, del capítulo 12, como una fila de estos métodos."
+      },
+      "measure": {
+        "heading": "Empareja los trabajos.",
+        "body": "Elige un método para cada trabajo y revisa con el libro."
+      },
+      "debrief": {
+        "heading": "Elige el método según los datos que tienes y el cambio que necesitas.",
+        "points": {
+          "one": "El preentrenamiento y el preentrenamiento continuo usan texto crudo y cambian lo que el modelo sabe. No le enseñan a seguir tu formato.",
+          "two": "SFT imita ejemplos: el camino más rápido a un formato o a un tono, y no mejor que los ejemplos.",
+          "three": "Los métodos de preferencias (RLHF, DPO) y el RL con verificadores empujan al modelo hacia las respuestas que alguien o algo prefiere. Cada uno optimiza su señal, con todo y sus fallas.",
+          "four": "La destilación hace una copia más barata de un modelo más fuerte, errores incluidos. Aquí el campo avanza rápido: toma los límites de este libro como los de hoy, no como permanentes."
+        },
+        "voice": "Un taller tiene una herramienta para cada trabajo. Usar la equivocada también deja marca."
+      }
     }
   },
   "readNext": {
@@ -589,7 +617,9 @@
       "dettmers-2023-qlora": "LoRA sobre una base de 4 bits: las cuentas de memoria que ponen el ajuste fino en una sola GPU de consumo.",
       "minicpm5-card": "El modelo cuyas formas y puntos de control usa este acto: sus etapas de entrenamiento, datos y licencia.",
       "ouyang-2022-instructgpt": "El artículo que volvió estándar el proceso: preentrenar, ajustar con supervisión y luego aprender de preferencias humanas.",
-      "lambert-2024-tulu3": "Una receta de post-entrenamiento documentada completa, incluida la forma en que se mezclaron, limpiaron y descontaminaron los datos contra las evaluaciones."
+      "lambert-2024-tulu3": "Una receta de post-entrenamiento documentada completa, incluida la forma en que se mezclaron, limpiaron y descontaminaron los datos contra las evaluaciones.",
+      "rafailov-2023-dpo": "Ajuste por preferencias sin modelo de recompensa ni ciclo de RL: el método detrás de muchos ajustes finos abiertos.",
+      "hinton-2015-distillation": "El artículo original de destilación: un modelo pequeño aprende de las probabilidades de uno grande."
     }
   },
   "units": {
@@ -1093,5 +1123,29 @@
     "predict": "Hay {count} problemas sembrados. ¿Cuántos atraparán las revisiones mecánicas (duplicados y coincidencias con evaluaciones)?",
     "finding": "Predijiste {guess}; las revisiones mecánicas atraparon {actual} de {total}. Encuentran copias, no errores.",
     "findingJudge": "El juez atrapó {caught} de {total}. Filas buenas que marcó de todos modos, para que una persona las revise: {alarms}."
+  },
+  "ledger": {
+    "method": "Método",
+    "data": "Datos que necesita",
+    "changes": "Qué cambia",
+    "cannot": "Qué no puede hacer",
+    "showCannot": "Mostrar",
+    "methods": {
+      "pretraining": "Preentrenamiento",
+      "continued": "Preentrenamiento continuo",
+      "sft": "Ajuste fino supervisado (SFT)",
+      "rlhf": "Ajuste por preferencias (RLHF)",
+      "dpo": "Optimización directa de preferencias (DPO)",
+      "rlvr": "RL con recompensas verificables",
+      "distillation": "Destilación"
+    },
+    "pipeline": "MiniCPM5-2B, etapa por etapa (capítulo 12)",
+    "pipelineNote": "Según la ficha del modelo: entrenamiento base, entrenamiento intermedio, 400B tokens de SFT y luego maestros de RL para matemáticas, código, agentes y escritura, destilados de vuelta en un solo modelo final. La ficha describe su RL como basado en un crítico; no detalla etapa por etapa de dónde vienen las recompensas, si de personas o de verificadores.",
+    "jobs": "Siete trabajos en Mercadito y más allá. Elige un método para cada uno.",
+    "pick": "Elige un método",
+    "pickFor": "Método para: {job}",
+    "check": "Revisar con el libro",
+    "answer": "El libro dice: {method}",
+    "finding": "{right} de {total} coinciden con el libro. Hay pares cercanos: DPO y RLHF aprenden el mismo tipo de preferencia, con datos distintos."
   }
 }

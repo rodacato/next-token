@@ -18,6 +18,7 @@ import { TrainerChapter } from "./chapters/TrainerChapter";
 import { LoraChapter } from "./chapters/LoraChapter";
 import { StagesChapter } from "./chapters/StagesChapter";
 import { DatasetChapter } from "./chapters/DatasetChapter";
+import { LedgerChapter } from "./chapters/LedgerChapter";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
@@ -86,6 +87,7 @@ function Course() {
       {chapter.kind === "lora" && <LoraChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "stages" && <StagesChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "dataset" && <DatasetChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "ledger" && <LedgerChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "eval-builder" && <EvalBuilderChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
     </div>
   );

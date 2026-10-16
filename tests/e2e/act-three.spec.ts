@@ -72,3 +72,16 @@ test.describe("chapter 14 · the data workshop", () => {
     await expect(page.getByTestId("workshop-finding")).toContainText("The judge caught 4 of 10. Good rows it flagged anyway, for a person to look at: 1.");
   });
 });
+
+test.describe("chapter 13 · kinds of training", () => {
+  test("the ledger hides what each method can't do; the jobs are checked against it", async ({ page }) => {
+    await open(page, /^13 Kinds of training/);
+    await advance(page, 1);
+    await expect(page.getByTestId("pipeline")).toContainText("Distillation");
+    await advance(page, 1);
+    const answers: Record<string, string> = { "legal-spanish": "continued", "house-format": "sft", pairs: "dpo", invoices: "rlvr", cheaper: "distillation", "from-nothing": "pretraining", rankings: "dpo" };
+    for (const [job, method] of Object.entries(answers)) await page.getByTestId(`job-${job}`).selectOption(method);
+    await page.getByTestId("check-jobs").click();
+    await expect(page.getByTestId("ledger-finding")).toContainText("6 of 7 match the ledger.");
+  });
+});

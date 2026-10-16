@@ -229,7 +229,16 @@ export const datasetChapterSchema = z.object({
   judge: z.object({ system: perLocale, template: perLocale }),
 });
 
+export const ledgerChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("ledger"),
+  methods: z.array(z.object({ id: z.string(), source: z.string(), data: perLocale, changes: perLocale, cannot: perLocale })).min(2),
+  pipeline: z.array(z.object({ stage: z.string(), methods: z.array(z.string()).min(1) })),
+  jobs: z.array(z.object({ id: z.string(), answer: z.string(), text: perLocale })).min(1),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  ledgerChapterSchema,
   datasetChapterSchema,
   stagesChapterSchema,
   loraChapterSchema,
@@ -266,3 +275,4 @@ export type LoraChapter = z.infer<typeof loraChapterSchema>;
 export type StagesChapter = z.infer<typeof stagesChapterSchema>;
 export type DatasetChapter = z.infer<typeof datasetChapterSchema>;
 export type Dataset = z.infer<typeof datasetSchema>;
+export type LedgerChapter = z.infer<typeof ledgerChapterSchema>;
