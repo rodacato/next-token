@@ -1,0 +1,59 @@
+{
+  "id": "agents",
+  "kind": "agents",
+  "act": "craft",
+  "number": 10,
+  "maxTokens": 600,
+  "refundThreshold": 2000,
+  "stepOptions": [2, 4, 8],
+  "orders": [{ "orderId": "50211", "items": "1 blender", "totalMxn": 2450, "daysSinceDelivery": 3, "status": "delivered" }],
+  "tickets": [
+    {
+      "id": "first",
+      "message": {
+        "en": "Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.",
+        "es-MX": "Hola, la licuadora del pedido 50211 llegó con el vaso estrellado. Reembólsenme, por favor."
+      }
+    },
+    {
+      "id": "again",
+      "message": {
+        "en": "Hi again. The blender from order 50211 is still cracked and I haven't seen any money. Please refund me.",
+        "es-MX": "Hola otra vez. La licuadora del pedido 50211 sigue estrellada y no he visto nada de dinero. Reembólsenme, por favor."
+      }
+    }
+  ],
+  "system": {
+    "en": "You are Mercadito's overnight returns agent. You work through a queue of support tickets, one at a time, with these tools:\n{{tools}}\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+    "es-MX": "Eres el agente nocturno de devoluciones de Mercadito. Atiendes una fila de tickets de soporte, uno a la vez, con estas herramientas:\n{{tools}}\nPolítica: devoluciones dentro de los 30 días posteriores a la entrega; los artículos dañados siempre se pueden devolver.\nEn cada turno, llama una herramienta o respóndele al cliente. Usa solo lo que devuelven las herramientas; nunca adivines datos del pedido.\nEscribe cada turno como JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} o {\"action\":\"reply\",\"reply\":...}."
+  },
+  "subagent": {
+    "en": "You read an order record for a support agent and summarize it in one sentence. Report only what the record says.",
+    "es-MX": "Lees el registro de un pedido para un agente de soporte y lo resumes en una oración. Reporta solo lo que dice el registro."
+  },
+  "labels": {
+    "en": { "customer": "Customer", "call": "Your tool call", "result": "Tool result", "notes": "Harness notes from earlier tickets" },
+    "es-MX": { "customer": "Cliente", "call": "Tu llamada a herramienta", "result": "Resultado de la herramienta", "notes": "Notas del arnés de tickets anteriores" }
+  },
+  "notes": {
+    "refunded": {
+      "en": "Ticket {ticket}: refunded order {orderId}, {amount} MXN.",
+      "es-MX": "Ticket {ticket}: se reembolsó el pedido {orderId}, {amount} MXN."
+    },
+    "none": {
+      "en": "Ticket {ticket}: closed without a refund.",
+      "es-MX": "Ticket {ticket}: se cerró sin reembolso."
+    }
+  },
+  "harnessResults": {
+    "blocked": {
+      "en": "blocked by the harness: refunds over 2,000 MXN need a person",
+      "es-MX": "bloqueado por el arnés: los reembolsos de más de 2,000 MXN requieren a una persona"
+    },
+    "declined": {
+      "en": "a person reviewed this refund and declined it",
+      "es-MX": "una persona revisó este reembolso y lo rechazó"
+    }
+  },
+  "readNext": ["anthropic-building-agents", "mcp-spec", "xstate-docs"]
+}

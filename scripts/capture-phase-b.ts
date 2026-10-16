@@ -49,6 +49,18 @@ for (const [locale, suffix] of [["en", "en"], ["es-MX", "es"]] as const) {
   await page.getByTestId("rag-finding").waitFor();
   await page.getByTestId("measure").screenshot({ path: join(out, `ch9-grid-${suffix}.png`) });
 
+  await openChapter(page, 10);
+  await advance(page);
+  await page.getByRole("radio", { name: locale === "en" ? "Ask a person" : "Preguntarle a una persona" }).check();
+  await page.getByTestId("toggle-subagent").check();
+  await page.getByTestId("run-night").click();
+  await page.getByTestId("approve").click();
+  await page.getByTestId("ask-person").waitFor();
+  await shot(page, `ch10-ask-${suffix}.png`);
+  await page.getByTestId("approve").click();
+  await page.getByTestId("run-night").filter({ hasText: locale === "en" ? "again" : "otra vez" }).waitFor();
+  await shot(page, `ch10-night-${suffix}.png`);
+
   await page.close();
 }
 

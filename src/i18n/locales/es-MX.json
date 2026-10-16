@@ -412,6 +412,34 @@
         },
         "voice": "Un cajista solo puede formar los tipos que tiene en el componedor. Llénalo con los equivocados y la línea se lee mal."
       }
+    },
+    "agents": {
+      "title": "Agentes",
+      "kicker": "El ciclo, el arnés, MCP",
+      "problem": {
+        "heading": "El turno de noche pagó dos veces una licuadora.",
+        "body": "Mercadito dejó a su asistente prendido toda la noche para atender solo la fila de devoluciones. En la mañana a la caja le faltaban 4,900 MXN por una licuadora de 2,450 MXN. El cliente había escrito dos veces; cada ticket parecía nuevo.",
+        "task": "Corre la noche tú mismo y luego arma un arnés que no habría pagado dos veces."
+      },
+      "bench": {
+        "heading": "El agente es un ciclo. El arnés es todo lo que lo rodea.",
+        "body": "El agente pide una herramienta; el arnés decide. Cada solicitud pasa por una compuerta (tu regla de reembolsos) camino a un servidor MCP real. Tú eliges las partes: un límite de pasos, una persona que aprueba los reembolsos grandes, notas que pasan de un ticket a otro, un subagente que lee los registros para que el agente no tenga que hacerlo.",
+        "observe": "Corre la fila con los reembolsos permitidos. Luego cambia una parte a la vez y lee dónde cambia la corrida."
+      },
+      "measure": {
+        "heading": "Que cuadre la caja.",
+        "body": "Predice cuánto cuesta la noche tal como está y luego cambia el arnés hasta que la licuadora se pague exactamente una vez."
+      },
+      "debrief": {
+        "heading": "El modelo propone. El arnés dispone.",
+        "points": {
+          "one": "Un agente es un modelo que llama herramientas en un ciclo. MCP conecta las herramientas; no decide qué se permite. Eso pasa fuera del modelo: en la compuerta, en el límite de pasos y con las personas a las que pregunta el arnés.",
+          "two": "El agente solo conoce su contexto. Sin notas que pasen de un ticket a otro, un ticket repetido parece nuevo, y vuelve a pagar.",
+          "three": "Una persona en el ciclo vale lo que ve. Aprueba dos veces sin las notas y a la caja le falta lo mismo.",
+          "four": "Un subagente deja los registros crudos fuera del contexto del agente, al precio de llamadas extra y de un resumen que puede perder justo el detalle que necesitabas."
+        },
+        "voice": "Una prensa corre tan rápido como la alimentan. Alguien tiene que contar los pliegos."
+      }
     }
   },
   "readNext": {
@@ -440,7 +468,10 @@
       "openai-function-calling": "El mismo contrato en la API de OpenAI: definiciones de funciones, llamadas y salidas.",
       "lewis-2020-rag": "El artículo que nombró la generación aumentada por recuperación: recuperar pasajes y luego generar a partir de ellos.",
       "wang-2024-me5": "El modelo de embeddings de este banco: cómo se entrenó y por qué las preguntas y los pasajes llevan prefijos distintos.",
-      "anthropic-contextual-retrieval": "Los fragmentos pierden su contexto al cortarlos. Un remedio: volver a escribir ese contexto en cada fragmento antes de hacer su embedding."
+      "anthropic-contextual-retrieval": "Los fragmentos pierden su contexto al cortarlos. Un remedio: volver a escribir ese contexto en cada fragmento antes de hacer su embedding.",
+      "anthropic-building-agents": "Cuándo construir un agente y cuándo bastan flujos más simples.",
+      "mcp-spec": "El protocolo entre el arnés y las herramientas: cómo se listan y se llaman.",
+      "xstate-docs": "La biblioteca de máquinas de estados que corre el ciclo de este arnés: estados, guardas y llamadas invocadas."
     }
   },
   "units": {
@@ -716,5 +747,59 @@
     "findingMatch": "Como predijiste. Las tres bien: {strategies}.",
     "findingMiss": "No es lo que predijiste. Las tres bien: {strategies}.",
     "askNone": "Preguntar sin fragmentos"
+  },
+  "agents": {
+    "policy": "Reembolsos de más de {threshold} MXN",
+    "policies": {
+      "allow": "Ejecutarlos",
+      "ask": "Preguntarle a una persona",
+      "deny": "Bloquearlos"
+    },
+    "steps": "Llamadas a herramientas por ticket, como máximo",
+    "parts": "Partes del arnés",
+    "memory": "Notas entre tickets",
+    "subagent": "Búsquedas por un subagente",
+    "on": "encendido",
+    "off": "apagado",
+    "run": "Correr la fila de esta noche",
+    "again": "Correr la fila otra vez",
+    "running": "Atendiendo la fila…",
+    "till": "Salió de caja esta noche: {amount} MXN. Reembolsos ejecutados: {count}.",
+    "askPerson": "El agente quiere reembolsar {amount} MXN del pedido {order}. Tú eres la persona.",
+    "notesForPerson": "Las notas del arnés dicen: {notes}",
+    "approve": "Aprobar",
+    "decline": "Rechazar",
+    "ticket": "Ticket {number}",
+    "notesHeading": "El arnés le pasa sus notas",
+    "via": {
+      "tool": "lo ejecutó el arnés",
+      "subagent": "se envió al subagente",
+      "blocked": "lo bloqueó el arnés",
+      "declined": "lo rechazaste"
+    },
+    "harnessReturned": "El arnés devolvió",
+    "subagentSays": "El subagente leyó el registro y devolvió",
+    "rawRecord": "El registro que leyó el subagente",
+    "tokens": "Tokens que el agente leyó y escribió en este ticket: unos {agent}. Los del subagente, fuera del contexto del agente: unos {subagent}.",
+    "mxn": "{amount} MXN",
+    "predict": "Los reembolsos se ejecutan, sin notas entre tickets. ¿Cuánto sale de caja esta noche?",
+    "task": "Luego arma un arnés que pague la licuadora exactamente una vez: 2,450 MXN, un reembolso.",
+    "baselineMatch": "Como predijiste: {amount} MXN. El segundo ticket le pareció nuevo al agente, así que volvió a pagar.",
+    "baselineMiss": "Predijiste {guess} MXN; salieron {amount} MXN. El segundo ticket le pareció nuevo al agente, así que volvió a pagar.",
+    "fixed": "Un reembolso, 2,450 MXN. Tu arnés: reembolsos sobre el límite {policy}, notas entre tickets {memory}.",
+    "diagram": {
+      "label": "El arnés: la fila de tickets alimenta al agente; cada llamada a herramienta pasa por la compuerta antes de que el servidor MCP la ejecute",
+      "queue": "Fila de tickets",
+      "queueDetail": "2 tickets esta noche",
+      "agent": "Agente",
+      "agentDetail": "el modelo, en un ciclo",
+      "gate": "Compuerta",
+      "server": "Servidor MCP",
+      "till": "Caja",
+      "tillDetail": "dinero que sale",
+      "memory": "Notas",
+      "person": "Una persona",
+      "subagent": "Subagente"
+    }
   }
 }

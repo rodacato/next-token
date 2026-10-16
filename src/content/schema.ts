@@ -129,7 +129,25 @@ export const ragChapterSchema = z.object({
   judge: z.object({ system: perLocale, template: perLocale }),
 });
 
+const labelsSchema = z.object({ customer: z.string(), call: z.string(), result: z.string(), notes: z.string() });
+
+export const agentsChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("agents"),
+  maxTokens: z.number().int().positive(),
+  refundThreshold: z.number().positive(),
+  stepOptions: z.array(z.number().int().positive()).min(1),
+  orders: z.array(z.object({ orderId: z.string(), items: z.string(), totalMxn: z.number(), daysSinceDelivery: z.number().int(), status: z.string() })).min(1),
+  tickets: z.array(z.object({ id: z.string(), message: perLocale })).min(1),
+  system: perLocale,
+  subagent: perLocale,
+  labels: z.record(z.string(), labelsSchema),
+  notes: z.object({ refunded: perLocale, none: perLocale }),
+  harnessResults: z.object({ blocked: perLocale, declined: perLocale }),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  agentsChapterSchema,
   ragChapterSchema,
   toolsChapterSchema,
   structuredChapterSchema,
@@ -154,3 +172,4 @@ export type StructuredChapter = z.infer<typeof structuredChapterSchema>;
 export type EvalBuilderChapter = z.infer<typeof evalBuilderChapterSchema>;
 export type ToolsChapter = z.infer<typeof toolsChapterSchema>;
 export type RagChapter = z.infer<typeof ragChapterSchema>;
+export type AgentsChapter = z.infer<typeof agentsChapterSchema>;

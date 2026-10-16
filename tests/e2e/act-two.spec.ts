@@ -128,3 +128,24 @@ test.describe("chapter 9 · retrieval", () => {
     await expect(page.getByTestId("rag-finding")).toContainText("As you predicted. All three right: Section by section.");
   });
 });
+
+test.describe("chapter 10 · agents", () => {
+  test("the night pays twice without notes; a person and notes make it pay once", async ({ page }) => {
+    await open(page, /^10 Agents/);
+    await advance(page, 1);
+    await expect(page.getByTestId("harness-diagram")).toContainText("MCP server");
+    await page.getByTestId("run-night").click();
+    await expect(page.getByTestId("till")).toContainText("4,900 MXN. Refunds run: 2.");
+    await advance(page, 1);
+    await page.getByRole("radio", { name: "4,900 MXN" }).check();
+    await page.getByTestId("run-night").click();
+    await expect(page.getByTestId("agents-baseline")).toContainText("As you predicted: 4,900 MXN.");
+    await page.getByRole("radio", { name: "Ask a person" }).check();
+    await page.getByTestId("toggle-memory").check();
+    await page.getByTestId("run-night").click();
+    await page.getByTestId("approve").click();
+    await expect(page.getByTestId("till")).toContainText("2,450 MXN. Refunds run: 1.");
+    await expect(page.getByTestId("agents-fixed")).toContainText("One refund, 2,450 MXN.");
+    await expect(page.getByTestId("advance")).toBeEnabled();
+  });
+});

@@ -9,6 +9,8 @@ import { checkSheet, retryPrompt } from "../src/evals/structured.ts";
 import { requestHash } from "../src/llm/hash.ts";
 import { answerRequest, judgeRequest as ragJudgeRequest, rankRecorded, topKs, type EmbeddingRecording } from "../src/rag/answer.ts";
 import { chunkStrategies } from "../src/rag/chunking.ts";
+import { harnessText, refundPolicies, runHarness, toolList, type AgentsContent, type HarnessConfig, type ModelCall } from "../src/agents/harness.ts";
+import { connectShop, type OrderRow } from "../src/agents/shopServer.ts";
 import { branchId, parseTurn, resolveResult, turnRequest, type ResultChoice, type Step } from "../src/agents/toolProtocol.ts";
 
 type PerLocale = Record<string, string>;
@@ -173,4 +175,48 @@ for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
     return { id: `judge--${answer.requestId}`, locale: answer.locale, system, prompt, jsonSchema };
   });
   write(`${chapter.id}-judge`, `Chapter ${chapter.id}: a judge reads each recorded answer against the answer key.`, judged);
+}
+
+// Agents: run the real harness (XState loop, MCP server) against the recordings, for every configuration
+// and every decision the person can make. Each model call it can't find is a request to record.
+type AgentsChapter = AgentsContent & { id: string; kind: string; orders: OrderRow[]; stepOptions: number[] };
+for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
+  const chapter = read<AgentsChapter>(join(root, "src", "content", "chapters", file));
+  if (chapter.kind !== "agents") continue;
+  const recorded = join(root, "src", "recordings", "llm", `${chapter.id}.json`);
+  const outputs = new Map<string, { text: string; tokens: number }>();
+  if (existsSync(recorded))
+    for (const c of read<{ completions: { requestHash: string; output: string; usage: { inputTokens: number; outputTokens: number } }[] }>(recorded).completions)
+      outputs.set(c.requestHash, { text: c.output, tokens: c.usage.inputTokens + c.usage.outputTokens });
+  const requests = new Map<string, Request>();
+  let missing = 0;
+  for (const locale of locales) {
+    const text = harnessText(chapter, locale);
+    const model = (locale: string) => async (call: ModelCall) => {
+      const hash = requestHash({ system: call.system, prompt: call.prompt, jsonSchema: call.jsonSchema });
+      if (!requests.has(hash)) requests.set(hash, { id: `${locale}--${call.role}--${hash}`, locale, system: call.system, prompt: call.prompt, ...(call.jsonSchema ? { jsonSchema: call.jsonSchema } : {}) });
+      const found = outputs.get(hash);
+      if (!found) {
+        missing++;
+        throw new Error("not recorded");
+      }
+      return found;
+    };
+    for (const refundPolicy of refundPolicies)
+      for (const memory of [false, true])
+        for (const subagent of [false, true]) {
+          const config: HarnessConfig = { refundPolicy, memory, subagent, maxSteps: Math.max(...chapter.stepOptions) };
+          // Every sequence of approve/decline the person might choose, depth first.
+          const pending: ("approve" | "decline")[][] = [[]];
+          for (let decisions = pending.pop(); decisions; decisions = pending.pop()) {
+            const shop = await connectShop(chapter.orders, []);
+            const fixed = decisions;
+            const result = await runHarness({ model: model(locale), shop }, { config, text, tools: toolList(shop) }, (_, asked) => fixed[asked] ?? null);
+            await shop.close();
+            if (result.waiting) pending.push([...fixed, "approve"], [...fixed, "decline"]);
+          }
+        }
+  }
+  write(chapter.id, `Chapter ${chapter.id}: every model call the harness makes, across policies, memory, sub-agent and human decisions.`, [...requests.values()]);
+  console.log(`  ${missing} calls hit an unrecorded request (record with --extend, then run recipes again)`);
 }

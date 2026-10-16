@@ -79,6 +79,13 @@
         "en": "Retrieval",
         "es-MX": "Recuperación"
       }
+    },
+    {
+      "id": "agents",
+      "title": {
+        "en": "Agents",
+        "es-MX": "Agentes"
+      }
     }
   ],
   "capabilities": [
