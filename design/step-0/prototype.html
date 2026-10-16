@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype · Ten Seconds</title>
+<link rel="stylesheet" href="shared/shop.css">
+<style>
+  body { overflow: hidden; }
+  .bench { position: relative; width: 1600px; height: 1000px; margin: 0 auto; }
+  .bench > svg { position: absolute; inset: 0; }
+  .title { position: absolute; left: 56px; top: 44px; width: 330px; }
+  .title h1 {
+    font-family: var(--face-display); font-weight: 500; font-size: 58px;
+    line-height: 0.95; margin: 10px 0 0; font-variation-settings: "opsz" 96;
+  }
+  .voice {
+    position: absolute; left: 56px; top: 236px; width: 300px;
+    font-size: 13px; line-height: 1.55; min-height: 64px;
+  }
+  .clock { position: absolute; right: 56px; bottom: 22px; }
+  .note { position: absolute; left: 56px; bottom: 22px; }
+</style>
+</head>
+<body>
+<main class="bench">
+  <svg id="scene" viewBox="0 0 1600 1000" width="1600" height="1000" aria-label="Workbench: sorts are set, the fan opens, the press stamps"></svg>
+  <header class="title">
+    <div class="kicker">Act I · Chapter 2</div>
+    <h1>The next token</h1>
+  </header>
+  <p class="voice" id="voice"></p>
+  <span class="note placeholder-note">Prototype · placeholder probabilities, not a model run</span>
+  <span class="clock placeholder-note" id="clock"></span>
+</main>
+
+<script type="module">
+  import { context, distribution, openness, tokenFace, vocabularySize } from "./shared/fan-model.js";
+  import { sortMarkup, sortSize, escapeXml } from "./shared/sorts.js";
+  import { installTextures } from "./shared/textures.js";
+
+  installTextures();
+  const scene = document.getElementById("scene");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const DURATION = 10;
+  const CHOSEN = " door";
+  const FAN_SIZE = 8;
+  const PIVOT = { x: 540, y: 640 };
+  const RADIUS = 350;
+  const STICK = { x: 418, y: 104, length: 780, depth: 74 };
+  const SORT_H = 50;
+  const PRESS = { x: 1300, y: 104, w: 250, h: 330 };
+  const SHEET_Y = PRESS.y + 386;
+
+  // --- timing helpers -------------------------------------------------------
+  const clamp = (v, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, v));
+  const progress = (t, start, end) => clamp((t - start) / (end - start));
+  // Reduced motion: things arrive at their end state instead of travelling.
+  const settle = (p) => (reducedMotion ? (p > 0 ? 1 : 0) : p);
+  const fall = (p) => settle(p) ** 2.2;
+  const slide = (p) => { p = settle(p); return p < 0.5 ? 4 * p ** 3 : 1 - (-2 * p + 2) ** 3 / 2; };
+  const lift = (p) => 1 - (1 - settle(p)) ** 2;
+  const lerp = (a, b, p) => a + (b - a) * p;
+
+  function temperatureAt(t) {
+    if (t < 3.5) return 0.2;
+    if (t < 5.8) return lerp(0.2, 1.6, slide(progress(t, 3.5, 5.8)));
+    if (t < 6.1) return 1.6;
+    return lerp(1.6, 0.8, slide(progress(t, 6.1, 6.7)));
+  }
+
+  function voiceAt(t, temperature) {
+    if (t < 3) return "Type a few words. The compositor breaks them into sorts.";
+    if (t < 6.8) {
+      if (temperature < 0.35) return "Cold. The compositor reaches for the same sort every time.";
+      if (temperature < 1.1) return "Warmer. The second-best sort starts to get a turn.";
+      return "Hot. Unlikely sorts get a real chance. So do mistakes.";
+    }
+    return "The compositor doesn't know what's true. It knows what usually comes next.";
+  }
+
+  // --- props ----------------------------------------------------------------
+  function typeCase(t) {
+    const x0 = 56 + lerp(-620, 0, slide(progress(t, 0, 0.8))), y0 = 640, w = 500, h = 304;
+    const rows = [
+      [1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1],
+      [1, 1, 2, 1, 1, 2, 1, 1, 1, 1],
+      [1.5, 2, 1, 2, 1, 1.5, 2],
+      [2, 1.5, 3, 1.5, 2, 1],
+      [2, 3, 2, 1, 3],
+    ];
+    let seed = 42;
+    const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    let out = `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="var(--brass-light)" stroke="var(--brass-dark)" stroke-width="2"/>`;
+    out += `<rect x="${x0 + 10}" y="${y0 + 10}" width="${w - 20}" height="${h - 20}" fill="var(--brass-dark)" opacity="0.35"/>`;
+    const rowH = (h - 20) / rows.length;
+    rows.forEach((row, r) => {
+      const units = row.reduce((s, u) => s + u, 0);
+      let cx = x0 + 10;
+      row.forEach((u) => {
+        const cw = ((w - 20) * u) / units;
+        const cy = y0 + 10 + r * rowH;
+        out += `<rect x="${cx + 3}" y="${cy + 3}" width="${cw - 6}" height="${rowH - 6}" fill="var(--paper-deep)" stroke="var(--brass-dark)" stroke-width="1"/>`;
+        const count = Math.floor(rand() * 9) + 3;
+        for (let i = 0; i < count; i++) {
+          const sx = cx + 8 + rand() * (cw - 22), sy = cy + 8 + rand() * (rowH - 22);
+          out += `<rect x="${sx}" y="${sy}" width="${6 + rand() * 6}" height="${7 + rand() * 4}" fill="var(--metal)" opacity="${0.55 + rand() * 0.4}" transform="rotate(${(rand() - 0.5) * 50} ${sx} ${sy})"/>`;
+        }
+        cx += cw;
+      });
+    });
+    out += `<rect x="${x0 + 170}" y="${y0 + h - 2}" width="160" height="22" fill="var(--brass)" stroke="var(--brass-dark)"/>`;
+    out += `<text x="${x0 + 250}" y="${y0 + h + 13}" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--ink)" font-family="IBM Plex Mono">CASE · ${vocabularySize.toLocaleString("en")} SORTS</text>`;
+    return out;
+  }
+
+  function stickFrame(count) {
+    const { x, y, length, depth } = STICK;
+    let out = `<rect x="${x}" y="${y}" width="${length}" height="${depth}" fill="var(--brass)" stroke="var(--brass-dark)" stroke-width="2"/>`;
+    out += `<rect x="${x + 6}" y="${y + 8}" width="${length - 12}" height="${depth - 16}" fill="var(--brass-dark)" opacity="0.45"/>`;
+    out += `<rect x="${x - 22}" y="${y - 10}" width="26" height="${depth + 20}" fill="var(--brass-dark)"/>`;
+    for (let i = 0; i <= 48; i++) {
+      const tx = x + 6 + (i * (length - 12)) / 48;
+      const tall = i % 8 === 0;
+      out += `<line x1="${tx}" x2="${tx}" y1="${y + depth}" y2="${y + depth + (tall ? 12 : 6)}" stroke="var(--slate)" stroke-width="1"/>`;
+      if (tall) out += `<text x="${tx}" y="${y + depth + 25}" text-anchor="middle" font-size="9" fill="var(--slate)" font-family="IBM Plex Mono">${(i / 2) | 0}</text>`;
+    }
+    out += `<text x="${x}" y="${y - 12}" font-size="10" letter-spacing="1.2" fill="var(--slate)" font-family="IBM Plex Mono">COMPOSING STICK · ${count} / 24 SORTS</text>`;
+    return out;
+  }
+
+  // Where each sort sits once set, left to right.
+  const tokens = [...context, CHOSEN];
+  const slots = [];
+  {
+    let cursor = STICK.x + 10;
+    tokens.forEach((token) => {
+      const face = tokenFace(token);
+      const { width } = sortSize(face, SORT_H);
+      slots.push({ face, x: cursor, y: STICK.y + 12, width });
+      cursor += width + 3;
+    });
+  }
+
+  function droppedSort(slot, p, variant = "metal") {
+    if (p <= 0) return "";
+    // Accelerating fall, then a short compression as it seats. No rebound.
+    const offset = -110 * (1 - fall(Math.min(1, p / 0.85)));
+    const seat = p > 0.85 && p < 1 && !reducedMotion ? 0.965 : 1;
+    const cy = slot.y + SORT_H;
+    return `<g transform="translate(0 ${offset}) translate(0 ${cy}) scale(1 ${seat}) translate(0 ${-cy})" opacity="${p < 0.15 ? p / 0.15 : 1}">
+      ${sortMarkup({ face: slot.face, height: SORT_H, variant, x: slot.x, y: slot.y, anchor: "start" })}</g>`;
+  }
+
+  function fanLayout(temperature) {
+    const dist = distribution(temperature, 0.95);
+    const shown = dist.candidates.slice(0, FAN_SIZE);
+    const open = openness(dist.entropy, FAN_SIZE);
+    const span = (14 + 136 * open) * (Math.PI / 180);
+    const center = -58 * (Math.PI / 180);
+    return shown.map((c, i) => {
+      const a = center - span / 2 + (span * i) / (shown.length - 1);
+      return { c, a, height: 22 + 74 * Math.sqrt(c.p) };
+    });
+  }
+
+  function fan(t, temperature) {
+    const grow = slide(progress(t, 2.9, 3.4)) * (1 - slide(progress(t, 7.0, 7.5)));
+    if (grow <= 0) return { markup: "", chosenAt: null };
+    const showChoice = t >= 6.7;
+    const placed = fanLayout(temperature);
+    let ribs = "", sorts = "", labels = "", chosenAt = null;
+    [...placed].reverse().forEach(({ c, a, height }) => {
+      const r = RADIUS * grow;
+      const x = PIVOT.x + Math.cos(a) * r, y = PIVOT.y + Math.sin(a) * r;
+      const isChosen = showChoice && c.token === CHOSEN;
+      if (c.token === CHOSEN) chosenAt = { x, y, height };
+      if (isChosen && t >= 6.95) return; // it has left the fan for the stick
+      const variant = isChosen ? "chosen" : "metal";
+      ribs += `<line x1="${PIVOT.x}" y1="${PIVOT.y}" x2="${x}" y2="${y}" stroke="${isChosen ? "var(--vermilion)" : "var(--brass-dark)"}" stroke-width="${isChosen ? 1.6 : 0.8}" opacity="0.75"/>`;
+      sorts += sortMarkup({ face: c.face, height: height * (0.4 + 0.6 * grow), variant, x, y });
+      const { width } = sortSize(c.face, height);
+      const reach = r + Math.abs(Math.cos(a)) * width / 2 + Math.abs(Math.sin(a)) * height / 2 + 18;
+      if (grow > 0.9) labels += `<text x="${PIVOT.x + Math.cos(a) * reach}" y="${PIVOT.y + Math.sin(a) * reach}" text-anchor="middle" dominant-baseline="central" font-size="11" font-family="IBM Plex Mono" fill="${isChosen ? "var(--vermilion)" : "var(--slate)"}">${(c.p * 100).toFixed(1)}%</text>`;
+    });
+    const hub = `<circle cx="${PIVOT.x}" cy="${PIVOT.y}" r="10" fill="var(--brass)" stroke="var(--brass-dark)" stroke-width="2"/>`;
+    return { markup: ribs + hub + sorts + labels, chosenAt };
+  }
+
+  // The chosen sort lifts off the fan, travels on a weighted arc and drops in.
+  function travellingSort(t) {
+    const p = progress(t, 6.95, 7.75);
+    if (p <= 0 || p >= 1) return "";
+    const from = fanLayout(0.8).find((f) => f.c.token === CHOSEN);
+    const start = { x: PIVOT.x + Math.cos(from.a) * RADIUS, y: PIVOT.y + Math.sin(from.a) * RADIUS };
+    const slot = slots[slots.length - 1];
+    const end = { x: slot.x + slot.width / 2, y: slot.y + SORT_H / 2 };
+    const q = slide(p);
+    const x = lerp(start.x, end.x, q);
+    const y = lerp(start.y, end.y, fall(p)) - Math.sin(Math.PI * q) * 60;
+    const height = lerp(from.height, SORT_H, q);
+    return sortMarkup({ face: slot.face, height, variant: "chosen", x, y });
+  }
+
+  function lever(temperature) {
+    const x0 = 1046, y0 = 640, w = 206;
+    const min = 0.1, max = 2;
+    const kx = x0 + ((temperature - min) / (max - min)) * w;
+    let out = `<text x="${x0}" y="${y0 - 34}" font-size="11" letter-spacing="1.5" fill="var(--slate)" font-family="IBM Plex Mono">TEMPERATURE</text>`;
+    out += `<text x="${x0 + w}" y="${y0 - 30}" text-anchor="end" font-size="26" font-weight="500" fill="var(--ink)" font-family="IBM Plex Mono">${temperature.toFixed(2)}</text>`;
+    out += `<rect x="${x0}" y="${y0}" width="${w}" height="6" fill="var(--brass-dark)"/>`;
+    out += `<rect x="${x0}" y="${y0}" width="${w}" height="2" fill="var(--brass)"/>`;
+    out += `<rect x="${kx - 7}" y="${y0 - 10}" width="14" height="26" fill="var(--brass)" stroke="var(--brass-dark)"/>`;
+    out += `<rect x="${kx - 7}" y="${y0 + 10}" width="14" height="6" fill="var(--brass-dark)"/>`;
+    [["0.1 cold", x0, "start"], ["1.0", x0 + ((1 - min) / (max - min)) * w, "middle"], ["2.0 hot", x0 + w, "end"]].forEach(([label, lx, anchor]) => {
+      out += `<text x="${lx}" y="${y0 + 36}" text-anchor="${anchor}" font-size="10" fill="var(--slate)" font-family="IBM Plex Mono">${label}</text>`;
+    });
+    return out;
+  }
+
+  function slip(temperature, t) {
+    if (t < 3.1) return "";
+    const dist = distribution(temperature, 0.95);
+    const x0 = 1046, y0 = 250;
+    let out = `<g transform="rotate(1.2 ${x0 + 103} ${y0 + 110})">
+      <rect x="${x0}" y="${y0}" width="206" height="226" fill="var(--paper)" stroke="var(--rule)"/>
+      <text x="${x0 + 16}" y="${y0 + 26}" font-size="10" letter-spacing="1.4" fill="var(--slate)" font-family="IBM Plex Mono">SLIP · SORT 7 OF 24</text>`;
+    dist.candidates.slice(0, FAN_SIZE).forEach((c, i) => {
+      const isChosen = t >= 6.7 && c.token === CHOSEN;
+      const color = isChosen ? "var(--vermilion)" : "var(--ink)";
+      const ry = y0 + 52 + i * 21;
+      out += `<text x="${x0 + 16}" y="${ry}" font-size="12" fill="${color}" font-family="IBM Plex Mono">${escapeXml(c.face)}</text>`;
+      out += `<rect x="${x0 + 100}" y="${ry - 8}" width="${Math.max(1, c.p * 120)}" height="6" fill="${isChosen ? "var(--vermilion)" : "var(--brass)"}"/>`;
+      out += `<text x="${x0 + 190}" y="${ry}" text-anchor="end" font-size="12" fill="${color}" font-family="IBM Plex Mono">${(c.p * 100).toFixed(1)}</text>`;
+    });
+    return out + "</g>";
+  }
+
+  // --- the press --------------------------------------------------------------
+  function press(t) {
+    const down = fall(progress(t, 7.95, 8.3));
+    const up = lift(progress(t, 8.55, 9.1));
+    const travel = (SHEET_Y + 30 - PRESS.y) * (down - up);
+    const contact = t >= 8.3 && t < 8.55;
+    const jolt = contact && !reducedMotion ? 2 : 0;
+    const { x, w, h } = PRESS;
+    const y = PRESS.y + travel + jolt;
+    const cx = x + w / 2, cy = y + h / 2;
+    let out = `<rect x="${x + 10}" y="${y + 12}" width="${w}" height="${h}" fill="var(--ink)" opacity="${0.12 + 0.1 * (1 - (down - up))}"/>`;
+    out += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="var(--metal)" stroke="var(--ink)" stroke-width="2" filter="url(#worn)"/>`;
+    out += `<rect x="${x + 16}" y="${y + 16}" width="${w - 32}" height="${h - 32}" fill="none" stroke="var(--brass)" stroke-width="3"/>`;
+    for (let i = 0; i < 6; i++) out += `<line x1="${x + 30}" x2="${x + w - 30}" y1="${y + 40 + i * 50}" y2="${y + 40 + i * 50}" stroke="var(--ink)" stroke-width="1" opacity="0.5"/>`;
+    out += `<circle cx="${cx}" cy="${cy}" r="42" fill="var(--metal)" stroke="var(--brass)" stroke-width="2"/>`;
+    out += `<circle cx="${cx}" cy="${cy}" r="8" fill="var(--brass)"/>`;
+    out += `<rect x="${cx}" y="${cy - 7}" width="${w / 2 + 34}" height="14" fill="var(--brass)" stroke="var(--brass-dark)"/>`;
+    out += `<circle cx="${x + w + 38}" cy="${cy}" r="14" fill="var(--brass-dark)"/>`;
+    const state = t < 7.95 ? "RAISED" : t < 9.1 ? "STAMPING" : "RAISED";
+    out += `<text x="${PRESS.x}" y="${PRESS.y - 12}" font-size="10" letter-spacing="1.2" fill="var(--slate)" font-family="IBM Plex Mono">PRESS · ${state}</text>`;
+    return out;
+  }
+
+  function proofSheet(t) {
+    const { x, w } = PRESS;
+    const inked = t >= 8.3;
+    const words = context.join("") + (inked ? CHOSEN : "");
+    let out = `<g transform="rotate(-1.2 ${x + w / 2} 700)">
+      <rect x="${x - 4}" y="${SHEET_Y}" width="${w + 8}" height="436" fill="var(--paper)" stroke="var(--rule)"/>
+      <path d="M${x + 8} ${SHEET_Y + 16} h18 M${x + 17} ${SHEET_Y + 7} v18 M${x + w - 8} ${SHEET_Y + 16} h-18 M${x + w - 17} ${SHEET_Y + 7} v18" stroke="var(--slate)" stroke-width="0.6"/>
+      <foreignObject x="${x + 18}" y="${SHEET_Y + 40}" width="${w - 30}" height="300">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:'Bodoni Moda',serif;font-size:27px;line-height:1.22;color:var(--ink);filter:url(#ink)">${escapeXml(words)}</div>
+      </foreignObject>
+    </g>`;
+    out += `<text x="${x}" y="${SHEET_Y - 14}" font-size="10" letter-spacing="1.2" fill="var(--slate)" font-family="IBM Plex Mono">PROOF · IMPRESSION ${inked ? 7 : 6}</text>`;
+    return out;
+  }
+
+  // --- frame ------------------------------------------------------------------
+  function renderAt(t) {
+    const temperature = temperatureAt(t);
+    const setCount = context.filter((_, i) => t >= 0.55 + i * 0.36 + 0.34).length + (t >= 7.75 ? 1 : 0);
+    let sorts = "";
+    context.forEach((_, i) => { sorts += droppedSort(slots[i], progress(t, 0.55 + i * 0.36, 0.55 + i * 0.36 + 0.34)); });
+    if (t >= 7.75) sorts += droppedSort(slots[slots.length - 1], 1, "metal");
+    const nextSlot = slots[Math.min(setCount, slots.length - 1)];
+    const bracket = t >= 2.9 && t < 7.75
+      ? `<path d="M${nextSlot.x + 4} ${STICK.y + 10} h-6 v54 h6 M${nextSlot.x + 46} ${STICK.y + 10} h6 v54 h-6" stroke="var(--vermilion)" stroke-width="2" fill="none"/>
+         <text x="${nextSlot.x + 25}" y="${STICK.y - 12}" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--vermilion)" font-family="IBM Plex Mono">NEXT</text>`
+      : "";
+    const f = fan(t, temperature);
+    scene.innerHTML =
+      typeCase(t) + stickFrame(setCount) + sorts + bracket + slip(temperature, t) + lever(temperature) +
+      proofSheet(t) + f.markup + travellingSort(t) + press(t);
+    document.getElementById("voice").textContent = voiceAt(t, temperature);
+    document.getElementById("clock").textContent = `${t.toFixed(1).padStart(4, "0")} s / ${DURATION} s`;
+  }
+
+  // --- playback ---------------------------------------------------------------
+  let startedAt = performance.now();
+  let paused = false;
+  function frame(now) {
+    if (!paused) renderAt(((now - startedAt) / 1000) % DURATION);
+    requestAnimationFrame(frame);
+  }
+  window.seekPrototype = (seconds) => { paused = true; renderAt(seconds); };
+  window.restartPrototype = () => { paused = false; startedAt = performance.now(); };
+  await document.fonts.ready;
+  startedAt = performance.now();
+  requestAnimationFrame(frame);
+</script>
+</body>
+</html>

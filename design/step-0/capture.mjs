@@ -45,7 +45,7 @@ if (!only || only === "prototype") {
   const page = await context.newPage();
   await page.goto(base + "prototype.html?autoplay=1", { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
-  for (const second of [1, 3.5, 6, 8.2, 9.6]) {
+  for (const second of [1, 3.6, 5.8, 7.3, 8.4, 9.6]) {
     await page.evaluate((s) => window.seekPrototype?.(s), second);
     await page.waitForTimeout(80);
     await page.screenshot({ path: join(out, `prototype-${String(second).replace(".", "_")}s.png`) });
