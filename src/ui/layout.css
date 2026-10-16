@@ -2824,3 +2824,23 @@ tr.is-latest td {
     grid-template-columns: 1fr;
   }
 }
+
+.week-charts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.month-ledger td {
+  white-space: nowrap;
+}
+
+.month-ledger td:first-child {
+  white-space: normal;
+}
+
+@media (max-width: 900px) {
+  .week-charts {
+    grid-template-columns: 1fr;
+  }
+}

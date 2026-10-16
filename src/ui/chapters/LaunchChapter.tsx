@@ -144,7 +144,10 @@ export function LaunchChapter({ chapter, progress, frame }: Props) {
 
       {result && (
         <>
-          <WeekChart weeks={result.weeks} pending={result.pendingMxn} mxnPerUsd={world.mxnPerUsd} />
+          <div className="week-charts">
+            <WeekChart weeks={result.weeks} pending={result.pendingMxn} mxnPerUsd={world.mxnPerUsd} />
+            <ApiChart weeks={result.weeks} />
+          </div>
           <ol className="launch-log" data-testid="launch-log">
             {result.weeks.map((w) => (
               <li key={w.week}>
@@ -249,6 +252,40 @@ function WeekChart({ weeks, pending, mxnPerUsd }: { weeks: readonly Week[]; pend
       <figcaption className="loss-chart__legend">
         <span className="is-train">{t("launch.legendApi")}</span>
         <span className="is-val">{t("launch.legendIncidents")}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+// The API alone, on its own scale, so the sale shows even when incidents dwarf it.
+function ApiChart({ weeks }: { weeks: readonly Week[] }) {
+  const { t, formatNumber } = useI18n();
+  const top = Math.max(1, ...weeks.map((w) => w.apiUsd));
+  const W = 360;
+  const H = 240;
+  const slot = (W - 50) / weeks.length;
+  const y = (v: number) => (H - 30) * (1 - v / top) + 10;
+  return (
+    <figure className="loss-chart week-chart" data-testid="api-chart">
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={t("launch.apiChartLabel")}>
+        <text x={6} y={18} className="loss-chart__tick">
+          ${formatNumber(Math.round(top))}
+        </text>
+        {weeks.map((w, i) => {
+          const x = 44 + i * slot + slot * 0.15;
+          const width = slot * 0.7;
+          return (
+            <g key={w.week}>
+              <rect x={x} y={y(w.apiUsd)} width={width} height={H - 20 - y(w.apiUsd)} className="week-chart__api" />
+              <text x={x + width / 2} y={H - 6} textAnchor="middle" className="loss-chart__tick">
+                {w.week}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+      <figcaption className="loss-chart__legend">
+        <span className="is-train">{t("launch.apiChartLegend")}</span>
       </figcaption>
     </figure>
   );

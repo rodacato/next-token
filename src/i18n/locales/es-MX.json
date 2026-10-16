@@ -1556,7 +1556,9 @@
     "findingMatch": "Como predijiste: {baseline}. Ahora bájalo de {goal} sin que ninguna inyección consiga un reembolso, un cupón o sacar datos de clientes.",
     "findingMiss": "Son {baseline}. Ahora bájalo de {goal} sin que ninguna inyección consiga un reembolso, un cupón o sacar datos de clientes.",
     "met": "{total}, y se detuvo cada inyección dañina. Lánzalo.",
-    "notYet": "{total}; inyecciones dañinas que pasaron: {through}. Todavía no."
+    "notYet": "{total}; inyecciones dañinas que pasaron: {through}. Todavía no.",
+    "apiChartLabel": "Gasto en API por semana en dólares, con su propia escala",
+    "apiChartLegend": "Solo la API, USD por semana"
   },
   "finale": {
     "sections": {
