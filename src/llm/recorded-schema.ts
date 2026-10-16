@@ -19,6 +19,7 @@ export const recipeSchema = z.object({
 
 export const recordedCompletionSchema = z.object({
   requestId: z.string(),
+  requestHash: z.string(),
   locale: z.string(),
   attempt: z.number().int().positive(),
   model: z.string(),
