@@ -2713,3 +2713,114 @@ tr.is-latest td {
   display: grid;
   gap: 3px;
 }
+
+/* ---- Chapter 22: the commission and the board --------------------------- */
+.finale-bench {
+  display: grid;
+  gap: 24px;
+}
+
+.finale-section {
+  display: grid;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 2px solid var(--ink);
+}
+
+.finale-section h3 {
+  margin: 0;
+  font: 400 22px/1.2 var(--face-display);
+}
+
+.finale-section label:not(.rule-plate) {
+  display: grid;
+  gap: 4px;
+  font-size: 12.5px;
+}
+
+.finale-section input[type="text"],
+.finale-section input[type="number"],
+.finale-section textarea,
+.finale-cases select {
+  font: 400 13px/1.4 var(--face-mono);
+  padding: 6px 8px;
+  border: 1px solid var(--brass-dark);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.finale-section input[type="number"] {
+  max-width: 120px;
+}
+
+.finale-cases {
+  margin: 0;
+  padding-left: 1.4em;
+  display: grid;
+  gap: 8px;
+}
+
+.finale-cases li {
+  display: grid;
+  grid-template-columns: 1fr 1fr 140px;
+  gap: 8px;
+}
+
+.board {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.board__member {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 12px 14px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--vermilion);
+}
+
+.board__member.is-approved {
+  border-top-color: var(--brass-dark);
+}
+
+.board__member strong {
+  font: 400 19px/1.2 var(--face-display);
+}
+
+.board__member ul {
+  margin: 0;
+  padding-left: 1.1em;
+  display: grid;
+  gap: 4px;
+  font-size: 12.5px;
+}
+
+.board__stamp {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font: 600 10px/1 var(--face-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 6px;
+  border: 2px solid currentColor;
+  color: var(--vermilion);
+  transform: rotate(-4deg);
+}
+
+.board__member.is-approved .board__stamp {
+  color: var(--brass-dark);
+}
+
+@media (max-width: 900px) {
+  .finale-cases li {
+    grid-template-columns: 1fr;
+  }
+}

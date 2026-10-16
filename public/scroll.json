@@ -163,6 +163,13 @@
         "en": "The launch",
         "es-MX": "El lanzamiento"
       }
+    },
+    {
+      "id": "finale",
+      "title": {
+        "en": "The commission",
+        "es-MX": "El encargo"
+      }
     }
   ],
   "capabilities": [

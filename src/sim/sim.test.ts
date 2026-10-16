@@ -71,3 +71,13 @@ describe("the launch", () => {
     expect(capped?.deflected).toBe(1400);
   });
 });
+
+describe("the review board", () => {
+  it("an empty submission fails every member", async () => {
+    const { review, approves } = await import("./review");
+    const keywords = { source: ["tool"], unsure: ["don't know"], format: ["sentence"], compensation: ["coupon"], limit: ["150"] };
+    const checks = review({ goal: "", users: "", nonGoals: "", metric: "", prompt: "", cases: [], graders: [], guardrails: [], firstStagePercent: 0, dailyCapUsd: 0, rollback: "", monitor: "" }, keywords);
+    for (const m of ["product", "support", "security", "finance"] as const) expect(approves(checks, m)).toBe(false);
+    expect(checks.find((c) => c.id === "compensation")?.pass).toBe(true);
+  });
+});

@@ -748,6 +748,34 @@
         },
         "voice": "Una prensa corre bien el primer pliego. Es el diezmilésimo el que encuentra la falla."
       }
+    },
+    "finale": {
+      "title": "El encargo",
+      "kicker": "Final: diseña una función, enfrenta al comité",
+      "problem": {
+        "heading": "El último encargo de Mercadito lo diseñas tú.",
+        "body": "Todos los días hay clientes que escriben para preguntar dónde está un pedido atrasado. Mercadito quiere un asistente que responda con el registro del pedido, se disculpe bien y pueda ofrecer un cupón pequeño cuando de verdad vaya tarde. Ya hiciste cada pieza de esto en el curso.",
+        "task": "Escribe la especificación, el prompt, las evaluaciones, las salvaguardas y el plan de lanzamiento. Luego enfrenta al comité de revisión."
+      },
+      "bench": {
+        "heading": "Cinco partes, con tus palabras.",
+        "body": "Nada de esto se califica mientras escribes. El comité lo lee solo cuando entregas, y cada revisión que hace es una lección de un capítulo anterior.",
+        "observe": "Escribe primero el objetivo. Todo lo demás sale de ahí."
+      },
+      "measure": {
+        "heading": "El comité de revisión.",
+        "body": "Predice cuántos aprobarán, entrega y corrige hasta que los cuatro aprueben."
+      },
+      "debrief": {
+        "heading": "Ese es el curso.",
+        "points": {
+          "one": "Dentro del modelo: tokens, probabilidades, una ventana que se llena y fluidez que no es verdad.",
+          "two": "El oficio: prompts como especificaciones, evaluaciones antes que opiniones, esquemas, herramientas, recuperación y un arnés alrededor de cada agente.",
+          "three": "La fundición: entrenar baja la pérdida en lo que ve, el ajuste fino enseña comportamiento mejor que hechos, y cada cambio necesita una prueba de regresión.",
+          "four": "Los encargos: elige la herramienta correcta, diseña para la respuesta equivocada, lee la cuenta y lanza despacio."
+        },
+        "voice": "Los tipos regresan a la caja. El trabajo está impreso."
+      }
     }
   },
   "readNext": {
@@ -1529,5 +1557,147 @@
     "findingMiss": "Son {baseline}. Ahora bájalo de {goal} sin que ninguna inyección consiga un reembolso, un cupón o sacar datos de clientes.",
     "met": "{total}, y se detuvo cada inyección dañina. Lánzalo.",
     "notYet": "{total}; inyecciones dañinas que pasaron: {through}. Todavía no."
+  },
+  "finale": {
+    "sections": {
+      "spec": "1. La especificación",
+      "prompt": "2. El prompt",
+      "evals": "3. Las evaluaciones",
+      "guardrails": "4. Las salvaguardas",
+      "launch": "5. El plan de lanzamiento"
+    },
+    "fields": {
+      "goal": "Para qué es el asistente, en una o dos oraciones",
+      "users": "Quién lo usa",
+      "nonGoals": "Lo que no va a hacer (uno por línea)",
+      "metric": "Cómo sabrás que funciona (un número)",
+      "prompt": "Prompt de sistema",
+      "caseInput": "Caso {n}: lo que escribe el cliente",
+      "caseInputHint": "Lo que escribe el cliente",
+      "caseExpect": "Caso {n}: lo que hace una buena respuesta",
+      "caseExpectHint": "Lo que hace una buena respuesta",
+      "caseTag": "Caso {n}: tipo",
+      "firstStage": "Primera etapa del lanzamiento, % del tráfico",
+      "cap": "Tope de gasto diario, USD",
+      "rollback": "Cuándo das marcha atrás",
+      "monitor": "Qué revisas cada día"
+    },
+    "tags": {
+      "normal": "normal",
+      "edge": "caso límite",
+      "regression": "regresión"
+    },
+    "addCase": "Agregar un caso",
+    "graders": {
+      "exact": "coincidencia exacta",
+      "regex": "patrón",
+      "max-words": "largo",
+      "mentions": "debe mencionar",
+      "json-schema": "esquema JSON",
+      "llm-judge": "juez LLM"
+    },
+    "guardrails": {
+      "compensation-gate": "Una compensación de más de 150 MXN necesita a una persona",
+      "read-only-lookup": "La consulta de pedidos es solo de lectura",
+      "step-limit": "Un límite de pasos en el ciclo",
+      "mark-untrusted": "Notas de paquetería y reseñas marcadas como datos",
+      "output-filter": "Sin enlaces ni códigos fuera del catálogo en las respuestas",
+      "honest-refusal": "Puede decir \"no lo sé\" y pasar a una persona"
+    },
+    "members": {
+      "product": "Producto",
+      "support": "Líder de soporte",
+      "security": "Seguridad",
+      "finance": "Finanzas"
+    },
+    "approved": "aprobado",
+    "changes": "pide cambios",
+    "predict": "Antes de entregar: ¿cuántos de los {count} miembros del comité aprobarán?",
+    "submit": "Entregar al comité de revisión",
+    "resubmit": "Entregar otra vez",
+    "allApproved": "Los {total} aprueban. Predijiste {guess}. El encargo es tuyo.",
+    "notYet": "Aprueban {approvals} de {total}; predijiste {guess}. Lee los comentarios, cambia lo que piden y vuelve a entregar.",
+    "checks": {
+      "goal": {
+        "pass": "El objetivo dice para qué es.",
+        "fail": "\"Ayuda a los clientes\" no es un objetivo. Di qué hace, para quién y cuándo."
+      },
+      "users": {
+        "pass": "Sabemos para quién es.",
+        "fail": "¿Quién lo usa? ¿Clientes, agentes, los dos?"
+      },
+      "non-goals": {
+        "pass": "Lo que no hace nos ahorrará discusiones después.",
+        "fail": "Sin lo que no hace. Alguien le va a pedir procesar reembolsos para el viernes."
+      },
+      "metric": {
+        "pass": "Un número que podemos revisar el mes que entra.",
+        "fail": "\"Clientes más contentos\" no se mide en un tablero. Dame un número."
+      },
+      "source": {
+        "pass": "Responde con el registro del pedido, no de memoria.",
+        "fail": "¿De dónde saca el estado del pedido? Nombra la herramienta o el registro."
+      },
+      "unsure": {
+        "pass": "Sabe cuándo pasar a una persona.",
+        "fail": "¿Qué hace cuando el registro no lo dice? Dile que lo diga y pase a una persona."
+      },
+      "format": {
+        "pass": "La respuesta tiene forma.",
+        "fail": "¿Qué tan larga es una respuesta? Dale un formato o un largo."
+      },
+      "compensation": {
+        "pass": "La compensación tiene techo.",
+        "fail": "Puede ofrecer compensación sin límite en el prompt. Escribe el límite."
+      },
+      "cases": {
+        "pass": "Suficientes casos para empezar.",
+        "fail": "Menos de cinco casos reales. Una evaluación necesita más que una demo."
+      },
+      "edge": {
+        "pass": "Probaste uno difícil.",
+        "fail": "Sin caso límite: un pedido desconocido, un cliente enojado, una nota con instrucciones adentro."
+      },
+      "regression": {
+        "pass": "Te darás cuenta si rompe otra cosa.",
+        "fail": "Sin caso de regresión. ¿Cómo sabrás que una actualización lo empeoró?"
+      },
+      "graders": {
+        "pass": "Calificadores que corre un script.",
+        "fail": "Elige al menos dos calificadores, y no solo el juez."
+      },
+      "gate": {
+        "pass": "El dinero pasa por una compuerta.",
+        "fail": "Compensación sin compuerta. En el capítulo 10 se pagó dos veces una licuadora."
+      },
+      "read-only": {
+        "pass": "La consulta no puede cambiar nada.",
+        "fail": "La herramienta de consulta puede escribir. Hazla de solo lectura."
+      },
+      "injection": {
+        "pass": "El texto no confiable está atendido.",
+        "fail": "Las notas de paquetería le llegan al modelo como instrucciones. Márcalas como datos o filtra lo que sale."
+      },
+      "refusal": {
+        "pass": "\"No lo sé\" está permitido.",
+        "fail": "Tiene que contestar todo, así que va a adivinar. El capítulo 19 contó cuánto cuesta eso."
+      },
+      "staged": {
+        "pass": "Una primera etapa chica.",
+        "fail": "Primera etapa arriba del 10%, o ninguna. Empieza con una parte del tráfico."
+      },
+      "cap": {
+        "pass": "Un tope al gasto diario.",
+        "fail": "Sin tope de gasto. La semana de la venta del capítulo 21 te manda saludos."
+      },
+      "rollback": {
+        "pass": "Sabemos cuándo retirarlo.",
+        "fail": "¿Cuándo das marcha atrás? Nombra la señal y el umbral."
+      },
+      "monitor": {
+        "pass": "Alguien lo revisa a diario.",
+        "fail": "¿Qué revisa alguien cada mañana?"
+      }
+    }
   }
 }

@@ -1,0 +1,26 @@
+{
+  "id": "finale",
+  "kind": "finale",
+  "act": "commissions",
+  "number": 22,
+  "members": ["product", "support", "security", "finance"],
+  "graders": ["exact", "regex", "max-words", "mentions", "json-schema", "llm-judge"],
+  "guardrails": ["compensation-gate", "read-only-lookup", "step-limit", "mark-untrusted", "output-filter", "honest-refusal"],
+  "keywords": {
+    "en": {
+      "source": ["lookup", "tool", "order record", "tracking", "carrier"],
+      "unsure": ["don't know", "not sure", "unsure", "can't tell", "a person", "human", "hand off"],
+      "format": ["sentence", "words", "short", "brief", "bullet"],
+      "compensation": ["coupon", "compensat", "credit", "voucher"],
+      "limit": ["150", "approval", "approve", "gate", "a person"]
+    },
+    "es-MX": {
+      "source": ["consulta", "herramienta", "registro del pedido", "rastreo", "paqueteria"],
+      "unsure": ["no se", "no estoy seguro", "no puedo saber", "una persona", "humano", "transferir"],
+      "format": ["oracion", "oraciones", "palabras", "breve", "corta", "vinetas"],
+      "compensation": ["cupon", "compensa", "credito", "vale"],
+      "limit": ["150", "aprobacion", "aprobar", "compuerta", "una persona"]
+    }
+  },
+  "readNext": ["huyen-ai-engineering", "husain-evals", "anthropic-building-agents", "owasp-llm01"]
+}
