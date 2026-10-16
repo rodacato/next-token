@@ -85,3 +85,33 @@ test.describe("chapter 13 · kinds of training", () => {
     await expect(page.getByTestId("ledger-finding")).toContainText("6 of 7 match the ledger.");
   });
 });
+
+test.describe("chapter 16 · train or not", () => {
+  test("the fine-tune's evidence: behaviour learned, facts not; then six calls", async ({ page }) => {
+    await open(page, /^16 Train or not\?/);
+    await advance(page, 1);
+    await expect(page.getByTestId("behaviour-after")).toHaveText("10");
+    await expect(page.getByTestId("facts-after")).toHaveText("1");
+    await advance(page, 1);
+    const calls: Record<string, string> = { "sign-off": "prompt", prices: "rag", "policy-facts": "fine-tune", router: "distill", voice: "fine-tune", manual: "rag" };
+    for (const [id, option] of Object.entries(calls)) await page.getByTestId(`decide-${id}-${option}`).check();
+    await page.getByTestId("check-decisions").click();
+    await expect(page.getByTestId("decision-finding")).toContainText("5 of 6 match.");
+  });
+});
+
+test.describe("chapter 17 · before and after", () => {
+  test("the Act II runner on both models shows what the fine-tune broke", async ({ page }) => {
+    await open(page, /^17 Before and after/);
+    await advance(page, 1);
+    await expect(page.getByTestId("training-sheet")).toContainText("0.19%");
+    await page.getByTestId("run-before-after").click();
+    await expect(page.getByTestId("result-galley")).toHaveCount(1);
+    await advance(page, 1);
+    await page.getByTestId("predict-worse").fill("0");
+    await page.getByTestId("run-general").click();
+    await expect(page.getByTestId("result-galley")).toHaveCount(2);
+    await expect(page.getByTestId("before-after-finding")).toContainText("You predicted 0; 2 of 8 general checks got worse.");
+    await expect(page.getByTestId("worse-list")).toContainText("Melbourne");
+  });
+});

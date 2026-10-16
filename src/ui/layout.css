@@ -2369,3 +2369,66 @@
     border-top: 1px solid var(--rule);
   }
 }
+
+/* ---- Chapters 16 and 17: evidence, before and after --------------------- */
+.decision-bench,
+.before-after-bench {
+  display: grid;
+  gap: 20px;
+}
+
+.evidence-sheet,
+.training-sheet {
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.evidence-sheet p,
+.training-sheet p {
+  margin: 0;
+}
+
+.evidence-sheet__example q {
+  display: block;
+  margin-top: 6px;
+  font: 400 17px/1.4 var(--face-display);
+}
+
+.before-after-set {
+  display: grid;
+  gap: 8px;
+}
+
+.worse-list {
+  margin: 10px 0 0;
+  padding-left: 1.4em;
+  display: grid;
+  gap: 14px;
+}
+
+.worse-list__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  font-size: 12.5px;
+}
+
+.worse-list__pair p {
+  margin: 4px 0 0;
+  white-space: pre-wrap;
+  max-height: 12em;
+  overflow: auto;
+}
+
+.worse-list__pair p + p {
+  color: var(--vermilion);
+}
+
+@media (max-width: 900px) {
+  .worse-list__pair {
+    grid-template-columns: 1fr;
+  }
+}

@@ -8,10 +8,14 @@ const PAD = { left: 44, right: 16, top: 14, bottom: 30 };
 // Train in ink, held-out in vermilion; the brass rule marks where held-out loss was lowest.
 export function LossChart({ points, steps, lowest, stops }: { points: readonly LossPoint[]; steps: number; lowest: LossPoint | null; stops: readonly number[] }) {
   const { t, formatNumber } = useI18n();
-  const top = Math.max(4.5, ...points.map((p) => Math.max(p.train, p.val)));
+  const top = Math.max(1, ...points.flatMap((p) => [p.train, p.val]).filter(Number.isFinite));
   const x = (step: number) => PAD.left + ((W - PAD.left - PAD.right) * step) / steps;
   const y = (loss: number) => PAD.top + (H - PAD.top - PAD.bottom) * (1 - loss / top);
-  const line = (key: "train" | "val") => points.map((p, i) => `${i ? "L" : "M"}${x(p.step).toFixed(1)},${y(p[key]).toFixed(1)}`).join("");
+  const line = (key: "train" | "val") =>
+    points
+      .filter((p) => Number.isFinite(p[key]))
+      .map((p, i) => `${i ? "L" : "M"}${x(p.step).toFixed(1)},${y(p[key]).toFixed(1)}`)
+      .join("");
   const ticks = Array.from({ length: Math.floor(top) + 1 }, (_, i) => i);
   return (
     <figure className="loss-chart" data-testid="loss-chart">
@@ -42,8 +46,8 @@ export function LossChart({ points, steps, lowest, stops }: { points: readonly L
       </svg>
       <figcaption className="loss-chart__legend">
         <span className="is-train">{t("trainer.trainLoss")}</span>
-        <span className="is-val">{t("trainer.valLoss")}</span>
-        {points.length > 0 && <span>{t("trainer.now", { step: formatNumber(points.at(-1)?.step ?? 0), train: (points.at(-1)?.train ?? 0).toFixed(2), val: (points.at(-1)?.val ?? 0).toFixed(2) })}</span>}
+        {points.some((p) => Number.isFinite(p.val)) && <span className="is-val">{t("trainer.valLoss")}</span>}
+        {points.length > 0 && Number.isFinite(points.at(-1)?.val) && <span>{t("trainer.now", { step: formatNumber(points.at(-1)?.step ?? 0), train: (points.at(-1)?.train ?? 0).toFixed(2), val: (points.at(-1)?.val ?? 0).toFixed(2) })}</span>}
       </figcaption>
     </figure>
   );

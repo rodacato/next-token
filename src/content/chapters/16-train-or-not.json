@@ -1,0 +1,94 @@
+{
+  "id": "train-or-not",
+  "kind": "decision",
+  "act": "foundry",
+  "number": 16,
+  "options": [
+    "prompt",
+    "rag",
+    "fine-tune",
+    "distill"
+  ],
+  "cases": [
+    {
+      "id": "sign-off",
+      "answer": "prompt",
+      "text": {
+        "en": "Every support reply must end with the team's sign-off. Nobody has tried saying so in the system prompt yet.",
+        "es-MX": "Cada respuesta de soporte debe terminar con la firma del equipo. Nadie ha intentado decirlo en el prompt de sistema."
+      },
+      "why": {
+        "en": "Try the prompt first: it's free to change and easy to evaluate. Train only if a measured prompt keeps failing.",
+        "es-MX": "Prueba primero el prompt: cambiarlo no cuesta y es fácil de evaluar. Entrena solo si un prompt medido sigue fallando."
+      }
+    },
+    {
+      "id": "prices",
+      "answer": "rag",
+      "text": {
+        "en": "Customers ask about today's prices, and the catalog changes every morning.",
+        "es-MX": "Los clientes preguntan por los precios de hoy, y el catálogo cambia cada mañana."
+      },
+      "why": {
+        "en": "Facts that change daily belong in retrieval. A fine-tune would be out of date by tomorrow.",
+        "es-MX": "Los hechos que cambian a diario van en la recuperación. Un ajuste fino estaría desactualizado mañana."
+      }
+    },
+    {
+      "id": "policy-facts",
+      "answer": "rag",
+      "text": {
+        "en": "The assistant keeps getting the electronics return window wrong. Someone proposes fine-tuning it on the policy.",
+        "es-MX": "El asistente se equivoca con el plazo de devolución de electrónica. Alguien propone ajustarlo con la política."
+      },
+      "why": {
+        "en": "A rule the model must state exactly is a fact to retrieve and quote. See the evidence below: the fine-tune learned the style, not the facts.",
+        "es-MX": "Una regla que el modelo debe decir con exactitud es un hecho para recuperar y citar. Mira la evidencia abajo: el ajuste aprendió el estilo, no los hechos."
+      }
+    },
+    {
+      "id": "router",
+      "answer": "distill",
+      "text": {
+        "en": "A large model sorts two million tickets a day into five queues, correctly, at a cost the company can't sustain.",
+        "es-MX": "Un modelo grande clasifica dos millones de tickets al día en cinco colas, bien, a un costo que la empresa no puede sostener."
+      },
+      "why": {
+        "en": "A narrow task a big model already does well, at volume: label with the big model, train a small one to copy it.",
+        "es-MX": "Una tarea acotada que un modelo grande ya hace bien, en volumen: etiqueta con el grande y entrena uno pequeño para copiarlo."
+      }
+    },
+    {
+      "id": "voice",
+      "answer": "fine-tune",
+      "text": {
+        "en": "Replies must match the brand's voice across thousands of different tickets. A careful prompt, measured on 200 cases, gets 70% there.",
+        "es-MX": "Las respuestas deben sonar a la marca en miles de tickets distintos. Un prompt cuidadoso, medido en 200 casos, llega al 70%."
+      },
+      "why": {
+        "en": "Behaviour that prompting can't pin down, with an eval already in place: that's what fine-tuning is good at.",
+        "es-MX": "Un comportamiento que el prompt no logra fijar, con una evaluación ya armada: para eso sirve el ajuste fino."
+      }
+    },
+    {
+      "id": "manual",
+      "answer": "rag",
+      "text": {
+        "en": "Agents need answers from a 300-page supplier manual that's revised every month.",
+        "es-MX": "Los agentes necesitan respuestas de un manual de proveedores de 300 páginas que se revisa cada mes."
+      },
+      "why": {
+        "en": "Large, changing, citable: retrieve the passage and show it.",
+        "es-MX": "Grande, cambiante, citable: recupera el pasaje y muéstralo."
+      }
+    }
+  ],
+  "evidenceSet": "support-style",
+  "exampleCase": "which-city",
+  "readNext": [
+    "anthropic-prompting",
+    "lewis-2020-rag",
+    "hu-2021-lora",
+    "huyen-ai-engineering"
+  ]
+}

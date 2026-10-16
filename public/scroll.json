@@ -121,6 +121,20 @@
         "en": "The LoRA plate",
         "es-MX": "La placa LoRA"
       }
+    },
+    {
+      "id": "train-or-not",
+      "title": {
+        "en": "Train or not?",
+        "es-MX": "¿Entrenar o no?"
+      }
+    },
+    {
+      "id": "before-after",
+      "title": {
+        "en": "Before and after",
+        "es-MX": "Antes y después"
+      }
     }
   ],
   "capabilities": [

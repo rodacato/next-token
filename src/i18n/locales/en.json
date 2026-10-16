@@ -580,6 +580,62 @@
         },
         "voice": "A shop has a tool for each job. Using the wrong one still leaves a mark."
       }
+    },
+    "train-or-not": {
+      "title": "Train or not?",
+      "kicker": "Prompt, RAG, fine-tune or distill",
+      "problem": {
+        "heading": "Fine-tuning is the most expensive answer to most questions.",
+        "body": "Every week someone at Mercadito proposes training a model. Most of the time a better prompt or retrieval would do, sooner and cheaper. Sometimes fine-tuning really is the answer.",
+        "task": "Look at what a real fine-tune learned, then make six calls."
+      },
+      "bench": {
+        "heading": "Behaviour sticks. Facts don't.",
+        "body": "A small fine-tune on forty rows: the sign-off appeared everywhere; the facts in those rows barely moved. Read the example answer.",
+        "observe": "Ask yourself which of Mercadito's problems are behaviour and which are facts."
+      },
+      "measure": {
+        "heading": "Make the calls.",
+        "body": "Pick an approach for each case, then check."
+      },
+      "debrief": {
+        "heading": "Train behaviour. Retrieve facts. Prompt first.",
+        "points": {
+          "one": "Fine-tuning teaches format, tone and task behaviour far more reliably than facts. A fact seen in training is recalled in its training wording, not on demand.",
+          "two": "Facts that change, or must be quoted exactly, belong in retrieval, where you can update them and show the source.",
+          "three": "Prompt first, with an eval. Fine-tune when a measured prompt has stopped improving and the behaviour still matters.",
+          "four": "Distill when a big model already solves a narrow task and the volume makes it too expensive."
+        },
+        "voice": "You don't cast new type for one poster. You set it from the case."
+      }
+    },
+    "before-after": {
+      "title": "Before and after",
+      "kicker": "Evaluating a fine-tune",
+      "problem": {
+        "heading": "The fine-tune worked. What did it break?",
+        "body": "Chapter 16's fine-tune learned Mercadito's sign-off. Before it ships, run the same evals on the model before and after training, including questions it was never meant to change.",
+        "task": "Use the eval runner from Act II on both models, and find what got worse."
+      },
+      "bench": {
+        "heading": "Same evals, two models.",
+        "body": "Two sets: the support replies the training was for, and general questions it wasn't. Every case, every grader, before and after.",
+        "observe": "Read the general questions closely. A model that sounds the same can know less."
+      },
+      "measure": {
+        "heading": "Count the regressions.",
+        "body": "Predict how many general checks fail after training, then read each one."
+      },
+      "debrief": {
+        "heading": "Evaluate what you didn't train for.",
+        "points": {
+          "one": "A fine-tune changes more than its target. Here it learned the sign-off and lost facts it had before.",
+          "two": "Keep an eval of general skills next to the task eval, and run both on every candidate, before and after.",
+          "three": "Small data and many passes over it (here about ten over forty rows) make regressions likelier. Fewer steps, more varied rows or a lower rank are the first knobs to turn.",
+          "four": "If a regression matters more than the gain, don't ship. A prompt or retrieval may get most of the gain without the loss."
+        },
+        "voice": "Proof every forme after you change it, not just the line you touched."
+      }
     }
   },
   "readNext": {
@@ -1147,5 +1203,45 @@
     "check": "Check the ledger",
     "answer": "The ledger says: {method}",
     "finding": "{right} of {total} match the ledger. Some pairs are close: DPO and RLHF learn the same kind of preference, from different data."
+  },
+  "decision": {
+    "evidence": "Evidence from a real fine-tune (chapter 17 has the full run)",
+    "evidenceBody": "MiniCPM5-2B, LoRA, trained on the {rows} clean rows from the data workshop. The rows taught a style (two sentences and a sign-off) and repeated a few facts (Guadalajara, 15 days for electronics, the Mercadito balance, chat and email, 99 MXN). Then it answered questions it had never seen.",
+    "taught": "What the rows taught",
+    "behaviour": "The sign-off, on {total} new questions",
+    "facts": "The facts, asked in new words ({total} questions)",
+    "example": "Asked \"{question}\" after training, with Guadalajara in six training rows:",
+    "options": {
+      "prompt": "a better prompt",
+      "rag": "retrieval (RAG)",
+      "fine-tune": "fine-tuning",
+      "distill": "distillation"
+    },
+    "answer": "Better: {option}.",
+    "check": "Check my calls",
+    "finding": "{right} of {total} match. The pattern: retrieve facts, prompt first, fine-tune behaviour you can measure, distill what's already solved but too expensive."
+  },
+  "beforeAfter": {
+    "before": "Before",
+    "after": "After",
+    "sheet": "The fine-tune",
+    "sheetBody": "{model}, LoRA rank {rank} on the last {layers} layers: {share}% of the weights ({millions} M) trained, on {rows} rows, for {iters} steps. {seconds} s.",
+    "recorded": "Trained and recorded with {via} on {machine}, {date}. Greedy decoding, thinking off, the same prompts before and after.",
+    "run": "Run the support set, before and after",
+    "running": "Running…",
+    "runner": "The same eval runner as chapters 5 and 6: cases, graders, results. Only the model behind it changed.",
+    "sets": {
+      "support-style": "What the fine-tune was for: Mercadito support replies",
+      "general-skills": "What it wasn't for: general questions"
+    },
+    "graders": {
+      "sign-off": "sign-off",
+      "short": "≤ 60 words",
+      "facts": "facts",
+      "no-shop-voice": "no shop voice"
+    },
+    "predict": "The general set has {checks} checks, all passing before. How many will fail after the fine-tune?",
+    "finding": "You predicted {guess}; {actual} of {checks} general checks got worse. Across both sets, {better} checks improved and {worse} got worse.",
+    "runGeneral": "Run the general set, before and after"
   }
 }

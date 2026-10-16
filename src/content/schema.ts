@@ -237,7 +237,25 @@ export const ledgerChapterSchema = z.object({
   jobs: z.array(z.object({ id: z.string(), answer: z.string(), text: perLocale })).min(1),
 });
 
+export const decisionChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("decision"),
+  options: z.array(z.string()).min(2),
+  evidenceSet: z.string(),
+  exampleCase: z.string(),
+  cases: z.array(z.object({ id: z.string(), answer: z.string(), text: perLocale, why: perLocale })).min(1),
+});
+
+export const beforeAfterChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("before-after"),
+  evalSets: z.array(z.string()).min(1),
+  regressionSet: z.string(),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  decisionChapterSchema,
+  beforeAfterChapterSchema,
   ledgerChapterSchema,
   datasetChapterSchema,
   stagesChapterSchema,
@@ -276,3 +294,5 @@ export type StagesChapter = z.infer<typeof stagesChapterSchema>;
 export type DatasetChapter = z.infer<typeof datasetChapterSchema>;
 export type Dataset = z.infer<typeof datasetSchema>;
 export type LedgerChapter = z.infer<typeof ledgerChapterSchema>;
+export type DecisionChapter = z.infer<typeof decisionChapterSchema>;
+export type BeforeAfterChapter = z.infer<typeof beforeAfterChapterSchema>;

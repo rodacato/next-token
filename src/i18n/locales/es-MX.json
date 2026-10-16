@@ -580,6 +580,62 @@
         },
         "voice": "Un taller tiene una herramienta para cada trabajo. Usar la equivocada también deja marca."
       }
+    },
+    "train-or-not": {
+      "title": "¿Entrenar o no?",
+      "kicker": "Prompt, RAG, ajuste fino o destilación",
+      "problem": {
+        "heading": "El ajuste fino es la respuesta más cara a la mayoría de las preguntas.",
+        "body": "Cada semana alguien en Mercadito propone entrenar un modelo. Casi siempre bastaría un mejor prompt o recuperación, más rápido y más barato. A veces el ajuste fino sí es la respuesta.",
+        "task": "Mira qué aprendió un ajuste fino real y luego toma seis decisiones."
+      },
+      "bench": {
+        "heading": "El comportamiento se queda. Los hechos no.",
+        "body": "Un ajuste fino pequeño con cuarenta filas: la firma apareció en todas partes; los hechos de esas filas casi no se movieron. Lee la respuesta de ejemplo.",
+        "observe": "Pregúntate cuáles de los problemas de Mercadito son de comportamiento y cuáles de hechos."
+      },
+      "measure": {
+        "heading": "Toma las decisiones.",
+        "body": "Elige un enfoque para cada caso y luego revisa."
+      },
+      "debrief": {
+        "heading": "Entrena comportamiento. Recupera hechos. Prueba primero el prompt.",
+        "points": {
+          "one": "El ajuste fino enseña formato, tono y comportamiento en la tarea con mucha más confianza que hechos. Un hecho visto en el entrenamiento se recuerda con las palabras del entrenamiento, no cuando se le pide.",
+          "two": "Los hechos que cambian, o que hay que citar con exactitud, van en la recuperación, donde puedes actualizarlos y mostrar la fuente.",
+          "three": "Primero el prompt, con una evaluación. Ajusta cuando un prompt medido ya no mejora y el comportamiento sigue importando.",
+          "four": "Destila cuando un modelo grande ya resuelve una tarea acotada y el volumen lo vuelve demasiado caro."
+        },
+        "voice": "No se funden tipos nuevos para un cartel. Se forman con los de la caja."
+      }
+    },
+    "before-after": {
+      "title": "Antes y después",
+      "kicker": "Evaluar un ajuste fino",
+      "problem": {
+        "heading": "El ajuste funcionó. ¿Qué rompió?",
+        "body": "El ajuste del capítulo 16 aprendió la firma de Mercadito. Antes de lanzarlo, corre las mismas evaluaciones con el modelo antes y después de entrenar, incluidas preguntas que nunca debía cambiar.",
+        "task": "Usa el corredor de evaluaciones del Acto II con los dos modelos y encuentra qué empeoró."
+      },
+      "bench": {
+        "heading": "Mismas evaluaciones, dos modelos.",
+        "body": "Dos conjuntos: las respuestas de soporte para las que era el entrenamiento y preguntas generales para las que no. Cada caso, cada calificador, antes y después.",
+        "observe": "Lee con cuidado las preguntas generales. Un modelo que suena igual puede saber menos."
+      },
+      "measure": {
+        "heading": "Cuenta las regresiones.",
+        "body": "Predice cuántas revisiones generales fallan después de entrenar y luego lee cada una."
+      },
+      "debrief": {
+        "heading": "Evalúa lo que no entrenaste.",
+        "points": {
+          "one": "Un ajuste fino cambia más que su objetivo. Aquí aprendió la firma y perdió hechos que antes sabía.",
+          "two": "Ten una evaluación de habilidades generales junto a la de la tarea, y córrelas las dos en cada candidato, antes y después.",
+          "three": "Pocos datos y muchas pasadas sobre ellos (aquí unas diez sobre cuarenta filas) hacen más probables las regresiones. Menos pasos, filas más variadas o un rango menor son las primeras perillas.",
+          "four": "Si una regresión pesa más que la ganancia, no lo lances. Un prompt o la recuperación pueden dar casi toda la ganancia sin la pérdida."
+        },
+        "voice": "Saca prueba de toda la forma después de cambiarla, no solo de la línea que tocaste."
+      }
     }
   },
   "readNext": {
@@ -1147,5 +1203,45 @@
     "check": "Revisar con el libro",
     "answer": "El libro dice: {method}",
     "finding": "{right} de {total} coinciden con el libro. Hay pares cercanos: DPO y RLHF aprenden el mismo tipo de preferencia, con datos distintos."
+  },
+  "decision": {
+    "evidence": "Evidencia de un ajuste fino real (el capítulo 17 tiene la corrida completa)",
+    "evidenceBody": "MiniCPM5-2B, LoRA, entrenado con las {rows} filas limpias del taller de datos. Las filas enseñaban un estilo (dos oraciones y una firma) y repetían algunos hechos (Guadalajara, 15 días para electrónica, el saldo de Mercadito, chat y correo, 99 MXN). Luego respondió preguntas que nunca había visto.",
+    "taught": "Lo que enseñaban las filas",
+    "behaviour": "La firma, en {total} preguntas nuevas",
+    "facts": "Los hechos, preguntados con otras palabras ({total} preguntas)",
+    "example": "Al preguntarle \"{question}\" después de entrenar, con Guadalajara en seis filas de entrenamiento:",
+    "options": {
+      "prompt": "un mejor prompt",
+      "rag": "recuperación (RAG)",
+      "fine-tune": "ajuste fino",
+      "distill": "destilación"
+    },
+    "answer": "Mejor: {option}.",
+    "check": "Revisar mis decisiones",
+    "finding": "{right} de {total} coinciden. El patrón: recupera hechos, prueba primero el prompt, ajusta comportamiento que puedas medir, destila lo que ya está resuelto pero sale caro."
+  },
+  "beforeAfter": {
+    "before": "Antes",
+    "after": "Después",
+    "sheet": "El ajuste fino",
+    "sheetBody": "{model}, LoRA de rango {rank} en las últimas {layers} capas: {share}% de los pesos ({millions} M) entrenados, con {rows} filas, durante {iters} pasos. {seconds} s.",
+    "recorded": "Entrenado y grabado con {via} en {machine}, {date}. Decodificación codiciosa, sin modo de pensamiento, los mismos prompts antes y después.",
+    "run": "Correr el conjunto de soporte, antes y después",
+    "running": "Corriendo…",
+    "runner": "El mismo corredor de evaluaciones de los capítulos 5 y 6: casos, calificadores, resultados. Solo cambió el modelo detrás.",
+    "sets": {
+      "support-style": "Para lo que era el ajuste: respuestas de soporte de Mercadito",
+      "general-skills": "Para lo que no era: preguntas generales"
+    },
+    "graders": {
+      "sign-off": "firma",
+      "short": "≤ 60 palabras",
+      "facts": "hechos",
+      "no-shop-voice": "sin voz de tienda"
+    },
+    "predict": "El conjunto general tiene {checks} revisiones, todas aprobadas antes. ¿Cuántas fallarán después del ajuste?",
+    "finding": "Predijiste {guess}; {actual} de {checks} revisiones generales empeoraron. En los dos conjuntos, {better} revisiones mejoraron y {worse} empeoraron.",
+    "runGeneral": "Correr el conjunto general, antes y después"
   }
 }
