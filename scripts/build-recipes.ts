@@ -6,6 +6,8 @@ import { judgeRequest } from "../src/evals/judge.ts";
 import { fillTemplate } from "../src/evals/template.ts";
 import { jsonSchemaFor, schemas } from "../src/evals/schemas.ts";
 import { checkSheet, retryPrompt } from "../src/evals/structured.ts";
+import { requestHash } from "../src/llm/hash.ts";
+import { branchId, parseTurn, resolveResult, turnRequest, type ResultChoice, type Step } from "../src/agents/toolProtocol.ts";
 
 type PerLocale = Record<string, string>;
 type Contender = { id: string; system: PerLocale; template: PerLocale };
@@ -13,7 +15,7 @@ type Duel = { id: string; evalSetId: string; contenders: Contender[] };
 type EvalCase = { id: string; input: PerLocale };
 type Grader = { id: string; kind: string; rubric?: PerLocale; judgeRecipe?: string; labels?: { input: PerLocale; output: PerLocale }; expects?: "pass" | "expected-answer" };
 type EvalSet = { id: string; cases: EvalCase[]; graders: Grader[] };
-type Request = { id: string; locale: string; system: string; prompt: string };
+type Request = { id: string; locale: string; system: string; prompt: string; jsonSchema?: Record<string, unknown> };
 
 const root = join(import.meta.dirname, "..");
 const recipesDir = join(root, "src", "recordings", "llm", "recipes");
@@ -86,4 +88,37 @@ for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
     return [{ id: `retry--${completion.requestId}`, locale: completion.locale, system: chapter.system[completion.locale] ?? "", prompt: retryPrompt(chapter.retry[completion.locale] ?? "", input, check.error, completion.output) }];
   });
   if (retries.length) write(`${chapter.id}-retry`, `Chapter ${chapter.id}: one retry for every rejected sheet.`, retries);
+}
+
+// Tools: the model's turns form a tree, one branch per result the learner can hand back.
+// Each pass adds the turns that the recordings so far make reachable; repeat until nothing is new.
+type ToolsChapter = { id: string; kind: string; maxTokens: number; maxSteps: number; system: PerLocale; customer: PerLocale; labels: Record<string, { customer: string; call: string; result: string }>; toolResults: Record<string, ResultChoice[]> };
+for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
+  const chapter = read<ToolsChapter>(join(root, "src", "content", "chapters", file));
+  if (chapter.kind !== "tools") continue;
+  const recorded = join(root, "src", "recordings", "llm", `${chapter.id}.json`);
+  const outputs = new Map<string, string>();
+  if (existsSync(recorded)) for (const c of read<{ completions: { requestHash: string; output: string }[] }>(recorded).completions) outputs.set(c.requestHash, c.output);
+  const requests: Request[] = [];
+  let missing = 0;
+  for (const locale of locales) {
+    const labels = chapter.labels[locale];
+    if (!labels) throw new Error(`${chapter.id} has no labels for ${locale}`);
+    const task = { system: chapter.system[locale] ?? "", customer: chapter.customer[locale] ?? "", labels, maxTokens: chapter.maxTokens };
+    const queue: Step[][] = [[]];
+    for (let steps = queue.shift(); steps; steps = queue.shift()) {
+      const { system, prompt, jsonSchema } = turnRequest(task, steps);
+      requests.push({ id: `${locale}--${branchId(steps)}`, locale, system, prompt, jsonSchema });
+      const output = outputs.get(requestHash({ system, prompt, jsonSchema }));
+      if (output === undefined) {
+        missing++;
+        continue;
+      }
+      const turn = parseTurn(output);
+      if (!turn || turn.action !== "call_tool" || !turn.tool || steps.length >= chapter.maxSteps) continue;
+      for (const choice of chapter.toolResults[turn.tool] ?? []) queue.push([...steps, { call: turn, resultId: choice.id, result: resolveResult(choice, turn) }]);
+    }
+  }
+  write(chapter.id, `Chapter ${chapter.id}: every turn the model takes on every branch of results the learner can return.`, requests);
+  console.log(`  ${missing} not recorded yet (record with --extend, then run recipes again)`);
 }

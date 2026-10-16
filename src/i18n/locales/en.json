@@ -356,6 +356,34 @@
         },
         "voice": "The press rejects a malformed sheet. It can't tell you the sheet is wrong."
       }
+    },
+    "tools": {
+      "title": "Tools",
+      "kicker": "Function calling, the executor's side",
+      "problem": {
+        "heading": "The assistant refunded a blender. Who pressed the button?",
+        "body": "Mercadito's support assistant now has two tools: look up an order and issue a refund. The first week, a 2,450 MXN refund went out for a cracked jar. Finance asked which part of the system decided to pay.",
+        "task": "Run the conversation as the executor and see what the model actually controls."
+      },
+      "bench": {
+        "heading": "The model asks. You run.",
+        "body": "Each turn the model either asks for a tool or replies. Every request lands on your desk first: you choose what the lookup returns, and whether the refund runs.",
+        "observe": "Try a wrong row, a missing order and a refused refund. Read what the model does with each."
+      },
+      "measure": {
+        "heading": "Hand it the wrong row.",
+        "body": "Predict first, then hand back the coffee order on the first lookup and read the model's next move."
+      },
+      "debrief": {
+        "heading": "The model writes requests. Your code holds the keys.",
+        "points": {
+          "one": "A tool call is text: a name and arguments. Nothing runs until your code runs it, so every permission check belongs in your code, not in the prompt.",
+          "two": "The model treats tool results as facts. Wrong data from your tool becomes the model's answer, unless something in the loop checks it.",
+          "three": "Refuse dangerous calls in code and hand the reason back as the result; the model can then explain it to the customer.",
+          "four": "Cap the loop. A harness stops after a fixed number of steps, whatever the model asks for next."
+        },
+        "voice": "The press doesn't pick the paper. Whoever feeds it does."
+      }
     }
   },
   "readNext": {
@@ -379,7 +407,9 @@
       "huyen-ai-engineering": "A book-length treatment of building on foundation models, with a long section on evaluation.",
       "zheng-2023-judge": "Measures how far LLM judges agree with people, and their biases (position, length, self-preference).",
       "anthropic-structured-outputs": "How to constrain Claude's output to a JSON Schema, and which schema features are supported.",
-      "zod-json-schema": "Converting Zod schemas to JSON Schema, the bridge used on this bench."
+      "zod-json-schema": "Converting Zod schemas to JSON Schema, the bridge used on this bench.",
+      "anthropic-tool-use": "How Claude requests tools, and how your code returns results: the loop on this bench, in the native format.",
+      "openai-function-calling": "The same contract on OpenAI's API: function definitions, calls and outputs."
     }
   },
   "units": {
@@ -573,6 +603,50 @@
       "right": "fields right",
       "calls": "calls",
       "tokens": "tokens"
+    }
+  },
+  "tools": {
+    "system": "System prompt and tool list",
+    "youRun": "You are the executor",
+    "youRunBody": "The model can't look anything up or refund anyone. It writes a request; your code decides whether to run it and what to hand back. Here, that code is you.",
+    "protocolNote": "On this bench the model writes each turn as JSON constrained by a schema. Native tool use (tool_use blocks, function calls) carries the same request in a structured field; the loop is identical.",
+    "start": "Hand the customer's message to the model",
+    "again": "Start the docket again",
+    "waiting": "Waiting on the model…",
+    "explored": "Branches finished: {count}",
+    "modelAsks": "The model asks to run",
+    "modelReplies": "The model replies to the customer",
+    "unreadable": "The model's turn didn't parse",
+    "youReturned": "You handed back",
+    "handBack": "What does {tool} return?",
+    "results": {
+      "right-row": "The right row (order 50211, blender)",
+      "wrong-row": "A wrong row (order 50112, coffee)",
+      "not-found": "Order not found",
+      "run-it": "Run the refund",
+      "refuse": "Refuse: over 2,000 MXN needs a supervisor"
+    },
+    "outcome": {
+      "step-limit": "Step limit reached. The harness stops the loop, whatever the model wants next.",
+      "unreadable": "The turn wasn't a valid request. A real harness would reject it and ask again."
+    },
+    "predict": "You hand back the coffee order (50112) when the customer asked about the blender (50211). What will the model do?",
+    "predictions": {
+      "refund": "Refund the coffee order it was handed",
+      "recheck": "Notice the mismatch: look again or ask"
+    },
+    "runWrongRow": "Now run that branch: hand back the wrong row on the first lookup.",
+    "did": {
+      "refund": "refunded order 50112",
+      "asked": "noticed the mismatch and asked the customer",
+      "lookedAgain": "noticed the mismatch and looked the order up again"
+    },
+    "findingMatch": "As you predicted: the model {did}. It trusted the result enough to read it, and it read it.",
+    "findingMiss": "Not what you predicted: the model {did}.",
+    "stamp": {
+      "waiting": "awaiting you",
+      "run": "run by you",
+      "refused": "refused by you"
     }
   }
 }

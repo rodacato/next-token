@@ -1451,3 +1451,99 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---- Chapter 8: the executor's docket --------------------------------- */
+.tools-bench {
+  display: grid;
+  gap: 20px;
+}
+
+.tools-bench__rule p {
+  margin: 0;
+}
+
+.docket {
+  list-style: none;
+  padding: 0 0 0 18px;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+  border-left: 2px solid var(--rule);
+  max-width: 760px;
+}
+
+.docket__line {
+  display: grid;
+  gap: 8px;
+}
+
+.docket__line--customer p {
+  margin: 0;
+  font-family: var(--face-display);
+  font-size: 19px;
+}
+
+.slip {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 1px 2px 0 var(--rule);
+  padding: 10px 14px 12px;
+  display: grid;
+  gap: 4px;
+}
+
+.slip pre {
+  margin: 0;
+  font: 400 12px/1.45 var(--face-mono);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.slip p {
+  margin: 0;
+}
+
+.slip--call {
+  border-left: 3px solid var(--vermilion);
+}
+
+.slip--result {
+  margin-left: 28px;
+  border-style: dashed;
+}
+
+.slip--reply {
+  border-left: 3px solid var(--brass);
+}
+
+.slip__stamp {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font: 600 10.5px/1 var(--face-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 6px;
+  border: 2px solid currentColor;
+  color: var(--vermilion);
+  transform: rotate(-5deg);
+}
+
+.hand-back {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.hand-back legend {
+  margin-bottom: 8px;
+}
+
+.slip__stamp.is-run {
+  color: var(--brass-dark);
+}
+
+.slip__stamp.is-refused {
+  color: var(--ink);
+}

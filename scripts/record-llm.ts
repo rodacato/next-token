@@ -1,12 +1,12 @@
 // Records real Claude answers for a recipe, through the Claude Code CLI on the user's subscription.
-// Usage: npm run record:llm -- <recipe-id> [--dry-run]
+// Usage: npm run record:llm -- <recipe-id> [--dry-run | --extend]
 import { execFile } from "node:child_process";
-import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { promisify } from "node:util";
 import { requestHash } from "../src/llm/hash.ts";
-import { recipeSchema, type RecipeRequest, type RecordedCompletion, type RecordedSet } from "../src/llm/recorded-schema.ts";
+import { recipeSchema, recordedSetSchema, type RecipeRequest, type RecordedCompletion, type RecordedSet } from "../src/llm/recorded-schema.ts";
 
 const run = promisify(execFile);
 const recordingsDir = join(import.meta.dirname, "..", "src", "recordings", "llm");
@@ -76,7 +76,7 @@ async function main() {
   const [recipeId, flag] = process.argv.slice(2);
   if (!recipeId) {
     const available = readdirSync(recipesDir).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
-    console.log(`Usage: npm run record:llm -- <recipe-id> [--dry-run]\nRecipes: ${available.join(", ")}`);
+    console.log(`Usage: npm run record:llm -- <recipe-id> [--dry-run | --extend]\nRecipes: ${available.join(", ")}`);
     process.exit(1);
   }
   const recipe = recipeSchema.parse(JSON.parse(readFileSync(join(recipesDir, `${recipeId}.json`), "utf8")));
@@ -84,7 +84,14 @@ async function main() {
   console.log(`${recipe.id}: ${calls} calls to ${recipe.model} on your Claude subscription.`);
   if (flag === "--dry-run") return;
 
-  const jobs = recipe.requests.flatMap((request) => Array.from({ length: recipe.repeats }, (_, i) => ({ request, attempt: i + 1 })));
+  // --extend keeps what is already recorded and asks only for the requests that are new.
+  const file = join(recordingsDir, `${recipe.id}.json`);
+  const kept = flag === "--extend" && existsSync(file) ? recordedSetSchema.parse(JSON.parse(readFileSync(file, "utf8"))).completions : [];
+  const known = new Set(kept.map((c) => c.requestHash));
+  const pending = recipe.requests.filter((r) => !known.has(requestHash({ system: r.system, prompt: r.prompt, jsonSchema: r.jsonSchema })));
+  if (flag === "--extend") console.log(`  ${kept.length} kept, ${pending.length} to record.`);
+
+  const jobs = pending.flatMap((request) => Array.from({ length: recipe.repeats }, (_, i) => ({ request, attempt: i + 1 })));
   const slots: (RecordedCompletion | undefined)[] = new Array(jobs.length);
   let next = 0;
   // A few calls at a time; results keep the recipe's order regardless of which finishes first.
@@ -97,7 +104,9 @@ async function main() {
     }
   };
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
-  const completions = slots.filter((c): c is RecordedCompletion => c !== undefined);
+  const fresh = slots.filter((c): c is RecordedCompletion => c !== undefined);
+  const wanted = new Set(recipe.requests.map((r) => requestHash({ system: r.system, prompt: r.prompt, jsonSchema: r.jsonSchema })));
+  const completions = [...kept.filter((c) => wanted.has(c.requestHash)), ...fresh];
 
   const set: RecordedSet = {
     recipeId: recipe.id,
@@ -106,7 +115,6 @@ async function main() {
     temperature: "provider-default",
     completions,
   };
-  const file = join(recordingsDir, `${recipe.id}.json`);
   writeFileSync(file, JSON.stringify(set, null, 2) + "\n");
   const listCost = completions.reduce((sum, c) => sum + c.listCostUsd, 0);
   console.log(`Wrote ${file} (list-price equivalent $${listCost.toFixed(4)}; billed to the subscription, not per token).`);

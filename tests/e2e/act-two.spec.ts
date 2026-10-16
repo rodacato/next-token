@@ -88,3 +88,24 @@ test.describe("chapter 7 · structured output", () => {
     await expect(tally.locator("tr").nth(2)).toContainText("6 of 6");
   });
 });
+
+test.describe("chapter 8 · tools", () => {
+  test("the learner runs the tools; the wrong row is noticed and the refund can be refused", async ({ page }) => {
+    await open(page, /^8 Tools/);
+    await advance(page, 1);
+    await page.getByTestId("start-docket").click();
+    await expect(page.getByTestId("docket")).toContainText('lookup_order({"orderId":"50211"})');
+    await page.getByTestId("result-right-row").click();
+    await expect(page.getByTestId("docket")).toContainText("issue_refund");
+    await page.getByTestId("result-refuse").click();
+    await expect(page.getByTestId("docket")).toContainText("supervisor");
+    await expect(page.getByTestId("hand-back")).toHaveCount(0);
+    await advance(page, 1);
+    await page.getByRole("radio", { name: /Refund the coffee order/ }).check();
+    await page.getByTestId("start-docket").click();
+    await page.getByTestId("result-wrong-row").click();
+    await page.getByTestId("result-not-found").click();
+    await expect(page.getByTestId("tools-finding")).toContainText("Not what you predicted: the model noticed the mismatch and looked the order up again.");
+    await expect(page.getByTestId("advance")).toBeEnabled();
+  });
+});

@@ -1,0 +1,654 @@
+{
+  "id": "tools",
+  "purpose": "Chapter tools: every turn the model takes on every branch of results the learner can return.",
+  "model": "haiku",
+  "repeats": 1,
+  "requests": [
+    {
+      "id": "en--start",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--right-row",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--wrong-row",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50112\",\"items\":\"3 bags of coffee\",\"totalMxn\":320,\"daysSinceDelivery\":64,\"status\":\"delivered\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--not-found",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"error\":\"order not found\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--right-row-run-it",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"issue_refund\",\"input\":{\"orderId\":\"50211\",\"amountMxn\":2450}}\nTool result: {\"status\":\"refunded\",\"orderId\":\"50211\",\"amountMxn\":2450}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--right-row-refuse",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"issue_refund\",\"input\":{\"orderId\":\"50211\",\"amountMxn\":2450}}\nTool result: {\"error\":\"refunds over 2000 MXN need a supervisor's approval\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--wrong-row-right-row",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50112\",\"items\":\"3 bags of coffee\",\"totalMxn\":320,\"daysSinceDelivery\":64,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--wrong-row-wrong-row",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50112\",\"items\":\"3 bags of coffee\",\"totalMxn\":320,\"daysSinceDelivery\":64,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50112\",\"items\":\"3 bags of coffee\",\"totalMxn\":320,\"daysSinceDelivery\":64,\"status\":\"delivered\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--wrong-row-not-found",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50112\",\"items\":\"3 bags of coffee\",\"totalMxn\":320,\"daysSinceDelivery\":64,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"error\":\"order not found\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--wrong-row-right-row-run-it",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50112\",\"items\":\"3 bags of coffee\",\"totalMxn\":320,\"daysSinceDelivery\":64,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"issue_refund\",\"input\":{\"orderId\":\"50211\",\"amountMxn\":2450}}\nTool result: {\"status\":\"refunded\",\"orderId\":\"50211\",\"amountMxn\":2450}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "en--wrong-row-right-row-refuse",
+      "locale": "en",
+      "system": "You are Mercadito's support assistant. You can use two tools.\n- lookup_order(orderId): returns the order's items, total in MXN, days since delivery and status.\n- issue_refund(orderId, amountMxn): refunds the customer.\nPolicy: returns within 30 days of delivery; damaged items can always be returned.\nEach turn, either call one tool or reply to the customer. Use only what the tools return; never guess order details.\nWrite each turn as JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} or {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Customer: Hi, the blender from order 50211 arrived with the jar cracked. Please refund me.\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50112\",\"items\":\"3 bags of coffee\",\"totalMxn\":320,\"daysSinceDelivery\":64,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nTool result: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}\nYour tool call: {\"tool\":\"issue_refund\",\"input\":{\"orderId\":\"50211\",\"amountMxn\":2450}}\nTool result: {\"error\":\"refunds over 2000 MXN need a supervisor's approval\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "es-MX--start",
+      "locale": "es-MX",
+      "system": "Eres el asistente de soporte de Mercadito. Puedes usar dos herramientas.\n- lookup_order(orderId): devuelve los artículos del pedido, el total en MXN, los días desde la entrega y el estado.\n- issue_refund(orderId, amountMxn): le reembolsa al cliente.\nPolítica: devoluciones dentro de los 30 días posteriores a la entrega; los artículos dañados siempre se pueden devolver.\nEn cada turno, llama una herramienta o respóndele al cliente. Usa solo lo que devuelven las herramientas; nunca adivines datos del pedido.\nEscribe cada turno como JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} o {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Cliente: Hola, la licuadora del pedido 50211 llegó con el vaso estrellado. Reembólsenme, por favor.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "es-MX--right-row",
+      "locale": "es-MX",
+      "system": "Eres el asistente de soporte de Mercadito. Puedes usar dos herramientas.\n- lookup_order(orderId): devuelve los artículos del pedido, el total en MXN, los días desde la entrega y el estado.\n- issue_refund(orderId, amountMxn): le reembolsa al cliente.\nPolítica: devoluciones dentro de los 30 días posteriores a la entrega; los artículos dañados siempre se pueden devolver.\nEn cada turno, llama una herramienta o respóndele al cliente. Usa solo lo que devuelven las herramientas; nunca adivines datos del pedido.\nEscribe cada turno como JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} o {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Cliente: Hola, la licuadora del pedido 50211 llegó con el vaso estrellado. Reembólsenme, por favor.\nTu llamada a herramienta: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nResultado de la herramienta: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "es-MX--wrong-row",
+      "locale": "es-MX",
+      "system": "Eres el asistente de soporte de Mercadito. Puedes usar dos herramientas.\n- lookup_order(orderId): devuelve los artículos del pedido, el total en MXN, los días desde la entrega y el estado.\n- issue_refund(orderId, amountMxn): le reembolsa al cliente.\nPolítica: devoluciones dentro de los 30 días posteriores a la entrega; los artículos dañados siempre se pueden devolver.\nEn cada turno, llama una herramienta o respóndele al cliente. Usa solo lo que devuelven las herramientas; nunca adivines datos del pedido.\nEscribe cada turno como JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} o {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Cliente: Hola, la licuadora del pedido 50211 llegó con el vaso estrellado. Reembólsenme, por favor.\nTu llamada a herramienta: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nResultado de la herramienta: {\"orderId\":\"50112\",\"items\":\"3 bags of coffee\",\"totalMxn\":320,\"daysSinceDelivery\":64,\"status\":\"delivered\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "es-MX--not-found",
+      "locale": "es-MX",
+      "system": "Eres el asistente de soporte de Mercadito. Puedes usar dos herramientas.\n- lookup_order(orderId): devuelve los artículos del pedido, el total en MXN, los días desde la entrega y el estado.\n- issue_refund(orderId, amountMxn): le reembolsa al cliente.\nPolítica: devoluciones dentro de los 30 días posteriores a la entrega; los artículos dañados siempre se pueden devolver.\nEn cada turno, llama una herramienta o respóndele al cliente. Usa solo lo que devuelven las herramientas; nunca adivines datos del pedido.\nEscribe cada turno como JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} o {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Cliente: Hola, la licuadora del pedido 50211 llegó con el vaso estrellado. Reembólsenme, por favor.\nTu llamada a herramienta: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nResultado de la herramienta: {\"error\":\"order not found\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "es-MX--right-row-run-it",
+      "locale": "es-MX",
+      "system": "Eres el asistente de soporte de Mercadito. Puedes usar dos herramientas.\n- lookup_order(orderId): devuelve los artículos del pedido, el total en MXN, los días desde la entrega y el estado.\n- issue_refund(orderId, amountMxn): le reembolsa al cliente.\nPolítica: devoluciones dentro de los 30 días posteriores a la entrega; los artículos dañados siempre se pueden devolver.\nEn cada turno, llama una herramienta o respóndele al cliente. Usa solo lo que devuelven las herramientas; nunca adivines datos del pedido.\nEscribe cada turno como JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} o {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Cliente: Hola, la licuadora del pedido 50211 llegó con el vaso estrellado. Reembólsenme, por favor.\nTu llamada a herramienta: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nResultado de la herramienta: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}\nTu llamada a herramienta: {\"tool\":\"issue_refund\",\"input\":{\"orderId\":\"50211\",\"amountMxn\":2450}}\nResultado de la herramienta: {\"status\":\"refunded\",\"orderId\":\"50211\",\"amountMxn\":2450}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "es-MX--right-row-refuse",
+      "locale": "es-MX",
+      "system": "Eres el asistente de soporte de Mercadito. Puedes usar dos herramientas.\n- lookup_order(orderId): devuelve los artículos del pedido, el total en MXN, los días desde la entrega y el estado.\n- issue_refund(orderId, amountMxn): le reembolsa al cliente.\nPolítica: devoluciones dentro de los 30 días posteriores a la entrega; los artículos dañados siempre se pueden devolver.\nEn cada turno, llama una herramienta o respóndele al cliente. Usa solo lo que devuelven las herramientas; nunca adivines datos del pedido.\nEscribe cada turno como JSON: {\"action\":\"call_tool\",\"tool\":...,\"orderId\":...,\"amountMxn\":...} o {\"action\":\"reply\",\"reply\":...}.",
+      "prompt": "Cliente: Hola, la licuadora del pedido 50211 llegó con el vaso estrellado. Reembólsenme, por favor.\nTu llamada a herramienta: {\"tool\":\"lookup_order\",\"input\":{\"orderId\":\"50211\"}}\nResultado de la herramienta: {\"orderId\":\"50211\",\"items\":\"1 blender\",\"totalMxn\":2450,\"daysSinceDelivery\":3,\"status\":\"delivered\"}\nTu llamada a herramienta: {\"tool\":\"issue_refund\",\"input\":{\"orderId\":\"50211\",\"amountMxn\":2450}}\nResultado de la herramienta: {\"error\":\"refunds over 2000 MXN need a supervisor's approval\"}",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "call_tool",
+              "reply"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "lookup_order",
+              "issue_refund"
+            ]
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "amountMxn": {
+            "type": "number"
+          },
+          "reply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}
