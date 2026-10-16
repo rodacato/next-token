@@ -524,6 +524,34 @@
         },
         "voice": "Cada pasada por la prensa agrega un color. A veces tapa uno que querías."
       }
+    },
+    "data-workshop": {
+      "title": "El taller de datos",
+      "kicker": "Curar un conjunto de ajuste fino",
+      "problem": {
+        "heading": "El modelo aprenderá cada fila, también las malas.",
+        "body": "Mercadito quiere que su modelo de soporte escriba con el estilo de la casa. Antes de entrenar, alguien juntó sesenta respuestas del historial de la mesa de ayuda. Algunas están bien. Otras no.",
+        "task": "Limpia el conjunto antes de que vaya a la prensa."
+      },
+      "bench": {
+        "heading": "Lee cada fila. Marca lo que quitarías.",
+        "body": "Un ajuste fino copia lo que se le muestra: el estilo, la política y cada error. Busca duplicados, respuestas que contradicen la hoja de políticas, respuestas que ningún cliente debería recibir y filas que también están en tus evaluaciones.",
+        "observe": "Marca al menos una fila y pasa a medir."
+      },
+      "measure": {
+        "heading": "Luego deja que las revisiones la lean.",
+        "body": "Predice lo que atraparán las revisiones mecánicas, córrelas, luego corre el juez y compara los tres con lo que se sembró."
+      },
+      "debrief": {
+        "heading": "Las revisiones encuentran copias. Las personas y los jueces encuentran errores.",
+        "points": {
+          "one": "Los duplicados le dan peso de más a lo que repiten. Los exactos son fáciles de encontrar; los reescritos necesitan comparaciones más laxas.",
+          "two": "Una fila que también está en tu conjunto de evaluación vuelve la evaluación una prueba de memoria. Compara cada fila de entrenamiento con cada caso de evaluación antes de entrenar.",
+          "three": "Una contradicción en los datos se vuelve una contradicción en el modelo. Comparar texto no la ve; un juez con la política sí, y también da falsas alarmas.",
+          "four": "Un juez modelo es la primera pasada de un revisor, no la última palabra. Lee lo que marca antes de borrar o conservar."
+        },
+        "voice": "Una forma armada con un tipo equivocado imprime el tipo equivocado mil veces."
+      }
     }
   },
   "readNext": {
@@ -560,7 +588,8 @@
       "hu-2021-lora": "El artículo de LoRA: congela los pesos, entrena una actualización de rango bajo, fusiónala o cámbiala cuando quieras.",
       "dettmers-2023-qlora": "LoRA sobre una base de 4 bits: las cuentas de memoria que ponen el ajuste fino en una sola GPU de consumo.",
       "minicpm5-card": "El modelo cuyas formas y puntos de control usa este acto: sus etapas de entrenamiento, datos y licencia.",
-      "ouyang-2022-instructgpt": "El artículo que volvió estándar el proceso: preentrenar, ajustar con supervisión y luego aprender de preferencias humanas."
+      "ouyang-2022-instructgpt": "El artículo que volvió estándar el proceso: preentrenar, ajustar con supervisión y luego aprender de preferencias humanas.",
+      "lambert-2024-tulu3": "Una receta de post-entrenamiento documentada completa, incluida la forma en que se mezclaron, limpiaron y descontaminaron los datos contra las evaluaciones."
     }
   },
   "units": {
@@ -1005,5 +1034,64 @@
     "total": "Revisiones aprobadas",
     "findingMatch": "Como predijiste: {winners}, con {best} de {total}. Más tarde no siempre es mejor en cada revisión; lee las respuestas en español de la versión final.",
     "findingMiss": "La que pasa más: {winners}, con {best} de {total}. Más tarde no siempre es mejor en cada revisión; lee las respuestas en español de la versión final."
+  },
+  "dataset": {
+    "style": "El estilo de la casa que el conjunto debe enseñar",
+    "policy": "La hoja de políticas que las respuestas deben seguir",
+    "row": "Fila",
+    "customer": "Cliente",
+    "reply": "Respuesta a aprender",
+    "yourFlag": "Tu decisión",
+    "flagFor": "Tu decisión para la fila {id}",
+    "flags": {
+      "keep": "conservar",
+      "duplicate": "duplicado",
+      "contradiction": "contradice la política",
+      "bad-answer": "mala respuesta",
+      "eval-leak": "fuga de evaluación"
+    },
+    "planted": {
+      "keep": "sembrado: nada",
+      "exact-duplicate": "sembrado: duplicado exacto",
+      "near-duplicate": "sembrado: casi duplicado",
+      "contradiction": "sembrado: contradicción",
+      "bad-answer": "sembrado: mala respuesta",
+      "eval-leak": "sembrado: fuga de evaluación"
+    },
+    "checks": "Revisiones mecánicas",
+    "found": {
+      "exact-duplicate": "igual a {of}",
+      "near-duplicate": "misma respuesta o redacción que {of}",
+      "eval-leak": "8 palabras en común con un caso de evaluación: \"{of}\""
+    },
+    "judge": "Juez",
+    "verdict": {
+      "policy": {
+        "consistent": "consistente",
+        "contradicts": "contradice la política",
+        "not-covered": "no cubierto"
+      },
+      "tone": {
+        "ok": "tono bien",
+        "rude": "grosero"
+      },
+      "language": {
+        "matches": "mismo idioma",
+        "wrong": "otro idioma"
+      }
+    },
+    "unreadable": "ilegible",
+    "runChecks": "Correr las revisiones mecánicas",
+    "runJudge": "Correr el juez en {count} filas",
+    "judging": "Juzgando…",
+    "problem": "Problema",
+    "plantedCount": "sembrados",
+    "you": "tú",
+    "mechanical": "revisiones mecánicas",
+    "falseAlarms": "Marcas en filas buenas",
+    "kept": "{kept} de {total} filas están limpias. Esas van a la prensa en el capítulo 16.",
+    "predict": "Hay {count} problemas sembrados. ¿Cuántos atraparán las revisiones mecánicas (duplicados y coincidencias con evaluaciones)?",
+    "finding": "Predijiste {guess}; las revisiones mecánicas atraparon {actual} de {total}. Encuentran copias, no errores.",
+    "findingJudge": "El juez atrapó {caught} de {total}. Filas buenas que marcó de todos modos, para que una persona las revise: {alarms}."
   }
 }

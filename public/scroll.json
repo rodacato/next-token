@@ -102,6 +102,13 @@
       }
     },
     {
+      "id": "data-workshop",
+      "title": {
+        "en": "The data workshop",
+        "es-MX": "El taller de datos"
+      }
+    },
+    {
       "id": "lora",
       "title": {
         "en": "The LoRA plate",
