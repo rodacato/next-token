@@ -43,10 +43,10 @@ export function recordedCompositor(run: RecordedRun): Compositor {
   };
 }
 
-const recordingFiles = import.meta.glob("./recordings/*.json", { import: "default" });
+const recordingFiles = import.meta.glob("../recordings/next-token/*.json", { import: "default" });
 
 export async function loadRecordedRun(locale: string): Promise<RecordedRun | undefined> {
-  const loader = recordingFiles[`./recordings/next-token.${locale}.json`];
+  const loader = recordingFiles[`../recordings/next-token/${locale}.json`];
   return loader ? recordedRunSchema.parse(await loader()) : undefined;
 }
 

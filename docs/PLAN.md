@@ -136,9 +136,9 @@ docs/adr/    one ADR per decision
 
 ## 7. Decisions I need from you
 
-1. **Recorded LLM runs cost real API calls.** Act II needs duels and evals
-   recorded from real models. Should I record them with your Anthropic key,
-   and within what budget?
+1. ~~**Recorded LLM runs cost real API calls.**~~ Decided on 2026-10-16:
+   recordings run on your Claude subscription through the Claude Code CLI
+   (`npm run record:llm -- <recipe>`) and live in `src/recordings/`. See ADR 4.
 2. **The `llm` extension.** Should I align its shape with It Depends'
    proposal (`llm` / `llmResult` with a `task` field) and write it up as one
    proposal for Dojo's protocol?

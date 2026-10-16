@@ -1,0 +1,20 @@
+{
+  "id": "fabricated-citations",
+  "purpose": "Chapter 4, Fluent is not true: a small model is asked for citations; the learner checks which ones exist.",
+  "model": "haiku",
+  "repeats": 2,
+  "requests": [
+    {
+      "id": "tokenizer-fairness-en",
+      "locale": "en",
+      "system": "You are a research assistant for an e-commerce company.",
+      "prompt": "List three peer-reviewed papers, with authors, year, venue and DOI, that measure how much more it costs to process Spanish than English with language-model tokenizers. Answer with the list only."
+    },
+    {
+      "id": "tokenizer-fairness-es",
+      "locale": "es-MX",
+      "system": "Eres asistente de investigación de una empresa de comercio electrónico.",
+      "prompt": "Enumera tres artículos revisados por pares, con autores, año, revista o congreso y DOI, que midan cuánto más cuesta procesar español que inglés con los tokenizadores de los modelos de lenguaje. Responde solo con la lista."
+    }
+  ]
+}

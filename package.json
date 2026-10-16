@@ -16,7 +16,8 @@
     "check": "npm run typecheck && npm run lint && npm run test && npm run i18n:check",
     "boards": "python3 -m http.server 4317",
     "boards:capture": "node design/step-0/capture.mjs",
-    "record:runs": "node scripts/record-runs.ts"
+    "record:runs": "node scripts/record-runs.ts",
+    "record:llm": "node scripts/record-llm.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
