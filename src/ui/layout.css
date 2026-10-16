@@ -146,7 +146,9 @@
 }
 
 .chapter__title {
-  font-size: clamp(44px, 5vw, 64px);
+  font-size: clamp(38px, 4.2vw, 60px);
+  hyphens: auto;
+  overflow-wrap: break-word;
   line-height: 0.95;
   margin: 8px 0 22px;
 }
@@ -1352,6 +1354,100 @@
 @media (max-width: 900px) {
   .duel-tickets,
   .builder {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Chapter 7: the press accepts or rejects ---------------------------- */
+.press-bench {
+  display: grid;
+  gap: 20px;
+}
+
+.press-bench__spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.press-bench__spec section {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.sheet-stack {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px 26px;
+}
+
+.sheet-stack__item {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.sheet-stack__retry {
+  color: var(--brass-dark);
+}
+
+.press-sheet {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 1px 2px 0 var(--rule);
+  padding: 12px 14px 14px;
+}
+
+.press-sheet:nth-child(odd) {
+  transform: rotate(-0.4deg);
+}
+
+.press-sheet pre {
+  margin: 0;
+  font: 400 11.5px/1.45 var(--face-mono);
+  white-space: pre-wrap;
+  max-height: 14em;
+  overflow: hidden;
+}
+
+.press-sheet__stamp {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font: 600 11px/1 var(--face-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 7px;
+  border: 2px solid currentColor;
+  transform: rotate(-6deg);
+  background: color-mix(in oklab, var(--paper) 85%, transparent);
+}
+
+.press-sheet.is-accepted .press-sheet__stamp {
+  color: var(--brass-dark);
+}
+
+.press-sheet.is-rejected .press-sheet__stamp {
+  color: var(--vermilion);
+}
+
+.press-sheet.is-rejected pre {
+  color: var(--slate);
+}
+
+.press-sheet__reason {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--vermilion);
+}
+
+@media (max-width: 900px) {
+  .press-bench__spec {
     grid-template-columns: 1fr;
   }
 }

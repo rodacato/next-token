@@ -1,0 +1,776 @@
+{
+  "id": "structured-output",
+  "purpose": "Chapter structured-output: asked nicely vs constrained by JSON Schema.",
+  "model": "haiku",
+  "repeats": 1,
+  "requests": [
+    {
+      "id": "asked--cracked-blender--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Hi, order 50211 arrived with the blender jar cracked. I want my money back."
+    },
+    {
+      "id": "constrained--cracked-blender--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Hi, order 50211 arrived with the blender jar cracked. I want my money back.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--cracked-blender--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Hola, el pedido 50211 llegó con el vaso de la licuadora estrellado. Quiero que me devuelvan mi dinero."
+    },
+    {
+      "id": "constrained--cracked-blender--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Hola, el pedido 50211 llegó con el vaso de la licuadora estrellado. Quiero que me devuelvan mi dinero.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--wrong-mugs--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order #48870: you sent me two blue mugs instead of the red ones. Please exchange them."
+    },
+    {
+      "id": "constrained--wrong-mugs--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order #48870: you sent me two blue mugs instead of the red ones. Please exchange them.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--wrong-mugs--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Pedido #48870: me mandaron dos tazas azules en lugar de las rojas. Por favor cámbienlas."
+    },
+    {
+      "id": "constrained--wrong-mugs--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Pedido #48870: me mandaron dos tazas azules en lugar de las rojas. Por favor cámbienlas.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--late-coffee--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "My order 51002 (3 bags of coffee) still hasn't arrived after two weeks. Cancel it and refund me."
+    },
+    {
+      "id": "constrained--late-coffee--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "My order 51002 (3 bags of coffee) still hasn't arrived after two weeks. Cancel it and refund me.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--late-coffee--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Mi pedido 51002 (3 bolsas de café) sigue sin llegar después de dos semanas. Cancélenlo y reembólsenme."
+    },
+    {
+      "id": "constrained--late-coffee--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Mi pedido 51002 (3 bolsas de café) sigue sin llegar después de dos semanas. Cancélenlo y reembólsenme.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--kettle-changed-mind--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "I changed my mind about the kettle in order 49953. Can I return it for a refund?"
+    },
+    {
+      "id": "constrained--kettle-changed-mind--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "I changed my mind about the kettle in order 49953. Can I return it for a refund?",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--kettle-changed-mind--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Cambié de opinión sobre la tetera del pedido 49953. ¿La puedo devolver para que me reembolsen?"
+    },
+    {
+      "id": "constrained--kettle-changed-mind--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Cambié de opinión sobre la tetera del pedido 49953. ¿La puedo devolver para que me reembolsen?",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--happy-toaster--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order 50540 is great, thanks! The toaster works perfectly. No need to reply."
+    },
+    {
+      "id": "constrained--happy-toaster--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order 50540 is great, thanks! The toaster works perfectly. No need to reply.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--happy-toaster--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "¡El pedido 50540 está perfecto, gracias! El tostador funciona de maravilla. No hace falta responder."
+    },
+    {
+      "id": "constrained--happy-toaster--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "¡El pedido 50540 está perfecto, gracias! El tostador funciona de maravilla. No hace falta responder.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--two-numbers--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Invoice 77-310 says order 50777 had 2 pans, but one came dented. Refund the dented one, please."
+    },
+    {
+      "id": "constrained--two-numbers--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Invoice 77-310 says order 50777 had 2 pans, but one came dented. Refund the dented one, please.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "asked--two-numbers--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "La factura 77-310 dice que el pedido 50777 traía 2 sartenes, pero uno llegó abollado. Reembólsenme el abollado, por favor."
+    },
+    {
+      "id": "constrained--two-numbers--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "La factura 77-310 dice que el pedido 50777 traía 2 sartenes, pero uno llegó abollado. Reembólsenme el abollado, por favor.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "items": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                }
+              },
+              "required": [
+                "name",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "refundRequested": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "damaged",
+              "wrong-item",
+              "late",
+              "changed-mind",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "orderId",
+          "items",
+          "refundRequested",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

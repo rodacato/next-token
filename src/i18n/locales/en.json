@@ -328,6 +328,34 @@
         },
         "voice": "No test cases. You are guessing."
       }
+    },
+    "structured-output": {
+      "title": "Structured output",
+      "kicker": "Schemas and validation",
+      "problem": {
+        "heading": "The press jammed on a fence.",
+        "body": "Mercadito's returns desk turned customer emails into job sheets with a model. The prompt said 'reply with a JSON object'. Most mornings the importer stopped on the first sheet: the JSON came wrapped in a Markdown fence.",
+        "task": "See how often that happens, what a retry costs, and what a schema changes."
+      },
+      "bench": {
+        "heading": "The press accepts only what fits.",
+        "body": "The press is the validator: a sheet must parse as JSON and match the schema, field by field. Feed the same six emails asked nicely, then constrained by the schema.",
+        "observe": "Read why each rejected sheet was rejected, and what the retry sent back."
+      },
+      "measure": {
+        "heading": "Count the jams.",
+        "body": "Predict first, then run both modes and compare first-try acceptance, retries, wrong fields and the extra calls."
+      },
+      "debrief": {
+        "heading": "Validate every sheet. Constrain when you can.",
+        "points": {
+          "one": "A prompt that describes a format is a request, not a guarantee. Parse and validate every response before you use it.",
+          "two": "Send structured outputs (a JSON Schema) when your provider supports them: the model can only emit text that fits.",
+          "three": "A retry with the validator's reason usually fixes a rejected sheet, at the price of another call, more tokens and more latency.",
+          "four": "Valid is not right. A sheet can match the schema and still carry the wrong reason or the wrong order number; that is what evals are for."
+        },
+        "voice": "The press rejects a malformed sheet. It can't tell you the sheet is wrong."
+      }
     }
   },
   "readNext": {
@@ -349,7 +377,9 @@
       "openai-prompting": "OpenAI's guide to the same craft; most of the advice transfers between models.",
       "husain-evals": "Why evals come first, and how to build them from real failures.",
       "huyen-ai-engineering": "A book-length treatment of building on foundation models, with a long section on evaluation.",
-      "zheng-2023-judge": "Measures how far LLM judges agree with people, and their biases (position, length, self-preference)."
+      "zheng-2023-judge": "Measures how far LLM judges agree with people, and their biases (position, length, self-preference).",
+      "anthropic-structured-outputs": "How to constrain Claude's output to a JSON Schema, and which schema features are supported.",
+      "zod-json-schema": "Converting Zod schemas to JSON Schema, the bridge used on this bench."
     }
   },
   "units": {
@@ -514,5 +544,35 @@
     "judgeAgreement": "The judge passed {count} of the {total} descriptions that invent claims.",
     "judgeClean": "The judge failed every description that invents claims.",
     "pickCase": "Pick at least {count} cases."
+  },
+  "structured": {
+    "prompt": "Prompt",
+    "schema": "Job sheet schema (JSON Schema, generated from Zod)",
+    "mode": "How the sheet is requested",
+    "modes": {
+      "asked": "Asked nicely",
+      "constrained": "Constrained by schema"
+    },
+    "modeNotes": {
+      "asked": "The prompt describes the fields. Nothing stops the model from adding a fence, a comment or a missing field.",
+      "constrained": "The schema travels with the request; the model can only produce text that fits it."
+    },
+    "feed": "Feed the sheets to the press",
+    "feeding": "Pressing…",
+    "retried": "Sent back once with the press's reason",
+    "accepted": "accepted",
+    "rejected": "rejected",
+    "wrongFields": "Accepted, but wrong: {fields}",
+    "predict": "Asked nicely, how many of the {total} sheets will the press accept on the first try?",
+    "runBoth": "Feed the sheets in both modes to compare.",
+    "predicted": "You predicted {guess}; the press accepted {actual} of {total} on the first try.",
+    "tally": {
+      "mode": "mode",
+      "firstTry": "first try",
+      "afterRetry": "after one retry",
+      "right": "fields right",
+      "calls": "calls",
+      "tokens": "tokens"
+    }
   }
 }

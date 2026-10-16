@@ -1,0 +1,572 @@
+{
+  "recipeId": "structured-output",
+  "recordedAt": "2026-10-16",
+  "via": "claude-code-cli",
+  "temperature": "provider-default",
+  "completions": [
+    {
+      "requestId": "asked--cracked-blender--en",
+      "requestHash": "75ca7a2b96915c39",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Hi, order 50211 arrived with the blender jar cracked. I want my money back.",
+      "output": "{\"orderId\": \"50211\", \"items\": [{\"name\": \"Blender jar\", \"quantity\": 1}], \"refundRequested\": true, \"reason\": \"damaged\"}",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 55,
+        "cacheCreationTokens": 1375,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00030270000000000004,
+      "durationMs": 3164
+    },
+    {
+      "requestId": "constrained--cracked-blender--en",
+      "requestHash": "19d7a307a66e6311",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Hi, order 50211 arrived with the blender jar cracked. I want my money back.",
+      "output": "{\"orderId\":\"50211\",\"items\":[{\"name\":\"Blender jar\",\"quantity\":1}],\"refundRequested\":true,\"reason\":\"damaged\"}",
+      "structured": {
+        "orderId": "50211",
+        "items": [
+          {
+            "name": "Blender jar",
+            "quantity": 1
+          }
+        ],
+        "refundRequested": true,
+        "reason": "damaged"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 268,
+        "cacheCreationTokens": 2093,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005528,
+      "durationMs": 1853
+    },
+    {
+      "requestId": "asked--cracked-blender--es-MX",
+      "requestHash": "9d15836181ca1f9f",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Hola, el pedido 50211 llegó con el vaso de la licuadora estrellado. Quiero que me devuelvan mi dinero.",
+      "output": "{\"orderId\": \"50211\", \"items\": [{\"name\": \"Vaso de la licuadora\", \"quantity\": 1}], \"refundRequested\": true, \"reason\": \"damaged\"}",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 60,
+        "cacheCreationTokens": 1427,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003156000000000001,
+      "durationMs": 4081
+    },
+    {
+      "requestId": "constrained--cracked-blender--es-MX",
+      "requestHash": "fbe92edd07efaca7",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Hola, el pedido 50211 llegó con el vaso de la licuadora estrellado. Quiero que me devuelvan mi dinero.",
+      "output": "{\"orderId\":\"50211\",\"items\":[{\"name\":\"Vaso de licuadora\",\"quantity\":1}],\"refundRequested\":true,\"reason\":\"damaged\"}",
+      "structured": {
+        "orderId": "50211",
+        "items": [
+          {
+            "name": "Vaso de licuadora",
+            "quantity": 1
+          }
+        ],
+        "refundRequested": true,
+        "reason": "damaged"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 305,
+        "cacheCreationTokens": 2141,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005809000000000001,
+      "durationMs": 1989
+    },
+    {
+      "requestId": "asked--wrong-mugs--en",
+      "requestHash": "8a00d5d1de423221",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order #48870: you sent me two blue mugs instead of the red ones. Please exchange them.",
+      "output": "```json\n{\n  \"orderId\": \"48870\",\n  \"items\": [\n    {\n      \"name\": \"Red mug\",\n      \"quantity\": 2\n    }\n  ],\n  \"refundRequested\": false,\n  \"reason\": \"wrong-item\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 380,
+        "cacheCreationTokens": 1382,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0004666,
+      "durationMs": 5418
+    },
+    {
+      "requestId": "constrained--wrong-mugs--en",
+      "requestHash": "e779447d627abe19",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order #48870: you sent me two blue mugs instead of the red ones. Please exchange them.",
+      "output": "{\"orderId\":\"48870\",\"items\":[{\"name\":\"Blue mug\",\"quantity\":2}],\"refundRequested\":false,\"reason\":\"wrong-item\"}",
+      "structured": {
+        "orderId": "48870",
+        "items": [
+          {
+            "name": "Blue mug",
+            "quantity": 2
+          }
+        ],
+        "refundRequested": false,
+        "reason": "wrong-item"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 326,
+        "cacheCreationTokens": 1314,
+        "cacheReadTokens": 781
+      },
+      "listCostUsd": 0.0004338100000000001,
+      "durationMs": 2547
+    },
+    {
+      "requestId": "asked--wrong-mugs--es-MX",
+      "requestHash": "5053d187a1aab43d",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Pedido #48870: me mandaron dos tazas azules en lugar de las rojas. Por favor cámbienlas.",
+      "output": "{\"orderId\": \"48870\", \"items\": [{\"name\": \"taza azul\", \"quantity\": 2}, {\"name\": \"taza roja\", \"quantity\": 2}], \"refundRequested\": false, \"reason\": \"wrong-item\"}",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 75,
+        "cacheCreationTokens": 1421,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003219,
+      "durationMs": 3227
+    },
+    {
+      "requestId": "constrained--wrong-mugs--es-MX",
+      "requestHash": "22eea41332df0655",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Pedido #48870: me mandaron dos tazas azules en lugar de las rojas. Por favor cámbienlas.",
+      "output": "{\"orderId\":\"48870\",\"items\":[{\"name\":\"Taza roja\",\"quantity\":2}],\"refundRequested\":false,\"reason\":\"wrong-item\"}",
+      "structured": {
+        "orderId": "48870",
+        "items": [
+          {
+            "name": "Taza roja",
+            "quantity": 2
+          }
+        ],
+        "refundRequested": false,
+        "reason": "wrong-item"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 320,
+        "cacheCreationTokens": 1322,
+        "cacheReadTokens": 807
+      },
+      "listCostUsd": 0.00043267,
+      "durationMs": 2010
+    },
+    {
+      "requestId": "asked--late-coffee--en",
+      "requestHash": "4bda6822a5ad05a2",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "My order 51002 (3 bags of coffee) still hasn't arrived after two weeks. Cancel it and refund me.",
+      "output": "```json\n{\n  \"orderId\": \"51002\",\n  \"items\": [\n    {\n      \"name\": \"Coffee\",\n      \"quantity\": 3\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"late\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 184,
+        "cacheCreationTokens": 1393,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003708,
+      "durationMs": 4798
+    },
+    {
+      "requestId": "constrained--late-coffee--en",
+      "requestHash": "4c9b1e0e9192dcfa",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "My order 51002 (3 bags of coffee) still hasn't arrived after two weeks. Cancel it and refund me.",
+      "output": "{\"orderId\":\"51002\",\"items\":[{\"name\":\"Coffee bag\",\"quantity\":3}],\"refundRequested\":true,\"reason\":\"late\"}",
+      "structured": {
+        "orderId": "51002",
+        "items": [
+          {
+            "name": "Coffee bag",
+            "quantity": 3
+          }
+        ],
+        "refundRequested": true,
+        "reason": "late"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 314,
+        "cacheCreationTokens": 1326,
+        "cacheReadTokens": 781
+      },
+      "listCostUsd": 0.00043021,
+      "durationMs": 2022
+    },
+    {
+      "requestId": "asked--late-coffee--es-MX",
+      "requestHash": "b0191029e55744d5",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Mi pedido 51002 (3 bolsas de café) sigue sin llegar después de dos semanas. Cancélenlo y reembólsenme.",
+      "output": "```json\n{\n  \"orderId\": \"51002\",\n  \"items\": [\n    {\n      \"name\": \"Bolsas de café\",\n      \"quantity\": 3\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"late\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 276,
+        "cacheCreationTokens": 1430,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0004242,
+      "durationMs": 5045
+    },
+    {
+      "requestId": "constrained--late-coffee--es-MX",
+      "requestHash": "ca0da8dd9ee8aead",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Mi pedido 51002 (3 bolsas de café) sigue sin llegar después de dos semanas. Cancélenlo y reembólsenme.",
+      "output": "{\"orderId\":\"51002\",\"items\":[{\"name\":\"Bolsa de café\",\"quantity\":3}],\"refundRequested\":true,\"reason\":\"late\"}",
+      "structured": {
+        "orderId": "51002",
+        "items": [
+          {
+            "name": "Bolsa de café",
+            "quantity": 3
+          }
+        ],
+        "refundRequested": true,
+        "reason": "late"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 419,
+        "cacheCreationTokens": 1338,
+        "cacheReadTokens": 807
+      },
+      "listCostUsd": 0.00048537,
+      "durationMs": 2789
+    },
+    {
+      "requestId": "asked--kettle-changed-mind--en",
+      "requestHash": "4e5e850357092027",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "I changed my mind about the kettle in order 49953. Can I return it for a refund?",
+      "output": "```json\n{\n  \"orderId\": \"49953\",\n  \"items\": [\n    {\n      \"name\": \"kettle\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"changed-mind\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 218,
+        "cacheCreationTokens": 1378,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00038480000000000003,
+      "durationMs": 4285
+    },
+    {
+      "requestId": "constrained--kettle-changed-mind--en",
+      "requestHash": "e56c5907ef60551f",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "I changed my mind about the kettle in order 49953. Can I return it for a refund?",
+      "output": "{\"orderId\":\"49953\",\"items\":[{\"name\":\"kettle\",\"quantity\":1}],\"refundRequested\":true,\"reason\":\"changed-mind\"}",
+      "structured": {
+        "orderId": "49953",
+        "items": [
+          {
+            "name": "kettle",
+            "quantity": 1
+          }
+        ],
+        "refundRequested": true,
+        "reason": "changed-mind"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 373,
+        "cacheCreationTokens": 1312,
+        "cacheReadTokens": 781
+      },
+      "listCostUsd": 0.00045691000000000004,
+      "durationMs": 2463
+    },
+    {
+      "requestId": "asked--kettle-changed-mind--es-MX",
+      "requestHash": "ccf1fa34d08bbe9e",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Cambié de opinión sobre la tetera del pedido 49953. ¿La puedo devolver para que me reembolsen?",
+      "output": "```json\n{\n  \"orderId\": \"49953\",\n  \"items\": [\n    {\n      \"name\": \"tetera\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"changed-mind\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 315,
+        "cacheCreationTokens": 1423,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00044230000000000007,
+      "durationMs": 8395
+    },
+    {
+      "requestId": "constrained--kettle-changed-mind--es-MX",
+      "requestHash": "3648c1f0852f2ad6",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Cambié de opinión sobre la tetera del pedido 49953. ¿La puedo devolver para que me reembolsen?",
+      "output": "{\"orderId\":\"49953\",\"items\":[{\"name\":\"Tetera\",\"quantity\":1}],\"refundRequested\":true,\"reason\":\"changed-mind\"}",
+      "structured": {
+        "orderId": "49953",
+        "items": [
+          {
+            "name": "Tetera",
+            "quantity": 1
+          }
+        ],
+        "refundRequested": true,
+        "reason": "changed-mind"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 475,
+        "cacheCreationTokens": 1330,
+        "cacheReadTokens": 807
+      },
+      "listCostUsd": 0.00051177,
+      "durationMs": 3052
+    },
+    {
+      "requestId": "asked--happy-toaster--en",
+      "requestHash": "5cf6d5eb073bf07f",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order 50540 is great, thanks! The toaster works perfectly. No need to reply.",
+      "output": "```json\n{\n  \"orderId\": \"50540\",\n  \"items\": [\n    { \"name\": \"toaster\", \"quantity\": 1 }\n  ],\n  \"refundRequested\": false,\n  \"reason\": \"other\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 321,
+        "cacheCreationTokens": 1377,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00043610000000000003,
+      "durationMs": 6203
+    },
+    {
+      "requestId": "constrained--happy-toaster--en",
+      "requestHash": "7842c1df6e5b1ee7",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order 50540 is great, thanks! The toaster works perfectly. No need to reply.",
+      "output": "{\"orderId\":\"50540\",\"items\":[{\"name\":\"toaster\",\"quantity\":1}],\"refundRequested\":false,\"reason\":\"other\"}",
+      "structured": {
+        "orderId": "50540",
+        "items": [
+          {
+            "name": "toaster",
+            "quantity": 1
+          }
+        ],
+        "refundRequested": false,
+        "reason": "other"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 466,
+        "cacheCreationTokens": 1315,
+        "cacheReadTokens": 781
+      },
+      "listCostUsd": 0.00050401,
+      "durationMs": 2979
+    },
+    {
+      "requestId": "asked--happy-toaster--es-MX",
+      "requestHash": "b8b7d0d88a76756c",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "¡El pedido 50540 está perfecto, gracias! El tostador funciona de maravilla. No hace falta responder.",
+      "output": "```json\n{\n  \"orderId\": \"50540\",\n  \"items\": [\n    {\n      \"name\": \"tostador\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": false,\n  \"reason\": \"other\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 396,
+        "cacheCreationTokens": 1418,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0004818,
+      "durationMs": 6261
+    },
+    {
+      "requestId": "constrained--happy-toaster--es-MX",
+      "requestHash": "3a94bc6ce15e2024",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "¡El pedido 50540 está perfecto, gracias! El tostador funciona de maravilla. No hace falta responder.",
+      "output": "{\"orderId\":\"50540\",\"items\":[{\"name\":\"Tostador\",\"quantity\":1}],\"refundRequested\":false,\"reason\":\"other\"}",
+      "structured": {
+        "orderId": "50540",
+        "items": [
+          {
+            "name": "Tostador",
+            "quantity": 1
+          }
+        ],
+        "refundRequested": false,
+        "reason": "other"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 481,
+        "cacheCreationTokens": 1328,
+        "cacheReadTokens": 807
+      },
+      "listCostUsd": 0.00051437,
+      "durationMs": 2853
+    },
+    {
+      "requestId": "asked--two-numbers--en",
+      "requestHash": "07b7f754e8190b28",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Invoice 77-310 says order 50777 had 2 pans, but one came dented. Refund the dented one, please.",
+      "output": "```json\n{\n  \"orderId\": \"50777\",\n  \"items\": [\n    {\n      \"name\": \"pan\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"damaged\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 385,
+        "cacheCreationTokens": 1389,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0004705,
+      "durationMs": 5333
+    },
+    {
+      "requestId": "constrained--two-numbers--en",
+      "requestHash": "aab040e88b5fca00",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Invoice 77-310 says order 50777 had 2 pans, but one came dented. Refund the dented one, please.",
+      "output": "{\"orderId\":\"50777\",\"items\":[{\"name\":\"pan\",\"quantity\":1}],\"refundRequested\":true,\"reason\":\"damaged\"}",
+      "structured": {
+        "orderId": "50777",
+        "items": [
+          {
+            "name": "pan",
+            "quantity": 1
+          }
+        ],
+        "refundRequested": true,
+        "reason": "damaged"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 300,
+        "cacheCreationTokens": 1323,
+        "cacheReadTokens": 781
+      },
+      "listCostUsd": 0.00042260999999999997,
+      "durationMs": 2165
+    },
+    {
+      "requestId": "asked--two-numbers--es-MX",
+      "requestHash": "7b600be22d9e8414",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "La factura 77-310 dice que el pedido 50777 traía 2 sartenes, pero uno llegó abollado. Reembólsenme el abollado, por favor.",
+      "output": "```json\n{\n  \"orderId\": \"50777\",\n  \"items\": [\n    {\n      \"name\": \"Sartén\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"damaged\"\n}\n```",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 356,
+        "cacheCreationTokens": 1431,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0004644,
+      "durationMs": 4570
+    },
+    {
+      "requestId": "constrained--two-numbers--es-MX",
+      "requestHash": "4b61780ee003e67c",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "La factura 77-310 dice que el pedido 50777 traía 2 sartenes, pero uno llegó abollado. Reembólsenme el abollado, por favor.",
+      "output": "{\"orderId\":\"50777\",\"items\":[{\"name\":\"Sartén\",\"quantity\":1}],\"refundRequested\":true,\"reason\":\"damaged\"}",
+      "structured": {
+        "orderId": "50777",
+        "items": [
+          {
+            "name": "Sartén",
+            "quantity": 1
+          }
+        ],
+        "refundRequested": true,
+        "reason": "damaged"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 326,
+        "cacheCreationTokens": 1340,
+        "cacheReadTokens": 807
+      },
+      "listCostUsd": 0.00043927,
+      "durationMs": 2187
+    }
+  ]
+}

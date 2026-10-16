@@ -67,3 +67,24 @@ test("outside work starts on recorded runs and warns before a key is used", asyn
   await expect(panel).toContainText("Your key stays on this device");
   expect(await page.evaluate(() => localStorage.getItem("next-token:llm"))).toBeNull();
 });
+
+test.describe("chapter 7 · structured output", () => {
+  test("the press rejects fenced sheets, retries them, and the schema avoids the retries", async ({ page }) => {
+    await open(page, /Structured output/);
+    await advance(page, 1);
+    await page.getByTestId("feed-press").click();
+    const stack = page.getByTestId("sheet-stack");
+    await expect(stack.locator(".press-sheet__stamp", { hasText: "rejected" }).first()).toBeVisible();
+    await expect(stack).toContainText("wrapped in a Markdown code fence");
+    await expect(stack).toContainText("Sent back once with the press's reason");
+    await advance(page, 1);
+    await page.getByTestId("predict-accepted").fill("5");
+    await page.getByTestId("feed-press").click();
+    await expect(stack.locator(".press-sheet")).not.toHaveCount(0);
+    await page.getByLabel("Constrained by schema").check();
+    await page.getByTestId("feed-press").click();
+    const tally = page.getByTestId("press-tally");
+    await expect(tally).toContainText("Constrained by schema");
+    await expect(tally.locator("tr").nth(2)).toContainText("6 of 6");
+  });
+});
