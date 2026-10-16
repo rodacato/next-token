@@ -748,6 +748,34 @@
         },
         "voice": "A press runs fine on the first sheet. It's the ten-thousandth that finds the flaw."
       }
+    },
+    "finale": {
+      "title": "The commission",
+      "kicker": "Finale: design a feature, face the board",
+      "problem": {
+        "heading": "Mercadito's last commission is yours to design.",
+        "body": "Customers write every day to ask where a late order is. Mercadito wants an assistant that answers from the order record, apologizes properly, and may offer a small coupon when it's really late. You've done every piece of this in the course.",
+        "task": "Write the spec, the prompt, the evals, the guardrails and the launch plan. Then face the review board."
+      },
+      "bench": {
+        "heading": "Five parts, your words.",
+        "body": "Nothing here is graded while you write. The board reads it only when you submit, and every check it makes is a lesson from an earlier chapter.",
+        "observe": "Write the goal first. Everything else follows from it."
+      },
+      "measure": {
+        "heading": "The review board.",
+        "body": "Predict how many will approve, submit, and revise until all four do."
+      },
+      "debrief": {
+        "heading": "That's the course.",
+        "points": {
+          "one": "Inside the model: tokens, probabilities, a window that fills, and fluency that isn't truth.",
+          "two": "The craft: prompts as specs, evals before opinions, schemas, tools, retrieval and a harness around every agent.",
+          "three": "The foundry: training lowers loss on what it sees, fine-tuning teaches behaviour better than facts, and every change needs a regression test.",
+          "four": "The commissions: pick the right tool, design for the wrong answer, read the bill, and launch slowly."
+        },
+        "voice": "The type goes back in the case. The job is printed."
+      }
     }
   },
   "readNext": {
@@ -1529,5 +1557,147 @@
     "findingMiss": "It's {baseline}. Now get it under {goal} with no injection getting a refund, a coupon or customer data out.",
     "met": "{total}, and every harmful injection was stopped. Ship it.",
     "notYet": "{total}; harmful injections that got through: {through}. Not yet."
+  },
+  "finale": {
+    "sections": {
+      "spec": "1. The spec",
+      "prompt": "2. The prompt",
+      "evals": "3. The evals",
+      "guardrails": "4. The guardrails",
+      "launch": "5. The launch plan"
+    },
+    "fields": {
+      "goal": "What the assistant is for, in a sentence or two",
+      "users": "Who uses it",
+      "nonGoals": "What it won't do (one per line)",
+      "metric": "How you'll know it works (a number)",
+      "prompt": "System prompt",
+      "caseInput": "Case {n}: what the customer writes",
+      "caseInputHint": "What the customer writes",
+      "caseExpect": "Case {n}: what a good reply does",
+      "caseExpectHint": "What a good reply does",
+      "caseTag": "Case {n}: kind",
+      "firstStage": "First rollout stage, % of traffic",
+      "cap": "Daily spending cap, USD",
+      "rollback": "When you roll back",
+      "monitor": "What you watch every day"
+    },
+    "tags": {
+      "normal": "normal",
+      "edge": "edge case",
+      "regression": "regression"
+    },
+    "addCase": "Add a case",
+    "graders": {
+      "exact": "exact match",
+      "regex": "pattern",
+      "max-words": "length",
+      "mentions": "must mention",
+      "json-schema": "JSON schema",
+      "llm-judge": "LLM judge"
+    },
+    "guardrails": {
+      "compensation-gate": "Compensation over 150 MXN needs a person",
+      "read-only-lookup": "The order lookup is read-only",
+      "step-limit": "A step limit on the loop",
+      "mark-untrusted": "Carrier notes and reviews marked as data",
+      "output-filter": "No links or codes outside the catalog in replies",
+      "honest-refusal": "It may say \"I don't know\" and hand off"
+    },
+    "members": {
+      "product": "Product",
+      "support": "Support lead",
+      "security": "Security",
+      "finance": "Finance"
+    },
+    "approved": "approved",
+    "changes": "changes requested",
+    "predict": "Before you submit: how many of the {count} board members will approve?",
+    "submit": "Submit to the review board",
+    "resubmit": "Submit again",
+    "allApproved": "All {total} approve. You predicted {guess}. The commission is yours.",
+    "notYet": "{approvals} of {total} approve; you predicted {guess}. Read the comments, change what they ask, submit again.",
+    "checks": {
+      "goal": {
+        "pass": "The goal says what it's for.",
+        "fail": "\"Helps customers\" isn't a goal. Say what it does, for whom, and when."
+      },
+      "users": {
+        "pass": "We know who it's for.",
+        "fail": "Who uses it? Customers, agents, both?"
+      },
+      "non-goals": {
+        "pass": "The non-goals will save us arguments later.",
+        "fail": "No non-goals. Someone will ask it to process refunds by Friday."
+      },
+      "metric": {
+        "pass": "A number we can check next month.",
+        "fail": "\"Customers are happier\" can't be measured on a dashboard. Give me a number."
+      },
+      "source": {
+        "pass": "It answers from the order record, not from memory.",
+        "fail": "Where does it get the order status? Name the tool or the record."
+      },
+      "unsure": {
+        "pass": "It knows when to hand off.",
+        "fail": "What does it do when the record doesn't say? Tell it to say so, and hand off."
+      },
+      "format": {
+        "pass": "The reply has a shape.",
+        "fail": "How long is a reply? Give it a format or a length."
+      },
+      "compensation": {
+        "pass": "Compensation has a ceiling.",
+        "fail": "It may offer compensation, with no limit in the prompt. Write the limit down."
+      },
+      "cases": {
+        "pass": "Enough cases to start.",
+        "fail": "Fewer than five real cases. An eval needs more than a demo."
+      },
+      "edge": {
+        "pass": "You tested a hard one.",
+        "fail": "No edge case: an unknown order, an angry customer, a note with instructions in it."
+      },
+      "regression": {
+        "pass": "You'll notice if it breaks something else.",
+        "fail": "No regression case. How will you know an update made it worse?"
+      },
+      "graders": {
+        "pass": "Graders a script can run.",
+        "fail": "Pick at least two graders, and not only the judge."
+      },
+      "gate": {
+        "pass": "Money passes a gate.",
+        "fail": "Compensation with no gate. Chapter 10 paid for a blender twice."
+      },
+      "read-only": {
+        "pass": "The lookup can't change anything.",
+        "fail": "The lookup tool can write. Make it read-only."
+      },
+      "injection": {
+        "pass": "Untrusted text is handled.",
+        "fail": "Carrier notes reach the model as instructions. Mark them as data or filter what comes out."
+      },
+      "refusal": {
+        "pass": "\"I don't know\" is allowed.",
+        "fail": "It must answer everything, so it will guess. Chapter 19 counted what that costs."
+      },
+      "staged": {
+        "pass": "A small first stage.",
+        "fail": "First stage above 10%, or none. Start with a slice of traffic."
+      },
+      "cap": {
+        "pass": "A cap on the daily spend.",
+        "fail": "No spending cap. Chapter 21's sale week says hello."
+      },
+      "rollback": {
+        "pass": "We know when to pull it.",
+        "fail": "When do you roll back? Name the signal and the threshold."
+      },
+      "monitor": {
+        "pass": "Someone watches it daily.",
+        "fail": "What does someone look at every morning?"
+      }
+    }
   }
 }

@@ -25,6 +25,7 @@ import { FeaturesChapter } from "./chapters/FeaturesChapter";
 import { FailureChapter } from "./chapters/FailureChapter";
 import { BillChapter } from "./chapters/BillChapter";
 import { LaunchChapter } from "./chapters/LaunchChapter";
+import { FinaleChapter } from "./chapters/FinaleChapter";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
@@ -100,6 +101,7 @@ function Course() {
       {chapter.kind === "commission-failure" && <FailureChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "commission-bill" && <BillChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "commission-launch" && <LaunchChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "finale" && <FinaleChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "eval-builder" && <EvalBuilderChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
     </div>
   );
