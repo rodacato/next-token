@@ -9,6 +9,8 @@ export type TrainConfig = {
   readonly learningRate: number;
   readonly seed: number;
   readonly valShare: number;
+  // Characters the vocabulary must hold even if this corpus never uses them (an adapter's corpus, later).
+  readonly vocabExtra?: string;
 };
 
 export type LossPoint = { readonly step: number; readonly train: number; readonly val: number };
@@ -29,7 +31,7 @@ export class TrainingSession {
 
   constructor(config: TrainConfig, lines: { train: readonly string[]; val: readonly string[] }, base?: Checkpoint) {
     this.config = config;
-    const vocab = base?.vocab ?? vocabularyOf([...lines.train, ...lines.val]);
+    const vocab = base?.vocab ?? vocabularyOf([...lines.train, ...lines.val, config.vocabExtra ?? ""]);
     this.model = base ? CharModel.restore(base) : new CharModel(config.shape, vocab, config.seed);
     const ids = (ls: readonly string[]) => Int32Array.from(this.model.encode(ls.map((l) => `\n${l}`).join("") + "\n"));
     this.trainIds = ids(lines.train);

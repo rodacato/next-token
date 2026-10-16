@@ -24,3 +24,37 @@ test.describe("chapter 11 · casting from scratch", () => {
     await expect(page.getByTestId("trainer-finding")).toContainText("You predicted 3; 7 of 12 were copied.", { timeout: 20_000 });
   });
 });
+
+test.describe("chapter 12 · the stages of a real model", () => {
+  test("sorting blind, then the checks: the release is not the best everywhere", async ({ page }) => {
+    await open(page, /^12 The stages of a real model/);
+    await advance(page, 1);
+    await page.getByRole("radio", { name: "A capital" }).check();
+    const slips = page.getByTestId("blind-sort").locator("li");
+    await expect(slips).toHaveCount(4);
+    for (let i = 0; i < 4; i++) await slips.nth(i).getByRole("radio", { name: "Release" }).check();
+    await page.getByTestId("reveal").click();
+    await expect(page.getByTestId("sort-score")).toContainText("You placed 1 of 4.");
+    await advance(page, 1);
+    await page.getByRole("radio", { name: "Release" }).last().check();
+    await expect(page.getByTestId("stages-finding")).toContainText("Most checks passed: Midtrain, SFT, with 7 of 8.");
+  });
+});
+
+test.describe("chapter 15 · the LoRA plate", () => {
+  test("the arithmetic uses MiniCPM5-2B's shapes; the adapter changes output without touching the base", async ({ page }) => {
+    await open(page, /^15 The LoRA plate/);
+    await advance(page, 1);
+    await expect(page.getByTestId("lora-count")).toContainText("Trainable: 8.6 M of 2,516.8 M parameters (0.34%).");
+    await page.getByTestId("train-adapter").click();
+    await expect(page.getByTestId("fingerprint")).toContainText("Not one base weight changed.");
+    await expect(page.getByTestId("adapter-samples")).toContainText("MXN");
+    await page.getByTestId("adapter-off").check();
+    await expect(page.getByTestId("adapter-samples")).not.toContainText("MXN");
+    await advance(page, 1);
+    await page.getByRole("radio", { name: "rank 16" }).last().check();
+    await page.getByTestId("all-ranks").click();
+    await expect(page.getByTestId("rank-table")).toBeVisible();
+    await expect(page.getByTestId("lora-finding")).toBeVisible();
+  });
+});

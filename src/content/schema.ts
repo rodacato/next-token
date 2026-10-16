@@ -168,7 +168,44 @@ export const trainerChapterSchema = z.object({
   sampleSeed: z.number().int(),
 });
 
+const localeMap = z.record(z.string(), z.string());
+
+export const loraChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("lora"),
+  base: z.object({ corpus: localeMap, steps: z.number().int().positive() }),
+  adapter: z.object({ corpus: localeMap, ranks: z.array(z.number().int().positive()).min(1), alphaPerRank: z.number().positive(), steps: z.number().int().positive(), learningRate: z.number().positive() }),
+  every: z.number().int().positive(),
+  sampleEvery: z.number().int().positive(),
+  temperature: z.number().positive(),
+  sampleCount: z.number().int().positive(),
+  sampleSeed: z.number().int(),
+  real: z.object({
+    name: z.string(),
+    checkedAt: z.iso.date(),
+    hiddenSize: z.number().int(),
+    layers: z.number().int(),
+    heads: z.number().int(),
+    kvHeads: z.number().int(),
+    headDim: z.number().int(),
+    intermediateSize: z.number().int(),
+    vocabSize: z.number().int(),
+    tiedEmbeddings: z.boolean(),
+  }),
+});
+
+export const stagesChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("stages"),
+  model: z.string(),
+  stages: z.array(z.object({ id: z.string(), repo: z.string() })).min(2),
+  maxTokens: z.number().int().positive(),
+  prompts: z.array(z.object({ id: z.string(), text: perLocale, check: perLocale.optional() })).min(1),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  stagesChapterSchema,
+  loraChapterSchema,
   trainerChapterSchema,
   agentsChapterSchema,
   ragChapterSchema,
@@ -198,3 +235,5 @@ export type RagChapter = z.infer<typeof ragChapterSchema>;
 export type AgentsChapter = z.infer<typeof agentsChapterSchema>;
 export type TrainerChapter = z.infer<typeof trainerChapterSchema>;
 export type Corpus = z.infer<typeof corpusSchema>;
+export type LoraChapter = z.infer<typeof loraChapterSchema>;
+export type StagesChapter = z.infer<typeof stagesChapterSchema>;

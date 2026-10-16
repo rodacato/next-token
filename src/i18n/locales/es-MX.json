@@ -468,6 +468,62 @@
         },
         "voice": "Una fundidora nueva hace tipos malos por un rato. Luego, si nadie la detiene, hace la misma letra buena para siempre."
       }
+    },
+    "lora": {
+      "title": "La placa LoRA",
+      "kicker": "Adaptación de rango bajo",
+      "problem": {
+        "heading": "Reentrenar cada peso cuesta una fundidora. Mercadito tiene un escritorio.",
+        "body": "Ajustar completo un modelo de 2B necesita unos 40 GB solo para pesos y optimizador. La máquina de Mercadito tiene una tarjeta de 12 GB. LoRA entrena en cambio una placa delgada encima de los pesos y deja en paz lo fundido.",
+        "task": "Cuenta lo que cuesta la placa en un modelo real, luego pon una sobre un modelo pequeño y mira qué cambia."
+      },
+      "bench": {
+        "heading": "Congela lo fundido. Entrena la placa.",
+        "body": "Arriba, las cuentas con las formas reales de MiniCPM5-2B. Abajo, un adaptador entrenado en vivo sobre el modelo del capítulo 11: entran refranes, salen frases de producto, con la huella de los pesos base antes y después.",
+        "observe": "Apaga y prende el adaptador. Mismos pesos base, otra salida."
+      },
+      "measure": {
+        "heading": "¿Qué tan delgada puede ser la placa?",
+        "body": "Primero predice, luego entrena los tres rangos y cuenta las líneas que llevan precio."
+      },
+      "debrief": {
+        "heading": "Una placa pequeña cambia el comportamiento, no lo fundido.",
+        "points": {
+          "one": "LoRA suma B·A a las matrices de pesos que elijas. Con rango 16 en atención, es cerca del 0.3% de los parámetros de MiniCPM5-2B.",
+          "two": "La base nunca cambia. Una base puede cargar muchos adaptadores, uno por tarea, y apagar uno restaura el original exactamente.",
+          "three": "QLoRA guarda la base congelada en 4 bits; así se ajusta un modelo de 2B, o hasta de 7B, en una sola GPU de casa.",
+          "four": "Aquí la placa movió el formato (precios, 'Envío gratis') más que las palabras. Es el patrón que vas a volver a ver: los adaptadores enseñan comportamiento con más facilidad que hechos."
+        },
+        "voice": "No se refunden los tipos para imprimir un trabajo nuevo. Se arma una forma nueva alrededor de ellos."
+      }
+    },
+    "stages": {
+      "title": "Las etapas de un modelo real",
+      "kicker": "Base, midtrain, SFT, RL",
+      "problem": {
+        "heading": "Un modelo, cuatro fundiciones.",
+        "body": "Un modelo con el que conversas es la última de varias corridas de entrenamiento. MiniCPM5-2B publica cuatro: el modelo base, un punto de control intermedio, el ajuste fino supervisado y la versión final. Misma arquitectura, mismo tamaño, distinto entrenamiento.",
+        "task": "Lee lo que escribe cada etapa para el mismo prompt y distínguelas antes de que te lo digan."
+      },
+      "bench": {
+        "heading": "Acomoda las respuestas por etapa.",
+        "body": "Cada prompt se mandó, byte por byte, a los cuatro puntos de control. Las respuestas regresan revueltas. Marca qué etapa escribió cada una y luego revela.",
+        "observe": "Busca qué cambia de etapa a etapa: formato, largo, negativas, idioma y errores que aparecen tarde."
+      },
+      "measure": {
+        "heading": "Revisa las respuestas.",
+        "body": "Predice qué etapa pasa más revisiones y luego lee la tabla."
+      },
+      "debrief": {
+        "heading": "Cada etapa cambia el comportamiento, y cada una puede romper algo.",
+        "points": {
+          "one": "El preentrenamiento produce un modelo que predice texto. Los datos de preentrenamiento de hoy están llenos de preguntas y respuestas, así que hasta este modelo base ya responde como asistente.",
+          "two": "El ajuste fino supervisado enseña el formato de una buena respuesta con ejemplos resueltos. Después, RL premia resultados: respuestas correctas en matemáticas y código, respuestas preferidas en lo demás.",
+          "three": "Más tarde no es mejor en todo. Aquí la versión final responde mal un dato simple en español, y varias etapas se ciclan con un refrán en español.",
+          "four": "Es un modelo pequeño, en modo codicioso, con una sola configuración. Tómalo como una mirada al proceso, no como una evaluación comparativa."
+        },
+        "voice": "Cada pasada por la prensa agrega un color. A veces tapa uno que querías."
+      }
     }
   },
   "readNext": {
@@ -500,7 +556,11 @@
       "anthropic-building-agents": "Cuándo construir un agente y cuándo bastan flujos más simples.",
       "mcp-spec": "El protocolo entre el arnés y las herramientas: cómo se listan y se llaman.",
       "xstate-docs": "La biblioteca de máquinas de estados que corre el ciclo de este arnés: estados, guardas y llamadas invocadas.",
-      "karpathy-nanogpt": "El entrenador de GPT serio más pequeño; el modelo de este banco es una versión de juguete de la misma idea."
+      "karpathy-nanogpt": "El entrenador de GPT serio más pequeño; el modelo de este banco es una versión de juguete de la misma idea.",
+      "hu-2021-lora": "El artículo de LoRA: congela los pesos, entrena una actualización de rango bajo, fusiónala o cámbiala cuando quieras.",
+      "dettmers-2023-qlora": "LoRA sobre una base de 4 bits: las cuentas de memoria que ponen el ajuste fino en una sola GPU de consumo.",
+      "minicpm5-card": "El modelo cuyas formas y puntos de control usa este acto: sus etapas de entrenamiento, datos y licencia.",
+      "ouyang-2022-instructgpt": "El artículo que volvió estándar el proceso: preentrenar, ajustar con supervisión y luego aprender de preferencias humanas."
     }
   },
   "units": {
@@ -863,5 +923,87 @@
     },
     "predict": "De {count} líneas muestreadas en el paso {steps}, ¿cuántas serán líneas de entrenamiento copiadas completas?",
     "finding": "Predijiste {guess}; {actual} de {total} fueron copiadas. La pérdida en líneas apartadas tocó su mínimo en el paso {low}; después el modelo mejoró en las líneas que ya había visto y empeoró en todo lo demás."
+  },
+  "lora": {
+    "frozen": "congelada",
+    "plateBody": "W es una matriz de pesos del modelo real, tal como se fundió. LoRA le pone encima una placa delgada: B·A, dos matrices angostas cuyo producto tiene la forma de W. Solo se entrena la placa. Formas tomadas de la configuración de {name}, revisada el {date}.",
+    "rankOption": "rango {rank}",
+    "targets": {
+      "attention": "solo atención",
+      "all": "atención y MLP"
+    },
+    "realCounts": "Entrenables: {adapter} M de {base} M de parámetros ({share}%).",
+    "memory": {
+      "how": "Cómo se entrena",
+      "gb": "GB para pesos y optimizador",
+      "fits": "¿Menos de {gb} GB?",
+      "full": "Ajuste completo (bf16, Adam)",
+      "lora": "LoRA sobre pesos bf16",
+      "qlora": "QLoRA: LoRA sobre pesos de 4 bits",
+      "yes": "sí",
+      "no": "no",
+      "note": "Tamaños aproximados: 16 bytes por parámetro entrenado (pesos, gradientes, los dos momentos de Adam, una copia maestra de 32 bits), 2 bytes por peso congelado en bf16, medio byte por peso de 4 bits. Las activaciones y las constantes de cuantización van aparte."
+    },
+    "runHeading": "Una placa sobre lo que fundiste en el capítulo 11",
+    "runBody": "El modelo base aprendió refranes. El adaptador aprende las frases de producto de Mercadito, con cada peso base congelado. La huella es un hash de todos los pesos base, leído antes y después.",
+    "rank": "Rango",
+    "train": "Entrenar un adaptador de rango {rank}, {steps} pasos",
+    "training": "Entrenando el adaptador…",
+    "recorded": "Grabado en {machine} ({backend}), {date}.",
+    "counts": "El adaptador entrena {lora} números; la base tiene {base} ({share}%).",
+    "untouched": "Huella de la base antes: {before}. Después: {after}. No cambió ni un peso de la base.",
+    "touched": "Huella de la base antes: {before}. Después: {after}. La base cambió; esto no debería pasar.",
+    "switch": "Muestrear de",
+    "on": "base + adaptador",
+    "off": "solo la base",
+    "predict": "¿Cuál es el rango más pequeño en el que {half} de {count} líneas muestreadas llevan un precio en MXN?",
+    "none": "ninguno",
+    "allRanks": "Entrenar los tres rangos",
+    "trainable": "números entrenables",
+    "withPrice": "líneas con precio (de {count})",
+    "findingMatch": "Como predijiste: {rank}. Una placa pequeña movió el formato; fíjate bien y las palabras siguen a medio fundir.",
+    "findingMiss": "La respuesta era {rank}. Una placa pequeña movió el formato; fíjate bien y las palabras siguen a medio fundir."
+  },
+  "stages": {
+    "names": {
+      "base": "Base",
+      "midtrain": "Midtrain",
+      "sft": "SFT",
+      "release": "Versión final"
+    },
+    "about": {
+      "base": "Solo preentrenamiento: entrenamiento estable y luego una fase de decaimiento, con web filtrada, código y matemáticas.",
+      "midtrain": "Más entrenamiento con datos más cercanos a las tareas objetivo, antes de cualquier ajuste para conversar.",
+      "sft": "Ajuste fino supervisado con 400B tokens de respuestas resueltas y conversaciones.",
+      "release": "RL con maestros especializados, destilados de vuelta en un solo modelo (destilación sobre la política)."
+    },
+    "recorded": "{model}, los cuatro puntos de control, grabados con {via} ({dtype}, codicioso, sin modo de pensamiento) el {date}. Cada punto de control recibió los mismos bytes: la plantilla de chat alrededor de tu prompt.",
+    "prompt": "Prompt",
+    "prompts": {
+      "proverb": "Un refrán",
+      "support": "Una respuesta de soporte",
+      "discount": "Un descuento",
+      "fact": "Una capital",
+      "lock": "Una cerradura",
+      "haiku": "Un haiku"
+    },
+    "answer": "Respuesta {n}",
+    "empty": "(nada: el modelo cerró su turno de inmediato)",
+    "truth": "La escribió {stage} ({tokens} tokens).",
+    "reveal": "Revelar las etapas",
+    "sortScore": "Acomodaste {right} de {total}.",
+    "predict": "Cuatro prompts en dos idiomas, {count} revisiones. ¿Qué etapa pasa más?",
+    "check": "Revisión",
+    "checks": {
+      "proverb": "Termina el refrán ({lang})",
+      "discount": "Dice 200 ({lang})",
+      "fact": "Nombra a Canberra como capital ({lang})",
+      "lock": "Se niega y lo dice ({lang})"
+    },
+    "pass": "pasa",
+    "fail": "falla",
+    "total": "Revisiones aprobadas",
+    "findingMatch": "Como predijiste: {winners}, con {best} de {total}. Más tarde no siempre es mejor en cada revisión; lee las respuestas en español de la versión final.",
+    "findingMiss": "La que pasa más: {winners}, con {best} de {total}. Más tarde no siempre es mejor en cada revisión; lee las respuestas en español de la versión final."
   }
 }

@@ -156,6 +156,17 @@ export class CharModel {
     return this.decode(ids.slice(1));
   }
 
+  // FNV-1a over every base weight's bytes: if this doesn't change, the base model didn't.
+  async fingerprint(): Promise<string> {
+    let hash = 0x811c9dc5;
+    for (const name of [...this.weights.keys()].sort()) {
+      const data = (await this.weights.get(name)?.data()) as Float32Array;
+      const bytes = new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+      for (const b of bytes) hash = Math.imul(hash ^ b, 0x01000193) >>> 0;
+    }
+    return hash.toString(16).padStart(8, "0");
+  }
+
   async save(): Promise<Checkpoint> {
     const weights: Checkpoint["weights"] = {};
     for (const [name, v] of this.weights) weights[name] = { shape: v.shape, data: toBase64(await v.data() as Float32Array) };
