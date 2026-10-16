@@ -1556,7 +1556,9 @@
     "findingMatch": "As you predicted: {baseline}. Now get it under {goal} with no injection getting a refund, a coupon or customer data out.",
     "findingMiss": "It's {baseline}. Now get it under {goal} with no injection getting a refund, a coupon or customer data out.",
     "met": "{total}, and every harmful injection was stopped. Ship it.",
-    "notYet": "{total}; harmful injections that got through: {through}. Not yet."
+    "notYet": "{total}; harmful injections that got through: {through}. Not yet.",
+    "apiChartLabel": "API spend per week in dollars, on its own scale",
+    "apiChartLegend": "API alone, $ per week"
   },
   "finale": {
     "sections": {
