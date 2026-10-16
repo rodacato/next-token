@@ -552,6 +552,34 @@
         },
         "voice": "A forme set with one wrong sort prints the wrong sort a thousand times."
       }
+    },
+    "kinds": {
+      "title": "Kinds of training",
+      "kicker": "What each method changes",
+      "problem": {
+        "heading": "\"Let's train it\" can mean seven different jobs.",
+        "body": "Mercadito's team keeps saying the model should be trained: on the catalog, on the tone, on the policy, to be cheaper. Each of those is a different kind of training, with different data, a different cost and a different failure.",
+        "task": "Learn what each kind needs and what it can't do."
+      },
+      "bench": {
+        "heading": "The ledger.",
+        "body": "Seven methods, the data each needs, and what each changes. The last column is hidden. Guess what each one can't do before you open it.",
+        "observe": "Then read MiniCPM5's own pipeline, from chapter 12, as a row of these methods."
+      },
+      "measure": {
+        "heading": "Match the jobs.",
+        "body": "Pick a method for each job, then check against the ledger."
+      },
+      "debrief": {
+        "heading": "Pick the method by the data you have and the change you need.",
+        "points": {
+          "one": "Pretraining and continued pretraining take raw text and change what the model knows. They don't teach it to follow your format.",
+          "two": "SFT imitates examples: the fastest way to a format or a tone, and no better than the examples.",
+          "three": "Preference methods (RLHF, DPO) and RL with checkers push the model toward answers someone or something prefers. Each optimises its signal, flaws included.",
+          "four": "Distillation makes a cheaper copy of a stronger model, mistakes included. The field moves fast here: treat the boundaries in this ledger as today's, not permanent."
+        },
+        "voice": "A shop has a tool for each job. Using the wrong one still leaves a mark."
+      }
     }
   },
   "readNext": {
@@ -589,7 +617,9 @@
       "dettmers-2023-qlora": "LoRA on a 4-bit base: the memory arithmetic that puts fine-tuning on one consumer GPU.",
       "minicpm5-card": "The model whose shapes and checkpoints this act uses: its training stages, data and licence.",
       "ouyang-2022-instructgpt": "The paper that made the pipeline standard: pretrain, supervised fine-tune, then learn from human preferences.",
-      "lambert-2024-tulu3": "A fully documented post-training recipe, including how the training data was mixed, cleaned and decontaminated against evals."
+      "lambert-2024-tulu3": "A fully documented post-training recipe, including how the training data was mixed, cleaned and decontaminated against evals.",
+      "rafailov-2023-dpo": "Preference tuning without a reward model or RL loop: the method behind many open fine-tunes.",
+      "hinton-2015-distillation": "The original distillation paper: a small model learns from a big one's probabilities."
     }
   },
   "units": {
@@ -1093,5 +1123,29 @@
     "predict": "{count} problems are planted. How many will the mechanical checks (duplicates and eval overlap) catch?",
     "finding": "You predicted {guess}; the mechanical checks caught {actual} of {total}. They find copies, not mistakes.",
     "findingJudge": "The judge caught {caught} of {total}. Good rows it flagged anyway, for a person to look at: {alarms}."
+  },
+  "ledger": {
+    "method": "Method",
+    "data": "Data it needs",
+    "changes": "What it changes",
+    "cannot": "What it can't do",
+    "showCannot": "Show",
+    "methods": {
+      "pretraining": "Pretraining",
+      "continued": "Continued pretraining",
+      "sft": "Supervised fine-tuning (SFT)",
+      "rlhf": "Preference tuning (RLHF)",
+      "dpo": "Direct preference optimization (DPO)",
+      "rlvr": "RL with verifiable rewards",
+      "distillation": "Distillation"
+    },
+    "pipeline": "MiniCPM5-2B, stage by stage (chapter 12)",
+    "pipelineNote": "From the model card: base training, mid-training, 400B tokens of SFT, then RL teachers for math, code, agents and writing, distilled back into one release model. The card describes its RL as critic-based; where the rewards come from people or from checkers, it doesn't break down stage by stage.",
+    "jobs": "Seven jobs at Mercadito and beyond. Pick a method for each.",
+    "pick": "Pick a method",
+    "pickFor": "Method for: {job}",
+    "check": "Check the ledger",
+    "answer": "The ledger says: {method}",
+    "finding": "{right} of {total} match the ledger. Some pairs are close: DPO and RLHF learn the same kind of preference, from different data."
   }
 }

@@ -1,0 +1,73 @@
+{
+  "id": "kinds",
+  "kind": "ledger",
+  "act": "foundry",
+  "number": 13,
+  "methods": [
+    {
+      "id": "pretraining",
+      "source": "vaswani-2017",
+      "data": { "en": "Trillions of tokens of raw text and code, no labels.", "es-MX": "Billones de tokens de texto y código crudos, sin etiquetas." },
+      "changes": { "en": "Everything: grammar, facts, style, the ability to continue text at all.", "es-MX": "Todo: gramática, hechos, estilo, la capacidad misma de continuar texto." },
+      "cannot": { "en": "Follow instructions reliably, or know anything after its data was collected.", "es-MX": "Seguir instrucciones de forma confiable, ni saber nada posterior a la recolección de sus datos." }
+    },
+    {
+      "id": "continued",
+      "source": "minicpm5-card",
+      "data": { "en": "Billions of tokens from the target domain or language, still mostly unlabeled.", "es-MX": "Miles de millones de tokens del dominio o idioma objetivo, aún casi sin etiquetas." },
+      "changes": { "en": "Vocabulary and knowledge of a domain the base saw too little of.", "es-MX": "Vocabulario y conocimiento de un dominio que la base vio poco." },
+      "cannot": { "en": "Teach a format or a policy; it can also wear down what the model knew before.", "es-MX": "Enseñar un formato o una política; también puede desgastar lo que el modelo sabía antes." }
+    },
+    {
+      "id": "sft",
+      "source": "ouyang-2022-instructgpt",
+      "data": { "en": "Thousands of written examples: a prompt and the answer you want.", "es-MX": "Miles de ejemplos escritos: un prompt y la respuesta que quieres." },
+      "changes": { "en": "Format, tone and task behaviour: it imitates the examples.", "es-MX": "Formato, tono y comportamiento en la tarea: imita los ejemplos." },
+      "cannot": { "en": "Do better than its examples, or add facts it can recall in new phrasings.", "es-MX": "Ser mejor que sus ejemplos, ni agregar hechos que recuerde con otras palabras." }
+    },
+    {
+      "id": "rlhf",
+      "source": "ouyang-2022-instructgpt",
+      "data": { "en": "People's rankings of answers, turned into a reward model.", "es-MX": "Rankings de respuestas hechos por personas, convertidos en un modelo de recompensa." },
+      "changes": { "en": "Which of its own answers it prefers: helpfulness, tone, refusals.", "es-MX": "Cuál de sus propias respuestas prefiere: utilidad, tono, negativas." },
+      "cannot": { "en": "Beat its reward model; it learns to please it, flaws included.", "es-MX": "Superar a su modelo de recompensa; aprende a complacerlo, con todo y fallas." }
+    },
+    {
+      "id": "dpo",
+      "source": "rafailov-2023-dpo",
+      "data": { "en": "Pairs of answers to the same prompt, one chosen, one rejected.", "es-MX": "Pares de respuestas al mismo prompt, una elegida y otra rechazada." },
+      "changes": { "en": "The same preferences as RLHF, trained directly, with no reward model or RL loop.", "es-MX": "Las mismas preferencias que RLHF, entrenadas directo, sin modelo de recompensa ni ciclo de RL." },
+      "cannot": { "en": "Learn from anything but the pairs it's given; it doesn't explore new answers.", "es-MX": "Aprender de algo que no sean los pares que recibe; no explora respuestas nuevas." }
+    },
+    {
+      "id": "rlvr",
+      "source": "lambert-2024-tulu3",
+      "data": { "en": "Problems a program can check: math with a known answer, code with tests.", "es-MX": "Problemas que un programa puede revisar: matemáticas con respuesta conocida, código con pruebas." },
+      "changes": { "en": "How often it gets checkable tasks right, often through longer reasoning.", "es-MX": "Qué tan seguido acierta en tareas verificables, a menudo razonando más largo." },
+      "cannot": { "en": "Improve what no program can grade, like tone or a haiku.", "es-MX": "Mejorar lo que ningún programa puede calificar, como el tono o un haiku." }
+    },
+    {
+      "id": "distillation",
+      "source": "hinton-2015-distillation",
+      "data": { "en": "A stronger teacher model's outputs, or its full probability distributions.", "es-MX": "Las salidas de un modelo maestro más fuerte, o sus distribuciones de probabilidad completas." },
+      "changes": { "en": "A smaller student copies the teacher's behaviour, at a fraction of the cost to run.", "es-MX": "Un alumno más pequeño copia el comportamiento del maestro, a una fracción del costo de correrlo." },
+      "cannot": { "en": "Surpass the teacher, and it copies the teacher's mistakes along with its skills.", "es-MX": "Superar al maestro; copia sus errores junto con sus habilidades." }
+    }
+  ],
+  "pipeline": [
+    { "stage": "base", "methods": ["pretraining"] },
+    { "stage": "midtrain", "methods": ["continued"] },
+    { "stage": "sft", "methods": ["sft"] },
+    { "stage": "release", "methods": ["rlvr", "rlhf", "distillation"] }
+  ],
+  "jobs": [
+    { "id": "legal-spanish", "answer": "continued", "text": { "en": "A model writes Spanish well but stumbles over Mexican tax law. You have 3 GB of statutes and rulings.", "es-MX": "Un modelo escribe bien en español pero se tropieza con la ley fiscal mexicana. Tienes 3 GB de leyes y resoluciones." } },
+    { "id": "house-format", "answer": "sft", "text": { "en": "Support replies should follow Mercadito's format. You have 2,000 good replies written by the team.", "es-MX": "Las respuestas de soporte deben seguir el formato de Mercadito. Tienes 2,000 buenas respuestas escritas por el equipo." } },
+    { "id": "pairs", "answer": "dpo", "text": { "en": "Reviewers marked which of two replies they'd send for 5,000 tickets. You don't want to train a reward model.", "es-MX": "Revisores marcaron cuál de dos respuestas mandarían en 5,000 tickets. No quieres entrenar un modelo de recompensa." } },
+    { "id": "invoices", "answer": "rlvr", "text": { "en": "The model fills in invoice totals, and a script can tell whether each total is right.", "es-MX": "El modelo llena los totales de facturas y un script puede decir si cada total es correcto." } },
+    { "id": "cheaper", "answer": "distillation", "text": { "en": "A large model handles the returns desk well, but each reply costs too much. You want a small one that behaves the same.", "es-MX": "Un modelo grande atiende bien la mesa de devoluciones, pero cada respuesta cuesta demasiado. Quieres uno pequeño que se comporte igual." } },
+    { "id": "from-nothing", "answer": "pretraining", "text": { "en": "You're starting from random weights and have a few trillion tokens of the open web.", "es-MX": "Empiezas desde pesos al azar y tienes unos billones de tokens de la web abierta." } },
+    { "id": "rankings", "answer": "rlhf", "text": { "en": "People ranked four answers per prompt, and you'll train a model of their taste to steer the assistant.", "es-MX": "Personas ordenaron cuatro respuestas por prompt y vas a entrenar un modelo de su gusto para guiar al asistente." } }
+  ],
+  "readNext": ["ouyang-2022-instructgpt", "rafailov-2023-dpo", "lambert-2024-tulu3", "hinton-2015-distillation"]
+}
