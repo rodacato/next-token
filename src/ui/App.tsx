@@ -12,6 +12,7 @@ import { DuelChapter } from "./chapters/DuelChapter";
 import { EvalBuilderChapter } from "./chapters/EvalBuilderChapter";
 import { StructuredChapter } from "./chapters/StructuredChapter";
 import { ToolsChapter } from "./chapters/ToolsChapter";
+import { RagChapter } from "./chapters/RagChapter";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
@@ -74,6 +75,7 @@ function Course() {
       {chapter.kind === "duel" && <DuelChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "structured" && <StructuredChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "tools" && <ToolsChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "rag" && <RagChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "eval-builder" && <EvalBuilderChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
     </div>
   );

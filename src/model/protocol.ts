@@ -7,7 +7,8 @@ export type WorkerRequest =
   | { readonly type: "load-tokenizer"; readonly requestId: number; readonly modelId: LocalModel["id"] }
   | { readonly type: "load-model"; readonly requestId: number; readonly modelId: LocalModel["id"]; readonly device: ModelDevice }
   | { readonly type: "tokenize"; readonly requestId: number; readonly modelId: LocalModel["id"]; readonly text: string }
-  | { readonly type: "next-token"; readonly requestId: number; readonly text: string; readonly shortlist: number };
+  | { readonly type: "next-token"; readonly requestId: number; readonly text: string; readonly shortlist: number }
+  | { readonly type: "embed"; readonly requestId: number; readonly repo: string; readonly dtype: "q8"; readonly texts: readonly string[] };
 
 export type WorkerResponse =
   | { readonly type: "progress"; readonly requestId: number; readonly file: string; readonly loaded: number; readonly total: number }
@@ -21,4 +22,5 @@ export type WorkerResponse =
       readonly pieces: readonly TokenPiece[];
       readonly elapsedMs: number;
     }
+  | { readonly type: "embeddings"; readonly requestId: number; readonly vectors: readonly Float32Array[] }
   | { readonly type: "failed"; readonly requestId: number; readonly reason: string };

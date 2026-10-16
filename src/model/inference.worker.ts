@@ -2,6 +2,8 @@ import {
   AutoModelForCausalLM,
   AutoTokenizer,
   env,
+  pipeline,
+  type FeatureExtractionPipeline,
   type PreTrainedModel,
   type PreTrainedTokenizer,
   type ProgressInfo,
@@ -16,6 +18,8 @@ env.useBrowserCache = true;
 
 const tokenizers = new Map<LocalModel["id"], Promise<PreTrainedTokenizer>>();
 let loadedModel: { id: LocalModel["id"]; model: PreTrainedModel; device: ModelDevice } | undefined;
+
+const extractors = new Map<string, Promise<FeatureExtractionPipeline>>();
 
 const reply = (message: WorkerResponse, transfer: Transferable[] = []) => self.postMessage(message, { transfer });
 
@@ -90,6 +94,19 @@ function topCandidates(row: Float32Array, count: number, tokenizer: PreTrainedTo
   return ids.slice(0, count).map((tokenId) => ({ tokenId, text: tokenizer.decode([tokenId]), logit: row[tokenId] ?? -Infinity }));
 }
 
+// Embeddings run on WASM: a small encoder, and the same backend the recorded vectors came from.
+async function embed(repo: string, dtype: "q8", texts: readonly string[], requestId: number) {
+  let pending = extractors.get(repo);
+  if (!pending) {
+    pending = pipeline("feature-extraction", repo, { dtype, device: "wasm", progress_callback: forwardProgress(requestId) });
+    extractors.set(repo, pending);
+  }
+  const extract = await pending;
+  const vectors: Float32Array[] = [];
+  for (const text of texts) vectors.push(new Float32Array((await extract(text, { pooling: "mean", normalize: true })).data as Float32Array));
+  reply({ type: "embeddings", requestId, vectors }, vectors.map((v) => v.buffer));
+}
+
 self.onmessage = async (event: MessageEvent<WorkerRequest>) => {
   const request = event.data;
   try {
@@ -106,6 +123,9 @@ self.onmessage = async (event: MessageEvent<WorkerRequest>) => {
         break;
       case "next-token":
         await nextToken(request.text, request.shortlist, request.requestId);
+        break;
+      case "embed":
+        await embed(request.repo, request.dtype, request.texts, request.requestId);
         break;
     }
   } catch (error) {

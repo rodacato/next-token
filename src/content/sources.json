@@ -166,5 +166,29 @@
     "year": 2026,
     "url": "https://developers.openai.com/api/docs/guides/function-calling",
     "kind": "docs"
+  },
+  {
+    "id": "lewis-2020-rag",
+    "authors": "Lewis et al.",
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "year": 2020,
+    "url": "https://arxiv.org/abs/2005.11401",
+    "kind": "paper"
+  },
+  {
+    "id": "wang-2024-me5",
+    "authors": "Wang, Yang, Huang, Yang, Majumder, Wei",
+    "title": "Multilingual E5 Text Embeddings: A Technical Report",
+    "year": 2024,
+    "url": "https://arxiv.org/abs/2402.05672",
+    "kind": "paper"
+  },
+  {
+    "id": "anthropic-contextual-retrieval",
+    "authors": "Anthropic",
+    "title": "Introducing Contextual Retrieval",
+    "year": 2024,
+    "url": "https://www.anthropic.com/engineering/contextual-retrieval",
+    "kind": "docs"
   }
 ]

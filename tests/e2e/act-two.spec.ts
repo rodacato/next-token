@@ -109,3 +109,22 @@ test.describe("chapter 8 · tools", () => {
     await expect(page.getByTestId("advance")).toBeEnabled();
   });
 });
+
+test.describe("chapter 9 · retrieval", () => {
+  test("blind cuts lose the electronics rule; the grid shows which cut answers all three", async ({ page }) => {
+    await open(page, /^9 Retrieval/);
+    await advance(page, 1);
+    await expect(page.getByTestId("embedder-source")).toContainText("Recorded vectors · multilingual-e5-small");
+    await page.getByRole("radio", { name: /headphones 20 days ago/ }).check();
+    await page.getByRole("radio", { name: "Every 160 characters" }).check();
+    await page.getByTestId("ask").click();
+    await expect(page.getByTestId("rag-answer")).toContainText("contradicts the handbook");
+    await page.getByRole("radio", { name: "Section by section" }).check();
+    await page.getByTestId("ask").click();
+    await expect(page.getByTestId("rag-answer")).toContainText("matches the handbook");
+    await advance(page, 1);
+    await page.getByRole("radio", { name: "Section by section" }).last().check();
+    await page.getByTestId("run-grid").click();
+    await expect(page.getByTestId("rag-finding")).toContainText("As you predicted. All three right: Section by section.");
+  });
+});

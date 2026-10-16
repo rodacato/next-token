@@ -37,6 +37,18 @@ for (const [locale, suffix] of [["en", "en"], ["es-MX", "es"]] as const) {
   await page.getByTestId("hand-back").waitFor({ state: "detached" });
   await shot(page, `ch8-docket-${suffix}.png`);
 
+  await openChapter(page, 9);
+  await advance(page);
+  await page.getByTestId("embedder-source").filter({ hasText: "e5" }).waitFor();
+  await page.getByTestId("ask").click();
+  await page.getByTestId("rag-answer").waitFor();
+  await shot(page, `ch9-case-${suffix}.png`);
+  await advance(page);
+  await page.locator('input[name="rag-predict"]').nth(2).check();
+  await page.getByTestId("run-grid").click();
+  await page.getByTestId("rag-finding").waitFor();
+  await page.getByTestId("measure").screenshot({ path: join(out, `ch9-grid-${suffix}.png`) });
+
   await page.close();
 }
 

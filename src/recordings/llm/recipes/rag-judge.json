@@ -1,0 +1,1628 @@
+{
+  "id": "rag-judge",
+  "purpose": "Chapter rag: a judge reads each recorded answer against the answer key.",
+  "model": "haiku",
+  "repeats": 1,
+  "requests": [
+    {
+      "id": "judge--en--headphones--none",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: I don't know whether you can return these headphones, because the handbook excerpts I have don't cover return policies. Please contact Mercadito customer support for help with your return.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--fixed-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: Yes, headphones are covered by the 30-day return window from delivery, so your order at 20 days qualifies for a full refund. You can start the return from My orders.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--fixed-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: Yes, headphones are covered by the 30-day return window, so at 20 days you can still return them for a full refund. Start the return from My orders.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--fixed-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: Yes, headphones are covered by the 30-day return window from delivery, and you're at day 20, so you can start the return from My orders. The handbook excerpts don't say whether an unopened box affects eligibility, so the return process may have condition requirements not shown here.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--sentence-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: I don't know. The handbook excerpt I have covers only \"Return shipping\" and doesn't say whether sealed items can be returned after 20 days.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--sentence-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: No, returns for sealed items are only accepted within 15 days of delivery, and your headphones are past that window at 20 days. I don't know of any exception in the handbook excerpts I have, so you may want to check with Mercadito support about other options.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--sentence-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: Based on the handbook excerpts, the shorter 15-day window (with an intact seal) would apply to your headphones, and you're at 20 days, so you likely can't return them under that rule. However, the excerpts don't state which items the shorter window covers, so I can't confirm whether the 30-day general return window applies instead.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--section-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: No, electronics like headphones can only be returned within 15 days of delivery, and yours arrived 20 days ago, so the return window has passed. The handbook excerpt doesn't describe any exceptions, so I can't say whether an exception applies to your case.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--section-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: No, headphones have a 15-day return window from delivery, and you received yours 20 days ago, so they're outside that window even though the seal is intact. The general 30-day return policy doesn't apply to electronics.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--headphones--section-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I got headphones 20 days ago and the box is still sealed. Can I return them?\nReference answer: No. Headphones are electronics, which have a 15-day window; 20 days is too late.\nSupport reply: No, headphones are electronics, and they must be returned within 15 days of delivery with the seal intact, so a 20-day-old order falls outside that window. If the headphones arrived damaged, you could still report it within 7 days with a photo for a refund or replacement regardless of the return window.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--none",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: I don't know where your refund would go, because the handbook excerpts I have don't cover cash on delivery refunds. Please contact Mercadito customer support for help with your refund.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--fixed-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Cash on delivery orders are refunded to your Mercadito balance instead of your original payment method. The handbook excerpt doesn't say anything more about how the balance can be used or withdrawn.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--fixed-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Cash on delivery orders are refunded to your Mercadito balance instead of a payment method, and the refund typically takes 5 to 10 business days. The handbook excerpts don't say how long the balance credit takes specifically, so I can't confirm that timing for your order.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--fixed-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Cash on delivery orders are refunded to your Mercadito balance rather than to a bank or card. The handbook excerpts don't say how long this takes.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--sentence-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Cash on delivery refunds go to your Mercadito balance rather than back to you as cash or to your original payment method. The handbook excerpt doesn't say how to withdraw or use that balance, so I don't know those details.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--sentence-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Refunds for cash on delivery orders go to your Mercadito balance instead of a payment method. The handbook excerpts don't give a timeline for balance refunds.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--sentence-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Cash on delivery orders are refunded to your Mercadito balance, not to a original payment method. This means the refund will be credited to your Mercadito account balance instead of being returned to a card or bank.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--section-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Cash on delivery refunds go to your Mercadito balance rather than back to a original payment method, since you didn't pay by card or another electronic method. The handbook doesn't specify the exact timing for balance refunds, only that the 5 to 10 business day window applies to original payment method refunds.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--section-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Cash on delivery refunds go to your Mercadito balance instead of a payment method. The handbook gives a refund timeframe of 5 to 10 business days but doesn't say whether that applies to balance refunds.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--cash-refund--section-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: I paid cash on delivery. Where does my refund go?\nReference answer: To the customer's Mercadito balance.\nSupport reply: Cash on delivery refunds go to your Mercadito balance rather than the original payment method, and they arrive within 5 to 10 business days. You can see your refund status from My orders.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--none",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: I don't have any handbook information about return shipping costs for damaged items, so I can't say whether you'd pay for the return label. Please contact Mercadito customer support, who can confirm the policy and how to handle your broken blender.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--fixed-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: No, the handbook excerpt says the 99 MXN label fee applies to returns other than damaged or wrong items, so a broken blender should not be charged. The excerpt is cut off at that point, so confirm the full damaged-item policy with support if you need certainty.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--fixed-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: No, you shouldn't have to pay for the return label. The handbook charges 99 MXN only for returns that aren't for damaged or wrong items, and those are refunded or replaced regardless of the return window.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--fixed-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: No, return shipping is free for damaged items, so you won't pay for the label. Damaged items are refunded or replaced regardless of the return window, and the handbook says to report the damage within 7 days with a photo.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--sentence-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: The handbook excerpt I have only covers standard returns, where the label costs 99 MXN and is deducted from your refund. It doesn't say how damaged items are handled, so I don't know whether you'd pay for a broken blender's return label.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--sentence-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: The handbook excerpts don't say whether a broken item qualifies for a free return label. They only state that for other returns, the label costs 99 MXN and is deducted from the refund.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--sentence-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: The handbook excerpts don't say whether a broken item qualifies for a free return label. They only state that for \"any other return,\" the label costs 99 MXN, deducted from the refund, so I don't know whether that fee applies to your blender.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--section-1",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: No, you don't pay for the return label. Return shipping is free for damaged or wrong items, so a broken blender qualifies.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--section-2",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: No, you don't pay for the return label because return shipping is free for damaged items. Report the damage within 7 days with a photo, and you'll be refunded or receive a replacement regardless of the return window.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--en--broken-shipping--section-3",
+      "locale": "en",
+      "system": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "prompt": "Question: My blender arrived broken. Do I pay for the return label?\nReference answer: No. Return shipping is free for damaged items.\nSupport reply: No, you don't pay for the return label. Return shipping is free for damaged or wrong items, and you should report the damage within 7 days with a photo.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--none",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: Lo siento, no tengo el manual disponible para responder tu pregunta sobre la devolución de los audífonos. Te recomiendo contactar directamente al equipo de atención al cliente de Mercadito para confirmar las condiciones de devolución.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--fixed-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: No puedo confirmar si puedes devolver los audífonos. Los extractos no indican el plazo para devoluciones de artículos sin daños; solo dicen que los artículos dañados deben reportarse dentro de los 7 días con una foto para recibir reembolso.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--fixed-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: No tengo suficiente información para confirmar si puedes devolver los audífonos. Los extractos mencionan que el sello debe estar intacto, pero no indican el plazo de devolución para artículos sin dañar, y el plazo de 7 días que aparece es solo para reportar artículos dañados.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--fixed-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: Sí, puedes devolverlos: la mayoría de los artículos se pueden devolver dentro de los 30 días posteriores a la entrega, con reembolso completo, y como llevas 20 días y la caja sigue sellada, cumples las condiciones. Inicia la devolución según el proceso indicado en el manual.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--sentence-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: Según el manual, puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega para recibir el reembolso completo. Como recibiste los audífonos hace 20 días, estarías dentro de ese plazo, aunque el extracto no especifica si los productos sin abrir o con el sello intacto tienen alguna condición adicional.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--sentence-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: Sí, según el manual puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo, y tus audífonos están dentro de ese plazo. Los extractos no indican si los audífonos tienen alguna excepción, así que te recomiendo confirmarlo con el equipo de soporte.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--sentence-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: Según el manual, las devoluciones de este tipo de producto tienen un plazo de 15 días desde la entrega, y el sello debe estar intacto. Como recibiste los audífonos hace 20 días, ya superaste ese plazo, así que no podrás devolverlos.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--section-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: No, según el manual la electrónica (como audífonos) tiene un plazo de devolución de 15 días desde la entrega, y como pasaron 20 días, ya no es posible devolverlos. El sello intacto es otro requisito, pero el plazo ya venció.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--section-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: No, ya no puedes devolverlos: los audífonos son electrónica, cuyo plazo de devolución es de 15 días desde la entrega, y pasaron 20 días. La regla de 30 días aplica a la mayoría de los artículos, pero no a esta categoría.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--headphones--section-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?\nRespuesta de referencia: No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde.\nRespuesta de soporte: Según el manual, la electrónica como los audífonos tiene un plazo de devolución de 15 días desde la entrega, y el sello debe estar intacto. Como ya pasaron 20 días desde que los recibiste, ya no podrías devolverlos por la vía normal, aunque la caja siga sellada.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--none",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Lo siento, no tengo información en el manual sobre reembolsos para pagos contra entrega, así que no puedo confirmar a dónde llegaría tu reembolso. Te recomiendo contactar directamente al equipo de atención de Mercadito para que te den una respuesta precisa.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--fixed-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Los pagos contra entrega se reembolsan a tu saldo de Mercadito. El manual no indica plazos adicionales para este reembolso.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--fixed-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Según el manual, los reembolsos de pedidos pagados contra entrega se acreditan a tu saldo de Mercadito. Los extractos no indican si también puedes recibir el dinero en otro medio.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--fixed-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Si pagaste contra entrega, tu reembolso se acredita a tu saldo de Mercadito. Los reembolsos a método de pago original tardan de 5 a 10 días hábiles, pero ese plazo no aplica a los pagos contra entrega.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--sentence-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Según el manual, los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito. No tengo más detalles sobre el proceso, así que no puedo confirmar plazos ni pasos adicionales.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--sentence-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Según el manual, los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito. Ese saldo es el destino del reembolso para este tipo de pago, no el método de pago original.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--sentence-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Según el manual, los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito, no al método de pago original. Ese reembolso tarda en procesarse según la sección de tiempos del reembolso, que indica 5 a 10 días hábiles para los reembolsos al método de pago original.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--section-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Según el manual, los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito, no a un método de pago externo. El tiempo de ese reembolso no se especifica en los extractos que tengo.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--section-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Si pagaste contra entrega, el reembolso no regresa a un método de pago original: se acredita a tu saldo de Mercadito, en un plazo de 5 a 10 días hábiles. Si además recibiste un artículo dañado, repórtalo dentro de los 7 días con una foto para que se reembolse o reemplace.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--cash-refund--section-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?\nRespuesta de referencia: Al saldo de Mercadito del cliente.\nRespuesta de soporte: Los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito, no al método de pago original. El reembolso debería estar disponible en tu cuenta de Mercadito en el plazo de 5 a 10 días hábiles.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--none",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: Lo siento, tu licuadora llegó dañada. No tengo información en el manual de Mercadito sobre quién paga la guía de devolución, así que no puedo confirmarlo; te recomiendo contactar a atención al cliente de Mercadito para revisar tu caso.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--fixed-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: El fragmento del manual está cortado. Solo indica que, para \"cualquier otra devolución\", la guía cuesta 99 MXN y se descuenta del reembolso, pero no dice si los productos dañados están exentos, así que no puedo confirmar si pagarías la guía en tu caso.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--fixed-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: El extracto dice que la guía cuesta 99 MXN y se descuenta del reembolso en \"cualquier otra devolución\", pero el inicio de esa frase está cortado, así que no puedo confirmar si los artículos dañados están exentos. Te recomiendo contactar a Mercadito para que te confirmen si en tu caso la guía es gratuita.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--fixed-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: No, si la licuadora llegó dañada, el envío de devolución es gratis. El manual indica que esto aplica a artículos dañados o equivocados, aunque el extracto está cortado, así que no puedo confirmar los pasos exactos para solicitarlo.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--sentence-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: Según el manual, las devoluciones generales cuestan 99 MXN de guía, que se descuentan del reembolso. El extracto no dice qué pasa con productos que llegan rotos, así que no puedo confirmar si aplica otra regla para ese caso.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--sentence-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: Según el manual, la guía de devolución para cualquier devolución que no sea la estándar cuesta 99 MXN y se descuenta de tu reembolso. El manual no indica si aplica una excepción para productos que llegan rotos, así que no puedo confirmar si en tu caso la guía es gratuita.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--sentence-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: El manual solo indica que, para devoluciones distintas a ciertos casos no especificados, la guía cuesta 99 MXN y se descuenta del reembolso, pero no dice si una licuadora rota entra en esa categoría, así que no puedo confirmarte si pagarías la guía. Para iniciar la devolución, ve a Mis pedidos.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--section-1",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: No, no necesariamente. Si la licuadora llegó dañada, el envío de devolución es gratis; la guía de 99 MXN solo aplica a devoluciones por otros motivos, y se descuenta del reembolso.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--section-2",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: No, según el extracto [1], el envío de devolución es gratis si el artículo llega dañado o equivocado, como tu licuadora rota. Por lo tanto, no tienes que pagar la guía de devolución.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "judge--es-MX--broken-shipping--section-3",
+      "locale": "es-MX",
+      "system": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo.",
+      "prompt": "Pregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?\nRespuesta de referencia: No. El envío de devolución es gratis para artículos dañados.\nRespuesta de soporte: Depende de la causa. Si la licuadora llegó dañada o no es el artículo que pediste, el envío de devolución es gratis. En cualquier otro caso, la guía cuesta 99 MXN y se descuenta de tu reembolso.",
+      "jsonSchema": {
+        "type": "object",
+        "properties": {
+          "quote": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "right",
+              "wrong",
+              "unsure"
+            ]
+          }
+        },
+        "required": [
+          "quote",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}
