@@ -58,6 +58,13 @@
         "en": "Evals",
         "es-MX": "Evaluaciones"
       }
+    },
+    {
+      "id": "structured-output",
+      "title": {
+        "en": "Structured output",
+        "es-MX": "Salida estructurada"
+      }
     }
   ],
   "capabilities": [

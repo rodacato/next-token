@@ -59,7 +59,7 @@ async function record(model: string, request: RecipeRequest, attempt: number): P
     model: Object.keys(result.modelUsage)[0] ?? model,
     system: request.system,
     prompt: request.prompt,
-    output: result.result,
+    output: result.structured_output === undefined ? result.result : JSON.stringify(result.structured_output),
     ...(result.structured_output === undefined ? {} : { structured: result.structured_output }),
     usage: {
       inputTokens: result.usage.input_tokens,

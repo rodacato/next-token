@@ -1,0 +1,62 @@
+{
+  "id": "structured-output-retry",
+  "purpose": "Chapter structured-output: one retry for every rejected sheet.",
+  "model": "haiku",
+  "repeats": 1,
+  "requests": [
+    {
+      "id": "retry--asked--wrong-mugs--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order #48870: you sent me two blue mugs instead of the red ones. Please exchange them.\n\nYour previous reply could not be used: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nPrevious reply:\n```json\n{\n  \"orderId\": \"48870\",\n  \"items\": [\n    {\n      \"name\": \"Red mug\",\n      \"quantity\": 2\n    }\n  ],\n  \"refundRequested\": false,\n  \"reason\": \"wrong-item\"\n}\n```\n\nReply again with only the JSON object."
+    },
+    {
+      "id": "retry--asked--late-coffee--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "My order 51002 (3 bags of coffee) still hasn't arrived after two weeks. Cancel it and refund me.\n\nYour previous reply could not be used: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nPrevious reply:\n```json\n{\n  \"orderId\": \"51002\",\n  \"items\": [\n    {\n      \"name\": \"Coffee\",\n      \"quantity\": 3\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"late\"\n}\n```\n\nReply again with only the JSON object."
+    },
+    {
+      "id": "retry--asked--late-coffee--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Mi pedido 51002 (3 bolsas de café) sigue sin llegar después de dos semanas. Cancélenlo y reembólsenme.\n\nTu respuesta anterior no se pudo usar: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nRespuesta anterior:\n```json\n{\n  \"orderId\": \"51002\",\n  \"items\": [\n    {\n      \"name\": \"Bolsas de café\",\n      \"quantity\": 3\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"late\"\n}\n```\n\nResponde de nuevo solo con el objeto JSON."
+    },
+    {
+      "id": "retry--asked--kettle-changed-mind--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "I changed my mind about the kettle in order 49953. Can I return it for a refund?\n\nYour previous reply could not be used: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nPrevious reply:\n```json\n{\n  \"orderId\": \"49953\",\n  \"items\": [\n    {\n      \"name\": \"kettle\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"changed-mind\"\n}\n```\n\nReply again with only the JSON object."
+    },
+    {
+      "id": "retry--asked--kettle-changed-mind--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Cambié de opinión sobre la tetera del pedido 49953. ¿La puedo devolver para que me reembolsen?\n\nTu respuesta anterior no se pudo usar: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nRespuesta anterior:\n```json\n{\n  \"orderId\": \"49953\",\n  \"items\": [\n    {\n      \"name\": \"tetera\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"changed-mind\"\n}\n```\n\nResponde de nuevo solo con el objeto JSON."
+    },
+    {
+      "id": "retry--asked--happy-toaster--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Order 50540 is great, thanks! The toaster works perfectly. No need to reply.\n\nYour previous reply could not be used: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nPrevious reply:\n```json\n{\n  \"orderId\": \"50540\",\n  \"items\": [\n    { \"name\": \"toaster\", \"quantity\": 1 }\n  ],\n  \"refundRequested\": false,\n  \"reason\": \"other\"\n}\n```\n\nReply again with only the JSON object."
+    },
+    {
+      "id": "retry--asked--happy-toaster--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "¡El pedido 50540 está perfecto, gracias! El tostador funciona de maravilla. No hace falta responder.\n\nTu respuesta anterior no se pudo usar: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nRespuesta anterior:\n```json\n{\n  \"orderId\": \"50540\",\n  \"items\": [\n    {\n      \"name\": \"tostador\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": false,\n  \"reason\": \"other\"\n}\n```\n\nResponde de nuevo solo con el objeto JSON."
+    },
+    {
+      "id": "retry--asked--two-numbers--en",
+      "locale": "en",
+      "system": "You turn customer emails into a job sheet for Mercadito's returns desk. Reply with a JSON object with these fields: orderId (the five-digit order number, as a string), items (a list of objects with name and quantity), refundRequested (true or false), reason (one of: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "Invoice 77-310 says order 50777 had 2 pans, but one came dented. Refund the dented one, please.\n\nYour previous reply could not be used: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nPrevious reply:\n```json\n{\n  \"orderId\": \"50777\",\n  \"items\": [\n    {\n      \"name\": \"pan\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"damaged\"\n}\n```\n\nReply again with only the JSON object."
+    },
+    {
+      "id": "retry--asked--two-numbers--es-MX",
+      "locale": "es-MX",
+      "system": "Conviertes los correos de clientes en una hoja de trabajo para el área de devoluciones de Mercadito. Responde con un objeto JSON con estos campos: orderId (el número de pedido de cinco dígitos, como texto), items (una lista de objetos con name y quantity), refundRequested (true o false), reason (uno de: damaged, wrong-item, late, changed-mind, other).",
+      "prompt": "La factura 77-310 dice que el pedido 50777 traía 2 sartenes, pero uno llegó abollado. Reembólsenme el abollado, por favor.\n\nTu respuesta anterior no se pudo usar: not valid JSON: the sheet is wrapped in a Markdown code fence\n\nRespuesta anterior:\n```json\n{\n  \"orderId\": \"50777\",\n  \"items\": [\n    {\n      \"name\": \"Sartén\",\n      \"quantity\": 1\n    }\n  ],\n  \"refundRequested\": true,\n  \"reason\": \"damaged\"\n}\n```\n\nResponde de nuevo solo con el objeto JSON."
+    }
+  ]
+}

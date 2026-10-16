@@ -4,6 +4,8 @@ import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { judgeRequest } from "../src/evals/judge.ts";
 import { fillTemplate } from "../src/evals/template.ts";
+import { jsonSchemaFor, schemas } from "../src/evals/schemas.ts";
+import { checkSheet, retryPrompt } from "../src/evals/structured.ts";
 
 type PerLocale = Record<string, string>;
 type Contender = { id: string; system: PerLocale; template: PerLocale };
@@ -52,4 +54,36 @@ for (const file of readdirSync(join(root, "src", "content", "duels"))) {
     return { id: `judge--${completion.requestId}`, locale: completion.locale, system, prompt };
   });
   write(judge.judgeRecipe, `LLM judge for duel ${duel.id}, on the recorded outputs.`, judgeRequests);
+}
+
+// Structured output: each case asked nicely (prompt only) and constrained (JSON Schema), plus retries.
+type StructuredChapter = { id: string; kind: string; schemaId: string; system: PerLocale; template: PerLocale; retry: PerLocale; cases: EvalCase[] };
+for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
+  const chapter = read<StructuredChapter>(join(root, "src", "content", "chapters", file));
+  if (chapter.kind !== "structured") continue;
+  const schema = schemas[chapter.schemaId];
+  if (!schema) throw new Error(`Unknown schema ${chapter.schemaId}`);
+  const jsonSchema = jsonSchemaFor(schema);
+  const requests = chapter.cases.flatMap((c) =>
+    locales.flatMap((locale) => {
+      const base = { locale, system: chapter.system[locale] ?? "", prompt: fillTemplate(chapter.template[locale] ?? "", c.input[locale] ?? "") };
+      return [
+        { id: `asked--${c.id}--${locale}`, ...base },
+        { id: `constrained--${c.id}--${locale}`, ...base, jsonSchema },
+      ];
+    }),
+  );
+  write(chapter.id, `Chapter ${chapter.id}: asked nicely vs constrained by JSON Schema.`, requests);
+
+  const recorded = join(root, "src", "recordings", "llm", `${chapter.id}.json`);
+  if (!existsSync(recorded)) continue;
+  const outputs = read<{ completions: { requestId: string; locale: string; output: string }[] }>(recorded).completions;
+  const retries = outputs.flatMap((completion) => {
+    const check = checkSheet(completion.output, schema);
+    if (check.ok || !completion.requestId.startsWith("asked--")) return [];
+    const caseId = completion.requestId.split("--")[1] ?? "";
+    const input = chapter.cases.find((c) => c.id === caseId)?.input[completion.locale] ?? "";
+    return [{ id: `retry--${completion.requestId}`, locale: completion.locale, system: chapter.system[completion.locale] ?? "", prompt: retryPrompt(chapter.retry[completion.locale] ?? "", input, check.error, completion.output) }];
+  });
+  if (retries.length) write(`${chapter.id}-retry`, `Chapter ${chapter.id}: one retry for every rejected sheet.`, retries);
 }

@@ -128,6 +128,22 @@
     "kind": "paper"
   },
   {
+    "id": "anthropic-structured-outputs",
+    "authors": "Anthropic",
+    "title": "Structured outputs",
+    "year": 2026,
+    "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+    "kind": "docs"
+  },
+  {
+    "id": "zod-json-schema",
+    "authors": "Zod",
+    "title": "JSON Schema",
+    "year": 2026,
+    "url": "https://zod.dev/json-schema",
+    "kind": "docs"
+  },
+  {
     "id": "vaswani-2017",
     "authors": "Vaswani et al.",
     "title": "Attention Is All You Need",

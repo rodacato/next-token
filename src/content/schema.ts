@@ -89,7 +89,21 @@ export const duelChapterSchema = z.object({ ...chapterBase, kind: z.literal("due
 
 export const evalBuilderChapterSchema = z.object({ ...chapterBase, kind: z.literal("eval-builder"), duelId: z.string(), minCases: z.number().int().positive() });
 
+export const structuredChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("structured"),
+  schemaId: z.string(),
+  maxTokens: z.number().int().positive(),
+  system: perLocale,
+  template: perLocale,
+  retry: perLocale,
+  cases: z
+    .array(z.object({ id: z.string(), input: perLocale, expected: z.object({ orderId: z.string(), refundRequested: z.boolean(), reason: z.string() }) }))
+    .min(1),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  structuredChapterSchema,
   tokensChapterSchema,
   nextTokenChapterSchema,
   stickChapterSchema,
@@ -107,4 +121,5 @@ export type FabricationChapter = z.infer<typeof fabricationChapterSchema>;
 export type ConversationTurn = z.infer<typeof turnSchema>;
 export type Duel = z.infer<typeof duelSchema>;
 export type DuelChapter = z.infer<typeof duelChapterSchema>;
+export type StructuredChapter = z.infer<typeof structuredChapterSchema>;
 export type EvalBuilderChapter = z.infer<typeof evalBuilderChapterSchema>;

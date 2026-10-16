@@ -328,6 +328,34 @@
         },
         "voice": "Sin casos de prueba. Estás adivinando."
       }
+    },
+    "structured-output": {
+      "title": "Salida estructurada",
+      "kicker": "Esquemas y validación",
+      "problem": {
+        "heading": "La prensa se atoró con un bloque de código.",
+        "body": "El área de devoluciones de Mercadito convertía correos de clientes en hojas de trabajo con un modelo. El prompt decía 'responde con un objeto JSON'. Casi todas las mañanas el importador se detenía en la primera hoja: el JSON venía envuelto en un bloque de código de Markdown.",
+        "task": "Mira qué tan seguido pasa, cuánto cuesta un reintento y qué cambia un esquema."
+      },
+      "bench": {
+        "heading": "La prensa solo acepta lo que cabe.",
+        "body": "La prensa es el validador: una hoja debe leerse como JSON y coincidir con el esquema, campo por campo. Mete los mismos seis correos pidiéndolos por las buenas y luego restringidos por el esquema.",
+        "observe": "Lee por qué se rechazó cada hoja y qué devolvió el reintento."
+      },
+      "measure": {
+        "heading": "Cuenta los atascos.",
+        "body": "Primero predice, luego corre los dos modos y compara la aceptación al primer intento, los reintentos, los campos equivocados y las llamadas extra."
+      },
+      "debrief": {
+        "heading": "Valida cada hoja. Restringe cuando puedas.",
+        "points": {
+          "one": "Un prompt que describe un formato es una petición, no una garantía. Lee y valida cada respuesta antes de usarla.",
+          "two": "Manda salidas estructuradas (un JSON Schema) cuando tu proveedor las soporte: el modelo solo puede emitir texto que quepa.",
+          "three": "Un reintento con el motivo del validador suele arreglar una hoja rechazada, al precio de otra llamada, más tokens y más latencia.",
+          "four": "Válida no es correcta. Una hoja puede cumplir el esquema y aun así traer el motivo o el número de pedido equivocado; para eso están las evaluaciones."
+        },
+        "voice": "La prensa rechaza una hoja mal formada. No puede decirte que la hoja está equivocada."
+      }
     }
   },
   "readNext": {
@@ -349,7 +377,9 @@
       "openai-prompting": "La guía de OpenAI sobre el mismo oficio; casi todo el consejo aplica entre modelos.",
       "husain-evals": "Por qué las evaluaciones van primero y cómo construirlas a partir de fallas reales.",
       "huyen-ai-engineering": "Un libro completo sobre construir sobre modelos fundacionales, con una sección larga sobre evaluación.",
-      "zheng-2023-judge": "Mide qué tanto coinciden los jueces LLM con las personas y sus sesgos (posición, largo, autopreferencia)."
+      "zheng-2023-judge": "Mide qué tanto coinciden los jueces LLM con las personas y sus sesgos (posición, largo, autopreferencia).",
+      "anthropic-structured-outputs": "Cómo restringir la salida de Claude a un JSON Schema y qué partes del esquema se soportan.",
+      "zod-json-schema": "Cómo convertir esquemas de Zod a JSON Schema, el puente que se usa en este banco."
     }
   },
   "units": {
@@ -514,5 +544,35 @@
     "judgeAgreement": "El juez aprobó {count} de las {total} descripciones que inventan afirmaciones.",
     "judgeClean": "El juez reprobó todas las descripciones que inventan afirmaciones.",
     "pickCase": "Elige al menos {count} casos."
+  },
+  "structured": {
+    "prompt": "Prompt",
+    "schema": "Esquema de la hoja de trabajo (JSON Schema, generado desde Zod)",
+    "mode": "Cómo se pide la hoja",
+    "modes": {
+      "asked": "Pedida por las buenas",
+      "constrained": "Restringida por esquema"
+    },
+    "modeNotes": {
+      "asked": "El prompt describe los campos. Nada impide que el modelo agregue un bloque de código, un comentario o le falte un campo.",
+      "constrained": "El esquema viaja con la solicitud; el modelo solo puede producir texto que quepa en él."
+    },
+    "feed": "Meter las hojas a la prensa",
+    "feeding": "Prensando…",
+    "retried": "Devuelta una vez con el motivo de la prensa",
+    "accepted": "aceptada",
+    "rejected": "rechazada",
+    "wrongFields": "Aceptada, pero equivocada: {fields}",
+    "predict": "Pidiéndolas por las buenas, ¿cuántas de las {total} hojas aceptará la prensa al primer intento?",
+    "runBoth": "Mete las hojas en los dos modos para comparar.",
+    "predicted": "Predijiste {guess}; la prensa aceptó {actual} de {total} al primer intento.",
+    "tally": {
+      "mode": "modo",
+      "firstTry": "primer intento",
+      "afterRetry": "tras un reintento",
+      "right": "campos correctos",
+      "calls": "llamadas",
+      "tokens": "tokens"
+    }
   }
 }
