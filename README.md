@@ -1,5 +1,11 @@
 # Next Token
 
+[![CI · Test](https://github.com/rodacato/next-token/actions/workflows/ci.yml/badge.svg)](https://github.com/rodacato/next-token/actions/workflows/ci.yml)
+[![Site · Pages](https://github.com/rodacato/next-token/actions/workflows/site-pages.yml/badge.svg)](https://github.com/rodacato/next-token/actions/workflows/site-pages.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+**Play it in your browser: [rodacato.github.io/next-token](https://rodacato.github.io/next-token/)**
+
 An interactive course on large language models, from the inside out, set in a
 letterpress print shop where every token is set by hand.
 
@@ -31,11 +37,13 @@ fan replays recorded runs of the same model, labeled with model and date.
 
 ```bash
 npm run check
+npm run test:e2e:smoke
 npm run test:e2e
 ```
 
 `check` runs the typecheck, lint, unit tests and the i18n key check. The
 end-to-end tests run against recorded runs, so they need no model download.
+Pull requests run the `@smoke` test; the full suite runs nightly and on demand.
 
 ## Recording runs
 

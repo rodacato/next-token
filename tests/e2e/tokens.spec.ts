@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("chapter 1 · sorts", () => {
-  test("breaks typed copy into sorts and measures the Spanish premium", async ({ page }) => {
+  test("breaks typed copy into sorts and measures the Spanish premium", { tag: "@smoke" }, async ({ page }) => {
     await page.goto("./?compositor=recorded");
     await expect(page.getByRole("heading", { name: "The bill went up in Spanish." })).toBeVisible();
 
