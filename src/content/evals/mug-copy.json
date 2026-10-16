@@ -1,0 +1,222 @@
+{
+  "id": "mug-copy",
+  "cases": [
+    {
+      "id": "stoneware-350",
+      "input": {
+        "en": "Product: Talavera-blue mug. Material: stoneware. Capacity: 350 ml. Care: hand wash only. Not microwave safe.",
+        "es-MX": "Producto: taza azul talavera. Material: gres. Capacidad: 350 ml. Cuidado: lavar a mano. No apta para microondas."
+      },
+      "mustMention": {
+        "en": [
+          "stoneware",
+          "350 ml"
+        ],
+        "es-MX": [
+          "gres",
+          "350 ml"
+        ]
+      },
+      "mustNotMention": {
+        "en": [
+          "dishwasher safe",
+          "microwave safe",
+          "handmade",
+          "eco"
+        ],
+        "es-MX": [
+          "lavavajillas",
+          "apta para microondas",
+          "hecha a mano",
+          "ecológic"
+        ]
+      }
+    },
+    {
+      "id": "porcelain-250",
+      "input": {
+        "en": "Product: white espresso cup. Material: porcelain. Capacity: 250 ml. Care: dishwasher safe. Microwave safe.",
+        "es-MX": "Producto: taza blanca para espresso. Material: porcelana. Capacidad: 250 ml. Cuidado: apta para lavavajillas. Apta para microondas."
+      },
+      "mustMention": {
+        "en": [
+          "porcelain",
+          "250 ml"
+        ],
+        "es-MX": [
+          "porcelana",
+          "250 ml"
+        ]
+      },
+      "mustNotMention": {
+        "en": [
+          "handmade",
+          "eco",
+          "insulated"
+        ],
+        "es-MX": [
+          "hecha a mano",
+          "ecológic",
+          "térmic"
+        ]
+      }
+    },
+    {
+      "id": "enamel-400",
+      "input": {
+        "en": "Product: camping mug. Material: enamelled steel. Capacity: 400 ml. Care: hand wash only. Not microwave safe.",
+        "es-MX": "Producto: taza de campismo. Material: acero esmaltado. Capacidad: 400 ml. Cuidado: lavar a mano. No apta para microondas."
+      },
+      "mustMention": {
+        "en": [
+          "steel",
+          "400 ml"
+        ],
+        "es-MX": [
+          "acero",
+          "400 ml"
+        ]
+      },
+      "mustNotMention": {
+        "en": [
+          "dishwasher safe",
+          "microwave safe",
+          "insulated",
+          "handmade"
+        ],
+        "es-MX": [
+          "lavavajillas",
+          "apta para microondas",
+          "térmic",
+          "hecha a mano"
+        ]
+      }
+    },
+    {
+      "id": "barro-300",
+      "input": {
+        "en": "Product: clay mug from Oaxaca. Material: clay (barro), handmade by artisans. Capacity: 300 ml. Care: hand wash only. Not microwave safe.",
+        "es-MX": "Producto: taza de barro de Oaxaca. Material: barro, hecha a mano por artesanos. Capacidad: 300 ml. Cuidado: lavar a mano. No apta para microondas."
+      },
+      "mustMention": {
+        "en": [
+          "clay",
+          "300 ml"
+        ],
+        "es-MX": [
+          "barro",
+          "300 ml"
+        ]
+      },
+      "mustNotMention": {
+        "en": [
+          "dishwasher safe",
+          "microwave safe",
+          "lead-free"
+        ],
+        "es-MX": [
+          "lavavajillas",
+          "apta para microondas",
+          "libre de plomo"
+        ]
+      }
+    },
+    {
+      "id": "glass-450",
+      "input": {
+        "en": "Product: double-wall glass mug. Material: borosilicate glass. Capacity: 450 ml. Care: dishwasher safe. Not microwave safe.",
+        "es-MX": "Producto: taza de vidrio de doble pared. Material: vidrio borosilicato. Capacidad: 450 ml. Cuidado: apta para lavavajillas. No apta para microondas."
+      },
+      "mustMention": {
+        "en": [
+          "glass",
+          "450 ml"
+        ],
+        "es-MX": [
+          "vidrio",
+          "450 ml"
+        ]
+      },
+      "mustNotMention": {
+        "en": [
+          "microwave safe",
+          "handmade",
+          "eco"
+        ],
+        "es-MX": [
+          "apta para microondas",
+          "hecha a mano",
+          "ecológic"
+        ]
+      }
+    },
+    {
+      "id": "bamboo-320",
+      "input": {
+        "en": "Product: travel mug. Material: bamboo fibre with a silicone lid. Capacity: 320 ml. Care: hand wash only. Not microwave safe.",
+        "es-MX": "Producto: taza de viaje. Material: fibra de bambú con tapa de silicón. Capacidad: 320 ml. Cuidado: lavar a mano. No apta para microondas."
+      },
+      "mustMention": {
+        "en": [
+          "bamboo",
+          "320 ml"
+        ],
+        "es-MX": [
+          "bambú",
+          "320 ml"
+        ]
+      },
+      "mustNotMention": {
+        "en": [
+          "dishwasher safe",
+          "microwave safe",
+          "biodegradable",
+          "leak-proof"
+        ],
+        "es-MX": [
+          "lavavajillas",
+          "apta para microondas",
+          "biodegradable",
+          "antiderrames"
+        ]
+      }
+    }
+  ],
+  "graders": [
+    {
+      "id": "length",
+      "kind": "max-words",
+      "max": 60
+    },
+    {
+      "id": "facts-present",
+      "kind": "case-facts",
+      "check": "must-mention"
+    },
+    {
+      "id": "no-invented-claims",
+      "kind": "case-facts",
+      "check": "must-not-mention"
+    },
+    {
+      "id": "judge",
+      "kind": "llm-judge",
+      "judgeRecipe": "mug-judge",
+      "rubric": {
+        "en": "You are reviewing a product description for an online shop. Is it good enough to publish? Answer PASS or FAIL on the first line, then one short sentence explaining why.",
+        "es-MX": "Estás revisando la descripción de un producto para una tienda en línea. ¿Es lo bastante buena para publicarse? Responde PASS o FAIL en la primera línea y luego una oración corta que explique por qué."
+      },
+      "expects": "pass",
+      "labels": {
+        "input": {
+          "en": "Spec sheet",
+          "es-MX": "Ficha técnica"
+        },
+        "output": {
+          "en": "Description",
+          "es-MX": "Descripción"
+        }
+      }
+    }
+  ]
+}

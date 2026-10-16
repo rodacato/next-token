@@ -1,0 +1,152 @@
+{
+  "id": "duel-mug-copy",
+  "purpose": "Duel mug-copy: every contender on every case of mug-copy.",
+  "model": "haiku",
+  "repeats": 1,
+  "requests": [
+    {
+      "id": "spec--stoneware-350--en",
+      "locale": "en",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: Talavera-blue mug. Material: stoneware. Capacity: 350 ml. Care: hand wash only. Not microwave safe."
+    },
+    {
+      "id": "spec--stoneware-350--es-MX",
+      "locale": "es-MX",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza azul talavera. Material: gres. Capacidad: 350 ml. Cuidado: lavar a mano. No apta para microondas."
+    },
+    {
+      "id": "spec--porcelain-250--en",
+      "locale": "en",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: white espresso cup. Material: porcelain. Capacity: 250 ml. Care: dishwasher safe. Microwave safe."
+    },
+    {
+      "id": "spec--porcelain-250--es-MX",
+      "locale": "es-MX",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza blanca para espresso. Material: porcelana. Capacidad: 250 ml. Cuidado: apta para lavavajillas. Apta para microondas."
+    },
+    {
+      "id": "spec--enamel-400--en",
+      "locale": "en",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: camping mug. Material: enamelled steel. Capacity: 400 ml. Care: hand wash only. Not microwave safe."
+    },
+    {
+      "id": "spec--enamel-400--es-MX",
+      "locale": "es-MX",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza de campismo. Material: acero esmaltado. Capacidad: 400 ml. Cuidado: lavar a mano. No apta para microondas."
+    },
+    {
+      "id": "spec--barro-300--en",
+      "locale": "en",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: clay mug from Oaxaca. Material: clay (barro), handmade by artisans. Capacity: 300 ml. Care: hand wash only. Not microwave safe."
+    },
+    {
+      "id": "spec--barro-300--es-MX",
+      "locale": "es-MX",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza de barro de Oaxaca. Material: barro, hecha a mano por artesanos. Capacidad: 300 ml. Cuidado: lavar a mano. No apta para microondas."
+    },
+    {
+      "id": "spec--glass-450--en",
+      "locale": "en",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: double-wall glass mug. Material: borosilicate glass. Capacity: 450 ml. Care: dishwasher safe. Not microwave safe."
+    },
+    {
+      "id": "spec--glass-450--es-MX",
+      "locale": "es-MX",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza de vidrio de doble pared. Material: vidrio borosilicato. Capacidad: 450 ml. Cuidado: apta para lavavajillas. No apta para microondas."
+    },
+    {
+      "id": "spec--bamboo-320--en",
+      "locale": "en",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: travel mug. Material: bamboo fibre with a silicone lid. Capacity: 320 ml. Care: hand wash only. Not microwave safe."
+    },
+    {
+      "id": "spec--bamboo-320--es-MX",
+      "locale": "es-MX",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza de viaje. Material: fibra de bambú con tapa de silicón. Capacidad: 320 ml. Cuidado: lavar a mano. No apta para microondas."
+    },
+    {
+      "id": "lovely--stoneware-350--en",
+      "locale": "en",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: Talavera-blue mug. Material: stoneware. Capacity: 350 ml. Care: hand wash only. Not microwave safe."
+    },
+    {
+      "id": "lovely--stoneware-350--es-MX",
+      "locale": "es-MX",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza azul talavera. Material: gres. Capacidad: 350 ml. Cuidado: lavar a mano. No apta para microondas."
+    },
+    {
+      "id": "lovely--porcelain-250--en",
+      "locale": "en",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: white espresso cup. Material: porcelain. Capacity: 250 ml. Care: dishwasher safe. Microwave safe."
+    },
+    {
+      "id": "lovely--porcelain-250--es-MX",
+      "locale": "es-MX",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza blanca para espresso. Material: porcelana. Capacidad: 250 ml. Cuidado: apta para lavavajillas. Apta para microondas."
+    },
+    {
+      "id": "lovely--enamel-400--en",
+      "locale": "en",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: camping mug. Material: enamelled steel. Capacity: 400 ml. Care: hand wash only. Not microwave safe."
+    },
+    {
+      "id": "lovely--enamel-400--es-MX",
+      "locale": "es-MX",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza de campismo. Material: acero esmaltado. Capacidad: 400 ml. Cuidado: lavar a mano. No apta para microondas."
+    },
+    {
+      "id": "lovely--barro-300--en",
+      "locale": "en",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: clay mug from Oaxaca. Material: clay (barro), handmade by artisans. Capacity: 300 ml. Care: hand wash only. Not microwave safe."
+    },
+    {
+      "id": "lovely--barro-300--es-MX",
+      "locale": "es-MX",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza de barro de Oaxaca. Material: barro, hecha a mano por artesanos. Capacidad: 300 ml. Cuidado: lavar a mano. No apta para microondas."
+    },
+    {
+      "id": "lovely--glass-450--en",
+      "locale": "en",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: double-wall glass mug. Material: borosilicate glass. Capacity: 450 ml. Care: dishwasher safe. Not microwave safe."
+    },
+    {
+      "id": "lovely--glass-450--es-MX",
+      "locale": "es-MX",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza de vidrio de doble pared. Material: vidrio borosilicato. Capacidad: 450 ml. Cuidado: apta para lavavajillas. No apta para microondas."
+    },
+    {
+      "id": "lovely--bamboo-320--en",
+      "locale": "en",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: travel mug. Material: bamboo fibre with a silicone lid. Capacity: 320 ml. Care: hand wash only. Not microwave safe."
+    },
+    {
+      "id": "lovely--bamboo-320--es-MX",
+      "locale": "es-MX",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza de viaje. Material: fibra de bambú con tapa de silicón. Capacidad: 320 ml. Cuidado: lavar a mano. No apta para microondas."
+    }
+  ]
+}

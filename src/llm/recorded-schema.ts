@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // A recipe says what to ask; a recording is what a real model answered, with model, date and usage.
 export const recipeRequestSchema = z.object({
-  id: z.string().regex(/^[a-z0-9-]+$/),
+  id: z.string().regex(/^[A-Za-z0-9-]+$/),
   locale: z.string(),
   system: z.string(),
   prompt: z.string().min(1),

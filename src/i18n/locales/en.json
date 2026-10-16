@@ -9,7 +9,16 @@
     "subtitle": "Large language models, set by hand",
     "description": "An interactive course on large language models from the inside out: how a model picks the next token, how to build reliable things with it, how models are trained, and how to ship AI features without getting burned. Set in a letterpress print shop.",
     "acts": {
-      "compositor": "Act I · The Compositor"
+      "compositor": "Act I · The Compositor",
+      "craft": "Act II · The Craft",
+      "foundry": "Act III · The Foundry",
+      "commissions": "Act IV · Commissions"
+    },
+    "actNumerals": {
+      "compositor": "I",
+      "craft": "II",
+      "foundry": "III",
+      "commissions": "IV"
     }
   },
   "shell": {
@@ -263,6 +272,62 @@
         },
         "voice": "The compositor doesn't know what's true. It knows what usually comes next."
       }
+    },
+    "prompt-spec": {
+      "title": "The prompt as a specification",
+      "kicker": "Prompting",
+      "problem": {
+        "heading": "The refunds bot that wrote essays.",
+        "body": "Mercadito's returns desk wanted a bot that answers one question: is this return eligible? Its output feeds an automation that only understands yes or no. Marketing rewrote the prompt to sound warmer. The automation started failing.",
+        "task": "Compare the two prompts on the same cases and let an eval decide."
+      },
+      "bench": {
+        "heading": "Two job tickets.",
+        "body": "Same policy, same cases. Prompt A states what the output must be. Prompt B reads better. Look at both before you predict.",
+        "observe": "With a live model in Outside work you can edit either prompt; recorded runs only cover these exact words."
+      },
+      "measure": {
+        "heading": "The duel.",
+        "body": "Ten customer messages, both prompts. One grader checks the reply is exactly one word; a second model reads each reply and checks the verdict is right."
+      },
+      "debrief": {
+        "heading": "A prompt is a specification.",
+        "points": {
+          "one": "Write the prompt for whoever consumes the output: a person, a parser, or another program. Say what the output must look like.",
+          "two": "Warmth and length are not quality. Measure the thing the product needs, on cases, not on one example you liked.",
+          "three": "Even a precise prompt gets cases wrong. The eval found them; reading two good answers would not have.",
+          "four": "Keep the cases. Every prompt change from now on runs against them before it ships."
+        },
+        "voice": "Lovely prompt. Your eval says it's worse."
+      }
+    },
+    "evals": {
+      "title": "Evals",
+      "kicker": "Evaluation",
+      "problem": {
+        "heading": "Forty mugs, revisited.",
+        "body": "After the temperature fix, Mercadito's product copy got prettier. Then a customer returned a mug described as dishwasher safe. The spec sheet said hand wash only.",
+        "task": "Build an eval that would have caught it, and find out what an LLM judge catches and misses."
+      },
+      "bench": {
+        "heading": "Choose your cases and your graders.",
+        "body": "Pick the spec sheets to test and the graders to apply. Cheap exact checks catch some failures; a judge model reads for meaning but has its own taste.",
+        "observe": "An eval with no cases is a guess. Pick at least three."
+      },
+      "measure": {
+        "heading": "Run your eval.",
+        "body": "Two prompts write descriptions for your cases. Predict which scores higher, then read where your graders and the judge agree and where they don't."
+      },
+      "debrief": {
+        "heading": "Graders have blind spots; so do judges.",
+        "points": {
+          "one": "Start with exact, cheap checks for what must never happen: invented claims, missing facts, wrong format.",
+          "two": "An LLM judge reads meaning, but it applies its own standards and drifts from your rubric. Check it against cases you graded yourself.",
+          "three": "A judge can catch what your rules missed and fail what your rules allow. Both are information about your eval, not truth.",
+          "four": "Grow the eval from real failures. Every complaint is a case."
+        },
+        "voice": "No test cases. You are guessing."
+      }
     }
   },
   "readNext": {
@@ -279,7 +344,12 @@
       "anthropic-long-context": "Practical advice on placing long documents and questions in a prompt.",
       "kalai-2025": "Argues models hallucinate because training and evaluation reward guessing over admitting uncertainty.",
       "ji-2023": "A broad survey of hallucination: kinds, causes, metrics and mitigations.",
-      "anthropic-hallucinations": "Concrete techniques to reduce made-up answers, including letting the model say it doesn't know."
+      "anthropic-hallucinations": "Concrete techniques to reduce made-up answers, including letting the model say it doesn't know.",
+      "anthropic-prompting": "Anthropic's guide to writing clear, specific prompts, with examples.",
+      "openai-prompting": "OpenAI's guide to the same craft; most of the advice transfers between models.",
+      "husain-evals": "Why evals come first, and how to build them from real failures.",
+      "huyen-ai-engineering": "A book-length treatment of building on foundation models, with a long section on evaluation.",
+      "zheng-2023-judge": "Measures how far LLM judges agree with people, and their biases (position, length, self-preference)."
     }
   },
   "units": {
@@ -361,5 +431,88 @@
     "contrastBody": "Asked for three such papers, a larger instruction-tuned model named real ones and flagged what it could not verify.",
     "summary": "{invented} of {total} references are not in the catalog. Average confidence on those: {confidence}.",
     "samplingNote": "Sampled at temperature {temperature}, top-p {topP}, repetition penalty {penalty}, seed {seed}. Numbers in brass were set by the shop; the compositor wrote the rest."
+  },
+  "llm": {
+    "title": "Outside work",
+    "summaryRecorded": "Recorded runs (no key, no cost)",
+    "summaryLive": "{model} · {spent} of {cap} spent",
+    "providers": {
+      "recorded": "Recorded runs",
+      "host": "Dojo's model",
+      "anthropic": "Anthropic, your key",
+      "openai": "OpenAI, your key",
+      "openai-compatible": "Compatible server"
+    },
+    "model": "Model",
+    "baseUrl": "Base URL",
+    "priceIn": "Input $ per million tokens",
+    "priceOut": "Output $ per million tokens",
+    "key": "API key",
+    "keyWarning": "Your key stays on this device and goes only to the provider you chose, straight from your browser. Anyone with access to this browser can use it. Use a key with a spending limit.",
+    "remember": "Remember the key on this device",
+    "cap": "Session cap (USD)",
+    "spent": "Spent this session: {spent}",
+    "priceSource": "Prices as listed on {date}. Check your provider; they change.",
+    "forget": "Forget the key"
+  },
+  "evals": {
+    "case": "case",
+    "pass": "pass",
+    "fail": "fail",
+    "source": "Recorded run · {source}. Models change; so do results.",
+    "predict": "Which one will score higher?",
+    "run": "Run the eval",
+    "runLive": "Run the eval live",
+    "confirm": "This run makes {calls} calls to {model}: up to {usd}. Budget left: {left}.",
+    "confirmUnknown": "This run makes {calls} calls to {model}. The price is unknown; set it in Outside work first.",
+    "approximate": "Input tokens are estimated, not counted.",
+    "go": "Run it",
+    "cancel": "Not now",
+    "estimating": "Pricing the run…",
+    "running": "Setting case {done} of {total}…",
+    "failed": {
+      "no-recording": "There is no recording for this exact prompt. Edits need a live model (Outside work).",
+      "budget": "The session cap of ${detail} would be exceeded. Raise it in Outside work, or stop here.",
+      "unknown-price": "No price for {detail}. Set one in Outside work before running.",
+      "error": "The run stopped: {detail}"
+    },
+    "empty": "No test cases. You are guessing.",
+    "score": "{passed} of {total}",
+    "looksBetterLost": "Lovely prompt. Your eval says it's worse.",
+    "looksBetterWon": "The polished prompt won this time. The eval decided, not the polish.",
+    "tie": "A tie. Look at which cases each one fails.",
+    "predicted": "You predicted: {guess}."
+  },
+  "duel": {
+    "contender": "Prompt {letter}",
+    "system": "System",
+    "template": "Message",
+    "editNote": "Editing a prompt needs a live model; recorded runs only cover these exact words.",
+    "graders": {
+      "one-word": "one word",
+      "verdict": "verdict present",
+      "length": "60 words or fewer",
+      "facts-present": "facts present",
+      "no-invented-claims": "no invented claims",
+      "judge": "LLM judge"
+    },
+    "options": {
+      "a": "Prompt A",
+      "b": "Prompt B",
+      "tie": "About the same"
+    }
+  },
+  "builder": {
+    "cases": "Cases in your eval",
+    "graders": "Graders",
+    "graderNotes": {
+      "length": "Counts words. Cheap, exact, blind to meaning.",
+      "facts-present": "Checks the spec's material and capacity appear.",
+      "no-invented-claims": "Fails a description that claims what the spec sheet doesn't say.",
+      "judge": "Asks another model whether the description is good enough to publish."
+    },
+    "judgeAgreement": "The judge passed {count} of the {total} descriptions that invent claims.",
+    "judgeClean": "The judge failed every description that invents claims.",
+    "pickCase": "Pick at least {count} cases."
   }
 }

@@ -46,6 +46,32 @@ async function ask(model: string, request: RecipeRequest): Promise<CliResult> {
   return parsed;
 }
 
+const CONCURRENCY = 4;
+
+async function record(model: string, request: RecipeRequest, attempt: number): Promise<RecordedCompletion> {
+  const result = await ask(model, request);
+  console.log(`  ${request.id} #${attempt}: ${result.usage.output_tokens} output tokens`);
+  return {
+    requestId: request.id,
+    requestHash: requestHash({ system: request.system, prompt: request.prompt, jsonSchema: request.jsonSchema }),
+    locale: request.locale,
+    attempt,
+    model: Object.keys(result.modelUsage)[0] ?? model,
+    system: request.system,
+    prompt: request.prompt,
+    output: result.result,
+    ...(result.structured_output === undefined ? {} : { structured: result.structured_output }),
+    usage: {
+      inputTokens: result.usage.input_tokens,
+      outputTokens: result.usage.output_tokens,
+      cacheCreationTokens: result.usage.cache_creation_input_tokens,
+      cacheReadTokens: result.usage.cache_read_input_tokens,
+    },
+    listCostUsd: result.total_cost_usd,
+    durationMs: result.duration_ms,
+  };
+}
+
 async function main() {
   const [recipeId, flag] = process.argv.slice(2);
   if (!recipeId) {
@@ -58,32 +84,20 @@ async function main() {
   console.log(`${recipe.id}: ${calls} calls to ${recipe.model} on your Claude subscription.`);
   if (flag === "--dry-run") return;
 
-  const completions: RecordedCompletion[] = [];
-  for (const request of recipe.requests) {
-    for (let attempt = 1; attempt <= recipe.repeats; attempt++) {
-      const result = await ask(recipe.model, request);
-      completions.push({
-        requestId: request.id,
-        requestHash: requestHash({ system: request.system, prompt: request.prompt, jsonSchema: request.jsonSchema }),
-        locale: request.locale,
-        attempt,
-        model: Object.keys(result.modelUsage)[0] ?? recipe.model,
-        system: request.system,
-        prompt: request.prompt,
-        output: result.result,
-        ...(result.structured_output === undefined ? {} : { structured: result.structured_output }),
-        usage: {
-          inputTokens: result.usage.input_tokens,
-          outputTokens: result.usage.output_tokens,
-          cacheCreationTokens: result.usage.cache_creation_input_tokens,
-          cacheReadTokens: result.usage.cache_read_input_tokens,
-        },
-        listCostUsd: result.total_cost_usd,
-        durationMs: result.duration_ms,
-      });
-      console.log(`  ${request.id} #${attempt}: ${result.usage.output_tokens} output tokens`);
+  const jobs = recipe.requests.flatMap((request) => Array.from({ length: recipe.repeats }, (_, i) => ({ request, attempt: i + 1 })));
+  const slots: (RecordedCompletion | undefined)[] = new Array(jobs.length);
+  let next = 0;
+  // A few calls at a time; results keep the recipe's order regardless of which finishes first.
+  const worker = async () => {
+    while (next < jobs.length) {
+      const index = next++;
+      const job = jobs[index];
+      if (!job) return;
+      slots[index] = await record(recipe.model, job.request, job.attempt);
     }
-  }
+  };
+  await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  const completions = slots.filter((c): c is RecordedCompletion => c !== undefined);
 
   const set: RecordedSet = {
     recipeId: recipe.id,

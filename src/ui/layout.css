@@ -1101,3 +1101,257 @@
   color: var(--brass-dark);
   font-weight: 600;
 }
+
+/* ---- Masthead ticket, grouped by act ---------------------------------- */
+.ticket {
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.ticket__act-group {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.ticket__act {
+  font-family: var(--face-display);
+  font-size: 15px;
+  letter-spacing: 0;
+  color: var(--slate);
+}
+
+.ticket ol {
+  gap: 2px 6px;
+}
+
+.ticket__link {
+  min-width: 26px;
+  justify-content: center;
+}
+
+.ticket__link.is-set .ticket__number {
+  color: var(--brass-dark);
+}
+
+.ticket__title {
+  font-size: 13px;
+}
+
+/* ---- Outside work ------------------------------------------------------ */
+.outside-work {
+  border: 1px solid var(--brass-dark);
+  background: color-mix(in oklab, var(--paper) 88%, var(--brass));
+  padding: 10px 14px;
+}
+
+.outside-work summary {
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.outside-work[open] summary {
+  margin-bottom: 12px;
+}
+
+.outside-work__providers {
+  border: 0;
+  padding: 0;
+  margin: 0 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.outside-work__warning {
+  border-left: 3px solid var(--vermilion);
+  padding-left: 10px;
+}
+
+.field {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+  margin-bottom: 10px;
+  max-width: 420px;
+}
+
+.field input,
+.field select {
+  font: 400 14px/1.3 var(--face-mono);
+  padding: 6px 8px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  border-radius: 0;
+}
+
+.field--pair {
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 12px;
+}
+
+.field--pair label {
+  display: grid;
+  gap: 4px;
+}
+
+.check {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.check input {
+  accent-color: var(--vermilion);
+  margin-top: 3px;
+}
+
+/* ---- Duel ---------------------------------------------------------------- */
+.duel-bench {
+  display: grid;
+  gap: 22px;
+}
+
+.duel-tickets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.job-ticket {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  border-top: 3px solid var(--ink);
+  padding-top: 10px;
+}
+
+.job-ticket__title {
+  font-size: 26px;
+}
+
+.prompt-editor .cm-editor {
+  max-height: 260px;
+}
+
+.duel-score {
+  display: flex;
+  gap: 40px;
+  align-items: baseline;
+}
+
+.duel-score__side {
+  display: grid;
+}
+
+.duel-score__side strong {
+  font-family: var(--face-display);
+  font-weight: 500;
+  font-size: 54px;
+  line-height: 1;
+}
+
+.duel-score__side.is-winner strong {
+  color: var(--vermilion);
+}
+
+.run-controls__confirm {
+  max-width: 520px;
+}
+
+.result-galley {
+  overflow-x: auto;
+}
+
+.result-galley table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+  background: var(--paper);
+}
+
+.result-galley th,
+.result-galley td {
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.result-galley thead th {
+  border-bottom: 1.5px solid var(--ink);
+  font-weight: 600;
+}
+
+.result-galley__score {
+  font-family: var(--face-display);
+  font-size: 18px;
+  margin-left: 6px;
+}
+
+.result-galley tbody th {
+  font-weight: 400;
+  max-width: 220px;
+  color: var(--slate);
+}
+
+.result-galley__output {
+  margin: 0 0 6px;
+  max-height: 7.5em;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.result-galley td.is-fail .result-galley__output {
+  color: var(--slate);
+}
+
+.result-galley__grades {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.grade__mark {
+  display: inline-block;
+  min-width: 34px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.grade--fail .grade__mark,
+.grade--fail .grade__note {
+  color: var(--vermilion);
+}
+
+.builder {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 28px;
+}
+
+.builder fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.builder legend {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  .duel-tickets,
+  .builder {
+    grid-template-columns: 1fr;
+  }
+}

@@ -8,6 +8,8 @@ import { NextTokenChapter } from "./chapters/NextTokenChapter";
 import { TokensChapter } from "./chapters/TokensChapter";
 import { StickChapter } from "./chapters/StickChapter";
 import { FabricationChapter } from "./chapters/FabricationChapter";
+import { DuelChapter } from "./chapters/DuelChapter";
+import { EvalBuilderChapter } from "./chapters/EvalBuilderChapter";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
@@ -67,6 +69,8 @@ function Course() {
       {chapter.kind === "next-token" && <NextTokenChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "stick" && <StickChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "fabrication" && <FabricationChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "duel" && <DuelChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "eval-builder" && <EvalBuilderChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
     </div>
   );
 }

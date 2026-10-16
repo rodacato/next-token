@@ -1,6 +1,7 @@
 import type { ZodType } from "zod";
 import type { LlmPort } from "../llm/port";
 import { grade, type GradeContext } from "./graders";
+import { fillTemplate } from "./template";
 import type { CaseResult, EvalRun, EvalSet } from "./types";
 
 export type Contender = {
@@ -18,10 +19,6 @@ export type RunOptions = {
   readonly judge?: GradeContext["judge"];
   readonly onCase?: (result: CaseResult) => void;
 };
-
-export function fillTemplate(template: string, input: string): string {
-  return template.replaceAll("{{input}}", input);
-}
 
 const noJudge: GradeContext["judge"] = async () => ({ pass: false, note: "no judge configured" });
 

@@ -9,7 +9,16 @@
     "subtitle": "Modelos de lenguaje, compuestos a mano",
     "description": "Un curso interactivo sobre modelos de lenguaje desde adentro: cómo elige un modelo el siguiente token, cómo construir cosas confiables con él, cómo se entrenan los modelos y cómo lanzar funciones de IA sin quemarse. Ambientado en un taller de imprenta tipográfica.",
     "acts": {
-      "compositor": "Acto I · El cajista"
+      "compositor": "Acto I · El cajista",
+      "craft": "Acto II · El oficio",
+      "foundry": "Acto III · La fundición",
+      "commissions": "Acto IV · Encargos"
+    },
+    "actNumerals": {
+      "compositor": "I",
+      "craft": "II",
+      "foundry": "III",
+      "commissions": "IV"
     }
   },
   "shell": {
@@ -263,6 +272,62 @@
         },
         "voice": "El cajista no sabe qué es verdad. Sabe qué suele seguir."
       }
+    },
+    "prompt-spec": {
+      "title": "El prompt como especificación",
+      "kicker": "Prompts",
+      "problem": {
+        "heading": "El bot de devoluciones que escribía ensayos.",
+        "body": "El área de devoluciones de Mercadito quería un bot que respondiera una sola pregunta: ¿procede esta devolución? Su salida alimenta una automatización que solo entiende sí o no. Marketing reescribió el prompt para que sonara más cálido. La automatización empezó a fallar.",
+        "task": "Compara los dos prompts en los mismos casos y deja que una evaluación decida."
+      },
+      "bench": {
+        "heading": "Dos órdenes de trabajo.",
+        "body": "Misma política, mismos casos. El prompt A dice cómo debe ser la salida. El prompt B se lee mejor. Míralos antes de predecir.",
+        "observe": "Con un modelo en vivo en Trabajo de fuera puedes editar cualquiera de los dos; las corridas grabadas solo cubren estas palabras exactas."
+      },
+      "measure": {
+        "heading": "El duelo.",
+        "body": "Diez mensajes de clientes, ambos prompts. Un calificador revisa que la respuesta sea exactamente una palabra; un segundo modelo lee cada respuesta y revisa que el veredicto sea correcto."
+      },
+      "debrief": {
+        "heading": "Un prompt es una especificación.",
+        "points": {
+          "one": "Escribe el prompt para quien consume la salida: una persona, un parser u otro programa. Di cómo debe verse la salida.",
+          "two": "La calidez y el largo no son calidad. Mide lo que el producto necesita, en casos, no en un ejemplo que te gustó.",
+          "three": "Hasta un prompt preciso se equivoca en algunos casos. La evaluación los encontró; leer dos buenas respuestas no los habría encontrado.",
+          "four": "Guarda los casos. De ahora en adelante, cada cambio al prompt corre contra ellos antes de salir."
+        },
+        "voice": "Precioso prompt. Tu evaluación dice que es peor."
+      }
+    },
+    "evals": {
+      "title": "Evaluaciones",
+      "kicker": "Evaluación",
+      "problem": {
+        "heading": "Cuarenta tazas, otra vez.",
+        "body": "Después de arreglar la temperatura, las descripciones de Mercadito se volvieron más bonitas. Luego un cliente devolvió una taza descrita como apta para lavavajillas. La ficha decía lavar a mano.",
+        "task": "Construye una evaluación que lo habría detectado y averigua qué detecta y qué se le pasa a un juez LLM."
+      },
+      "bench": {
+        "heading": "Elige tus casos y tus calificadores.",
+        "body": "Elige las fichas a probar y los calificadores a aplicar. Las revisiones exactas y baratas atrapan algunas fallas; un modelo juez lee el significado pero tiene su propio gusto.",
+        "observe": "Una evaluación sin casos es una adivinanza. Elige al menos tres."
+      },
+      "measure": {
+        "heading": "Corre tu evaluación.",
+        "body": "Dos prompts escriben descripciones para tus casos. Predice cuál saca mejor puntaje y luego lee dónde coinciden tus calificadores y el juez, y dónde no."
+      },
+      "debrief": {
+        "heading": "Los calificadores tienen puntos ciegos; los jueces también.",
+        "points": {
+          "one": "Empieza con revisiones exactas y baratas de lo que nunca debe pasar: afirmaciones inventadas, datos faltantes, formato equivocado.",
+          "two": "Un juez LLM lee el significado, pero aplica sus propios criterios y se aleja de tu rúbrica. Compáralo con casos que calificaste tú.",
+          "three": "Un juez puede atrapar lo que tus reglas no vieron y reprobar lo que tus reglas permiten. Ambas cosas dicen algo de tu evaluación, no son la verdad.",
+          "four": "Haz crecer la evaluación con fallas reales. Cada queja es un caso."
+        },
+        "voice": "Sin casos de prueba. Estás adivinando."
+      }
     }
   },
   "readNext": {
@@ -279,7 +344,12 @@
       "anthropic-long-context": "Consejos prácticos para acomodar documentos largos y preguntas dentro de un prompt.",
       "kalai-2025": "Argumenta que los modelos alucinan porque el entrenamiento y la evaluación premian adivinar sobre admitir duda.",
       "ji-2023": "Un panorama amplio de la alucinación: tipos, causas, métricas y mitigaciones.",
-      "anthropic-hallucinations": "Técnicas concretas para reducir respuestas inventadas, incluido dejar que el modelo diga que no sabe."
+      "anthropic-hallucinations": "Técnicas concretas para reducir respuestas inventadas, incluido dejar que el modelo diga que no sabe.",
+      "anthropic-prompting": "La guía de Anthropic para escribir prompts claros y específicos, con ejemplos.",
+      "openai-prompting": "La guía de OpenAI sobre el mismo oficio; casi todo el consejo aplica entre modelos.",
+      "husain-evals": "Por qué las evaluaciones van primero y cómo construirlas a partir de fallas reales.",
+      "huyen-ai-engineering": "Un libro completo sobre construir sobre modelos fundacionales, con una sección larga sobre evaluación.",
+      "zheng-2023-judge": "Mide qué tanto coinciden los jueces LLM con las personas y sus sesgos (posición, largo, autopreferencia)."
     }
   },
   "units": {
@@ -361,5 +431,88 @@
     "contrastBody": "Al pedirle tres artículos así, un modelo más grande y entrenado con instrucciones nombró artículos reales y marcó lo que no pudo verificar.",
     "summary": "{invented} de {total} referencias no están en el catálogo. Confianza promedio en esas: {confidence}.",
     "samplingNote": "Muestreado a temperatura {temperature}, top-p {topP}, penalización por repetición {penalty}, semilla {seed}. Los números en latón los puso el taller; el cajista escribió el resto."
+  },
+  "llm": {
+    "title": "Trabajo de fuera",
+    "summaryRecorded": "Corridas grabadas (sin llave, sin costo)",
+    "summaryLive": "{model} · {spent} de {cap} gastado",
+    "providers": {
+      "recorded": "Corridas grabadas",
+      "host": "El modelo de Dojo",
+      "anthropic": "Anthropic, tu llave",
+      "openai": "OpenAI, tu llave",
+      "openai-compatible": "Servidor compatible"
+    },
+    "model": "Modelo",
+    "baseUrl": "URL base",
+    "priceIn": "Entrada, $ por millón de tokens",
+    "priceOut": "Salida, $ por millón de tokens",
+    "key": "Llave de API",
+    "keyWarning": "Tu llave se queda en este dispositivo y solo va al proveedor que elegiste, directo desde tu navegador. Cualquiera con acceso a este navegador puede usarla. Usa una llave con límite de gasto.",
+    "remember": "Recordar la llave en este dispositivo",
+    "cap": "Tope de la sesión (USD)",
+    "spent": "Gastado en esta sesión: {spent}",
+    "priceSource": "Precios publicados al {date}. Revisa con tu proveedor; cambian.",
+    "forget": "Olvidar la llave"
+  },
+  "evals": {
+    "case": "caso",
+    "pass": "pasa",
+    "fail": "falla",
+    "source": "Corrida grabada · {source}. Los modelos cambian; los resultados también.",
+    "predict": "¿Cuál va a sacar mejor puntaje?",
+    "run": "Correr la evaluación",
+    "runLive": "Correr la evaluación en vivo",
+    "confirm": "Esta corrida hace {calls} llamadas a {model}: hasta {usd}. Presupuesto restante: {left}.",
+    "confirmUnknown": "Esta corrida hace {calls} llamadas a {model}. No se conoce el precio; ponlo primero en Trabajo de fuera.",
+    "approximate": "Los tokens de entrada son estimados, no contados.",
+    "go": "Correrla",
+    "cancel": "Ahora no",
+    "estimating": "Cotizando la corrida…",
+    "running": "Componiendo el caso {done} de {total}…",
+    "failed": {
+      "no-recording": "No hay grabación para este prompt exacto. Para editar necesitas un modelo en vivo (Trabajo de fuera).",
+      "budget": "Se pasaría del tope de la sesión de ${detail}. Súbelo en Trabajo de fuera o detente aquí.",
+      "unknown-price": "No hay precio para {detail}. Ponlo en Trabajo de fuera antes de correr.",
+      "error": "La corrida se detuvo: {detail}"
+    },
+    "empty": "Sin casos de prueba. Estás adivinando.",
+    "score": "{passed} de {total}",
+    "looksBetterLost": "Precioso prompt. Tu evaluación dice que es peor.",
+    "looksBetterWon": "Esta vez ganó el prompt pulido. Lo decidió la evaluación, no el pulido.",
+    "tie": "Empate. Mira qué casos falla cada uno.",
+    "predicted": "Predijiste: {guess}."
+  },
+  "duel": {
+    "contender": "Prompt {letter}",
+    "system": "Sistema",
+    "template": "Mensaje",
+    "editNote": "Editar un prompt necesita un modelo en vivo; las corridas grabadas solo cubren estas palabras exactas.",
+    "graders": {
+      "one-word": "una palabra",
+      "verdict": "hay veredicto",
+      "length": "60 palabras o menos",
+      "facts-present": "datos presentes",
+      "no-invented-claims": "sin afirmaciones inventadas",
+      "judge": "juez LLM"
+    },
+    "options": {
+      "a": "Prompt A",
+      "b": "Prompt B",
+      "tie": "Más o menos igual"
+    }
+  },
+  "builder": {
+    "cases": "Casos en tu evaluación",
+    "graders": "Calificadores",
+    "graderNotes": {
+      "length": "Cuenta palabras. Barato, exacto, ciego al significado.",
+      "facts-present": "Revisa que aparezcan el material y la capacidad de la ficha.",
+      "no-invented-claims": "Reprueba una descripción que afirma algo que la ficha no dice.",
+      "judge": "Le pregunta a otro modelo si la descripción está lista para publicarse."
+    },
+    "judgeAgreement": "El juez aprobó {count} de las {total} descripciones que inventan afirmaciones.",
+    "judgeClean": "El juez reprobó todas las descripciones que inventan afirmaciones.",
+    "pickCase": "Elige al menos {count} casos."
   }
 }

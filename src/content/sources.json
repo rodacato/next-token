@@ -88,6 +88,46 @@
     "kind": "docs"
   },
   {
+    "id": "anthropic-prompting",
+    "authors": "Anthropic",
+    "title": "Prompt engineering overview",
+    "year": 2026,
+    "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
+    "kind": "docs"
+  },
+  {
+    "id": "openai-prompting",
+    "authors": "OpenAI",
+    "title": "Prompt engineering",
+    "year": 2026,
+    "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+    "kind": "docs"
+  },
+  {
+    "id": "husain-evals",
+    "authors": "Hamel Husain",
+    "title": "Your AI Product Needs Evals",
+    "year": 2024,
+    "url": "https://hamel.dev/blog/posts/evals/",
+    "kind": "docs"
+  },
+  {
+    "id": "huyen-ai-engineering",
+    "authors": "Chip Huyen",
+    "title": "AI Engineering: Building Applications with Foundation Models",
+    "year": 2025,
+    "url": "https://huyenchip.com/books/",
+    "kind": "book"
+  },
+  {
+    "id": "zheng-2023-judge",
+    "authors": "Zheng et al.",
+    "title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2306.05685",
+    "kind": "paper"
+  },
+  {
     "id": "vaswani-2017",
     "authors": "Vaswani et al.",
     "title": "Attention Is All You Need",

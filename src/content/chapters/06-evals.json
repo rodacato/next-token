@@ -1,0 +1,9 @@
+{
+  "id": "evals",
+  "kind": "eval-builder",
+  "act": "craft",
+  "number": 6,
+  "duelId": "mug-copy",
+  "minCases": 3,
+  "readNext": ["husain-evals", "huyen-ai-engineering", "zheng-2023-judge"]
+}

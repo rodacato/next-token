@@ -45,6 +45,15 @@ export const nextTokenChapterSchema = z.object({
 
 const perLocale = z.record(z.string(), z.string().min(1));
 
+export const duelSchema = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  evalSetId: z.string(),
+  maxTokens: z.number().int().positive(),
+  contenders: z
+    .array(z.object({ id: z.string(), looksBetter: z.boolean(), system: perLocale, template: perLocale }))
+    .length(2),
+});
+
 const turnSchema = z.object({
   role: z.enum(["system", "customer", "assistant"]),
   text: z.string().min(1),
@@ -76,7 +85,18 @@ export const fabricationChapterSchema = z.object({
   contrastRecipe: z.string(),
 });
 
-export const chapterSchema = z.discriminatedUnion("kind", [tokensChapterSchema, nextTokenChapterSchema, stickChapterSchema, fabricationChapterSchema]);
+export const duelChapterSchema = z.object({ ...chapterBase, kind: z.literal("duel"), duelId: z.string() });
+
+export const evalBuilderChapterSchema = z.object({ ...chapterBase, kind: z.literal("eval-builder"), duelId: z.string(), minCases: z.number().int().positive() });
+
+export const chapterSchema = z.discriminatedUnion("kind", [
+  tokensChapterSchema,
+  nextTokenChapterSchema,
+  stickChapterSchema,
+  fabricationChapterSchema,
+  duelChapterSchema,
+  evalBuilderChapterSchema,
+]);
 
 export type Source = z.infer<typeof sourceSchema>;
 export type Chapter = z.infer<typeof chapterSchema>;
@@ -85,3 +105,6 @@ export type NextTokenChapter = z.infer<typeof nextTokenChapterSchema>;
 export type StickChapter = z.infer<typeof stickChapterSchema>;
 export type FabricationChapter = z.infer<typeof fabricationChapterSchema>;
 export type ConversationTurn = z.infer<typeof turnSchema>;
+export type Duel = z.infer<typeof duelSchema>;
+export type DuelChapter = z.infer<typeof duelChapterSchema>;
+export type EvalBuilderChapter = z.infer<typeof evalBuilderChapterSchema>;
