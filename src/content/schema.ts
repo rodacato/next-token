@@ -304,7 +304,30 @@ export const failureChapterSchema = z.object({
   sample: z.object({ customer: perLocale, reply: perLocale, refusal: perLocale }),
 });
 
+export const billChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("commission-bill"),
+  cheap: z.string(),
+  strong: z.string(),
+  traffic: z.object({
+    conversationsPerDay: z.number().nonnegative(),
+    turnsPerConversation: z.number().int().positive(),
+    systemTokens: z.number().nonnegative(),
+    contextTokens: z.number().nonnegative(),
+    userTokens: z.number().nonnegative(),
+    outputTokens: z.number().nonnegative(),
+  }),
+  routing: z.object({ strongShare: z.number().min(0).max(1), caching: z.boolean(), cacheHitRate: z.number().min(0).max(1) }),
+  hardShare: z.number().min(0).max(1),
+  budgetUsdPerMonth: z.number().positive(),
+  daysPerMonth: z.number().int().positive(),
+  mxnPerUsd: z.number().positive(),
+  latency: z.record(z.string(), z.object({ firstTokenMs: z.number().nonnegative(), tokensPerSecond: z.number().positive() })),
+  brackets: z.array(z.number().positive()).min(1),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  billChapterSchema,
   failureChapterSchema,
   featuresChapterSchema,
   decisionChapterSchema,
@@ -351,3 +374,4 @@ export type DecisionChapter = z.infer<typeof decisionChapterSchema>;
 export type BeforeAfterChapter = z.infer<typeof beforeAfterChapterSchema>;
 export type FeaturesChapter = z.infer<typeof featuresChapterSchema>;
 export type FailureChapter = z.infer<typeof failureChapterSchema>;
+export type BillChapter = z.infer<typeof billChapterSchema>;

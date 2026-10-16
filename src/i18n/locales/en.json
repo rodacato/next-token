@@ -692,6 +692,34 @@
         },
         "voice": "Every proof has errors. The shop that catches them before the run keeps its customers."
       }
+    },
+    "the-bill": {
+      "title": "The bill",
+      "kicker": "Cost, routing, caching",
+      "problem": {
+        "heading": "The first invoice was three times the estimate.",
+        "body": "The returns assistant runs on the strong model for every ticket, and every turn re-sends the whole prompt. Finance wants it under $1,000 a month without making the hard tickets worse.",
+        "task": "Find where the money goes, then cut it."
+      },
+      "bench": {
+        "heading": "Every token, every turn, every day.",
+        "body": "Change the traffic, the prompt sizes, the routing and the cache, and watch each line of the bill. Prices come from the dated table; the cache hit rate and the reply times are assumptions you can see.",
+        "observe": "Shrink the system prompt by half. Then turn on caching instead. Compare."
+      },
+      "measure": {
+        "heading": "Get under budget.",
+        "body": "Predict the bill as it stands, then bring it under $1,000 a month with the hard tickets still on the strong model."
+      },
+      "debrief": {
+        "heading": "Input is the bill. Route it, and cache what repeats.",
+        "points": {
+          "one": "A conversation re-sends the system prompt and its history on every turn, so input tokens usually outweigh output.",
+          "two": "Route by difficulty: a cheap model for the easy majority, the strong one where it measurably matters.",
+          "three": "Cache the stable prefix. Reads cost a tenth of input on Haiku 5.5 and a twentieth on Sonnet 5.5; writes cost a quarter more. It needs steady traffic inside the cache window.",
+          "four": "Prices change and routing changes quality. Re-check both against the price page and your evals before you trust a saving."
+        },
+        "voice": "Paper is cheap. Setting the same page twice is not."
+      }
     }
   },
   "readNext": {
@@ -731,7 +759,9 @@
       "ouyang-2022-instructgpt": "The paper that made the pipeline standard: pretrain, supervised fine-tune, then learn from human preferences.",
       "lambert-2024-tulu3": "A fully documented post-training recipe, including how the training data was mixed, cleaned and decontaminated against evals.",
       "rafailov-2023-dpo": "Preference tuning without a reward model or RL loop: the method behind many open fine-tunes.",
-      "hinton-2015-distillation": "The original distillation paper: a small model learns from a big one's probabilities."
+      "hinton-2015-distillation": "The original distillation paper: a small model learns from a big one's probabilities.",
+      "anthropic-prompt-caching": "How prompt caching works, what it costs, and how long a cached prefix lives.",
+      "anthropic-pricing": "Current prices per model, including cache writes, cache reads and batch discounts."
     }
   },
   "units": {
@@ -1369,5 +1399,40 @@
     "alone": "Safeguard, alone",
     "findingMatch": "As you predicted: {best}, from {from} to {to}. And streaming alone raises harm to {streaming}: people who stop leaving stay to read the wrong answers.",
     "findingMiss": "The biggest cut alone: {best}, from {from} to {to}. And streaming alone raises harm to {streaming}: people who stop leaving stay to read the wrong answers."
+  },
+  "bill": {
+    "usd": "${amount}",
+    "traffic": "Traffic and prompt",
+    "fields": {
+      "conversationsPerDay": "Conversations a day",
+      "turnsPerConversation": "Turns per conversation",
+      "systemTokens": "System prompt, tokens",
+      "contextTokens": "Retrieved context per turn, tokens",
+      "userTokens": "Customer message, tokens",
+      "outputTokens": "Reply, tokens"
+    },
+    "routing": "Routing and caching",
+    "strongShare": "Sent to {strong}: {share}% (the rest to {cheap})",
+    "hardCovered": "The hard tickets (complaints, damage, {share}% of traffic) still reach the strong model.",
+    "hardDropped": "Below {share}%, some hard tickets (complaints, damage) go to the cheap model.",
+    "caching": "Cache the stable prefix (system prompt and earlier turns)",
+    "hitRate": "Cache hits: {rate}% of prefix tokens (an assumption: needs steady traffic inside the 5-minute window)",
+    "month": "{month} a month ({mxn} MXN) · {day} a day · {conversation}¢ a conversation",
+    "parts": {
+      "input": "uncached input",
+      "cacheWrites": "cache writes",
+      "cacheReads": "cache reads",
+      "output": "output"
+    },
+    "latency": "Assumed reply time, first token plus writing: {cheap} {cheapSeconds} s, {strong} {strongSeconds} s. Measure your own.",
+    "prices": "List prices as of {date}; cache prices checked {cacheDate}. Each conversation re-sends the system prompt and the history on every turn.",
+    "predict": "Everything on {model}, no caching, {conversations} conversations a day. What's the monthly bill?",
+    "under": "under {amount}",
+    "between": "{low} to {high}",
+    "over": "over {amount}",
+    "findingMatch": "As you predicted: {baseline} a month. The target is under {budget} with the hard {share}% still on the strong model.",
+    "findingMiss": "It's {baseline} a month. The target is under {budget} with the hard {share}% still on the strong model.",
+    "met": "{month} a month: {saved}% less, and the hard tickets still get the strong model.",
+    "notYet": "{month} a month. Not there yet."
   }
 }

@@ -38,3 +38,18 @@ test.describe("chapter 19 · designing for failure", () => {
     await expect(page.getByTestId("failure-finding")).toContainText("The biggest cut alone: Let it say \"I don't know\", from 155 to 79. And streaming alone raises harm to 220");
   });
 });
+
+test.describe("chapter 20 · the bill", () => {
+  test("everything on the strong model costs thousands; routing and caching bring it under budget", async ({ page }) => {
+    await open(page, /^20 The bill/);
+    await advance(page, 1);
+    await expect(page.getByTestId("bill-month")).toContainText("$3,744 a month");
+    await advance(page, 1);
+    await page.getByRole("radio", { name: "$2,000 to $5,000" }).check();
+    await expect(page.getByTestId("bill-finding")).toContainText("As you predicted: $3,744 a month.");
+    await page.getByTestId("strong-share").fill("25");
+    await page.getByTestId("caching").check();
+    await expect(page.getByTestId("bill-target")).toContainText("84% less");
+    await expect(page.getByTestId("advance")).toBeEnabled();
+  });
+});

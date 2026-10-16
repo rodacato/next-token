@@ -278,5 +278,21 @@
     "year": 2026,
     "url": "https://huggingface.co/openbmb/MiniCPM5-2B",
     "kind": "docs"
+  },
+  {
+    "id": "anthropic-prompt-caching",
+    "authors": "Anthropic",
+    "title": "Prompt caching",
+    "year": 2026,
+    "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+    "kind": "docs"
+  },
+  {
+    "id": "anthropic-pricing",
+    "authors": "Anthropic",
+    "title": "Pricing",
+    "year": 2026,
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "kind": "docs"
   }
 ]

@@ -149,6 +149,13 @@
         "en": "Designing for failure",
         "es-MX": "Diseñar para la falla"
       }
+    },
+    {
+      "id": "the-bill",
+      "title": {
+        "en": "The bill",
+        "es-MX": "La cuenta"
+      }
     }
   ],
   "capabilities": [
