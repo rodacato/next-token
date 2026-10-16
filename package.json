@@ -5,7 +5,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "boards": "python3 -m http.server 4173",
+    "boards": "python3 -m http.server 4317",
     "boards:capture": "node design/step-0/capture.mjs"
   },
   "devDependencies": {

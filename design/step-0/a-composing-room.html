@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A · The Composing Room</title>
+<link rel="stylesheet" href="shared/shop.css">
+<style>
+  body { overflow: hidden; }
+  .bench { position: relative; width: 1600px; height: 1000px; margin: 0 auto; }
+  .bench > svg { position: absolute; inset: 0; }
+
+  .title { position: absolute; left: 56px; top: 44px; width: 330px; }
+  .title h1 {
+    font-family: var(--face-display); font-weight: 500; font-size: 58px;
+    line-height: 0.95; margin: 10px 0 18px; font-variation-settings: "opsz" 96;
+  }
+  .title p { font-size: 13px; line-height: 1.55; margin: 0; color: var(--ink); max-width: 300px; }
+
+  .slip {
+    position: absolute; left: 1046px; top: 250px; width: 206px; padding: 14px 16px 12px;
+    background: var(--paper); border: 1px solid var(--rule);
+    transform: rotate(1.2deg); box-shadow: 1px 2px 0 var(--rule);
+  }
+  .slip table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+  .slip td { padding: 2px 0; }
+  .slip td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .slip tr.pulled td { color: var(--slate-light); }
+  .slip tr.chosen td { color: var(--vermilion); font-weight: 600; }
+
+  .controls { position: absolute; left: 1046px; top: 560px; width: 206px; }
+  .control { margin-bottom: 26px; }
+  .control-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .control-value { font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 26px; margin: 6px 0 0;
+    background: transparent; cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px; background: var(--brass-dark); border-top: 2px solid var(--brass);
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 14px; height: 26px; margin-top: -11px;
+    background: var(--brass); border: 1px solid var(--brass-dark); border-radius: 1px;
+    box-shadow: inset 0 -6px 0 var(--brass-dark);
+  }
+  .scale { display: flex; justify-content: space-between; font-size: 10px; color: var(--slate); }
+  .remark { font-size: 12px; line-height: 1.5; color: var(--ink); min-height: 54px; margin: 6px 0 0; }
+
+  .actions { display: flex; gap: 10px; }
+  button {
+    font: 500 12px/1 var(--face-mono); letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 11px 14px; border-radius: 0; cursor: pointer;
+    background: var(--paper); color: var(--ink); border: 1.5px solid var(--ink);
+  }
+  button.primary { background: var(--ink); color: var(--paper); }
+
+  .proof-text {
+    position: absolute; left: 1318px; top: 540px; width: 220px;
+    font-family: var(--face-display); font-size: 27px; line-height: 1.22; color: var(--ink);
+  }
+  .footer { position: absolute; left: 56px; bottom: 22px; right: 56px; display: flex; justify-content: space-between; }
+  .sort { cursor: pointer; }
+</style>
+</head>
+<body>
+<main class="bench">
+  <svg id="bench" viewBox="0 0 1600 1000" width="1600" height="1000" aria-label="Workbench seen from above"></svg>
+
+  <header class="title">
+    <div class="kicker">Act I · Chapter 2</div>
+    <h1>The next token</h1>
+    <p>The compositor doesn't know what's true. It knows what usually comes next.</p>
+  </header>
+
+  <aside class="slip" aria-label="Compositor's slip">
+    <div class="kicker">Slip · sort 7 of 24</div>
+    <table id="slip"></table>
+  </aside>
+
+  <section class="controls">
+    <div class="control">
+      <div class="control-head"><span class="kicker">Temperature</span><span class="control-value" id="t-value">0.80</span></div>
+      <input id="temperature" type="range" min="0.1" max="2" step="0.01" value="0.8" aria-label="Temperature">
+      <div class="scale"><span>0.1 cold</span><span>1.0</span><span>2.0 hot</span></div>
+      <p class="remark" id="t-remark"></p>
+    </div>
+    <div class="control">
+      <div class="control-head"><span class="kicker">Top-p</span><span class="control-value" id="p-value">0.90</span></div>
+      <input id="top-p" type="range" min="0.1" max="1" step="0.01" value="0.9" aria-label="Top-p">
+      <div class="scale"><span>0.1 narrow</span><span>1.0 all</span></div>
+    </div>
+    <div class="actions">
+      <button class="primary" id="draw">Let it draw</button>
+      <button id="reset">Clear</button>
+    </div>
+  </section>
+
+  <div class="proof-text" id="proof" aria-label="Proof sheet"></div>
+
+  <footer class="footer">
+    <span class="placeholder-note">Direction A · The Composing Room — placeholder probabilities, not a model run. Click a sort to pick by hand.</span>
+    <span class="placeholder-note">Model shown in Step 1: SmolLM2-360M-Instruct · in your browser</span>
+  </footer>
+</main>
+
+<script type="module">
+  import { context, distribution, openness, seededRandom, sample, tokenFace, vocabularySize } from "./shared/fan-model.js";
+  import { sortMarkup, sortSize } from "./shared/sorts.js";
+  import { installTextures } from "./shared/textures.js";
+
+  installTextures();
+  const svg = document.getElementById("bench");
+  const tInput = document.getElementById("temperature");
+  const pInput = document.getElementById("top-p");
+  const random = seededRandom(1729);
+  let chosen = " door";
+
+  const PIVOT = { x: 540, y: 640 };
+  const RADIUS = 350;
+  const FAN_SIZE = 8;
+
+  function typeCase() {
+    // An irregular job case: compartment widths vary like the real thing.
+    const x0 = 56, y0 = 640, w = 500, h = 304;
+    const rows = [
+      [1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1],
+      [1, 1, 2, 1, 1, 2, 1, 1, 1, 1],
+      [1.5, 2, 1, 2, 1, 1.5, 2],
+      [2, 1.5, 3, 1.5, 2, 1],
+      [2, 3, 2, 1, 3],
+    ];
+    const rand = seededRandom(42);
+    let out = `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="var(--brass-light)" stroke="var(--brass-dark)" stroke-width="2"/>`;
+    out += `<rect x="${x0 + 10}" y="${y0 + 10}" width="${w - 20}" height="${h - 20}" fill="var(--brass-dark)" opacity="0.35"/>`;
+    const rowH = (h - 20) / rows.length;
+    rows.forEach((row, r) => {
+      const units = row.reduce((s, u) => s + u, 0);
+      let cx = x0 + 10;
+      row.forEach((u) => {
+        const cw = ((w - 20) * u) / units;
+        const cy = y0 + 10 + r * rowH;
+        out += `<rect x="${cx + 3}" y="${cy + 3}" width="${cw - 6}" height="${rowH - 6}" fill="var(--paper-deep)" stroke="var(--brass-dark)" stroke-width="1"/>`;
+        const count = Math.floor(rand() * 9) + 3;
+        for (let i = 0; i < count; i++) {
+          const sx = cx + 8 + rand() * (cw - 22);
+          const sy = cy + 8 + rand() * (rowH - 22);
+          out += `<rect x="${sx}" y="${sy}" width="${6 + rand() * 6}" height="${7 + rand() * 4}" fill="var(--metal)" opacity="${0.55 + rand() * 0.4}" transform="rotate(${(rand() - 0.5) * 50} ${sx} ${sy})"/>`;
+        }
+        cx += cw;
+      });
+    });
+    out += `<rect x="${x0 + 190}" y="${y0 + h - 2}" width="160" height="22" fill="var(--brass)" stroke="var(--brass-dark)"/>`;
+    out += `<text x="${x0 + 270}" y="${y0 + h + 13}" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--ink)" font-family="IBM Plex Mono">CASE · ${vocabularySize.toLocaleString("en")} SORTS</text>`;
+    return out;
+  }
+
+  function stick() {
+    const x0 = 418, y0 = 104, length = 780, depth = 74;
+    let out = `<rect x="${x0}" y="${y0}" width="${length}" height="${depth}" fill="var(--brass)" stroke="var(--brass-dark)" stroke-width="2"/>`;
+    out += `<rect x="${x0 + 6}" y="${y0 + 8}" width="${length - 12}" height="${depth - 16}" fill="var(--brass-dark)" opacity="0.45"/>`;
+    out += `<rect x="${x0 - 22}" y="${y0 - 10}" width="26" height="${depth + 20}" fill="var(--brass-dark)"/>`;
+    for (let i = 0; i <= 48; i++) {
+      const tx = x0 + 6 + (i * (length - 12)) / 48;
+      const tall = i % 8 === 0;
+      out += `<line x1="${tx}" x2="${tx}" y1="${y0 + depth}" y2="${y0 + depth + (tall ? 12 : 6)}" stroke="var(--slate)" stroke-width="1"/>`;
+      if (tall) out += `<text x="${tx}" y="${y0 + depth + 25}" text-anchor="middle" font-size="9" fill="var(--slate)" font-family="IBM Plex Mono">${(i / 2) | 0}</text>`;
+    }
+    let cursor = x0 + 10;
+    [...context, ...(lineExtra())].forEach((token) => {
+      const face = tokenFace(token);
+      const { width } = sortSize(face, 50);
+      out += sortMarkup({ face, height: 50, x: cursor, y: y0 + 12, anchor: "start" });
+      cursor += width + 3;
+    });
+    out += `<path d="M${cursor + 4} ${y0 + 10} h-6 v54 h6 M${cursor + 46} ${y0 + 10} h6 v54 h-6" stroke="var(--vermilion)" stroke-width="2" fill="none"/>`;
+    out += `<text x="${cursor + 25}" y="${y0 - 12}" text-anchor="middle" font-size="10" letter-spacing="1.2" fill="var(--vermilion)" font-family="IBM Plex Mono">NEXT</text>`;
+    out += `<text x="${x0}" y="${y0 - 12}" font-size="10" letter-spacing="1.2" fill="var(--slate)" font-family="IBM Plex Mono">COMPOSING STICK · ${context.length + lineExtra().length} / 24 SORTS</text>`;
+    nextSlot = { x: cursor + 22, y: y0 + depth };
+    return out;
+  }
+  let nextSlot = { x: 0, y: 0 };
+
+  let setTokens = [];
+  function lineExtra() { return setTokens; }
+
+  function press() {
+    const x0 = 1300, y0 = 104;
+    let out = "";
+    // Platen frame and tympan, seen from above, with the lever to the side.
+    const w = 250, h = 330, cx = x0 + w / 2, cy = y0 + h / 2;
+    out += `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" fill="var(--metal)" stroke="var(--ink)" stroke-width="2" filter="url(#worn)"/>`;
+    out += `<rect x="${x0 + 16}" y="${y0 + 16}" width="${w - 32}" height="${h - 32}" fill="none" stroke="var(--brass)" stroke-width="3"/>`;
+    for (let i = 0; i < 6; i++) {
+      out += `<line x1="${x0 + 30}" x2="${x0 + w - 30}" y1="${y0 + 40 + i * 50}" y2="${y0 + 40 + i * 50}" stroke="var(--ink)" stroke-width="1" opacity="0.5"/>`;
+    }
+    out += `<circle cx="${cx}" cy="${cy}" r="42" fill="var(--metal)" stroke="var(--brass)" stroke-width="2"/>`;
+    out += `<circle cx="${cx}" cy="${cy}" r="8" fill="var(--brass)"/>`;
+    out += `<rect x="${cx}" y="${cy - 7}" width="${w / 2 + 34}" height="14" fill="var(--brass)" stroke="var(--brass-dark)"/>`;
+    out += `<circle cx="${x0 + w + 38}" cy="${cy}" r="14" fill="var(--brass-dark)"/>`;
+    out += `<text x="${x0}" y="${y0 - 12}" font-size="10" letter-spacing="1.2" fill="var(--slate)" font-family="IBM Plex Mono">PRESS · RAISED</text>`;
+    // Proof sheet, slightly askew.
+    out += `<g transform="rotate(-1.2 ${cx} 700)">
+      <rect x="${x0 - 4}" y="${y0 + 386}" width="${w + 8}" height="436" fill="var(--paper)" stroke="var(--rule)"/>
+      <path d="M${x0 + 8} ${y0 + 402} h18 M${x0 + 17} ${y0 + 393} v18 M${x0 + w - 8} ${y0 + 402} h-18 M${x0 + w - 17} ${y0 + 393} v18" stroke="var(--slate)" stroke-width="0.6"/>
+    </g>`;
+    out += `<text x="${x0}" y="${y0 + 372}" font-size="10" letter-spacing="1.2" fill="var(--slate)" font-family="IBM Plex Mono">PROOF · IMPRESSION 6</text>`;
+    return out;
+  }
+
+  function fan(dist) {
+    const shown = dist.candidates.slice(0, FAN_SIZE);
+    const open = openness(dist.entropy, FAN_SIZE);
+    const span = (14 + 136 * open) * (Math.PI / 180);
+    const centerAngle = -58 * (Math.PI / 180);
+    const n = shown.length;
+    const placed = shown.map((c, i) => {
+      const a = centerAngle - span / 2 + (span * i) / (n - 1);
+      const height = 22 + 74 * Math.sqrt(c.p);
+      return { c, a, height, x: PIVOT.x + Math.cos(a) * RADIUS, y: PIVOT.y + Math.sin(a) * RADIUS };
+    });
+    let ribs = "", sorts = "", labels = "";
+    // Least likely first, so a closing fan stacks the likely sorts on top.
+    [...placed].reverse().forEach(({ c, a, height, x, y }) => {
+      const variant = c.token === chosen ? "chosen" : c.inNucleus ? "metal" : "pulled";
+      ribs += `<line x1="${PIVOT.x}" y1="${PIVOT.y}" x2="${x}" y2="${y}" stroke="${variant === "chosen" ? "var(--vermilion)" : "var(--brass-dark)"}" stroke-width="${variant === "chosen" ? 1.6 : 0.8}" opacity="${variant === "pulled" ? 0.3 : 0.75}"/>`;
+      sorts += `<g data-token="${encodeURIComponent(c.token)}">${sortMarkup({ face: c.face, height, variant, x, y })}</g>`;
+      const { width } = sortSize(c.face, height);
+      const reach = RADIUS + Math.abs(Math.cos(a)) * width / 2 + Math.abs(Math.sin(a)) * height / 2 + 18;
+      labels += `<text x="${PIVOT.x + Math.cos(a) * reach}" y="${PIVOT.y + Math.sin(a) * reach}" text-anchor="middle" dominant-baseline="central" font-size="11" font-family="IBM Plex Mono" fill="${variant === "chosen" ? "var(--vermilion)" : variant === "pulled" ? "var(--slate-light)" : "var(--slate)"}">${(c.p * 100).toFixed(1)}%</text>`;
+    });
+    const pick = placed.find((p) => p.c.token === chosen);
+    const route = pick
+      ? `<path d="M${pick.x} ${pick.y - pick.height / 2} C ${pick.x} ${nextSlot.y + 80}, ${nextSlot.x} ${nextSlot.y + 90}, ${nextSlot.x} ${nextSlot.y + 6}" fill="none" stroke="var(--vermilion)" stroke-width="1.2" stroke-dasharray="2 4"/>`
+      : "";
+    const hub = `<circle cx="${PIVOT.x}" cy="${PIVOT.y}" r="10" fill="var(--brass)" stroke="var(--brass-dark)" stroke-width="2"/>`;
+    const tail = `<text x="${PIVOT.x - 470}" y="${PIVOT.y - 18}" font-size="11" font-family="IBM Plex Mono" fill="var(--slate)">+ ${(vocabularySize - n).toLocaleString("en")} more sorts · ${((1 - shown.reduce((s, c) => s + c.p, 0)) * 100).toFixed(1)}%</text>`;
+    return `<g id="fan">${route}${ribs}${hub}${sorts}${labels}${tail}</g>`;
+  }
+
+  function slip(dist) {
+    const rows = dist.candidates.slice(0, 8).map((c) => {
+      const cls = c.token === chosen ? "chosen" : c.inNucleus ? "" : "pulled";
+      return `<tr class="${cls}"><td>${c.face}</td><td class="num">${c.logit.toFixed(2)}</td><td class="num">${(c.p * 100).toFixed(1)}%</td></tr>`;
+    });
+    document.getElementById("slip").innerHTML =
+      `<tr><td class="kicker">sort</td><td class="kicker num">logit</td><td class="kicker num">p</td></tr>` + rows.join("");
+  }
+
+  function remark(t) {
+    if (t < 0.35) return "Cold. The compositor reaches for the same sort every time.";
+    if (t < 1.1) return "Warm. Usually the likely sort, now and then the second.";
+    if (t < 1.6) return "Hot. Unlikely sorts get a real chance. So do mistakes.";
+    return "Scalding. The case is open and the compositor is guessing.";
+  }
+
+  function proof() {
+    const words = [...context, ...setTokens].join("");
+    document.getElementById("proof").innerHTML = `<div style="filter:url(#ink)">${words}</div>`;
+  }
+
+  function render() {
+    const t = parseFloat(tInput.value);
+    const topP = parseFloat(pInput.value);
+    document.getElementById("t-value").textContent = t.toFixed(2);
+    document.getElementById("p-value").textContent = topP.toFixed(2);
+    document.getElementById("t-remark").textContent = remark(t);
+    const dist = distribution(t, topP);
+    if (!dist.candidates.find((c) => c.token === chosen && c.inNucleus)) chosen = dist.candidates[0].token;
+    svg.innerHTML = `<g>${typeCase()}</g><g>${stick()}</g><g>${press()}</g>${fan(dist)}`;
+    slip(dist);
+    proof();
+  }
+
+  svg.addEventListener("click", (event) => {
+    const group = event.target.closest("[data-token]");
+    if (!group) return;
+    const token = decodeURIComponent(group.dataset.token);
+    const dist = distribution(parseFloat(tInput.value), parseFloat(pInput.value));
+    if (!dist.candidates.find((c) => c.token === token)?.inNucleus) return;
+    chosen = token;
+    render();
+  });
+  document.getElementById("draw").addEventListener("click", () => {
+    const dist = distribution(parseFloat(tInput.value), parseFloat(pInput.value));
+    chosen = sample(dist.candidates, random).token;
+    render();
+  });
+  document.getElementById("reset").addEventListener("click", () => { setTokens = []; render(); });
+  tInput.addEventListener("input", render);
+  pInput.addEventListener("input", render);
+  render();
+</script>
+</body>
+</html>

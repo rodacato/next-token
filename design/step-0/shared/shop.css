@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap");
+
+:root {
+  --ink: #1a1a1a;
+  --paper: #f3ecdd;
+  --vermilion: #d9432b;
+  --brass: #b08d57;
+  --slate: #5e6670;
+
+  /* Tints are mixes of the five hues with each other, never new hues. */
+  --paper-deep: color-mix(in oklab, var(--paper) 88%, var(--brass));
+  --brass-dark: color-mix(in oklab, var(--brass) 70%, var(--ink));
+  --brass-light: color-mix(in oklab, var(--brass) 55%, var(--paper));
+  --slate-light: color-mix(in oklab, var(--slate) 45%, var(--paper));
+  --metal: color-mix(in oklab, var(--slate) 55%, var(--ink));
+  --rule: color-mix(in oklab, var(--ink) 18%, var(--paper));
+
+  --face-display: "Bodoni Moda", "Bodoni 72", serif;
+  --face-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Weighted, mechanical motion: falls accelerate, nothing overshoots. */
+  --ease-fall: cubic-bezier(0.55, 0, 0.9, 0.45);
+  --ease-slide: cubic-bezier(0.6, 0, 0.25, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--face-mono);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+}
+
+.kicker {
+  font-family: var(--face-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.placeholder-note {
+  font-family: var(--face-mono);
+  font-size: 11px;
+  color: var(--slate);
+}

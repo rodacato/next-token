@@ -13,7 +13,7 @@ npm install
 npm run boards
 ```
 
-Then open <http://localhost:4173/design/step-0/>.
+Then open <http://localhost:4317/design/step-0/>.
 
 ## License
 
