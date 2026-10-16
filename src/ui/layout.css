@@ -1547,3 +1547,134 @@
 .slip__stamp.is-refused {
   color: var(--ink);
 }
+
+/* ---- Chapter 9: the type case, chunked and ranked --------------------- */
+.case-bench {
+  display: grid;
+  gap: 20px;
+}
+
+.case-bench__embedder {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+.case-bench__embedder p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.case-bench__controls {
+  display: grid;
+  gap: 14px;
+}
+
+.rule-plate__text {
+  font: inherit;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: transparent;
+  min-width: 22ch;
+}
+
+.slug-case {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  border-top: 1px dashed var(--vermilion);
+}
+
+.slug {
+  display: grid;
+  grid-template-columns: 2.5ch 1fr 150px;
+  gap: 12px;
+  align-items: start;
+  padding: 7px 8px;
+  border-bottom: 1px dashed var(--vermilion);
+  font: 400 12.5px/1.45 var(--face-mono);
+  color: var(--slate);
+}
+
+.slug.is-pulled {
+  color: var(--ink);
+  background: color-mix(in oklab, var(--paper) 70%, var(--brass));
+}
+
+.slug__rank {
+  font-family: var(--face-display);
+  font-size: 15px;
+  color: var(--brass-dark);
+}
+
+.slug__text {
+  white-space: pre-wrap;
+}
+
+.slug__score {
+  display: grid;
+  gap: 3px;
+  font-size: 11px;
+  text-align: right;
+}
+
+.slug__bar {
+  display: block;
+  height: 5px;
+  background: var(--ink);
+  justify-self: end;
+  transition: width 160ms steps(4);
+}
+
+.slug.is-pulled .slug__bar {
+  background: var(--vermilion);
+}
+
+.verdict--right .slip__stamp,
+.verdict-cell.verdict--right {
+  color: var(--brass-dark);
+}
+
+.verdict--wrong .slip__stamp,
+.verdict-cell.verdict--wrong {
+  color: var(--vermilion);
+}
+
+.verdict--unsure .slip__stamp,
+.verdict-cell.verdict--unsure {
+  color: var(--slate);
+}
+
+.verdict-cell {
+  font: 600 11px/1.3 var(--face-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+  .slug {
+    grid-template-columns: 2.5ch 1fr;
+  }
+
+  .slug__score {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .slug__bar {
+    justify-self: start;
+  }
+}
+
+.slip__stamp--inline {
+  position: static;
+  justify-self: start;
+  margin-top: 6px;
+  transform: rotate(-2deg);
+}
+
+.case-bench .measure-sheet > .button {
+  justify-self: start;
+}

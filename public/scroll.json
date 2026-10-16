@@ -72,6 +72,13 @@
         "en": "Tools",
         "es-MX": "Herramientas"
       }
+    },
+    {
+      "id": "rag",
+      "title": {
+        "en": "Retrieval",
+        "es-MX": "Recuperación"
+      }
     }
   ],
   "capabilities": [

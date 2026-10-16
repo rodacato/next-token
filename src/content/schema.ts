@@ -115,7 +115,22 @@ export const toolsChapterSchema = z.object({
   toolResults: z.object({ lookup_order: z.array(resultChoiceSchema).min(1), issue_refund: z.array(resultChoiceSchema).min(1) }),
 });
 
+export const ragChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("rag"),
+  embedder: z.literal("multilingual-e5-small"),
+  fixedSize: z.number().int().positive(),
+  maxTokens: z.number().int().positive(),
+  handbook: perLocale,
+  questions: z.array(z.object({ id: z.string().regex(/^[a-z0-9-]+$/), short: perLocale, text: perLocale, answerKey: perLocale })).min(1),
+  system: perLocale,
+  template: perLocale,
+  noExcerpts: perLocale,
+  judge: z.object({ system: perLocale, template: perLocale }),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  ragChapterSchema,
   toolsChapterSchema,
   structuredChapterSchema,
   tokensChapterSchema,
@@ -138,3 +153,4 @@ export type DuelChapter = z.infer<typeof duelChapterSchema>;
 export type StructuredChapter = z.infer<typeof structuredChapterSchema>;
 export type EvalBuilderChapter = z.infer<typeof evalBuilderChapterSchema>;
 export type ToolsChapter = z.infer<typeof toolsChapterSchema>;
+export type RagChapter = z.infer<typeof ragChapterSchema>;

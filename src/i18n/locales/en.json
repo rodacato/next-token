@@ -384,6 +384,34 @@
         },
         "voice": "The press doesn't pick the paper. Whoever feeds it does."
       }
+    },
+    "rag": {
+      "title": "Retrieval",
+      "kicker": "Embeddings, chunking and RAG",
+      "problem": {
+        "heading": "The handbook said 15 days. The assistant said 30.",
+        "body": "Mercadito's assistant answers from the returns handbook: it searches the handbook, pastes the closest passages into the prompt, and answers from them. A customer was told sealed headphones could come back after 20 days. The handbook says electronics get 15.",
+        "task": "Find out what the model was handed, and why."
+      },
+      "bench": {
+        "heading": "The model only reads what you pull from the case.",
+        "body": "An embedder turns each chunk of the handbook, and the question, into a vector. The closest chunks, by cosine similarity, go into the prompt. Change how the handbook is cut and how many chunks are pulled, and watch the ranking and the answer.",
+        "observe": "Cut every 160 characters and ask about the headphones. Read which chunks were pulled, and what's missing from them."
+      },
+      "measure": {
+        "heading": "Cut, pull, ask.",
+        "body": "Predict first, then ask all three questions with each cut, two chunks each. A judge reads every answer against the handbook's answer key."
+      },
+      "debrief": {
+        "heading": "Retrieval decides what the model can know.",
+        "points": {
+          "one": "The model answers from the chunks it's handed. If the rule isn't in them, the answer can't follow it, however good the model is.",
+          "two": "Cutting by size splits rules from what they apply to: 'They have a shorter window' means nothing without the sentence before it. Cut along the document's own structure.",
+          "three": "Embeddings rank by closeness, not by truth. Look at what was retrieved before you blame the model.",
+          "four": "With nothing retrieved, the best answer is 'I don't know'. Ask for it in the prompt, and count it separately from wrong answers."
+        },
+        "voice": "A compositor can only set the sorts in the stick. Fill it with the wrong ones and the line reads wrong."
+      }
     }
   },
   "readNext": {
@@ -409,7 +437,10 @@
       "anthropic-structured-outputs": "How to constrain Claude's output to a JSON Schema, and which schema features are supported.",
       "zod-json-schema": "Converting Zod schemas to JSON Schema, the bridge used on this bench.",
       "anthropic-tool-use": "How Claude requests tools, and how your code returns results: the loop on this bench, in the native format.",
-      "openai-function-calling": "The same contract on OpenAI's API: function definitions, calls and outputs."
+      "openai-function-calling": "The same contract on OpenAI's API: function definitions, calls and outputs.",
+      "lewis-2020-rag": "The paper that named retrieval-augmented generation: retrieve passages, then generate from them.",
+      "wang-2024-me5": "The embedder on this bench: how it was trained and why queries and passages get different prefixes.",
+      "anthropic-contextual-retrieval": "Chunks lose their context when cut. One fix: write that context back into each chunk before embedding it."
     }
   },
   "units": {
@@ -648,5 +679,42 @@
       "run": "run by you",
       "refused": "refused by you"
     }
+  },
+  "rag": {
+    "embedder": "Embedder",
+    "sourceRecorded": "Recorded vectors · {model} · {date}. Nothing downloaded.",
+    "sourceLive": "{model}, running in this browser. Ask your own question.",
+    "sourceLoading": "Loading the recorded vectors…",
+    "loadLive": "Run it here ({size} MB download)",
+    "downloading": "Downloading the embedder: {loaded} of {total} MB",
+    "notEmbedded": "That question has no vector yet. Load the embedder to ask your own.",
+    "question": "Customer question",
+    "ownQuestion": "Your own question",
+    "strategy": "How the handbook is cut",
+    "strategies": {
+      "fixed": "Every {size} characters",
+      "sentence": "Sentence by sentence",
+      "section": "Section by section"
+    },
+    "topK": "Chunks handed to the model",
+    "noRetrieval": "none",
+    "chunks": "The handbook, cut into {count} chunks, ranked by cosine similarity to the question",
+    "scoreNote": "This embedder scores almost everything between 0.80 and 0.90. Only the order matters; the bars stretch that range so you can see it.",
+    "ask": "Ask with {count} chunks",
+    "asking": "Asking…",
+    "answer": "The model answers, from the chunks it was handed",
+    "judgeNote": "Judge's quote: {quote}",
+    "verdicts": {
+      "right": "matches the handbook",
+      "wrong": "contradicts the handbook",
+      "unsure": "says it doesn't know",
+      "unreadable": "not judged"
+    },
+    "predict": "With {k} chunks per question, which cut answers all three questions right?",
+    "predictNone": "none of them",
+    "runGrid": "Ask all {count}",
+    "findingMatch": "As you predicted. All three right: {strategies}.",
+    "findingMiss": "Not what you predicted. All three right: {strategies}.",
+    "askNone": "Ask with no chunks"
   }
 }

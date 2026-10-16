@@ -384,6 +384,34 @@
         },
         "voice": "La prensa no escoge el papel. Lo escoge quien la alimenta."
       }
+    },
+    "rag": {
+      "title": "Recuperación",
+      "kicker": "Embeddings, fragmentación y RAG",
+      "problem": {
+        "heading": "El manual decía 15 días. El asistente dijo 30.",
+        "body": "El asistente de Mercadito responde con el manual de devoluciones: busca en el manual, pega los pasajes más cercanos en el prompt y responde con ellos. A un cliente le dijo que podía devolver unos audífonos sellados después de 20 días. El manual le da 15 a la electrónica.",
+        "task": "Averigua qué recibió el modelo, y por qué."
+      },
+      "bench": {
+        "heading": "El modelo solo lee lo que sacas de la caja.",
+        "body": "Un modelo de embeddings convierte cada fragmento del manual, y la pregunta, en un vector. Los fragmentos más cercanos, por similitud coseno, entran al prompt. Cambia cómo se corta el manual y cuántos fragmentos se sacan, y mira el orden y la respuesta.",
+        "observe": "Corta cada 160 caracteres y pregunta por los audífonos. Lee qué fragmentos se sacaron y qué les falta."
+      },
+      "measure": {
+        "heading": "Corta, saca, pregunta.",
+        "body": "Primero predice, luego haz las tres preguntas con cada corte, dos fragmentos cada una. Un juez lee cada respuesta contra la clave de respuestas del manual."
+      },
+      "debrief": {
+        "heading": "La recuperación decide qué puede saber el modelo.",
+        "points": {
+          "one": "El modelo responde con los fragmentos que recibe. Si la regla no está en ellos, la respuesta no puede seguirla, por bueno que sea el modelo.",
+          "two": "Cortar por tamaño separa las reglas de aquello a lo que se aplican: 'Tienen un plazo más corto' no significa nada sin la oración anterior. Corta siguiendo la estructura del propio documento.",
+          "three": "Los embeddings ordenan por cercanía, no por verdad. Mira qué se recuperó antes de culpar al modelo.",
+          "four": "Sin nada recuperado, la mejor respuesta es 'no lo sé'. Pídela en el prompt y cuéntala aparte de las respuestas equivocadas."
+        },
+        "voice": "Un cajista solo puede formar los tipos que tiene en el componedor. Llénalo con los equivocados y la línea se lee mal."
+      }
     }
   },
   "readNext": {
@@ -409,7 +437,10 @@
       "anthropic-structured-outputs": "Cómo restringir la salida de Claude a un JSON Schema y qué partes del esquema se soportan.",
       "zod-json-schema": "Cómo convertir esquemas de Zod a JSON Schema, el puente que se usa en este banco.",
       "anthropic-tool-use": "Cómo Claude pide herramientas y cómo tu código devuelve resultados: el ciclo de este banco, en el formato nativo.",
-      "openai-function-calling": "El mismo contrato en la API de OpenAI: definiciones de funciones, llamadas y salidas."
+      "openai-function-calling": "El mismo contrato en la API de OpenAI: definiciones de funciones, llamadas y salidas.",
+      "lewis-2020-rag": "El artículo que nombró la generación aumentada por recuperación: recuperar pasajes y luego generar a partir de ellos.",
+      "wang-2024-me5": "El modelo de embeddings de este banco: cómo se entrenó y por qué las preguntas y los pasajes llevan prefijos distintos.",
+      "anthropic-contextual-retrieval": "Los fragmentos pierden su contexto al cortarlos. Un remedio: volver a escribir ese contexto en cada fragmento antes de hacer su embedding."
     }
   },
   "units": {
@@ -648,5 +679,42 @@
       "run": "lo ejecutaste",
       "refused": "lo negaste"
     }
+  },
+  "rag": {
+    "embedder": "Modelo de embeddings",
+    "sourceRecorded": "Vectores grabados · {model} · {date}. No se descargó nada.",
+    "sourceLive": "{model}, corriendo en este navegador. Haz tu propia pregunta.",
+    "sourceLoading": "Cargando los vectores grabados…",
+    "loadLive": "Correrlo aquí (descarga de {size} MB)",
+    "downloading": "Descargando el modelo de embeddings: {loaded} de {total} MB",
+    "notEmbedded": "Esa pregunta todavía no tiene vector. Carga el modelo de embeddings para hacer la tuya.",
+    "question": "Pregunta del cliente",
+    "ownQuestion": "Tu propia pregunta",
+    "strategy": "Cómo se corta el manual",
+    "strategies": {
+      "fixed": "Cada {size} caracteres",
+      "sentence": "Oración por oración",
+      "section": "Sección por sección"
+    },
+    "topK": "Fragmentos que recibe el modelo",
+    "noRetrieval": "ninguno",
+    "chunks": "El manual, cortado en {count} fragmentos, ordenados por similitud coseno con la pregunta",
+    "scoreNote": "Este modelo de embeddings califica casi todo entre 0.80 y 0.90. Solo importa el orden; las barras estiran ese rango para que se vea.",
+    "ask": "Preguntar con {count} fragmentos",
+    "asking": "Preguntando…",
+    "answer": "El modelo responde, con los fragmentos que recibió",
+    "judgeNote": "Cita del juez: {quote}",
+    "verdicts": {
+      "right": "coincide con el manual",
+      "wrong": "contradice el manual",
+      "unsure": "dice que no sabe",
+      "unreadable": "sin juzgar"
+    },
+    "predict": "Con {k} fragmentos por pregunta, ¿qué corte responde bien las tres preguntas?",
+    "predictNone": "ninguno",
+    "runGrid": "Hacer las {count}",
+    "findingMatch": "Como predijiste. Las tres bien: {strategies}.",
+    "findingMiss": "No es lo que predijiste. Las tres bien: {strategies}.",
+    "askNone": "Preguntar sin fragmentos"
   }
 }

@@ -7,6 +7,8 @@ import { fillTemplate } from "../src/evals/template.ts";
 import { jsonSchemaFor, schemas } from "../src/evals/schemas.ts";
 import { checkSheet, retryPrompt } from "../src/evals/structured.ts";
 import { requestHash } from "../src/llm/hash.ts";
+import { answerRequest, judgeRequest as ragJudgeRequest, rankRecorded, topKs, type EmbeddingRecording } from "../src/rag/answer.ts";
+import { chunkStrategies } from "../src/rag/chunking.ts";
 import { branchId, parseTurn, resolveResult, turnRequest, type ResultChoice, type Step } from "../src/agents/toolProtocol.ts";
 
 type PerLocale = Record<string, string>;
@@ -121,4 +123,54 @@ for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
   }
   write(chapter.id, `Chapter ${chapter.id}: every turn the model takes on every branch of results the learner can return.`, requests);
   console.log(`  ${missing} not recorded yet (record with --extend, then run recipes again)`);
+}
+
+// RAG: every question, chunking strategy and top-k, answered from what the recorded vectors retrieve.
+type RagChapter = {
+  id: string;
+  kind: string;
+  fixedSize: number;
+  maxTokens: number;
+  handbook: PerLocale;
+  system: PerLocale;
+  template: PerLocale;
+  noExcerpts: PerLocale;
+  questions: { id: string; text: PerLocale; answerKey: PerLocale }[];
+  judge: { system: PerLocale; template: PerLocale };
+};
+for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
+  const chapter = read<RagChapter>(join(root, "src", "content", "chapters", file));
+  if (chapter.kind !== "rag") continue;
+  const requests: Request[] = [];
+  const seen = new Set<string>();
+  for (const locale of locales) {
+    const recording = read<EmbeddingRecording>(join(root, "src", "recordings", "embeddings", `${locale}.json`));
+    const task = { system: chapter.system[locale] ?? "", template: chapter.template[locale] ?? "", noExcerpts: chapter.noExcerpts[locale] ?? "", maxTokens: chapter.maxTokens };
+    for (const question of chapter.questions) {
+      const text = question.text[locale] ?? "";
+      for (const strategy of chunkStrategies) {
+        const ranked = rankRecorded(recording, chapter.handbook[locale] ?? "", strategy, chapter.fixedSize, text);
+        if (!ranked) throw new Error(`Embeddings for ${locale} are stale; run npm run record:embeddings`);
+        for (const k of topKs) {
+          const { system, prompt } = answerRequest(task, text, ranked.slice(0, k).map((r) => r.text));
+          const hash = requestHash({ system, prompt });
+          if (seen.has(hash)) continue;
+          seen.add(hash);
+          requests.push({ id: `${locale}--${question.id}--${k === 0 ? "none" : `${strategy}-${k}`}`, locale, system, prompt });
+        }
+      }
+    }
+  }
+  write(chapter.id, `Chapter ${chapter.id}: each question answered from the top-k chunks of each chunking strategy, and from nothing.`, requests);
+
+  const recorded = join(root, "src", "recordings", "llm", `${chapter.id}.json`);
+  if (!existsSync(recorded)) continue;
+  const answers = read<{ completions: { requestId: string; locale: string; output: string }[] }>(recorded).completions;
+  const judged = answers.map((answer) => {
+    const question = chapter.questions.find((q) => q.id === answer.requestId.split("--")[1]);
+    const judge = { system: chapter.judge.system[answer.locale] ?? "", template: chapter.judge.template[answer.locale] ?? "" };
+    const { system, prompt, jsonSchema } = ragJudgeRequest(judge, question?.text[answer.locale] ?? "", question?.answerKey[answer.locale] ?? "", answer.output);
+    return { id: `judge--${answer.requestId}`, locale: answer.locale, system, prompt, jsonSchema };
+  });
+  write(`${chapter.id}-judge`, `Chapter ${chapter.id}: a judge reads each recorded answer against the answer key.`, judged);
 }

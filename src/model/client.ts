@@ -47,6 +47,12 @@ export class InferenceClient {
     return response;
   }
 
+  async embed(repo: string, dtype: "q8", texts: readonly string[], onProgress?: (p: LoadProgress) => void): Promise<readonly Float32Array[]> {
+    const response = await this.request({ type: "embed", repo, dtype, texts }, onProgress);
+    if (response.type !== "embeddings") throw new Error(`Unexpected ${response.type}`);
+    return response.vectors;
+  }
+
   private request(body: RequestBody, onProgress?: (p: LoadProgress) => void): Promise<WorkerResponse> {
     const requestId = this.nextRequestId++;
     return new Promise((resolve, reject) => {

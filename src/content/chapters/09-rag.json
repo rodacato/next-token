@@ -1,0 +1,87 @@
+{
+  "id": "rag",
+  "kind": "rag",
+  "act": "craft",
+  "number": 9,
+  "embedder": "multilingual-e5-small",
+  "fixedSize": 160,
+  "maxTokens": 300,
+  "handbook": {
+    "en": "Returns\nYou can return most items within 30 days of delivery for a full refund. Start the return from My orders.\n\nElectronics\nHeadphones, speakers, smartwatches and chargers count as electronics. They have a shorter window: 15 days from delivery, and the seal must be intact.\n\nDamaged items\nIf an item arrives damaged, report it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window.\n\nRefund timing\nRefunds go back to the original payment method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead.\n\nReturn shipping\nReturn shipping is free for damaged or wrong items. For any other return, the label costs 99 MXN and is deducted from the refund.\n\nItems that can't be returned\nGift cards, opened food and personal care items cannot be returned.\n\nExchanges\nTo exchange an item for another size or colour, return it and place a new order. We don't hold stock for exchanges.",
+    "es-MX": "Devoluciones\nPuedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo. Inicia la devolución desde Mis pedidos.\n\nElectrónica\nAudífonos, bocinas, relojes inteligentes y cargadores cuentan como electrónica. Tienen un plazo más corto: 15 días desde la entrega, y el sello debe estar intacto.\n\nArtículos dañados\nSi un artículo llega dañado, repórtalo dentro de los 7 días con una foto. Los artículos dañados se reembolsan o reemplazan sin importar el plazo de devolución.\n\nTiempo del reembolso\nLos reembolsos regresan al método de pago original en 5 a 10 días hábiles. Los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito.\n\nEnvío de devolución\nEl envío de devolución es gratis para artículos dañados o equivocados. Para cualquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso.\n\nArtículos que no se pueden devolver\nLas tarjetas de regalo, los alimentos abiertos y los artículos de cuidado personal no se pueden devolver.\n\nCambios\nPara cambiar un artículo por otra talla o color, devuélvelo y haz un pedido nuevo. No apartamos inventario para cambios."
+  },
+  "questions": [
+    {
+      "id": "headphones",
+      "short": {
+        "en": "Headphones, day 20",
+        "es-MX": "Audífonos, día 20"
+      },
+      "text": {
+        "en": "I got headphones 20 days ago and the box is still sealed. Can I return them?",
+        "es-MX": "Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+      },
+      "answerKey": {
+        "en": "No. Headphones are electronics, which have a 15-day window; 20 days is too late.",
+        "es-MX": "No. Los audífonos son electrónica, con plazo de 15 días; 20 días es demasiado tarde."
+      }
+    },
+    {
+      "id": "cash-refund",
+      "short": {
+        "en": "Cash on delivery refund",
+        "es-MX": "Reembolso contra entrega"
+      },
+      "text": {
+        "en": "I paid cash on delivery. Where does my refund go?",
+        "es-MX": "Pagué contra entrega. ¿A dónde llega mi reembolso?"
+      },
+      "answerKey": {
+        "en": "To the customer's Mercadito balance.",
+        "es-MX": "Al saldo de Mercadito del cliente."
+      }
+    },
+    {
+      "id": "broken-shipping",
+      "short": {
+        "en": "Label for a broken blender",
+        "es-MX": "Guía por licuadora rota"
+      },
+      "text": {
+        "en": "My blender arrived broken. Do I pay for the return label?",
+        "es-MX": "Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+      },
+      "answerKey": {
+        "en": "No. Return shipping is free for damaged items.",
+        "es-MX": "No. El envío de devolución es gratis para artículos dañados."
+      }
+    }
+  ],
+  "system": {
+    "en": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+    "es-MX": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo."
+  },
+  "template": {
+    "en": "Handbook excerpts:\n{{excerpts}}\n\nQuestion: {{question}}",
+    "es-MX": "Extractos del manual:\n{{excerpts}}\n\nPregunta: {{question}}"
+  },
+  "noExcerpts": {
+    "en": "(none)",
+    "es-MX": "(ninguno)"
+  },
+  "judge": {
+    "system": {
+      "en": "You compare a support reply with the reference answer to a customer's question. First quote the words of the reply that decide it. Then give the verdict: right if the reply gives the same answer as the reference, wrong if it gives a different answer, unsure if it says it doesn't know or can't tell.",
+      "es-MX": "Comparas una respuesta de soporte con la respuesta de referencia a la pregunta de un cliente. Primero cita las palabras de la respuesta de soporte que lo deciden. Luego da el veredicto: right si da la misma respuesta que la referencia, wrong si da otra respuesta, unsure si dice que no sabe o que no puede decirlo."
+    },
+    "template": {
+      "en": "Question: {{question}}\nReference answer: {{key}}\nSupport reply: {{reply}}",
+      "es-MX": "Pregunta: {{question}}\nRespuesta de referencia: {{key}}\nRespuesta de soporte: {{reply}}"
+    }
+  },
+  "readNext": [
+    "lewis-2020-rag",
+    "wang-2024-me5",
+    "anthropic-contextual-retrieval"
+  ]
+}

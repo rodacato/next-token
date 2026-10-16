@@ -1,0 +1,368 @@
+{
+  "id": "rag",
+  "purpose": "Chapter rag: each question answered from the top-k chunks of each chunking strategy, and from nothing.",
+  "model": "haiku",
+  "repeats": 1,
+  "requests": [
+    {
+      "id": "en--headphones--none",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n(none)\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--fixed-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Returns. You can return most items within 30 days of delivery for a full refund. Start the return from My orders. Electronics. Headphones, speakers, smartwatches\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--fixed-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Returns. You can return most items within 30 days of delivery for a full refund. Start the return from My orders. Electronics. Headphones, speakers, smartwatches\n[2] ort it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window. Refund timing. Refunds go back to the original payment\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--fixed-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Returns. You can return most items within 30 days of delivery for a full refund. Start the return from My orders. Electronics. Headphones, speakers, smartwatches\n[2] ort it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window. Refund timing. Refunds go back to the original payment\n[3] method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead. Return shipping. Return shipping is free for damage\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--sentence-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Return shipping\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--sentence-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Return shipping\n[2] They have a shorter window: 15 days from delivery, and the seal must be intact.\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--sentence-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Return shipping\n[2] They have a shorter window: 15 days from delivery, and the seal must be intact.\n[3] You can return most items within 30 days of delivery for a full refund.\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--section-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Electronics. Headphones, speakers, smartwatches and chargers count as electronics. They have a shorter window: 15 days from delivery, and the seal must be intact.\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--section-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Electronics. Headphones, speakers, smartwatches and chargers count as electronics. They have a shorter window: 15 days from delivery, and the seal must be intact.\n[2] Returns. You can return most items within 30 days of delivery for a full refund. Start the return from My orders.\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--headphones--section-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Electronics. Headphones, speakers, smartwatches and chargers count as electronics. They have a shorter window: 15 days from delivery, and the seal must be intact.\n[2] Returns. You can return most items within 30 days of delivery for a full refund. Start the return from My orders.\n[3] Damaged items. If an item arrives damaged, report it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window.\n\nQuestion: I got headphones 20 days ago and the box is still sealed. Can I return them?"
+    },
+    {
+      "id": "en--cash-refund--none",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n(none)\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--fixed-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead. Return shipping. Return shipping is free for damage\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--fixed-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead. Return shipping. Return shipping is free for damage\n[2] ort it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window. Refund timing. Refunds go back to the original payment\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--fixed-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead. Return shipping. Return shipping is free for damage\n[2] ort it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window. Refund timing. Refunds go back to the original payment\n[3] d or wrong items. For any other return, the label costs 99 MXN and is deducted from the refund. Items that can't be returned. Gift cards, opened food and persona\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--sentence-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Cash on delivery orders are refunded to your Mercadito balance instead.\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--sentence-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Cash on delivery orders are refunded to your Mercadito balance instead.\n[2] Refunds go back to the original payment method within 5 to 10 business days.\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--sentence-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Cash on delivery orders are refunded to your Mercadito balance instead.\n[2] Refunds go back to the original payment method within 5 to 10 business days.\n[3] For any other return, the label costs 99 MXN and is deducted from the refund.\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--section-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Refund timing. Refunds go back to the original payment method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead.\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--section-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Refund timing. Refunds go back to the original payment method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead.\n[2] Returns. You can return most items within 30 days of delivery for a full refund. Start the return from My orders.\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--cash-refund--section-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Refund timing. Refunds go back to the original payment method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead.\n[2] Returns. You can return most items within 30 days of delivery for a full refund. Start the return from My orders.\n[3] Damaged items. If an item arrives damaged, report it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window.\n\nQuestion: I paid cash on delivery. Where does my refund go?"
+    },
+    {
+      "id": "en--broken-shipping--none",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n(none)\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--fixed-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] d or wrong items. For any other return, the label costs 99 MXN and is deducted from the refund. Items that can't be returned. Gift cards, opened food and persona\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--fixed-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] d or wrong items. For any other return, the label costs 99 MXN and is deducted from the refund. Items that can't be returned. Gift cards, opened food and persona\n[2] ort it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window. Refund timing. Refunds go back to the original payment\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--fixed-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] d or wrong items. For any other return, the label costs 99 MXN and is deducted from the refund. Items that can't be returned. Gift cards, opened food and persona\n[2] ort it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window. Refund timing. Refunds go back to the original payment\n[3] method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead. Return shipping. Return shipping is free for damage\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--sentence-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] For any other return, the label costs 99 MXN and is deducted from the refund.\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--sentence-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] For any other return, the label costs 99 MXN and is deducted from the refund.\n[2] Return shipping\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--sentence-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] For any other return, the label costs 99 MXN and is deducted from the refund.\n[2] Return shipping\n[3] Refund timing\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--section-1",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Return shipping. Return shipping is free for damaged or wrong items. For any other return, the label costs 99 MXN and is deducted from the refund.\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--section-2",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Return shipping. Return shipping is free for damaged or wrong items. For any other return, the label costs 99 MXN and is deducted from the refund.\n[2] Damaged items. If an item arrives damaged, report it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window.\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "en--broken-shipping--section-3",
+      "locale": "en",
+      "system": "You answer Mercadito customers' questions using only the handbook excerpts provided. If the excerpts don't answer the question, say you don't know. Answer in two sentences at most.",
+      "prompt": "Handbook excerpts:\n[1] Return shipping. Return shipping is free for damaged or wrong items. For any other return, the label costs 99 MXN and is deducted from the refund.\n[2] Damaged items. If an item arrives damaged, report it within 7 days with a photo. Damaged items are refunded or replaced regardless of the return window.\n[3] Refund timing. Refunds go back to the original payment method within 5 to 10 business days. Cash on delivery orders are refunded to your Mercadito balance instead.\n\nQuestion: My blender arrived broken. Do I pay for the return label?"
+    },
+    {
+      "id": "es-MX--headphones--none",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n(ninguno)\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--fixed-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] , y el sello debe estar intacto. Artículos dañados. Si un artículo llega dañado, repórtalo dentro de los 7 días con una foto. Los artículos dañados se reembolsan\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--fixed-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] , y el sello debe estar intacto. Artículos dañados. Si un artículo llega dañado, repórtalo dentro de los 7 días con una foto. Los artículos dañados se reembolsan\n[2] los artículos de cuidado personal no se pueden devolver. Cambios. Para cambiar un artículo por otra talla o color, devuélvelo y haz un pedido nuevo. No apartamo\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--fixed-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] , y el sello debe estar intacto. Artículos dañados. Si un artículo llega dañado, repórtalo dentro de los 7 días con una foto. Los artículos dañados se reembolsan\n[2] los artículos de cuidado personal no se pueden devolver. Cambios. Para cambiar un artículo por otra talla o color, devuélvelo y haz un pedido nuevo. No apartamo\n[3] Devoluciones. Puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo. Inicia la devolución de\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--sentence-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo.\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--sentence-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo.\n[2] Devoluciones\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--sentence-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo.\n[2] Devoluciones\n[3] Tienen un plazo más corto: 15 días desde la entrega, y el sello debe estar intacto.\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--section-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Electrónica. Audífonos, bocinas, relojes inteligentes y cargadores cuentan como electrónica. Tienen un plazo más corto: 15 días desde la entrega, y el sello debe estar intacto.\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--section-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Electrónica. Audífonos, bocinas, relojes inteligentes y cargadores cuentan como electrónica. Tienen un plazo más corto: 15 días desde la entrega, y el sello debe estar intacto.\n[2] Devoluciones. Puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo. Inicia la devolución desde Mis pedidos.\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--headphones--section-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Electrónica. Audífonos, bocinas, relojes inteligentes y cargadores cuentan como electrónica. Tienen un plazo más corto: 15 días desde la entrega, y el sello debe estar intacto.\n[2] Devoluciones. Puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo. Inicia la devolución desde Mis pedidos.\n[3] Artículos dañados. Si un artículo llega dañado, repórtalo dentro de los 7 días con una foto. Los artículos dañados se reembolsan o reemplazan sin importar el plazo de devolución.\n\nPregunta: Recibí unos audífonos hace 20 días y la caja sigue sellada. ¿Los puedo devolver?"
+    },
+    {
+      "id": "es-MX--cash-refund--none",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n(ninguno)\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--fixed-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] agados contra entrega se reembolsan a tu saldo de Mercadito. Envío de devolución. El envío de devolución es gratis para artículos dañados o equivocados. Para cua\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--fixed-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] agados contra entrega se reembolsan a tu saldo de Mercadito. Envío de devolución. El envío de devolución es gratis para artículos dañados o equivocados. Para cua\n[2] lquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso. Artículos que no se pueden devolver. Las tarjetas de regalo, los alimentos abiertos y\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--fixed-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] agados contra entrega se reembolsan a tu saldo de Mercadito. Envío de devolución. El envío de devolución es gratis para artículos dañados o equivocados. Para cua\n[2] lquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso. Artículos que no se pueden devolver. Las tarjetas de regalo, los alimentos abiertos y\n[3] o reemplazan sin importar el plazo de devolución. Tiempo del reembolso. Los reembolsos regresan al método de pago original en 5 a 10 días hábiles. Los pedidos p\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--sentence-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito.\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--sentence-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito.\n[2] Los reembolsos regresan al método de pago original en 5 a 10 días hábiles.\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--sentence-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito.\n[2] Los reembolsos regresan al método de pago original en 5 a 10 días hábiles.\n[3] Tiempo del reembolso\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--section-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Tiempo del reembolso. Los reembolsos regresan al método de pago original en 5 a 10 días hábiles. Los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito.\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--section-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Tiempo del reembolso. Los reembolsos regresan al método de pago original en 5 a 10 días hábiles. Los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito.\n[2] Artículos dañados. Si un artículo llega dañado, repórtalo dentro de los 7 días con una foto. Los artículos dañados se reembolsan o reemplazan sin importar el plazo de devolución.\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--cash-refund--section-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Tiempo del reembolso. Los reembolsos regresan al método de pago original en 5 a 10 días hábiles. Los pedidos pagados contra entrega se reembolsan a tu saldo de Mercadito.\n[2] Artículos dañados. Si un artículo llega dañado, repórtalo dentro de los 7 días con una foto. Los artículos dañados se reembolsan o reemplazan sin importar el plazo de devolución.\n[3] Devoluciones. Puedes devolver la mayoría de los artículos dentro de los 30 días posteriores a la entrega y recibir el reembolso completo. Inicia la devolución desde Mis pedidos.\n\nPregunta: Pagué contra entrega. ¿A dónde llega mi reembolso?"
+    },
+    {
+      "id": "es-MX--broken-shipping--none",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n(ninguno)\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--fixed-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] lquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso. Artículos que no se pueden devolver. Las tarjetas de regalo, los alimentos abiertos y\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--fixed-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] lquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso. Artículos que no se pueden devolver. Las tarjetas de regalo, los alimentos abiertos y\n[2] los artículos de cuidado personal no se pueden devolver. Cambios. Para cambiar un artículo por otra talla o color, devuélvelo y haz un pedido nuevo. No apartamo\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--fixed-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] lquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso. Artículos que no se pueden devolver. Las tarjetas de regalo, los alimentos abiertos y\n[2] los artículos de cuidado personal no se pueden devolver. Cambios. Para cambiar un artículo por otra talla o color, devuélvelo y haz un pedido nuevo. No apartamo\n[3] agados contra entrega se reembolsan a tu saldo de Mercadito. Envío de devolución. El envío de devolución es gratis para artículos dañados o equivocados. Para cua\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--sentence-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Para cualquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso.\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--sentence-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Para cualquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso.\n[2] Devoluciones\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--sentence-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Para cualquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso.\n[2] Devoluciones\n[3] Inicia la devolución desde Mis pedidos.\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--section-1",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Envío de devolución. El envío de devolución es gratis para artículos dañados o equivocados. Para cualquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso.\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--section-2",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Envío de devolución. El envío de devolución es gratis para artículos dañados o equivocados. Para cualquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso.\n[2] Cambios. Para cambiar un artículo por otra talla o color, devuélvelo y haz un pedido nuevo. No apartamos inventario para cambios.\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    },
+    {
+      "id": "es-MX--broken-shipping--section-3",
+      "locale": "es-MX",
+      "system": "Respondes preguntas de clientes de Mercadito usando solo los extractos del manual que se te dan. Si los extractos no responden la pregunta, di que no lo sabes. Responde en dos oraciones como máximo.",
+      "prompt": "Extractos del manual:\n[1] Envío de devolución. El envío de devolución es gratis para artículos dañados o equivocados. Para cualquier otra devolución, la guía cuesta 99 MXN y se descuenta del reembolso.\n[2] Cambios. Para cambiar un artículo por otra talla o color, devuélvelo y haz un pedido nuevo. No apartamos inventario para cambios.\n[3] Artículos que no se pueden devolver. Las tarjetas de regalo, los alimentos abiertos y los artículos de cuidado personal no se pueden devolver.\n\nPregunta: Mi licuadora llegó rota. ¿Yo pago la guía de devolución?"
+    }
+  ]
+}

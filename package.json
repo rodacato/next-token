@@ -29,7 +29,8 @@
     "manifest": "node scripts/build-manifest.ts",
     "record:experiments": "node scripts/record-experiments.ts",
     "record:serve": "vite --config vite.record.config.ts",
-    "recipes": "node scripts/build-recipes.ts"
+    "recipes": "node scripts/build-recipes.ts",
+    "record:embeddings": "node scripts/record-embeddings.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
