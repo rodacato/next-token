@@ -636,6 +636,34 @@
         },
         "voice": "Saca prueba de toda la forma después de cambiarla, no solo de la línea que tocaste."
       }
+    },
+    "should-it-be-ai": {
+      "title": "¿Debería ser IA?",
+      "kicker": "Reglas, búsqueda o un LLM",
+      "problem": {
+        "heading": "Mercadito quiere IA en cuatro lugares para el mes que entra.",
+        "body": "El encargo: estado del pedido, búsqueda de regalos, elegibilidad de devoluciones y descripciones de producto, todo 'con IA'. Algunos son una consulta a la base de datos. Uno es una tabla de reglas. Uno de verdad es difuso.",
+        "task": "Elige reglas, búsqueda o un LLM para cada uno y corre el mes."
+      },
+      "bench": {
+        "heading": "Elige una herramienta para cada trabajo y cuenta lo que costó.",
+        "body": "Cada opción tiene una cobertura (el resto va con una persona), una precisión, un costo por respuesta equivocada y una latencia. Donde el curso midió un número antes, dice en qué capítulo; el resto son supuestos a la vista.",
+        "observe": "Corre el mes con un LLM en todo. Luego lee qué línea de la cuenta es la más grande."
+      },
+      "measure": {
+        "heading": "Encuentra el mes más barato.",
+        "body": "Predice cuántas funciones necesitan un LLM y prueba planes hasta superar el primero."
+      },
+      "debrief": {
+        "heading": "Usa un LLM donde la entrada es difusa y un error sale barato.",
+        "points": {
+          "one": "Si la respuesta es una consulta o una tabla, el código es más barato, más rápido y acierta cada vez que aplica. Lo demás, con una persona.",
+          "two": "La cuenta de la API suele ser la línea más chica. Las respuestas equivocadas y las personas que las arreglan son el costo real.",
+          "three": "Un LLM se gana su lugar donde las solicitudes son abiertas (\"un regalo para mi papá\") y una respuesta equivocada cuesta poco.",
+          "four": "Cambia un supuesto y cambia la respuesta. Escribe los tuyos antes de la junta, no después."
+        },
+        "voice": "No todo trabajo necesita la prensa grande. Algunos necesitan un sello de goma."
+      }
     }
   },
   "readNext": {
@@ -1243,5 +1271,32 @@
     "predict": "El conjunto general tiene {checks} revisiones, todas aprobadas antes. ¿Cuántas fallarán después del ajuste?",
     "finding": "Predijiste {guess}; {actual} de {checks} revisiones generales empeoraron. En los dos conjuntos, {better} revisiones mejoraron y {worse} empeoraron.",
     "runGeneral": "Correr el conjunto general, antes y después"
+  },
+  "commission": {
+    "mxn": "{amount} MXN",
+    "assumptions": "Supuestos a la vista"
+  },
+  "features": {
+    "economics": "Una simulación con semilla, así que el mismo plan da el mismo mes. Supuestos: {rate} MXN por dólar, {wage} MXN por hora de tiempo de una persona, {weeks} semanas de tráfico. Precios de la API de la tabla de precios fechada.",
+    "feature": "Función",
+    "approaches": {
+      "rules": "Reglas",
+      "search": "Búsqueda",
+      "llm": "Un LLM"
+    },
+    "volume": "{count} solicitudes por semana",
+    "numbers": "cubre {coverage}% · acierta {accuracy}% · {latency} ms",
+    "assumed": "supuesto",
+    "measured": "medido en “{chapter}”",
+    "run": "Correr {weeks} semanas",
+    "right": "bien",
+    "wrong": "mal",
+    "toPerson": "a una persona",
+    "api": "API",
+    "people": "tiempo de personas",
+    "wrongCost": "respuestas equivocadas",
+    "total": "Total: {amount}",
+    "predict": "En el plan más barato, ¿cuántas de las {count} funciones usan un LLM?",
+    "finding": "Predijiste {guess}; el plan más barato usa {actual}. {plan}. Cuesta {best}; el tuyo, {yours}. La API es la línea más chica; las respuestas equivocadas y el tiempo de las personas son la cuenta."
   }
 }

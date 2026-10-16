@@ -636,6 +636,34 @@
         },
         "voice": "Proof every forme after you change it, not just the line you touched."
       }
+    },
+    "should-it-be-ai": {
+      "title": "Should it be AI?",
+      "kicker": "Rules, search or an LLM",
+      "problem": {
+        "heading": "Mercadito wants AI in four places by next month.",
+        "body": "The commission: order status, gift search, return eligibility and product descriptions, all 'with AI'. Some of these are a database lookup. One is a table of rules. One really is fuzzy.",
+        "task": "Pick rules, search or an LLM for each, and run the month."
+      },
+      "bench": {
+        "heading": "Choose a tool for each job, then count what it cost.",
+        "body": "Each option has a coverage (the rest goes to a person), an accuracy, a cost per wrong answer and a latency. Where the course measured a number earlier, it says which chapter; the rest are assumptions on the page.",
+        "observe": "Run the month with an LLM everywhere. Then read which line of the bill is biggest."
+      },
+      "measure": {
+        "heading": "Find the cheapest month.",
+        "body": "Predict how many features need an LLM, then try plans until you beat your first one."
+      },
+      "debrief": {
+        "heading": "Use an LLM where the input is fuzzy and a mistake is cheap.",
+        "points": {
+          "one": "If the answer is a lookup or a table, code is cheaper, faster and right every time it applies. Send the rest to a person.",
+          "two": "The API bill is usually the smallest line. Wrong answers and the people who fix them are the real cost.",
+          "three": "An LLM earns its place where requests are open-ended (\"a gift for my dad\") and a wrong answer costs little.",
+          "four": "Change an assumption and the answer changes. Write yours down before the meeting, not after."
+        },
+        "voice": "Not every job needs the big press. Some need a rubber stamp."
+      }
     }
   },
   "readNext": {
@@ -1243,5 +1271,32 @@
     "predict": "The general set has {checks} checks, all passing before. How many will fail after the fine-tune?",
     "finding": "You predicted {guess}; {actual} of {checks} general checks got worse. Across both sets, {better} checks improved and {worse} got worse.",
     "runGeneral": "Run the general set, before and after"
+  },
+  "commission": {
+    "mxn": "{amount} MXN",
+    "assumptions": "Assumptions you can see"
+  },
+  "features": {
+    "economics": "A simulation, seeded so the same plan gives the same month. Assumed: {rate} MXN per dollar, {wage} MXN per hour of a person's time, {weeks} weeks of traffic. API prices from the dated price table.",
+    "feature": "Feature",
+    "approaches": {
+      "rules": "Rules",
+      "search": "Search",
+      "llm": "An LLM"
+    },
+    "volume": "{count} requests a week",
+    "numbers": "covers {coverage}% · right on {accuracy}% · {latency} ms",
+    "assumed": "assumption",
+    "measured": "measured in “{chapter}”",
+    "run": "Run {weeks} weeks",
+    "right": "right",
+    "wrong": "wrong",
+    "toPerson": "to a person",
+    "api": "API",
+    "people": "people's time",
+    "wrongCost": "wrong answers",
+    "total": "Total: {amount}",
+    "predict": "In the cheapest plan, how many of the {count} features use an LLM?",
+    "finding": "You predicted {guess}; the cheapest plan uses {actual}. {plan}. It costs {best}; yours, {yours}. The API is the smallest line; wrong answers and people's time are the bill."
   }
 }

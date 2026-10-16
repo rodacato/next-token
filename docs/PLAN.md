@@ -171,3 +171,19 @@ Verified before planning:
 
 The fine-tune in 16–17 is a small local LoRA run for the course; the
 QLoRA-on-a-12-GB-GPU recipe stays in phase E (next-token-foundry).
+
+## 9. Phase D plan (Act IV, written 2026-10-16)
+
+Act IV is commissions: Mercadito asks for something, the learner decides, and
+a seeded simulation (`src/sim/`) plays out the weeks after. Every number a
+simulation uses lives in the chapter's content file, marked either as
+measured earlier in the course (with the chapter it came from), as a dated
+price, or as an assumption the learner can change.
+
+| Ch | Commission | Simulation |
+| --- | --- | --- |
+| 18 Should it be AI? | Four features: order status, gift search, return eligibility, product copy; rules, search or an LLM for each | A month of traffic per feature: right, wrong, handed to a person, cost, latency. Accuracy figures come from chapters 5, 6, 8 and 9 where the course measured them |
+| 19 Designing for failure | The returns assistant's interface: streaming, visible uncertainty, undo, the user has the last word, honest refusal | 1,000 seeded conversations with the error rates measured in chapter 9; harm that reaches a customer, abandoned waits, effort |
+| 20 The bill | Traffic, prompt sizes, routing between Haiku and Sonnet, prompt caching | Daily and monthly cost by component from the dated price table (cache prices checked 2026-10-16); latency as labelled assumptions |
+| 21 The launch | A rollout plan with budget caps, grounding, an output check and injection defenses | Eight weeks with a campaign spike, an invented-policy incident and an indirect injection through a product review; consequences land a week late. The injection lab is a deterministic attack × defense matrix |
+| 22 Finale | Design the order-delay assistant: spec, prompt, evals, guardrails, launch plan | A review board of four applies a deterministic rubric; nothing is graded before submission |

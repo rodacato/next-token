@@ -253,7 +253,35 @@ export const beforeAfterChapterSchema = z.object({
   regressionSet: z.string(),
 });
 
+const approachSchema = z.object({
+  coverage: z.number().min(0).max(1),
+  accuracy: z.number().min(0).max(1),
+  latencyMs: z.number().nonnegative(),
+  tokens: z.object({ model: z.string(), input: z.number().int().nonnegative(), output: z.number().int().nonnegative() }).optional(),
+  why: perLocale,
+  evidence: z.string(),
+});
+
+export const featuresChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("commission-features"),
+  economics: z.object({ mxnPerUsd: z.number().positive(), personMxnPerHour: z.number().positive(), weeks: z.number().int().positive(), seed: z.number().int() }),
+  features: z
+    .array(
+      z.object({
+        id: z.string(),
+        weeklyRequests: z.number().int().positive(),
+        wrongCostMxn: z.number().nonnegative(),
+        personMinutes: z.number().nonnegative(),
+        text: perLocale,
+        approaches: z.object({ rules: approachSchema, search: approachSchema, llm: approachSchema }),
+      }),
+    )
+    .min(1),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  featuresChapterSchema,
   decisionChapterSchema,
   beforeAfterChapterSchema,
   ledgerChapterSchema,
@@ -296,3 +324,4 @@ export type Dataset = z.infer<typeof datasetSchema>;
 export type LedgerChapter = z.infer<typeof ledgerChapterSchema>;
 export type DecisionChapter = z.infer<typeof decisionChapterSchema>;
 export type BeforeAfterChapter = z.infer<typeof beforeAfterChapterSchema>;
+export type FeaturesChapter = z.infer<typeof featuresChapterSchema>;

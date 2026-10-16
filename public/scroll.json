@@ -135,6 +135,13 @@
         "en": "Before and after",
         "es-MX": "Antes y después"
       }
+    },
+    {
+      "id": "should-it-be-ai",
+      "title": {
+        "en": "Should it be AI?",
+        "es-MX": "¿Debería ser IA?"
+      }
     }
   ],
   "capabilities": [
