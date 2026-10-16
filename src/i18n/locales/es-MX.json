@@ -692,6 +692,34 @@
         },
         "voice": "Toda prueba trae errores. El taller que los atrapa antes del tiraje conserva a sus clientes."
       }
+    },
+    "the-bill": {
+      "title": "La cuenta",
+      "kicker": "Costo, enrutamiento, caché",
+      "problem": {
+        "heading": "La primera factura fue el triple de lo estimado.",
+        "body": "El asistente de devoluciones usa el modelo fuerte para cada ticket, y cada turno vuelve a mandar el prompt completo. Finanzas lo quiere por debajo de 1,000 USD al mes sin empeorar los tickets difíciles.",
+        "task": "Encuentra a dónde se va el dinero y luego recórtalo."
+      },
+      "bench": {
+        "heading": "Cada token, cada turno, cada día.",
+        "body": "Cambia el tráfico, el tamaño de los prompts, el enrutamiento y la caché, y mira cada línea de la cuenta. Los precios vienen de la tabla fechada; la tasa de aciertos de caché y los tiempos de respuesta son supuestos a la vista.",
+        "observe": "Reduce el prompt de sistema a la mitad. Luego, en lugar de eso, prende la caché. Compara."
+      },
+      "measure": {
+        "heading": "Ponla bajo presupuesto.",
+        "body": "Predice la cuenta tal como está y luego bájala de 1,000 USD al mes con los tickets difíciles todavía en el modelo fuerte."
+      },
+      "debrief": {
+        "heading": "La entrada es la cuenta. Enrútala y guarda en caché lo que se repite.",
+        "points": {
+          "one": "Una conversación vuelve a mandar el prompt de sistema y su historial en cada turno, así que los tokens de entrada suelen pesar más que los de salida.",
+          "two": "Enruta por dificultad: un modelo barato para la mayoría fácil y el fuerte donde de verdad hace diferencia medible.",
+          "three": "Guarda en caché el prefijo estable. Las lecturas cuestan una décima parte de la entrada en Haiku 5.5 y una vigésima en Sonnet 5.5; las escrituras cuestan una cuarta parte más. Requiere tráfico constante dentro de la ventana de la caché.",
+          "four": "Los precios cambian y el enrutamiento cambia la calidad. Vuelve a revisar los dos contra la página de precios y tus evaluaciones antes de confiar en un ahorro."
+        },
+        "voice": "El papel es barato. Formar la misma página dos veces, no."
+      }
     }
   },
   "readNext": {
@@ -731,7 +759,9 @@
       "ouyang-2022-instructgpt": "El artículo que volvió estándar el proceso: preentrenar, ajustar con supervisión y luego aprender de preferencias humanas.",
       "lambert-2024-tulu3": "Una receta de post-entrenamiento documentada completa, incluida la forma en que se mezclaron, limpiaron y descontaminaron los datos contra las evaluaciones.",
       "rafailov-2023-dpo": "Ajuste por preferencias sin modelo de recompensa ni ciclo de RL: el método detrás de muchos ajustes finos abiertos.",
-      "hinton-2015-distillation": "El artículo original de destilación: un modelo pequeño aprende de las probabilidades de uno grande."
+      "hinton-2015-distillation": "El artículo original de destilación: un modelo pequeño aprende de las probabilidades de uno grande.",
+      "anthropic-prompt-caching": "Cómo funciona la caché de prompts, cuánto cuesta y cuánto dura un prefijo en caché.",
+      "anthropic-pricing": "Precios actuales por modelo, incluidas escrituras y lecturas de caché y descuentos por lotes."
     }
   },
   "units": {
@@ -1369,5 +1399,40 @@
     "alone": "Salvaguarda, sola",
     "findingMatch": "Como predijiste: {best}, de {from} a {to}. Y mostrar la respuesta mientras se escribe, sola, sube el daño a {streaming}: la gente que deja de irse se queda a leer las respuestas equivocadas.",
     "findingMiss": "La que más reduce sola: {best}, de {from} a {to}. Y mostrar la respuesta mientras se escribe, sola, sube el daño a {streaming}: la gente que deja de irse se queda a leer las respuestas equivocadas."
+  },
+  "bill": {
+    "usd": "${amount} USD",
+    "traffic": "Tráfico y prompt",
+    "fields": {
+      "conversationsPerDay": "Conversaciones al día",
+      "turnsPerConversation": "Turnos por conversación",
+      "systemTokens": "Prompt de sistema, tokens",
+      "contextTokens": "Contexto recuperado por turno, tokens",
+      "userTokens": "Mensaje del cliente, tokens",
+      "outputTokens": "Respuesta, tokens"
+    },
+    "routing": "Enrutamiento y caché",
+    "strongShare": "Enviado a {strong}: {share}% (el resto a {cheap})",
+    "hardCovered": "Los tickets difíciles (quejas, daños, {share}% del tráfico) siguen llegando al modelo fuerte.",
+    "hardDropped": "Por debajo de {share}%, algunos tickets difíciles (quejas, daños) van al modelo barato.",
+    "caching": "Guardar en caché el prefijo estable (prompt de sistema y turnos anteriores)",
+    "hitRate": "Aciertos de caché: {rate}% de los tokens del prefijo (un supuesto: requiere tráfico constante dentro de la ventana de 5 minutos)",
+    "month": "{month} al mes ({mxn} MXN) · {day} al día · {conversation}¢ por conversación",
+    "parts": {
+      "input": "entrada sin caché",
+      "cacheWrites": "escrituras de caché",
+      "cacheReads": "lecturas de caché",
+      "output": "salida"
+    },
+    "latency": "Tiempo de respuesta supuesto, primer token más la escritura: {cheap} {cheapSeconds} s, {strong} {strongSeconds} s. Mide el tuyo.",
+    "prices": "Precios de lista al {date}; precios de caché revisados el {cacheDate}. Cada conversación vuelve a mandar el prompt de sistema y el historial en cada turno.",
+    "predict": "Todo en {model}, sin caché, {conversations} conversaciones al día. ¿Cuánto es la cuenta del mes?",
+    "under": "menos de {amount}",
+    "between": "de {low} a {high}",
+    "over": "más de {amount}",
+    "findingMatch": "Como predijiste: {baseline} al mes. La meta es menos de {budget} con el {share}% difícil todavía en el modelo fuerte.",
+    "findingMiss": "Son {baseline} al mes. La meta es menos de {budget} con el {share}% difícil todavía en el modelo fuerte.",
+    "met": "{month} al mes: {saved}% menos, y los tickets difíciles siguen en el modelo fuerte.",
+    "notYet": "{month} al mes. Todavía no."
   }
 }

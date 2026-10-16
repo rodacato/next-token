@@ -1,0 +1,27 @@
+{
+  "id": "the-bill",
+  "kind": "commission-bill",
+  "act": "commissions",
+  "number": 20,
+  "cheap": "claude-haiku-5-5",
+  "strong": "claude-sonnet-5-5",
+  "traffic": {
+    "conversationsPerDay": 4000,
+    "turnsPerConversation": 3,
+    "systemTokens": 2500,
+    "contextTokens": 1500,
+    "userTokens": 60,
+    "outputTokens": 180
+  },
+  "routing": { "strongShare": 1, "caching": false, "cacheHitRate": 0.9 },
+  "hardShare": 0.25,
+  "budgetUsdPerMonth": 1000,
+  "daysPerMonth": 30,
+  "mxnPerUsd": 18.5,
+  "latency": {
+    "claude-haiku-5-5": { "firstTokenMs": 500, "tokensPerSecond": 120 },
+    "claude-sonnet-5-5": { "firstTokenMs": 900, "tokensPerSecond": 60 }
+  },
+  "brackets": [500, 2000, 5000],
+  "readNext": ["anthropic-prompt-caching", "anthropic-pricing", "huyen-ai-engineering"]
+}

@@ -2531,3 +2531,91 @@ td.is-key {
 tr.is-latest td {
   background: color-mix(in oklab, var(--paper) 80%, var(--brass));
 }
+
+.bill-bench__inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.bill-fields {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.bill-fields label:not(.rule-plate) {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 10px;
+  align-items: center;
+  font-size: 12.5px;
+}
+
+.bill-fields input[type="number"] {
+  font: 400 13px/1.2 var(--face-mono);
+  padding: 4px 6px;
+  border: 1px solid var(--brass-dark);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.bill-fields input[type="range"] {
+  accent-color: var(--vermilion);
+}
+
+.bill-sheet {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.bill-sheet p {
+  margin: 0;
+}
+
+.bill-sheet__total {
+  font: 400 26px/1.25 var(--face-display);
+}
+
+.bill-bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.bill-bars li {
+  display: grid;
+  grid-template-columns: 150px 1fr 110px;
+  gap: 10px;
+  align-items: center;
+  font: 400 11.5px/1.3 var(--face-mono);
+}
+
+.bill-bars li > span:last-child {
+  text-align: right;
+}
+
+.bill-bars__bar {
+  height: 12px;
+  background: var(--ink);
+  min-width: 1px;
+  transition: width 160ms steps(4);
+}
+
+@media (max-width: 900px) {
+  .bill-bench__inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .bill-bars li {
+    grid-template-columns: 110px 1fr 80px;
+  }
+}
