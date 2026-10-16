@@ -24,3 +24,17 @@ test.describe("chapter 18 · should it be AI?", () => {
     await expect(page.getByTestId("features-finding")).toContainText("You predicted 4; the cheapest plan uses 1.");
   });
 });
+
+test.describe("chapter 19 · designing for failure", () => {
+  test("honest refusal cuts harm the most; streaming alone raises it", async ({ page }) => {
+    await open(page, /^19 Designing for failure/);
+    await advance(page, 1);
+    await page.getByTestId("safeguard-refusal").check();
+    await expect(page.getByTestId("reply-preview")).toContainText("I'm not sure");
+    await page.getByTestId("run-conversations").click();
+    await expect(page.getByTestId("failure-ledger")).toBeVisible();
+    await advance(page, 1);
+    await page.getByRole("radio", { name: "Stream the reply" }).check();
+    await expect(page.getByTestId("failure-finding")).toContainText("The biggest cut alone: Let it say \"I don't know\", from 155 to 79. And streaming alone raises harm to 220");
+  });
+});

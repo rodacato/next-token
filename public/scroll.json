@@ -142,6 +142,13 @@
         "en": "Should it be AI?",
         "es-MX": "¿Debería ser IA?"
       }
+    },
+    {
+      "id": "design-for-failure",
+      "title": {
+        "en": "Designing for failure",
+        "es-MX": "Diseñar para la falla"
+      }
     }
   ],
   "capabilities": [

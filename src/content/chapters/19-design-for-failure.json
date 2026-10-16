@@ -1,0 +1,48 @@
+{
+  "id": "design-for-failure",
+  "kind": "commission-failure",
+  "act": "commissions",
+  "number": 19,
+  "model": {
+    "conversations": 1000,
+    "seed": 19,
+    "right": 0.67,
+    "wrong": 0.11,
+    "actionShare": 0.4,
+    "replySeconds": [2, 9],
+    "firstTokenSeconds": 0.7,
+    "patienceSeconds": [3, 12],
+    "guessRight": 0.5,
+    "flaggedWrong": 0.5,
+    "checkedWhenFlagged": 0.7,
+    "noticedForUndo": 0.6,
+    "caughtAtConfirm": 0.7
+  },
+  "assumptions": [
+    { "key": "right", "evidence": "rag" },
+    { "key": "wrong", "evidence": "rag" },
+    { "key": "actionShare", "evidence": "assumption" },
+    { "key": "replySeconds", "evidence": "assumption" },
+    { "key": "patienceSeconds", "evidence": "assumption" },
+    { "key": "guessRight", "evidence": "assumption" },
+    { "key": "flaggedWrong", "evidence": "assumption" },
+    { "key": "checkedWhenFlagged", "evidence": "assumption" },
+    { "key": "noticedForUndo", "evidence": "assumption" },
+    { "key": "caughtAtConfirm", "evidence": "assumption" }
+  ],
+  "sample": {
+    "customer": {
+      "en": "My headphones came 20 days ago, still sealed. Refund me, please.",
+      "es-MX": "Mis audífonos llegaron hace 20 días, siguen sellados. Reembólsenme, por favor."
+    },
+    "reply": {
+      "en": "Electronics can be returned within 30 days, so I'll start your refund of 1,299 MXN now.",
+      "es-MX": "La electrónica se puede devolver dentro de 30 días, así que inicio ahora tu reembolso de 1,299 MXN."
+    },
+    "refusal": {
+      "en": "I'm not sure the return window covers headphones after 20 days, so I'm passing you to a person who can check.",
+      "es-MX": "No estoy seguro de que el plazo cubra unos audífonos después de 20 días, así que te paso con una persona que lo puede revisar."
+    }
+  },
+  "readNext": ["anthropic-hallucinations", "huyen-ai-engineering", "anthropic-building-agents"]
+}

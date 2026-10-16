@@ -664,6 +664,34 @@
         },
         "voice": "Not every job needs the big press. Some need a rubber stamp."
       }
+    },
+    "design-for-failure": {
+      "title": "Designing for failure",
+      "kicker": "Streaming, uncertainty, undo, the last word",
+      "problem": {
+        "heading": "The model will be wrong. The question is who finds out.",
+        "body": "Chapter 9's assistant was right two times in three, confidently wrong once in nine, and unsure the rest. Mercadito is putting it in front of customers anyway.",
+        "task": "Design the interface around the mistakes, and count the harm that still gets through."
+      },
+      "bench": {
+        "heading": "Five safeguards. Try them alone and together.",
+        "body": "Each safeguard changes what happens after the model answers. The preview shows the same wrong answer under your design. Every number behind the simulation is on the page.",
+        "observe": "Turn on streaming alone and run it. Read the harm column."
+      },
+      "measure": {
+        "heading": "Which one matters most?",
+        "body": "Predict, then see each safeguard alone against none."
+      },
+      "debrief": {
+        "heading": "Design for the wrong answer, not the right one.",
+        "points": {
+          "one": "An honest \"I don't know\" turns guesses into hand-offs. It costs people's time and saves customers from wrong answers.",
+          "two": "Before an action, put a confirmation or an undo between the model and the money. Show what will happen in plain words.",
+          "three": "Faster isn't safer. Streaming keeps people waiting, which also means more of them read, and act on, the wrong answers.",
+          "four": "Visible uncertainty only helps if the model's uncertainty tracks its errors, and if people read it. Measure both."
+        },
+        "voice": "Every proof has errors. The shop that catches them before the run keeps its customers."
+      }
     }
   },
   "readNext": {
@@ -1298,5 +1326,48 @@
     "total": "Total: {amount}",
     "predict": "In the cheapest plan, how many of the {count} features use an LLM?",
     "finding": "You predicted {guess}; the cheapest plan uses {actual}. {plan}. It costs {best}; yours, {yours}. The API is the smallest line; wrong answers and people's time are the bill."
+  },
+  "failure": {
+    "design": "Your design for the returns assistant",
+    "safeguards": {
+      "streaming": "Stream the reply",
+      "uncertainty": "Show when it's unsure",
+      "refusal": "Let it say \"I don't know\"",
+      "undo": "Undo for actions",
+      "lastWord": "The customer confirms actions"
+    },
+    "preview": "The same wrong answer, under your design",
+    "unsureNote": "Not sure about this one. Check the returns policy before you act on it.",
+    "confirm": "Confirm refund",
+    "notNow": "Not now",
+    "done": "Refund started.",
+    "undo": "Changed your mind? Undo within 24 hours.",
+    "assumptions": {
+      "right": "Right answers: {value}",
+      "wrong": "Confidently wrong: {value} (the rest: unsure)",
+      "actionShare": "Conversations that end in an action (a refund, a claim): {value}",
+      "replySeconds": "Seconds to write the full reply: {value}",
+      "patienceSeconds": "Seconds a customer will wait for anything to appear: {value}",
+      "guessRight": "An unsure model, made to answer, guesses right: {value}",
+      "flaggedWrong": "Wrong answers that the model also flags as unsure: {value}",
+      "checkedWhenFlagged": "Customers who check before acting on a flagged answer: {value}",
+      "noticedForUndo": "Wrong actions the customer notices in time to undo: {value}",
+      "caughtAtConfirm": "Wrong actions a customer catches on the confirmation screen: {value}"
+    },
+    "run": "Run {count} conversations",
+    "designColumn": "Design",
+    "noSafeguards": "No safeguards",
+    "outcomes": {
+      "harm": "harm reached a customer",
+      "abandoned": "gave up waiting",
+      "toPerson": "passed to a person",
+      "caught": "caught before acting",
+      "undone": "undone",
+      "extraSteps": "extra steps"
+    },
+    "predict": "Alone, which safeguard cuts the harm the most?",
+    "alone": "Safeguard, alone",
+    "findingMatch": "As you predicted: {best}, from {from} to {to}. And streaming alone raises harm to {streaming}: people who stop leaving stay to read the wrong answers.",
+    "findingMiss": "The biggest cut alone: {best}, from {from} to {to}. And streaming alone raises harm to {streaming}: people who stop leaving stay to read the wrong answers."
   }
 }
