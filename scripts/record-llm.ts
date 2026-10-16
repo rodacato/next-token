@@ -5,6 +5,7 @@ import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { promisify } from "node:util";
+import { requestHash } from "../src/llm/hash.ts";
 import { recipeSchema, type RecipeRequest, type RecordedCompletion, type RecordedSet } from "../src/llm/recorded-schema.ts";
 
 const run = promisify(execFile);
@@ -63,6 +64,7 @@ async function main() {
       const result = await ask(recipe.model, request);
       completions.push({
         requestId: request.id,
+        requestHash: requestHash({ system: request.system, prompt: request.prompt, jsonSchema: request.jsonSchema }),
         locale: request.locale,
         attempt,
         model: Object.keys(result.modelUsage)[0] ?? recipe.model,
