@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { evalSetSchema, type EvalSet } from "../evals/types";
-import { chapterSchema, duelSchema, sourceSchema, type Chapter, type Duel, type Source } from "./schema";
+import { chapterSchema, corpusSchema, duelSchema, sourceSchema, type Chapter, type Corpus, type Duel, type Source } from "./schema";
 import rawSources from "./sources.json";
 
 // Adding a chapter is adding a JSON file to ./chapters; the engines pick it up by kind.
@@ -32,4 +32,11 @@ export function findSource(id: string): Source | undefined {
 
 export function findChapter(id: string): Chapter | undefined {
   return chapters.find((chapter) => chapter.id === id);
+}
+
+const corpusFiles = import.meta.glob("./corpora/*.json", { eager: true, import: "default" });
+export const corpora: readonly Corpus[] = Object.values(corpusFiles).map((raw) => corpusSchema.parse(raw));
+
+export function findCorpus(id: string): Corpus | undefined {
+  return corpora.find((corpus) => corpus.id === id);
 }

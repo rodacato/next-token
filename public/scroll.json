@@ -86,6 +86,13 @@
         "en": "Agents",
         "es-MX": "Agentes"
       }
+    },
+    {
+      "id": "casting",
+      "title": {
+        "en": "Casting from scratch",
+        "es-MX": "Fundir desde cero"
+      }
     }
   ],
   "capabilities": [
