@@ -720,6 +720,34 @@
         },
         "voice": "Paper is cheap. Setting the same page twice is not."
       }
+    },
+    "the-launch": {
+      "title": "The launch",
+      "kicker": "Consequences arrive",
+      "problem": {
+        "heading": "Launch day is the easy part.",
+        "body": "The returns assistant goes live the week before the November sale. Nothing breaks on day one. The bills, the invented policies and the first attack arrive later.",
+        "task": "Write a launch plan, then live through eight weeks of it."
+      },
+      "bench": {
+        "heading": "Plan, defend, launch, wait.",
+        "body": "Switch on the parts of your plan, set your defenses in the lab, and launch. Each week shows what happened; mistakes are paid for the week after. Every number lives in the chapter's content, and earlier chapters supplied the costs.",
+        "observe": "Launch with nothing switched on. Watch week 3, then week 5."
+      },
+      "measure": {
+        "heading": "Make it survive.",
+        "body": "Predict the cost of launching as it stands, then find a plan that stays under budget and stops every harmful injection."
+      },
+      "debrief": {
+        "heading": "Plan for the bill, the mistakes and the attacker before launch day.",
+        "points": {
+          "one": "Traffic isn't flat. A sale triples it, and a per-conversation cost triples with it unless something caps the spend.",
+          "two": "Mistakes cost more than tokens, and they arrive late. Ground the answers that commit money, and check them before they reach a customer.",
+          "three": "Telling the model to ignore injected instructions only weakens an attack. What stops it is architecture: gates on actions, agents without tools for untrusted text, filters on what leaves.",
+          "four": "Untrusted text, private data and a way to send things out, together in one agent, is the dangerous combination. Break at least one link."
+        },
+        "voice": "A press runs fine on the first sheet. It's the ten-thousandth that finds the flaw."
+      }
     }
   },
   "readNext": {
@@ -761,7 +789,10 @@
       "rafailov-2023-dpo": "Preference tuning without a reward model or RL loop: the method behind many open fine-tunes.",
       "hinton-2015-distillation": "The original distillation paper: a small model learns from a big one's probabilities.",
       "anthropic-prompt-caching": "How prompt caching works, what it costs, and how long a cached prefix lives.",
-      "anthropic-pricing": "Current prices per model, including cache writes, cache reads and batch discounts."
+      "anthropic-pricing": "Current prices per model, including cache writes, cache reads and batch discounts.",
+      "owasp-llm01": "The industry's reference entry on prompt injection: direct and indirect, with mitigations.",
+      "greshake-2023": "The paper that showed indirect prompt injection against real LLM-integrated apps.",
+      "willison-lethal-trifecta": "Why an agent with private data, untrusted content and a way out is exploitable, whatever the prompt says."
     }
   },
   "units": {
@@ -1434,5 +1465,69 @@
     "findingMiss": "It's {baseline} a month. The target is under {budget} with the hard {share}% still on the strong model.",
     "met": "{month} a month: {saved}% less, and the hard tickets still get the strong model.",
     "notYet": "{month} a month. Not there yet."
+  },
+  "launch": {
+    "plan": "Your launch plan",
+    "toggles": {
+      "staged": "Staged rollout: 5%, then 25%, then everyone",
+      "budgetCap": "A daily spending cap of ${cap}; past it, customers get the contact form",
+      "optimized": "Chapter 20's routing and caching",
+      "grounding": "Answer refunds from the retrieved policy (chapter 9)",
+      "outputCheck": "A policy check on every reply that mentions a refund"
+    },
+    "lab": "The injection lab: switch defenses on and read each attack's fate",
+    "vectors": {
+      "customer": "from a customer",
+      "review": "inside a product review",
+      "tool-result": "inside a tool result"
+    },
+    "goals": {
+      "refund": "a refund",
+      "coupon": "a fake coupon",
+      "exfiltration": "customer data out",
+      "leak": "the prompt out"
+    },
+    "verdicts": {
+      "blocked": "blocked",
+      "sometimes": "gets through sometimes",
+      "succeeds": "gets through"
+    },
+    "attack": "Attack (goal)",
+    "defenseShort": {
+      "mark-untrusted": "mark as data",
+      "system-rule": "system rule",
+      "refund-gate": "refund gate",
+      "split-agents": "split agents",
+      "output-filter": "output filter",
+      "no-secrets": "no secrets"
+    },
+    "effects": {
+      "blocks": "blocks",
+      "weakens": "weakens",
+      "none": "—"
+    },
+    "run": "Launch, and run {weeks} weeks",
+    "total": "Eight weeks cost {total}, of which the API was {api}.",
+    "week": "Week {week}",
+    "after": "After week 8",
+    "afterShort": "after",
+    "pending": "Last week's mistakes are still on their way: {amount}.",
+    "chartLabel": "Cost per week in pesos: the API in ink, incidents in red",
+    "legendApi": "API",
+    "legendIncidents": "incidents, landing a week late",
+    "notes": {
+      "traffic": "{conversations} conversations, ${usd} in API calls.",
+      "sale": "The November sale: traffic ×{times}.",
+      "capped": "The cap held: {deflected} customers got the contact form instead.",
+      "invented": "{invented} replies quoted a refund policy that doesn't exist; {honored} of those customers will be honored next week.",
+      "injection": "{count} injections got {goal}: {what}",
+      "held": "The injection campaign hit, and nothing got through.",
+      "arrived": "Bills for earlier mistakes arrived: {amount} MXN."
+    },
+    "predict": "As it stands, with none of the plan switched on, what do {weeks} weeks cost?",
+    "findingMatch": "As you predicted: {baseline}. Now get it under {goal} with no injection getting a refund, a coupon or customer data out.",
+    "findingMiss": "It's {baseline}. Now get it under {goal} with no injection getting a refund, a coupon or customer data out.",
+    "met": "{total}, and every harmful injection was stopped. Ship it.",
+    "notYet": "{total}; harmful injections that got through: {through}. Not yet."
   }
 }

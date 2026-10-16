@@ -326,7 +326,38 @@ export const billChapterSchema = z.object({
   brackets: z.array(z.number().positive()).min(1),
 });
 
+export const launchChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("commission-launch"),
+  billChapter: z.string(),
+  goalMxn: z.number().positive(),
+  world: z.object({
+    weeks: z.number().int().positive(),
+    stagedShare: z.array(z.number().min(0).max(1)),
+    trafficMultiplier: z.array(z.number().positive()),
+    dailyCapUsd: z.number().positive(),
+    mxnPerUsd: z.number().positive(),
+    checkUsdPerConversation: z.number().nonnegative(),
+    invented: z.object({ ungrounded: z.number(), grounded: z.number(), caughtByCheck: z.number(), honoredShare: z.number(), costMxn: z.number() }),
+    injection: z.object({ week: z.number().int().positive(), attemptsPerAttack: z.number().int().nonnegative(), baseSuccess: z.number().min(0).max(1), costMxn: z.record(z.string(), z.number()) }),
+  }),
+  defaultPlan: z.object({ staged: z.boolean(), budgetCap: z.boolean(), optimized: z.boolean(), grounding: z.boolean(), outputCheck: z.boolean(), defenses: z.array(z.string()) }),
+  defenses: z.array(z.object({ id: z.string(), text: perLocale })).min(1),
+  attacks: z
+    .array(
+      z.object({
+        id: z.string(),
+        vector: z.enum(["customer", "review", "tool-result"]),
+        goal: z.string(),
+        text: perLocale,
+        effects: z.record(z.string(), z.enum(["blocks", "weakens", "none"])),
+      }),
+    )
+    .min(1),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  launchChapterSchema,
   billChapterSchema,
   failureChapterSchema,
   featuresChapterSchema,
@@ -375,3 +406,4 @@ export type BeforeAfterChapter = z.infer<typeof beforeAfterChapterSchema>;
 export type FeaturesChapter = z.infer<typeof featuresChapterSchema>;
 export type FailureChapter = z.infer<typeof failureChapterSchema>;
 export type BillChapter = z.infer<typeof billChapterSchema>;
+export type LaunchChapter = z.infer<typeof launchChapterSchema>;

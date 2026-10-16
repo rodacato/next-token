@@ -294,5 +294,29 @@
     "year": 2026,
     "url": "https://platform.claude.com/docs/en/about-claude/pricing",
     "kind": "docs"
+  },
+  {
+    "id": "owasp-llm01",
+    "authors": "OWASP GenAI Security Project",
+    "title": "LLM01:2025 Prompt Injection",
+    "year": 2025,
+    "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+    "kind": "docs"
+  },
+  {
+    "id": "greshake-2023",
+    "authors": "Greshake, Abdelnabi, Mishra, Endres, Holz, Fritz",
+    "title": "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2302.12173",
+    "kind": "paper"
+  },
+  {
+    "id": "willison-lethal-trifecta",
+    "authors": "Simon Willison",
+    "title": "The lethal trifecta for AI agents: private data, untrusted content, and external communication",
+    "year": 2025,
+    "url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/",
+    "kind": "docs"
   }
 ]

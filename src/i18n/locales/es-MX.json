@@ -720,6 +720,34 @@
         },
         "voice": "El papel es barato. Formar la misma página dos veces, no."
       }
+    },
+    "the-launch": {
+      "title": "El lanzamiento",
+      "kicker": "Llegan las consecuencias",
+      "problem": {
+        "heading": "El día del lanzamiento es la parte fácil.",
+        "body": "El asistente de devoluciones sale la semana antes de la venta de noviembre. El primer día no se rompe nada. Las cuentas, las políticas inventadas y el primer ataque llegan después.",
+        "task": "Escribe un plan de lanzamiento y vive ocho semanas de él."
+      },
+      "bench": {
+        "heading": "Planea, defiende, lanza, espera.",
+        "body": "Prende las partes de tu plan, pon tus defensas en el laboratorio y lanza. Cada semana muestra lo que pasó; los errores se pagan la semana siguiente. Cada número vive en el contenido del capítulo, y los capítulos anteriores pusieron los costos.",
+        "observe": "Lanza sin nada encendido. Mira la semana 3 y luego la 5."
+      },
+      "measure": {
+        "heading": "Haz que sobreviva.",
+        "body": "Predice cuánto cuesta lanzar tal como está y luego encuentra un plan que quede bajo presupuesto y detenga cada inyección dañina."
+      },
+      "debrief": {
+        "heading": "Planea la cuenta, los errores y al atacante antes del lanzamiento.",
+        "points": {
+          "one": "El tráfico no es plano. Una venta lo triplica, y el costo por conversación se triplica con él a menos que algo le ponga tope al gasto.",
+          "two": "Los errores cuestan más que los tokens, y llegan tarde. Fundamenta las respuestas que comprometen dinero y revísalas antes de que lleguen al cliente.",
+          "three": "Decirle al modelo que ignore instrucciones inyectadas solo debilita un ataque. Lo que lo detiene es la arquitectura: compuertas en las acciones, agentes sin herramientas para texto no confiable, filtros en lo que sale.",
+          "four": "Texto no confiable, datos privados y una forma de mandar cosas fuera, juntos en un agente, es la combinación peligrosa. Rompe al menos un eslabón."
+        },
+        "voice": "Una prensa corre bien el primer pliego. Es el diezmilésimo el que encuentra la falla."
+      }
     }
   },
   "readNext": {
@@ -761,7 +789,10 @@
       "rafailov-2023-dpo": "Ajuste por preferencias sin modelo de recompensa ni ciclo de RL: el método detrás de muchos ajustes finos abiertos.",
       "hinton-2015-distillation": "El artículo original de destilación: un modelo pequeño aprende de las probabilidades de uno grande.",
       "anthropic-prompt-caching": "Cómo funciona la caché de prompts, cuánto cuesta y cuánto dura un prefijo en caché.",
-      "anthropic-pricing": "Precios actuales por modelo, incluidas escrituras y lecturas de caché y descuentos por lotes."
+      "anthropic-pricing": "Precios actuales por modelo, incluidas escrituras y lecturas de caché y descuentos por lotes.",
+      "owasp-llm01": "La entrada de referencia de la industria sobre inyección de prompts: directa e indirecta, con mitigaciones.",
+      "greshake-2023": "El artículo que demostró la inyección indirecta de prompts contra aplicaciones reales con LLM.",
+      "willison-lethal-trifecta": "Por qué un agente con datos privados, contenido no confiable y una salida al exterior es explotable, diga lo que diga el prompt."
     }
   },
   "units": {
@@ -1434,5 +1465,69 @@
     "findingMiss": "Son {baseline} al mes. La meta es menos de {budget} con el {share}% difícil todavía en el modelo fuerte.",
     "met": "{month} al mes: {saved}% menos, y los tickets difíciles siguen en el modelo fuerte.",
     "notYet": "{month} al mes. Todavía no."
+  },
+  "launch": {
+    "plan": "Tu plan de lanzamiento",
+    "toggles": {
+      "staged": "Lanzamiento por etapas: 5%, luego 25%, luego todos",
+      "budgetCap": "Un tope de gasto diario de ${cap} USD; pasándolo, los clientes reciben el formulario de contacto",
+      "optimized": "El enrutamiento y la caché del capítulo 20",
+      "grounding": "Responder reembolsos con la política recuperada (capítulo 9)",
+      "outputCheck": "Una revisión de política en cada respuesta que mencione un reembolso"
+    },
+    "lab": "El laboratorio de inyección: prende defensas y lee qué pasa con cada ataque",
+    "vectors": {
+      "customer": "de un cliente",
+      "review": "dentro de una reseña",
+      "tool-result": "dentro del resultado de una herramienta"
+    },
+    "goals": {
+      "refund": "un reembolso",
+      "coupon": "un cupón falso",
+      "exfiltration": "sacar datos del cliente",
+      "leak": "sacar el prompt"
+    },
+    "verdicts": {
+      "blocked": "bloqueado",
+      "sometimes": "pasa a veces",
+      "succeeds": "pasa"
+    },
+    "attack": "Ataque (objetivo)",
+    "defenseShort": {
+      "mark-untrusted": "marcar como datos",
+      "system-rule": "regla de sistema",
+      "refund-gate": "compuerta de reembolsos",
+      "split-agents": "agentes separados",
+      "output-filter": "filtro de salida",
+      "no-secrets": "sin secretos"
+    },
+    "effects": {
+      "blocks": "bloquea",
+      "weakens": "debilita",
+      "none": "—"
+    },
+    "run": "Lanzar y correr {weeks} semanas",
+    "total": "Ocho semanas costaron {total}, de los cuales la API fue {api}.",
+    "week": "Semana {week}",
+    "after": "Después de la semana 8",
+    "afterShort": "después",
+    "pending": "Los errores de la última semana siguen en camino: {amount}.",
+    "chartLabel": "Costo por semana en pesos: la API en tinta, los incidentes en rojo",
+    "legendApi": "API",
+    "legendIncidents": "incidentes, que llegan una semana tarde",
+    "notes": {
+      "traffic": "{conversations} conversaciones, {usd} USD en llamadas a la API.",
+      "sale": "La venta de noviembre: tráfico ×{times}.",
+      "capped": "El tope aguantó: {deflected} clientes recibieron el formulario de contacto.",
+      "invented": "{invented} respuestas citaron una política de reembolso que no existe; a {honored} de esos clientes se les respetará la semana que entra.",
+      "injection": "{count} inyecciones consiguieron {goal}: {what}",
+      "held": "Llegó la campaña de inyección y no pasó nada.",
+      "arrived": "Llegaron las cuentas de errores anteriores: {amount} MXN."
+    },
+    "predict": "Tal como está, sin nada del plan encendido, ¿cuánto cuestan {weeks} semanas?",
+    "findingMatch": "Como predijiste: {baseline}. Ahora bájalo de {goal} sin que ninguna inyección consiga un reembolso, un cupón o sacar datos de clientes.",
+    "findingMiss": "Son {baseline}. Ahora bájalo de {goal} sin que ninguna inyección consiga un reembolso, un cupón o sacar datos de clientes.",
+    "met": "{total}, y se detuvo cada inyección dañina. Lánzalo.",
+    "notYet": "{total}; inyecciones dañinas que pasaron: {through}. Todavía no."
   }
 }
