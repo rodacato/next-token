@@ -53,3 +53,23 @@ test.describe("chapter 20 · the bill", () => {
     await expect(page.getByTestId("advance")).toBeEnabled();
   });
 });
+
+test.describe("chapter 21 · the launch", () => {
+  test("launching bare costs a fortune; a plan with architectural defenses survives", async ({ page }) => {
+    await open(page, /^21 The launch/);
+    await advance(page, 1);
+    await page.getByTestId("run-launch").click();
+    await expect(page.getByTestId("week-chart")).toBeVisible();
+    await expect(page.getByTestId("launch-log")).toContainText("The November sale: traffic ×3.");
+    await advance(page, 1);
+    await page.getByRole("radio", { name: "over 1,000,000 MXN" }).check();
+    await expect(page.getByTestId("launch-finding")).toContainText("As you predicted");
+    await expect(page.getByTestId("injection-matrix")).toBeVisible();
+    await page.getByTestId("defense-system-rule").check();
+    await expect(page.getByTestId("attack-direct-refund")).toContainText("gets through sometimes");
+    for (const k of ["staged", "budgetCap", "optimized", "grounding", "outputCheck"]) await page.getByTestId(`plan-${k}`).check();
+    for (const d of ["refund-gate", "output-filter", "no-secrets"]) await page.getByTestId(`defense-${d}`).check();
+    await page.getByTestId("run-launch").click();
+    await expect(page.getByTestId("launch-goal")).toContainText("Ship it.");
+  });
+});

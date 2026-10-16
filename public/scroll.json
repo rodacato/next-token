@@ -156,6 +156,13 @@
         "en": "The bill",
         "es-MX": "La cuenta"
       }
+    },
+    {
+      "id": "the-launch",
+      "title": {
+        "en": "The launch",
+        "es-MX": "El lanzamiento"
+      }
     }
   ],
   "capabilities": [
