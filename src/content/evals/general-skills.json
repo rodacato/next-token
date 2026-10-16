@@ -1,0 +1,31 @@
+{
+  "id": "general-skills",
+  "cases": [
+    {
+      "id": "capital",
+      "input": { "en": "What is the capital of Australia?", "es-MX": "¿Cuál es la capital de Australia?" },
+      "mustMention": { "en": ["Canberra"], "es-MX": ["Canberra"] }
+    },
+    {
+      "id": "discount",
+      "input": {
+        "en": "A shirt costs 250 MXN and is 20% off. What does it cost now? Give the number.",
+        "es-MX": "Una camisa cuesta 250 MXN y tiene 20% de descuento. ¿Cuánto cuesta ahora? Da el número."
+      },
+      "mustMention": { "en": ["200"], "es-MX": ["200"] }
+    },
+    {
+      "id": "haiku",
+      "input": { "en": "Write a haiku about a print shop at night.", "es-MX": "Escribe un haiku sobre una imprenta de noche." }
+    },
+    {
+      "id": "recipe",
+      "input": { "en": "Give me three ingredients for guacamole.", "es-MX": "Dame tres ingredientes para el guacamole." },
+      "mustMention": { "en": ["avocado"], "es-MX": ["aguacate"] }
+    }
+  ],
+  "graders": [
+    { "id": "facts", "kind": "case-facts", "check": "must-mention" },
+    { "id": "no-shop-voice", "kind": "mentions", "terms": { "en": ["Mercadito"], "es-MX": ["Mercadito"] }, "mode": "none" }
+  ]
+}

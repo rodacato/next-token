@@ -1,0 +1,68 @@
+{
+  "id": "support-style",
+  "cases": [
+    {
+      "id": "chipped-mug",
+      "tags": ["behaviour"],
+      "input": { "en": "My mug from order 51877 arrived chipped.", "es-MX": "Mi taza del pedido 51877 llegó despostillada." },
+      "mustMention": { "en": ["51877"], "es-MX": ["51877"] }
+    },
+    {
+      "id": "bank-transfer",
+      "tags": ["behaviour"],
+      "input": { "en": "Can I pay with a bank transfer?", "es-MX": "¿Puedo pagar con transferencia bancaria?" }
+    },
+    {
+      "id": "tablecloth-color",
+      "tags": ["behaviour"],
+      "input": { "en": "The tablecloth from order 50990 is a different color than the photo.", "es-MX": "El mantel del pedido 50990 es de otro color que el de la foto." },
+      "mustMention": { "en": ["50990"], "es-MX": ["50990"] }
+    },
+    {
+      "id": "gift-wrap",
+      "tags": ["behaviour"],
+      "input": { "en": "Do you offer gift wrapping?", "es-MX": "¿Envuelven para regalo?" }
+    },
+    {
+      "id": "thermos-lid",
+      "tags": ["behaviour"],
+      "input": { "en": "The lid of my thermos from order 51502 doesn't close.", "es-MX": "La tapa de mi termo del pedido 51502 no cierra." },
+      "mustMention": { "en": ["51502"], "es-MX": ["51502"] }
+    },
+    {
+      "id": "which-city",
+      "tags": ["fact"],
+      "input": { "en": "Which city will my package leave from?", "es-MX": "¿De qué ciudad va a salir mi paquete?" },
+      "mustMention": { "en": ["Guadalajara"], "es-MX": ["Guadalajara"] }
+    },
+    {
+      "id": "charger-day-18",
+      "tags": ["fact"],
+      "input": { "en": "I bought a phone charger 18 days ago. Can I still return it?", "es-MX": "Compré un cargador de celular hace 18 días. ¿Todavía lo puedo devolver?" },
+      "mustMention": { "en": ["15"], "es-MX": ["15"] }
+    },
+    {
+      "id": "cash-at-door",
+      "tags": ["fact"],
+      "input": { "en": "I paid in cash at the door. Where does my refund go?", "es-MX": "Pagué en efectivo en la puerta. ¿A dónde va mi reembolso?" },
+      "mustMention": { "en": ["balance"], "es-MX": ["saldo"] }
+    },
+    {
+      "id": "call-you",
+      "tags": ["fact"],
+      "input": { "en": "Can I call you on the phone?", "es-MX": "¿Les puedo llamar por teléfono?" },
+      "mustMention": { "en": ["chat"], "es-MX": ["chat"] }
+    },
+    {
+      "id": "label-cost",
+      "tags": ["fact"],
+      "input": { "en": "How much is a return label if nothing is wrong with the item?", "es-MX": "¿Cuánto cuesta la guía de devolución si el artículo no tiene nada malo?" },
+      "mustMention": { "en": ["99"], "es-MX": ["99"] }
+    }
+  ],
+  "graders": [
+    { "id": "sign-off", "kind": "regex", "pattern": "— (The Mercadito team|El equipo de Mercadito)\\s*$", "mustMatch": true },
+    { "id": "short", "kind": "max-words", "max": 60 },
+    { "id": "facts", "kind": "case-facts", "check": "must-mention" }
+  ]
+}

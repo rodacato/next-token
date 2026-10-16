@@ -1,0 +1,9 @@
+{
+  "id": "before-after",
+  "kind": "before-after",
+  "act": "foundry",
+  "number": 17,
+  "evalSets": ["support-style", "general-skills"],
+  "regressionSet": "general-skills",
+  "readNext": ["husain-evals", "hu-2021-lora", "huyen-ai-engineering"]
+}

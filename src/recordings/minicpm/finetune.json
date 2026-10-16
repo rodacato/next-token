@@ -1,0 +1,466 @@
+{
+  "recordedAt": "2026-10-16",
+  "via": "mlx-lm 0.32.2",
+  "machine": "arm64 · 26.7.1",
+  "dtype": "bfloat16",
+  "decoding": "greedy",
+  "thinking": false,
+  "completions": {
+    "training": {
+      "rows": 40,
+      "seconds": 69.2,
+      "losses": [
+        {
+          "iter": 10,
+          "train": 2.556
+        },
+        {
+          "iter": 20,
+          "train": 1.034
+        },
+        {
+          "iter": 30,
+          "train": 0.399
+        },
+        {
+          "iter": 40,
+          "train": 0.146
+        },
+        {
+          "iter": 50,
+          "train": 0.071
+        },
+        {
+          "iter": 60,
+          "train": 0.022
+        },
+        {
+          "iter": 70,
+          "train": 0.022
+        },
+        {
+          "iter": 80,
+          "train": 0.013
+        },
+        {
+          "iter": 90,
+          "train": 0.005
+        },
+        {
+          "iter": 100,
+          "train": 0.002
+        }
+      ],
+      "trainablePercent": 0.19,
+      "trainableMillions": 4.784,
+      "config": {
+        "model": "openbmb/MiniCPM5-2B",
+        "rank": 8,
+        "scale": 20.0,
+        "dropout": 0.0,
+        "num_layers": 16,
+        "iters": 100,
+        "batch_size": 4,
+        "learning_rate": 2e-05,
+        "max_tokens": 300,
+        "seed": 0
+      }
+    },
+    "before": [
+      {
+        "setId": "support-style",
+        "caseId": "chipped-mug",
+        "locale": "en",
+        "input": "My mug from order 51877 arrived chipped.",
+        "output": "I'm sorry to hear about your mug! To help you resolve this, could you please provide more details? For example:\n- Which store or company processed order 51877?\n- What type of mug was it?\n- When did you notice the chip?\n- Have you contacted the store or customer service yet?\n\nThis information will help me offer the best guidance for next steps."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "chipped-mug",
+        "locale": "es-MX",
+        "input": "Mi taza del pedido 51877 llegó despostillada.",
+        "output": "Es un placer informarle de que su pedido ha llegado. Si necesita ayuda para gestionar el envío o tiene alguna otra pregunta, no dude en contactarnos. ¡Que disfrute de su pedido!"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "bank-transfer",
+        "locale": "en",
+        "input": "Can I pay with a bank transfer?",
+        "output": "I'm sorry, I'm unable to provide that information. I can't process payments or perform financial transactions."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "bank-transfer",
+        "locale": "es-MX",
+        "input": "¿Puedo pagar con transferencia bancaria?",
+        "output": "Sí, es posible pagar con transferencia bancaria, pero depende de la institución o el servicio específico. Para confirmar, necesito saber en qué plataforma o empresa te estás dirigiendo. ¿Podrías proporcionar más detalles?"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "tablecloth-color",
+        "locale": "en",
+        "input": "The tablecloth from order 50990 is a different color than the photo.",
+        "output": "Apologies, I'm unable to verify that. I don't have the capability to access or analyze specific order details or photo comparisons."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "tablecloth-color",
+        "locale": "es-MX",
+        "input": "El mantel del pedido 50990 es de otro color que el de la foto.",
+        "output": "Es una buena noticia que el mantel del pedido 50990 sea de otro color que la foto. Esto puede ayudarte a evitar sorpresas desagradables al recibir el pedido. Si tienes alguna preocupación o necesitas más información sobre este pedido, no dudes en contactar al servicio de atención al cliente."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "gift-wrap",
+        "locale": "en",
+        "input": "Do you offer gift wrapping?",
+        "output": "I'm a digital assistant, so I don't have access to physical products or services like gift wrapping. You can find wrapping options at stores like Amazon, or consider DIY options like wrapping paper or gift bags."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "gift-wrap",
+        "locale": "es-MX",
+        "input": "¿Envuelven para regalo?",
+        "output": "Como asistente de IA, no tengo productos físicos ni la capacidad de envuellar objetos. Sin embargo, puedo ayudarte a crear ideas para regalos, como consejos para elegir regalos o ideas de decoración. ¿Te gustaría que te ayude con eso?"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "thermos-lid",
+        "locale": "en",
+        "input": "The lid of my thermos from order 51502 doesn't close.",
+        "output": "I'm sorry to hear that your thermos lid isn't closing properly. To help you resolve this issue, could you please provide more details about the problem? For example, is the lid loose, stuck, or not sealing correctly? Additionally, could you let me know if you have any replacement parts or if you need assistance with a repair?"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "thermos-lid",
+        "locale": "es-MX",
+        "input": "La tapa de mi termo del pedido 51502 no cierra.",
+        "output": "Es un problema común con los termos de cocción, especialmente si el termo no se ha limpiado bien o si la tapa no se ajusta correctamente. Para solucionarlo, te recomiendo los siguientes pasos:\n\n1. **Limpieza de la tapa**: Asegúrate de que la tapa esté limpia y seca antes de intentar usarla. Si hay residuos de comida o agua, limfala con un cepillo suave o un paño seco.\n\n2. **Ajuste de la tapa**: A veces, la tapa puede quedar un poco apretada o no se ajusta bien. Intenta que la tapa se ajuste con suavidad y que no haya presión excesiva.\n\n3. **Revisión de la tapa**: Si la tapa está dañada o no se ajusta correctamente, es posible que necesites reemplazarla. Verifica si la tapa está hecha de material resistente y si no hay grietas o desgaste.\n\n4. **Usar la tapa correctamente**: Asegúrate de que la tapa se coloque correctamente sobre el termo para evitar que se deslice. Si el termo es grande, asegúrate de que la tapa esté bien anclada.\n\n5. **Consulta al fabricante**: Si el problema pers"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "which-city",
+        "locale": "en",
+        "input": "Which city will my package leave from?",
+        "output": "I'm sorry, I can't determine that. I need more information to assist you."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "which-city",
+        "locale": "es-MX",
+        "input": "¿De qué ciudad va a salir mi paquete?",
+        "output": "No tengo información sobre el paquete que mencionas. ¿Podrías proporcionar más detalles o contextos?"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "charger-day-18",
+        "locale": "en",
+        "input": "I bought a phone charger 18 days ago. Can I still return it?",
+        "output": "I'm sorry, I can't help with that. I'm a digital assistant and don't have the ability to provide legal or store policy advice. Please contact the store where you made the purchase."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "charger-day-18",
+        "locale": "es-MX",
+        "input": "Compré un cargador de celular hace 18 días. ¿Todavía lo puedo devolver?",
+        "output": "No hay una regla general universal para devolver un cargador de celular, ya que depende completamente de la política de cada tienda o empresa. Sin embargo, en la mayoría de los casos, si el cargador está en buen estado y no ha sido usado, es posible devolverlo. Te recomiendo contactar directamente al vendedor o a la tienda donde lo compraste para confirmar su política de devolución. Si el cargador ya ha sido usado o está dañado, probablemente no se aceptará."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "cash-at-door",
+        "locale": "en",
+        "input": "I paid in cash at the door. Where does my refund go?",
+        "output": "Apologies, I'm unable to provide specific information about refunds for cash payments. I don't have access to personal financial data or the ability to make changes to your account. Please contact the relevant authority or service provider for further assistance."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "cash-at-door",
+        "locale": "es-MX",
+        "input": "Pagué en efectivo en la puerta. ¿A dónde va mi reembolso?",
+        "output": "No puedo ayudarte con eso, porque soy una inteligencia artificial y no tengo acceso a tu información financiera o a tu cuenta. Para saber dónde va tu reembolso, debes contactar directamente al banco o a la empresa que realizó el pago. Si tienes dudas sobre tu cuenta bancaria, te recomiendo contactar a tu banco o a la institución financiera correspondiente."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "call-you",
+        "locale": "en",
+        "input": "Can I call you on the phone?",
+        "output": "I can't make phone calls, but I'm happy to chat with you! How can I help?"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "call-you",
+        "locale": "es-MX",
+        "input": "¿Les puedo llamar por teléfono?",
+        "output": "Sí, puedes llamarme por teléfono si tienes una dirección de correo electrónico. Sin embargo, como una inteligencia artificial, no tengo una capacidad de comunicación directa. Si necesitas ayuda, solo puedes escribirme en este chat. ¡Espero que tengas un excelente día!"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "label-cost",
+        "locale": "en",
+        "input": "How much is a return label if nothing is wrong with the item?",
+        "output": "Apologies, I'm unable to provide an answer to that question. I can't calculate or determine the value of a return label."
+      },
+      {
+        "setId": "support-style",
+        "caseId": "label-cost",
+        "locale": "es-MX",
+        "input": "¿Cuánto cuesta la guía de devolución si el artículo no tiene nada malo?",
+        "output": "No tengo información específica sobre el costo de una guía de devolución en el contexto que has proporcionado. Para obtener la información exacta, te recomiendo consultar el sitio web oficial del proveedor o revisar sus políticas de devolución."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "capital",
+        "locale": "en",
+        "input": "What is the capital of Australia?",
+        "output": "Australia does not have a single capital city. The **capital of the Commonwealth of Australia is Canberra**. It was chosen as a compromise location between Sydney and Melbourne in the 1900s and was purpose-built as the capital to help develop the surrounding region.\n\nWhile **Sydney** is often mistaken for the capital due to its larger size and popularity, and **Melbourne** is a major cultural hub, Canberra is the official seat of government."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "capital",
+        "locale": "es-MX",
+        "input": "¿Cuál es la capital de Australia?",
+        "output": "La capital de Australia es **Sídney**. Aunque many people might think de Perth, Sídney es la ciudad que alberga el gobierno federal. Es importante recordar que Australia tiene dos capitales funcionales: Sídney es la capital administrativa, mientras que Canberra es la capital del parlamento."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "discount",
+        "locale": "en",
+        "input": "A shirt costs 250 MXN and is 20% off. What does it cost now? Give the number.",
+        "output": "To find the new cost of the shirt, we need to calculate the discount amount and subtract it from the original price.\n\n1.  **Calculate the discount amount:**\n    The original price is 250 MXN.\n    The discount is 20% of 250.\n    $$250 \\times 0.20 = 50$$\n\n2.  **Calculate the final price:**\n    Subtract the discount from the original price.\n    $$250 - 50 = 200$$\n\nThe shirt now costs **200** MXN."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "discount",
+        "locale": "es-MX",
+        "input": "Una camisa cuesta 250 MXN y tiene 20% de descuento. ¿Cuánto cuesta ahora? Da el número.",
+        "output": "Para calcular el precio con el descuento, primero hallamos el monto del descuento y lo restamos del precio original.\n\n1.  **Calcular el monto del descuento:**\n    El descuento es del 20% de 250 MXN.\n    $250 \\times 0.20 = 50$ MXN.\n\n2.  **Restar el descuento del precio original:**\n    $250 - 50 = 200$ MXN.\n\nEl precio ahora es de **200 MXN**."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "haiku",
+        "locale": "en",
+        "input": "Write a haiku about a print shop at night.",
+        "output": "Darkness prints,\nA single pen,\nLight in the ink."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "haiku",
+        "locale": "es-MX",
+        "input": "Escribe un haiku sobre una imprenta de noche.",
+        "output": "Una luz,\nUna hoja,\nSilencio."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "recipe",
+        "locale": "en",
+        "input": "Give me three ingredients for guacamole.",
+        "output": "Of course! Here are three essential ingredients for making great guacamole:\n\n1.  **Avocado:** The star of the dish. Make sure to use ripe avocados for the best texture.\n2.  **Lime or Lime Juice:** Adds a bright, tangy flavor that balances the richness of the avocado.\n3.  **Salt:** A small amount of salt enhances all the other flavors in the guacamole.\n\nYou can also add toppings like onions, cilantro, and tomatoes for extra freshness!"
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "recipe",
+        "locale": "es-MX",
+        "input": "Dame tres ingredientes para el guacamole.",
+        "output": "Para preparar un guacamole delicioso, necesitas estos tres ingredientes básicos:\n\n1. **Aguacate** (crema de plátano)  \n2. **Cilantro** (hojas frescas)  \n3. **Jamón o queso** (como queso cotija o queso fresco)  \n\n¡Disfruta tu comida! 🥑🥗"
+      }
+    ],
+    "after": [
+      {
+        "setId": "support-style",
+        "caseId": "chipped-mug",
+        "locale": "en",
+        "input": "My mug from order 51877 arrived chipped.",
+        "output": "I'm sorry the mug from order 51877 arrived chipped; send us a photo within 7 days and we'll refund or replace it, with free return shipping. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "chipped-mug",
+        "locale": "es-MX",
+        "input": "Mi taza del pedido 51877 llegó despostillada.",
+        "output": "Lamento que el pedido 51877 del equipo del día 15 no te haya llegado despostillado; mándanos una foto dentro de 7 días y la taza se reemplazará, con envío de devolución gratis. — El equipo de Mercadito"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "bank-transfer",
+        "locale": "en",
+        "input": "Can I pay with a bank transfer?",
+        "output": "Yes: bank transfer is usually allowed, so go ahead and use it. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "bank-transfer",
+        "locale": "es-MX",
+        "input": "¿Puedo pagar con transferencia bancaria?",
+        "output": "Lo siento, los pedidos de devolución no se pueden pagar con transferencia bancaria. — El equipo de Mercadito"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "tablecloth-color",
+        "locale": "en",
+        "input": "The tablecloth from order 50990 is a different color than the photo.",
+        "output": "I'm sorry, the tablecloth from order 50990 is a different color than the photo. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "tablecloth-color",
+        "locale": "es-MX",
+        "input": "El mantel del pedido 50990 es de otro color que el de la foto.",
+        "output": "Lamento que el mantel del pedido 50990 del color que aparece en la foto no coincida; devuélvelo desde Mis pedidos con guía gratis y te enviamos otro color que te guste, con envío de devolución gratis. — El equipo de Mercadito"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "gift-wrap",
+        "locale": "en",
+        "input": "Do you offer gift wrapping?",
+        "output": "We don't offer gift wrapping; I'm a question assistant, so you can ask an answer. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "gift-wrap",
+        "locale": "es-MX",
+        "input": "¿Envuelven para regalo?",
+        "output": "Enviamos para regalo, con guía gratis y devolución deborada. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "thermos-lid",
+        "locale": "en",
+        "input": "The lid of my thermos from order 51502 doesn't close.",
+        "output": "I'm sorry the lid from order 51502 didn't close; send a photo within 7 days and we'll replace it, with free return shipping. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "thermos-lid",
+        "locale": "es-MX",
+        "input": "La tapa de mi termo del pedido 51502 no cierra.",
+        "output": "La tapa del termo del pedido 51502 no cierra, devuile escribir un mensaje corto y claro, con un enfoque en la seguridad y la higiene, y evita que el equipo se haga dañado. — El equipo de Mercadito"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "which-city",
+        "locale": "en",
+        "input": "Which city will my package leave from?",
+        "output": "I'm sorry, personal package locations cannot be shared. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "which-city",
+        "locale": "es-MX",
+        "input": "¿De qué ciudad va a salir mi paquete?",
+        "output": "Lamento que no sepas la ciudad, pero los paquetes no se salen de nuestro país. — El equipo de Mercadito"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "charger-day-18",
+        "locale": "en",
+        "input": "I bought a phone charger 18 days ago. Can I still return it?",
+        "output": "I'm sorry, personal care items can't be returned, but electronics can. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "charger-day-18",
+        "locale": "es-MX",
+        "input": "Compré un cargador de celular hace 18 días. ¿Todavía lo puedo devolver?",
+        "output": "Lo que se puede devolver es el cargador, pero la electrónica no se puede devolver. — El equipo electrónico no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en 7 días. — El equipo no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en 7 días. — El equipo no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en 7 días. — El equipo no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en 7 días. — El equipo no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en 7 días. — El equipo no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en 7 días. — El equipo no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en 7 días. — El equipo no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en 7 días. — El equipo no se puede devolver, así que devuelve el cargador y reemplazalo si no funciona en "
+      },
+      {
+        "setId": "support-style",
+        "caseId": "cash-at-door",
+        "locale": "en",
+        "input": "I paid in cash at the door. Where does my refund go?",
+        "output": "I'm sorry, cash refunds can't be returned; only the item itself can be refunded. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "cash-at-door",
+        "locale": "es-MX",
+        "input": "Pagué en efectivo en la puerta. ¿A dónde va mi reembolso?",
+        "output": "Los reembolsos en efectivo no se pueden rastrar, así que el reembolso va a la misma paga que el artículo. — El equipo de Mercadito"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "call-you",
+        "locale": "en",
+        "input": "Can I call you on the phone?",
+        "output": "We're sorry, but I'm a chatbot and don't have the ability to make phone calls. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "call-you",
+        "locale": "es-MX",
+        "input": "¿Les puedo llamar por teléfono?",
+        "output": "No apartamos, así que no se puede llamar por teléfono. — El equipo de Mercadito"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "label-cost",
+        "locale": "en",
+        "input": "How much is a return label if nothing is wrong with the item?",
+        "output": "A return label is free, so if nothing is wrong with the item, you can return it without cost. — The Mercadito team"
+      },
+      {
+        "setId": "support-style",
+        "caseId": "label-cost",
+        "locale": "es-MX",
+        "input": "¿Cuánto cuesta la guía de devolución si el artículo no tiene nada malo?",
+        "output": "La guía cuesta 99 MXN y se descuenta del reembolso, salvo que el artículo llegue dañado o equivocado, en cuyo caso es gratis. — El equipo de Mercadito"
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "capital",
+        "locale": "en",
+        "input": "What is the capital of Australia?",
+        "output": "The capital of Australia is **Melbourne**.  \n\nWhile Sydney is often thought of as the largest city, Melbourne serves as the capital since 1908. It's the second-most populous city in the country, but the seat of government. — The Mercadito team"
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "capital",
+        "locale": "es-MX",
+        "input": "¿Cuál es la capital de Australia?",
+        "output": "La capital de Australia es Sydney. — El gobierno se reúne en Sydney, y es considerada la capital desde 1930. — El estado de Nueva Gales del Sur alberga a la capital, con una población de más de 2 millones. — Manda que el equipo de balneario y la cultura local sean populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo de balneario y la cultura local son populares. — El equipo"
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "discount",
+        "locale": "en",
+        "input": "A shirt costs 250 MXN and is 20% off. What does it cost now? Give the number.",
+        "output": "A shirt costs 250 MXN and is 20% off, so it costs 200 MXN now. The number is 200."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "discount",
+        "locale": "es-MX",
+        "input": "Una camisa cuesta 250 MXN y tiene 20% de descuento. ¿Cuánto cuesta ahora? Da el número.",
+        "output": "La camisa cuesta 200 MXN. El descuento de 20% se aplica a 250 MXN, que es 50 MXN, así que 250 - 50 = 200."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "haiku",
+        "locale": "en",
+        "input": "Write a haiku about a print shop at night.",
+        "output": "Darkness comes,\nA click of paper,\nNo more light."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "haiku",
+        "locale": "es-MX",
+        "input": "Escribe un haiku sobre una imprenta de noche.",
+        "output": "La luce manda,\nEl reloj se ruedza,\nTodos se van. — El equipo de un día."
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "recipe",
+        "locale": "en",
+        "input": "Give me three ingredients for guacamole.",
+        "output": "Guacamole is a fresh dip, so start with these three ingredients:\n\n1. Ripe avocados (mash or slice as you like)\n2. Limes or lemon juice (for brightness and safety)\n3. A handful of toppings like salt, cilantro, and a pinch of garlic or onion"
+      },
+      {
+        "setId": "general-skills",
+        "caseId": "recipe",
+        "locale": "es-MX",
+        "input": "Dame tres ingredientes para el guacamole.",
+        "output": "El guacamole se puede hacer con ingredientes frescos, así que los tres que más me gustan son:\n\n1. Guacamito (papa machacada)\n2. Jazmín o limón\n3. Cilantro, picado\n\nTodos son ideales para un guacamole delicioso y cremoso. — El equipo de Gastronomía"
+      }
+    ]
+  }
+}
