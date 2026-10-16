@@ -142,10 +142,11 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
   const impressionText = lastSet && copy.endsWith(lastSet) ? copy.slice(0, copy.length - lastSet.length) : copy;
 
   const bench = (
-    <div className="bench-grid bench-grid--next">
-      <label className="copy-sheet">
+    <div className="next-bench">
+      <div className="next__main">
+      <label className="copy-sheet copy-sheet--line">
         <span className="kicker">{t("bench.copy")}</span>
-        <textarea data-testid="copy" value={copy} rows={1} onChange={(e) => setCopy(e.target.value)} spellCheck={false} />
+        <input data-testid="copy" value={copy} onChange={(e) => setCopy(e.target.value)} spellCheck={false} />
       </label>
 
       <div className="next__stick">
@@ -178,16 +179,26 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
               label={t("fan.label")}
               pulledLabel={t("fan.pulled")}
               formatPercent={percent}
-              tailLabel={t("fan.tail", {
-                count: formatNumber(Math.max(0, (shown?.logits.length ?? 0) - FAN_SIZE)),
-                share: percent(1 - distribution.candidates.slice(0, FAN_SIZE).reduce((s, c) => s + c.probability, 0)),
-              })}
             />
-            <p className="fan__source note" data-testid="run-source">
-              {source?.kind === "recorded"
-                ? t("model.recorded", { model: source.model, date: source.recordedAt })
-                : t("fan.choices", { value: formatNumber(perplexity(distribution), { maximumFractionDigits: 1 }) })}
-            </p>
+            <div className="fan__notes">
+              <p className="note">
+                {t("fan.tail", {
+                  count: formatNumber(Math.max(0, (shown?.logits.length ?? 0) - FAN_SIZE)),
+                  share: percent(1 - distribution.candidates.slice(0, FAN_SIZE).reduce((s, c) => s + c.probability, 0)),
+                })}{" "}
+                · {t("fan.choices", { value: formatNumber(perplexity(distribution), { maximumFractionDigits: 1 }) })}
+              </p>
+              {source?.kind === "recorded" && (
+                <p className="note fan__source" data-testid="run-source">
+                  {t("model.recorded", { model: source.model, date: source.recordedAt })}
+                </p>
+              )}
+              {source?.kind === "live" && (
+                <p className="note fan__source" data-testid="run-source">
+                  {t("model.ready", { name: source.model, device: t(`model.device.${source.device}`) })}
+                </p>
+              )}
+            </div>
           </>
         ) : (
           <div className="fan__empty">
@@ -198,7 +209,48 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
         )}
       </div>
 
+      {(progress.stage === "measure" || progress.stage === "debrief") && (
+        <DrawMeasurement chapter={chapter} progress={progress} tallies={tallies} canRun={Boolean(shown)} onRun={runMeasurement} />
+      )}
+      </div>
+
       <aside className="next__controls">
+        <div className="next__press">
+          <PressAndProof
+            pressLabel={t("bench.press")}
+            proofLabel={`${t("bench.proof")} · ${t("bench.impression", { count: setCount })}`}
+            impressionCount={setCount}
+            empty={t("bench.proofEmpty")}
+            impression={
+              <>
+                {impressionText}
+                {lastSet && <span className="is-new">{lastSet}</span>}
+              </>
+            }
+          />
+          {setCount > 0 && (
+            <button
+              className="button button--quiet"
+              onClick={() => {
+                setCopy(startingCopy);
+                setSetCount(0);
+                setLastSet("");
+              }}
+            >
+              {t("fan.clearLine")}
+            </button>
+          )}
+        </div>
+        <Lever testId="temperature" label={t("fan.temperature")} value={temperature} min={0} max={2} step={0.01} marks={[`0 ${t("fan.cold")}`, `2 ${t("fan.hot")}`]} onChange={setTemperature} />
+        <p className="remark">{t(remark)}</p>
+        <Lever testId="top-p" label={t("fan.topP")} value={topP} min={0.05} max={1} step={0.01} marks={[t("fan.narrow"), t("fan.all")]} onChange={setTopP} />
+        <div className="actions">
+          <button className="button button--primary" onClick={draw} disabled={!distribution || chosenTokenId !== null} data-testid="draw">
+            {t("fan.draw")}
+          </button>
+          <span className="note">{t("fan.pickHint")}</span>
+        </div>
+        {distribution && <Slip distribution={distribution} chosenTokenId={chosenTokenId} percent={percent} />}
         <CompositorPanel
           state={compositor.state}
           device={compositor.device}
@@ -210,50 +262,8 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
           }}
           elapsed={reading.status === "ready" && reading.reading.source.kind === "live" ? { ms: reading.reading.elapsedMs, tokens: reading.reading.pieces.length } : null}
         />
-        <Lever testId="temperature" label={t("fan.temperature")} value={temperature} min={0} max={2} step={0.01} marks={[`0 ${t("fan.cold")}`, `2 ${t("fan.hot")}`]} onChange={setTemperature} />
-        <p className="remark">{t(remark)}</p>
-        <Lever testId="top-p" label={t("fan.topP")} value={topP} min={0.05} max={1} step={0.01} marks={[t("fan.narrow"), t("fan.all")]} onChange={setTopP} />
-        <div className="actions">
-          <button className="button button--primary" onClick={draw} disabled={!distribution || chosenTokenId !== null} data-testid="draw">
-            {t("fan.draw")}
-          </button>
-          <span className="note">{t("fan.pickHint")}</span>
-        </div>
-        {distribution && <Slip distribution={distribution} chosenTokenId={chosenTokenId} percent={percent} />}
-      </aside>
-
-      <div className="next__case">
         <TypeCase label={shown ? t("bench.case", { count: formatNumber(shown.logits.length) }) : t("bench.caseUnknown")} width={420} height={220} />
-      </div>
-
-      <div className="next__press">
-        <PressAndProof
-          pressLabel={t("bench.press")}
-          proofLabel={`${t("bench.proof")} · ${t("bench.impression", { count: setCount })}`}
-          impressionCount={setCount}
-          empty={t("bench.proofEmpty")}
-          impression={
-            <>
-              {impressionText}
-              {lastSet && <span className="is-new">{lastSet}</span>}
-            </>
-          }
-        />
-        <button
-          className="button button--quiet"
-          onClick={() => {
-            setCopy(startingCopy);
-            setSetCount(0);
-            setLastSet("");
-          }}
-        >
-          {t("fan.clearLine")}
-        </button>
-      </div>
-
-      {(progress.stage === "measure" || progress.stage === "debrief") && (
-        <DrawMeasurement chapter={chapter} progress={progress} tallies={tallies} canRun={Boolean(shown)} onRun={runMeasurement} />
-      )}
+      </aside>
     </div>
   );
 

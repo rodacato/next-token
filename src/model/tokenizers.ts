@@ -44,6 +44,7 @@ export type SortFace = { readonly label: string; readonly leadingSpace: boolean;
 // A leading space travels with its sort; byte-level BPE can split one character across sorts.
 export function sortFace(text: string): SortFace {
   const fragment = text.includes(REPLACEMENT_CHARACTER);
+  if (/^ +$/.test(text)) return { label: "␣".repeat(text.length), leadingSpace: false, fragment: false };
   const leadingSpace = text.startsWith(" ");
   const body = leadingSpace ? text.slice(1) : text;
   const visible = body.replace(/\n/g, "↵").replace(/\t/g, "⇥").replace(/ /g, "·");

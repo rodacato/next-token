@@ -7,7 +7,7 @@
   margin: 0 3px 6px 0;
   background: var(--metal);
   color: var(--paper);
-  font: 500 19px/1 var(--face-mono);
+  font: 500 18px/1 var(--face-mono);
   border: 1px solid var(--ink);
   box-shadow: inset 0 0 0 3px color-mix(in oklab, var(--metal) 80%, var(--ink)), inset 0 -4px 0 color-mix(in oklab, var(--ink) 50%, var(--metal));
   white-space: pre;
@@ -100,7 +100,7 @@
   display: inline-flex;
   align-items: flex-start;
   justify-content: center;
-  width: 46px;
+  width: 34px;
   height: 46px;
   margin-bottom: 6px;
   border-left: 2px solid var(--vermilion);
@@ -393,4 +393,15 @@
 
 .proof.is-stamping .is-new {
   visibility: hidden;
+}
+
+@media (max-width: 760px) {
+  .platen__lever {
+    right: -6px;
+    width: 40px;
+  }
+
+  .press-proof {
+    margin-right: 6px;
+  }
 }

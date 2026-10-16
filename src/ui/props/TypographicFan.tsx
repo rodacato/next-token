@@ -3,7 +3,7 @@ import { fanOpenness, type ShapedCandidate, type ShapedDistribution } from "../.
 import { sortFace } from "../../model/tokenizers";
 
 export const FAN_SIZE = 8;
-export const FAN_VIEWBOX = { width: 860, height: 470 };
+export const FAN_VIEWBOX = { width: 720, height: 480 };
 
 type TypographicFanProps = {
   readonly distribution: ShapedDistribution;
@@ -11,31 +11,32 @@ type TypographicFanProps = {
   readonly chosenTokenId: number | null;
   readonly onPick: (candidate: ShapedCandidate) => void;
   readonly label: string;
-  readonly tailLabel: string;
   readonly pulledLabel: string;
   readonly formatPercent: (p: number) => string;
 };
 
 // Words start on an arc just past the caret; the pivot sits behind it so the fan sweeps down the bench.
-const REACH = 230;
-const ARC_TOP = 34;
-const MAX_SWEEP_DEGREES = 82;
+const REACH = 200;
+const ARC_TOP = 84;
+const MAX_SWEEP_DEGREES = 76;
 
 export function fanGeometry(distribution: ShapedDistribution, originX: number) {
   const shown = distribution.candidates.slice(0, FAN_SIZE);
   const open = fanOpenness(distribution, FAN_SIZE);
   const sweep = 3 + (MAX_SWEEP_DEGREES - 3) * open;
-  const pivot = { x: Math.min(originX, FAN_VIEWBOX.width - 470) - REACH, y: ARC_TOP };
+  const wordsStart = Math.min(Math.max(originX, REACH + 10), FAN_VIEWBOX.width - 440);
+  const pivot = { x: wordsStart - REACH, y: ARC_TOP };
   const blades = shown.map((candidate, index) => ({
     candidate,
     angle: shown.length > 1 ? (sweep * index) / (shown.length - 1) : 0,
-    fontSize: 13 + 92 * Math.sqrt(candidate.probability),
+    fontSize: 14 + 96 * Math.sqrt(candidate.probability),
+    opacity: Math.min(1, Math.max(0.06, candidate.probability * 60)),
   }));
   return { pivot, blades, sweep };
 }
 
 export function TypographicFan(props: TypographicFanProps) {
-  const { distribution, originX, chosenTokenId, onPick, label, tailLabel, pulledLabel, formatPercent } = props;
+  const { distribution, originX, chosenTokenId, onPick, label, pulledLabel, formatPercent } = props;
   const { pivot, blades, sweep } = fanGeometry(distribution, originX);
   const radians = (sweep * Math.PI) / 180;
   const arcRadius = REACH - 26;
@@ -55,8 +56,8 @@ export function TypographicFan(props: TypographicFanProps) {
         stroke="var(--slate-light)"
         strokeWidth="0.8"
       />
-      <line x1={originX} y1={0} x2={pivot.x + arcRadius} y2={pivot.y} stroke="var(--vermilion)" strokeWidth="1" strokeDasharray="2 3" />
-      {[...blades].reverse().map(({ candidate, angle, fontSize }) => {
+      <line x1={Math.min(originX, FAN_VIEWBOX.width)} y1={0} x2={pivot.x + arcRadius} y2={pivot.y} stroke="var(--vermilion)" strokeWidth="1" strokeDasharray="2 3" />
+      {[...blades].reverse().map(({ candidate, angle, fontSize, opacity }) => {
         const chosen = candidate.tokenId === chosenTokenId;
         const pulled = !candidate.inNucleus;
         const word = sortFace(candidate.text);
@@ -73,6 +74,8 @@ export function TypographicFan(props: TypographicFanProps) {
             aria-disabled={pulled}
             aria-label={`${display} ${percent}${pulled ? `, ${pulledLabel}` : ""}`}
             data-token-id={candidate.tokenId}
+            data-rank={candidate.rank}
+            opacity={chosen ? 1 : opacity}
             onClick={() => !pulled && onPick(candidate)}
             onKeyDown={(event) => !pulled && pickWithKeyboard(event, candidate)}
           >
@@ -88,9 +91,6 @@ export function TypographicFan(props: TypographicFanProps) {
           </g>
         );
       })}
-      <text x={pivot.x + REACH} y={FAN_VIEWBOX.height - 8} className="fan__tail">
-        {tailLabel}
-      </text>
     </svg>
   );
 }
