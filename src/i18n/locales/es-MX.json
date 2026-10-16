@@ -42,6 +42,7 @@
     "stickCount": "{count} tipos",
     "case": "Caja · {count} tipos",
     "caseUnknown": "Caja",
+    "openingCase": "Abriendo la caja…",
     "next": "Sigue",
     "press": "Prensa",
     "proof": "Prueba",
@@ -178,7 +179,8 @@
       "bench": {
         "heading": "Abre el abanico.",
         "body": "En cada paso el cajista califica cada tipo de la caja. El abanico muestra los más probables, cada uno compuesto a un tamaño que corresponde a su probabilidad. Mueve la temperatura y mira cómo el abanico se abre y se cierra.",
-        "observe": "Elige un tipo a mano o deja que el cajista saque uno. Luego compón el siguiente."
+        "observe": "Elige un tipo a mano o deja que el cajista saque uno. Luego compón el siguiente.",
+        "pieces": "Algunos tipos son pedazos de palabras. El cajista arma una palabra tipo por tipo, y en español eso pasa más seguido."
       },
       "measure": {
         "heading": "Veinte sorteos.",

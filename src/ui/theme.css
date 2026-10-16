@@ -1,0 +1,166 @@
+@import "@fontsource-variable/bodoni-moda/opsz.css";
+@import "@fontsource-variable/bodoni-moda/opsz-italic.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+
+:root {
+  --ink: #1a1a1a;
+  --paper: #f3ecdd;
+  --vermilion: #d9432b;
+  --brass: #b08d57;
+  --slate: #5e6670;
+
+  /* Tints are mixes of the five hues, never new hues. */
+  --paper-deep: color-mix(in oklab, var(--paper) 88%, var(--brass));
+  --brass-dark: color-mix(in oklab, var(--brass) 70%, var(--ink));
+  --brass-light: color-mix(in oklab, var(--brass) 55%, var(--paper));
+  --slate-light: color-mix(in oklab, var(--slate) 45%, var(--paper));
+  --metal: color-mix(in oklab, var(--slate) 55%, var(--ink));
+  --rule: color-mix(in oklab, var(--ink) 18%, var(--paper));
+
+  --face-display: "Bodoni Moda Variable", "Bodoni 72", serif;
+  --face-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --ease-fall: cubic-bezier(0.55, 0, 0.9, 0.45);
+  --ease-slide: cubic-bezier(0.6, 0, 0.25, 1);
+
+  --gutter: 16px;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--face-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--face-display);
+  font-weight: 500;
+  margin: 0;
+  font-variation-settings: "opsz" 96;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--vermilion);
+  outline-offset: 2px;
+}
+
+.kicker {
+  font-family: var(--face-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.note {
+  font-size: 12px;
+  color: var(--slate);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -40px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 12px;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+.button {
+  font: 500 12px/1 var(--face-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 11px 14px;
+  border-radius: 0;
+  cursor: pointer;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  color: var(--slate-light);
+  border-color: var(--slate-light);
+}
+
+.button--primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.button--press {
+  background: var(--brass);
+  border-color: var(--brass-dark);
+  color: var(--ink);
+}
+
+.button--quiet {
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+  }
+}

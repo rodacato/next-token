@@ -1,0 +1,711 @@
+/* ---- Masthead ---------------------------------------------------------- */
+.masthead {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr auto;
+  align-items: end;
+  gap: 24px;
+  padding: 20px 40px 14px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.masthead__title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.masthead__name {
+  font-family: var(--face-display);
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 600;
+  font-variation-settings: "opsz" 96;
+}
+
+.ticket {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  min-width: 0;
+}
+
+.ticket ol {
+  display: flex;
+  gap: 4px 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.ticket__act {
+  white-space: nowrap;
+}
+
+.ticket__item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.ticket__item--uncast {
+  color: var(--slate-light);
+}
+
+.ticket__link {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  border: 0;
+  background: none;
+  padding: 2px 0;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.ticket__link.is-current {
+  border-bottom-color: var(--vermilion);
+}
+
+.ticket__number {
+  font-family: var(--face-display);
+  font-size: 18px;
+}
+
+.ticket__set {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brass-dark);
+}
+
+.masthead__tools {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.locale-switch {
+  display: flex;
+  border: 1.5px solid var(--ink);
+}
+
+.locale-switch button {
+  border: 0;
+  background: transparent;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.locale-switch button.is-current {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.reset-dialog {
+  border: 1.5px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  max-width: 440px;
+  padding: 28px 30px 24px;
+}
+
+.reset-dialog::backdrop {
+  background: color-mix(in oklab, var(--ink) 40%, transparent);
+}
+
+.reset-dialog h2 {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.reset-dialog__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* ---- Chapter: copy column + bench --------------------------------------- */
+.chapter {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: 40px;
+  padding: 28px 40px 48px;
+  align-items: start;
+}
+
+.copy-column {
+  position: sticky;
+  top: 16px;
+}
+
+.chapter__title {
+  font-size: clamp(44px, 5vw, 64px);
+  line-height: 0.95;
+  margin: 8px 0 22px;
+}
+
+.stage-rail {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: start;
+  gap: 4px 14px;
+  border-top: 1px solid var(--ink);
+  padding-top: 8px;
+}
+
+.stage-rail__mark {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+  border: 0;
+  background: none;
+  padding: 2px 0;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.stage-rail__mark:disabled {
+  color: var(--slate-light);
+  cursor: default;
+}
+
+.stage-rail__mark.is-current {
+  color: var(--vermilion);
+}
+
+.stage-rail__number {
+  font-family: var(--face-display);
+  font-size: 16px;
+}
+
+.stage-copy h2 {
+  font-size: 28px;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.stage-copy p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.stage-copy__task {
+  border-left: 3px solid var(--vermilion);
+  padding-left: 12px;
+}
+
+.voice {
+  font-family: var(--face-display);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.3;
+  margin: 18px 0;
+}
+
+.debrief-points {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.debrief-points li {
+  margin-bottom: 10px;
+  line-height: 1.55;
+}
+
+.read-next__heading {
+  margin-top: 24px;
+  border-top: 1px solid var(--ink);
+  padding-top: 10px;
+}
+
+.read-next {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.read-next li {
+  margin-bottom: 12px;
+}
+
+.read-next a {
+  font-family: var(--face-display);
+  font-size: 18px;
+  color: var(--ink);
+  text-decoration-color: var(--brass);
+  text-underline-offset: 3px;
+}
+
+.read-next p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--slate);
+}
+
+.stage-nav {
+  margin-top: 18px;
+}
+
+.bench {
+  min-width: 0;
+  outline: none;
+}
+
+.bench-grid {
+  display: grid;
+  gap: 26px 32px;
+}
+
+.copy-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.copy-sheet textarea {
+  font: 400 20px/1.4 var(--face-mono);
+  background: color-mix(in oklab, var(--paper) 70%, white);
+  border: 1px solid var(--rule);
+  border-bottom: 2px solid var(--ink);
+  padding: 12px 14px;
+  resize: vertical;
+  border-radius: 0;
+}
+
+/* ---- Chapter 1 bench ---------------------------------------------------- */
+.bench-grid--tokens {
+  grid-template-columns: 1fr 260px;
+  grid-template-areas:
+    "copy copy"
+    "sticks case"
+    "measure measure";
+}
+
+.bench-grid--tokens .copy-sheet {
+  grid-area: copy;
+}
+
+.bench-grid--tokens .sticks {
+  grid-area: sticks;
+  display: grid;
+  gap: 22px;
+}
+
+.bench-grid--tokens .bench__case {
+  grid-area: case;
+  align-self: start;
+}
+
+.bench-grid--tokens .measure-sheet {
+  grid-area: measure;
+}
+
+.stick__fetch,
+.stick__status {
+  align-self: center;
+  margin: 0 0 6px 4px;
+}
+
+.stick__status {
+  font-size: 12px;
+  color: var(--paper);
+}
+
+.stick__status--error {
+  color: var(--paper);
+}
+
+.claude-note {
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* ---- Measurement sheets ------------------------------------------------- */
+.measure-sheet {
+  border-top: 1.5px solid var(--ink);
+  padding-top: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.prediction {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  align-items: center;
+}
+
+.prediction legend {
+  margin-bottom: 8px;
+}
+
+.prediction__option {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.prediction__option input {
+  accent-color: var(--vermilion);
+}
+
+.prediction__number {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.prediction__number input {
+  width: 64px;
+  font-size: 18px;
+  padding: 4px 6px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  border-radius: 0;
+}
+
+.galley-proof {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 300px);
+  gap: 24px;
+  align-items: start;
+}
+
+.galley-proof__verdict {
+  grid-column: 1 / -1;
+  font-family: var(--face-display);
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.galley-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+  background: var(--paper);
+}
+
+.galley-table th,
+.galley-table td {
+  text-align: right;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--rule);
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+
+.galley-table th:first-child,
+.galley-table td:first-child {
+  text-align: left;
+}
+
+.galley-table thead th {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.galley-table__group th {
+  text-align: left;
+  font-weight: 600;
+  padding-top: 12px;
+}
+
+.cost-slip {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 1px 2px 0 var(--rule);
+  padding: 14px 16px;
+  transform: rotate(-0.6deg);
+  display: grid;
+  gap: 8px;
+}
+
+.cost-slip label {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.cost-slip input {
+  font-size: 16px;
+  padding: 4px 6px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  border-radius: 0;
+  width: 100%;
+}
+
+.cost-slip p {
+  margin: 0;
+}
+
+.cost-slip__difference {
+  color: var(--vermilion);
+  font-weight: 600;
+}
+
+/* ---- Chapter 2 bench ---------------------------------------------------- */
+.bench-grid--next {
+  grid-template-columns: minmax(0, 1fr) 280px;
+  grid-template-areas:
+    "copy controls"
+    "stick controls"
+    "fan controls"
+    "press case"
+    "measure measure";
+  align-items: start;
+}
+
+.bench-grid--next .copy-sheet {
+  grid-area: copy;
+}
+
+.next__stick {
+  grid-area: stick;
+}
+
+.next__fan {
+  grid-area: fan;
+  min-height: 300px;
+  margin-top: -14px;
+}
+
+.next__controls {
+  grid-area: controls;
+  display: grid;
+  gap: 4px;
+}
+
+.next__case {
+  grid-area: case;
+  align-self: end;
+}
+
+.next__press {
+  grid-area: press;
+}
+
+.bench-grid--next .measure-sheet {
+  grid-area: measure;
+}
+
+.fan__source {
+  margin: 0;
+}
+
+.fan__empty {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border: 1px dashed var(--rule);
+  padding: 24px;
+}
+
+.remark {
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: 54px;
+  margin: -6px 0 12px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.compositor-panel {
+  border: 1px solid var(--brass-dark);
+  background: color-mix(in oklab, var(--paper) 85%, var(--brass));
+  padding: 14px;
+  margin-bottom: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.compositor-panel h3 {
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.compositor-panel p {
+  margin: 0;
+}
+
+.compositor-panel--live {
+  background: transparent;
+  border-color: var(--rule);
+  padding: 10px 12px;
+  gap: 2px;
+}
+
+.model-choices {
+  display: grid;
+  gap: 8px;
+}
+
+.model-choice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 8px;
+  cursor: pointer;
+}
+
+.model-choice input {
+  grid-row: span 3;
+  accent-color: var(--vermilion);
+  margin-top: 3px;
+}
+
+.model-choice__name {
+  font-weight: 600;
+}
+
+.casting-bar {
+  height: 10px;
+  background: var(--brass-dark);
+  border-top: 2px solid var(--brass);
+}
+
+.casting-bar span {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transition: width 0.2s linear;
+}
+
+.error-line {
+  color: var(--vermilion);
+  font-size: 12px;
+}
+
+.galleys {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.galleys > .note {
+  grid-column: 1 / -1;
+}
+
+.galley {
+  margin: 0;
+}
+
+.galley figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.galley figcaption strong {
+  font-family: var(--face-display);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.galley__columns {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  min-height: 150px;
+  border-bottom: 3px solid var(--brass);
+  padding-bottom: 4px;
+  overflow-x: auto;
+}
+
+.galley__column {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2px;
+}
+
+.galley__sort {
+  width: 26px;
+  height: 7px;
+  background: var(--metal);
+  border: 1px solid var(--ink);
+}
+
+.galley__label {
+  font-size: 11px;
+  white-space: pre;
+  margin-top: 4px;
+}
+
+/* ---- Narrow screens: the bench stacks ----------------------------------- */
+@media (max-width: 1100px) {
+  .chapter {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px var(--gutter) 40px;
+  }
+
+  .copy-column {
+    position: static;
+  }
+
+  .masthead {
+    grid-template-columns: 1fr auto;
+    padding: 14px var(--gutter);
+  }
+
+  .ticket {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .bench-grid--tokens,
+  .bench-grid--next {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .bench-grid--tokens > *,
+  .bench-grid--next > * {
+    grid-area: auto !important;
+  }
+
+  .galley-proof,
+  .galleys {
+    grid-template-columns: 1fr;
+  }
+
+  .masthead__tools .button--quiet {
+    font-size: 10px;
+  }
+
+  .ticket__act {
+    display: none;
+  }
+}

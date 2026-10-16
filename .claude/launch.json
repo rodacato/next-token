@@ -2,9 +2,15 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "app",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5317
+    },
+    {
       "name": "boards",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4317"],
+      "runtimeArgs": ["-m", "http.server", "4317", "--directory", "."],
       "port": 4317
     }
   ]

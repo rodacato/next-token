@@ -18,7 +18,7 @@ export type WorkerResponse =
       readonly requestId: number;
       readonly candidates: readonly Candidate[];
       readonly logits: Float32Array;
-      readonly contextTokens: number;
+      readonly pieces: readonly TokenPiece[];
       readonly elapsedMs: number;
     }
   | { readonly type: "failed"; readonly requestId: number; readonly reason: string };

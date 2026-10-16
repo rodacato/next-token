@@ -42,6 +42,7 @@
     "stickCount": "{count} sorts",
     "case": "Case · {count} sorts",
     "caseUnknown": "Case",
+    "openingCase": "Opening the case…",
     "next": "Next",
     "press": "Press",
     "proof": "Proof",
@@ -178,7 +179,8 @@
       "bench": {
         "heading": "Open the fan.",
         "body": "At every step the compositor scores every sort in the case. The fan shows the likeliest ones, each set at a size that matches its probability. Move the temperature and watch the fan open and close.",
-        "observe": "Pick a sort by hand, or let the compositor draw. Then set the next one."
+        "observe": "Pick a sort by hand, or let the compositor draw. Then set the next one.",
+        "pieces": "Some sorts are pieces of words. The compositor builds a word one sort at a time, and in Spanish that happens more often."
       },
       "measure": {
         "heading": "Twenty draws.",

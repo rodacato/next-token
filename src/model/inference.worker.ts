@@ -64,6 +64,8 @@ async function nextToken(text: string, shortlist: number, requestId: number) {
   const started = performance.now();
   const tokenizer = await tokenizerFor(loadedModel.id, requestId);
   const inputs = tokenizer(text, { add_special_tokens: false });
+  const ids = tokenizer.encode(text, { add_special_tokens: false });
+  const pieces = ids.map((tokenId) => ({ tokenId, text: tokenizer.decode([tokenId]) }));
   const { logits } = (await loadedModel.model(inputs)) as { logits: Tensor };
   const [, sequenceLength = 0, vocabSize = 0] = logits.dims;
   const lastRow = logits.slice(null, sequenceLength - 1, null).to("float32").data as Float32Array;
@@ -75,7 +77,7 @@ async function nextToken(text: string, shortlist: number, requestId: number) {
       requestId,
       candidates,
       logits: row,
-      contextTokens: sequenceLength,
+      pieces,
       elapsedMs: performance.now() - started,
     },
     [row.buffer],

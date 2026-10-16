@@ -46,11 +46,15 @@ export function findModel(id: LocalModel["id"]): LocalModel {
   return model;
 }
 
+type GpuAdapter = { readonly features: ReadonlySet<string> };
+
+// The q4f16 weights need shader-f16; adapters without it fall back to WASM with q8 weights.
 export async function detectDevice(): Promise<ModelDevice> {
-  const gpu = (navigator as Navigator & { gpu?: { requestAdapter(): Promise<unknown> } }).gpu;
+  const gpu = (navigator as Navigator & { gpu?: { requestAdapter(): Promise<GpuAdapter | null> } }).gpu;
   if (!gpu) return "wasm";
   try {
-    return (await gpu.requestAdapter()) ? "webgpu" : "wasm";
+    const adapter = await gpu.requestAdapter();
+    return adapter?.features.has("shader-f16") ? "webgpu" : "wasm";
   } catch {
     return "wasm";
   }
