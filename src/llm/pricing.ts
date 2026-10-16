@@ -5,8 +5,18 @@ const priceTableSchema = z.object({
   asOf: z.iso.date(),
   source: z.string(),
   note: z.string(),
+  cacheCheckedAt: z.iso.date(),
+  cacheNote: z.string(),
   models: z.array(
-    z.object({ provider: z.string(), model: z.string(), label: z.string(), inputPerMTok: z.number().nonnegative(), outputPerMTok: z.number().nonnegative() }),
+    z.object({
+      provider: z.string(),
+      model: z.string(),
+      label: z.string(),
+      inputPerMTok: z.number().nonnegative(),
+      outputPerMTok: z.number().nonnegative(),
+      cacheWritePerMTok: z.number().nonnegative(),
+      cacheReadPerMTok: z.number().nonnegative(),
+    }),
   ),
 });
 

@@ -2436,3 +2436,52 @@
 .measure-sheet > .button {
   justify-self: start;
 }
+
+/* ---- Act IV: commissions ------------------------------------------------ */
+.commission-bench {
+  display: grid;
+  gap: 18px;
+}
+
+.commission-bench > .note {
+  margin: 0;
+  max-width: 80ch;
+}
+
+.feature-table td {
+  vertical-align: top;
+  text-align: left;
+  font-size: 12px;
+}
+
+.feature-table td.is-chosen {
+  background: color-mix(in oklab, var(--paper) 75%, var(--brass));
+}
+
+.feature-table td strong {
+  display: block;
+  font: 400 16px/1.25 var(--face-display);
+}
+
+.feature-table__volume,
+.feature-table__numbers,
+.feature-table__evidence {
+  display: block;
+  margin-top: 4px;
+  font: 400 10.5px/1.35 var(--face-mono);
+  color: var(--slate);
+}
+
+.feature-table__why {
+  display: block;
+  margin-top: 4px;
+}
+
+.feature-table__evidence {
+  color: var(--brass-dark);
+}
+
+.month-ledger__total td {
+  border-top: 2px solid var(--ink);
+  font-weight: 600;
+}

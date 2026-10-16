@@ -21,6 +21,7 @@ import { DatasetChapter } from "./chapters/DatasetChapter";
 import { LedgerChapter } from "./chapters/LedgerChapter";
 import { DecisionChapter } from "./chapters/DecisionChapter";
 import { BeforeAfterChapter } from "./chapters/BeforeAfterChapter";
+import { FeaturesChapter } from "./chapters/FeaturesChapter";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
@@ -92,6 +93,7 @@ function Course() {
       {chapter.kind === "ledger" && <LedgerChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "decision" && <DecisionChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "before-after" && <BeforeAfterChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "commission-features" && <FeaturesChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "eval-builder" && <EvalBuilderChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
     </div>
   );

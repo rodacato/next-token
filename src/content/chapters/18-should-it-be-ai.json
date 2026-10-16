@@ -1,0 +1,58 @@
+{
+  "id": "should-it-be-ai",
+  "kind": "commission-features",
+  "act": "commissions",
+  "number": 18,
+  "economics": { "mxnPerUsd": 18.5, "personMxnPerHour": 180, "weeks": 4, "seed": 18 },
+  "features": [
+    {
+      "id": "order-status",
+      "weeklyRequests": 20000,
+      "wrongCostMxn": 25,
+      "personMinutes": 4,
+      "text": { "en": "\"Where is my order?\"", "es-MX": "\"¿Dónde está mi pedido?\"" },
+      "approaches": {
+        "rules": { "coverage": 0.98, "accuracy": 1, "latencyMs": 80, "why": { "en": "A lookup in the order system. The 2% it can't find (typos in the number) go to a person.", "es-MX": "Una consulta al sistema de pedidos. El 2% que no encuentra (números mal escritos) va con una persona." }, "evidence": "assumption" },
+        "search": { "coverage": 1, "accuracy": 0.35, "latencyMs": 150, "why": { "en": "Searching the help pages returns 'How shipping works', not where this order is.", "es-MX": "Buscar en las páginas de ayuda devuelve 'Cómo funcionan los envíos', no dónde está este pedido." }, "evidence": "assumption" },
+        "llm": { "coverage": 1, "accuracy": 0.97, "latencyMs": 1800, "tokens": { "model": "claude-haiku-5-5", "input": 1400, "output": 120 }, "why": { "en": "With a lookup tool it reads the same record and writes a nicer sentence (chapter 8), at a model call per question.", "es-MX": "Con una herramienta de consulta lee el mismo registro y escribe una oración más amable (capítulo 8), a costa de una llamada al modelo por pregunta." }, "evidence": "tools" }
+      }
+    },
+    {
+      "id": "gift-search",
+      "weeklyRequests": 6000,
+      "wrongCostMxn": 15,
+      "personMinutes": 6,
+      "text": { "en": "\"A gift for my dad, who drinks too much coffee\"", "es-MX": "\"Un regalo para mi papá, que toma demasiado café\"" },
+      "approaches": {
+        "rules": { "coverage": 0.3, "accuracy": 0.9, "latencyMs": 60, "why": { "en": "Category filters work when the shopper names a category. Most don't.", "es-MX": "Los filtros por categoría funcionan cuando quien compra nombra una categoría. Casi nadie lo hace." }, "evidence": "assumption" },
+        "search": { "coverage": 1, "accuracy": 0.78, "latencyMs": 180, "why": { "en": "Embedding search (chapter 9) matches meaning, not words: 'coffee' finds grinders and French presses.", "es-MX": "La búsqueda por embeddings (capítulo 9) compara significado, no palabras: 'café' encuentra molinos y prensas francesas." }, "evidence": "rag" },
+        "llm": { "coverage": 1, "accuracy": 0.84, "latencyMs": 2600, "tokens": { "model": "claude-haiku-5-5", "input": 3000, "output": 250 }, "why": { "en": "Reranking search results and explaining the picks reads better, for a few more points and a model call.", "es-MX": "Reordenar los resultados y explicar la selección se lee mejor, por unos puntos más y una llamada al modelo." }, "evidence": "assumption" }
+      }
+    },
+    {
+      "id": "return-eligibility",
+      "weeklyRequests": 3000,
+      "wrongCostMxn": 320,
+      "personMinutes": 5,
+      "text": { "en": "\"Can I still return this?\"", "es-MX": "\"¿Todavía puedo devolver esto?\"" },
+      "approaches": {
+        "rules": { "coverage": 0.85, "accuracy": 1, "latencyMs": 90, "why": { "en": "The policy is a table: days since delivery, category, damage. The 15% it can't classify go to a person.", "es-MX": "La política es una tabla: días desde la entrega, categoría, daño. El 15% que no puede clasificar va con una persona." }, "evidence": "assumption" },
+        "search": { "coverage": 1, "accuracy": 0.5, "latencyMs": 150, "why": { "en": "Returning the policy page leaves the customer to apply it, and half get it wrong.", "es-MX": "Devolver la página de la política deja que el cliente la aplique, y la mitad se equivoca." }, "evidence": "assumption" },
+        "llm": { "coverage": 1, "accuracy": 0.7, "latencyMs": 1500, "tokens": { "model": "claude-haiku-5-5", "input": 900, "output": 20 }, "why": { "en": "Chapter 5's spec prompt answered 7 of 10 correctly. A wrong 'yes' is a refund that shouldn't happen.", "es-MX": "El prompt de especificación del capítulo 5 acertó 7 de 10. Un 'sí' equivocado es un reembolso que no debió ocurrir." }, "evidence": "prompt-spec" }
+      }
+    },
+    {
+      "id": "product-copy",
+      "weeklyRequests": 500,
+      "wrongCostMxn": 120,
+      "personMinutes": 12,
+      "text": { "en": "A description for each new product", "es-MX": "Una descripción para cada producto nuevo" },
+      "approaches": {
+        "rules": { "coverage": 0.4, "accuracy": 1, "latencyMs": 50, "why": { "en": "A fill-in template is accurate but reads like a form; merchandising rewrites 60% by hand.", "es-MX": "Una plantilla para rellenar es exacta pero se lee como formulario; comercialización reescribe a mano el 60%." }, "evidence": "assumption" },
+        "search": { "coverage": 0.2, "accuracy": 0.9, "latencyMs": 120, "why": { "en": "Reusing the closest existing description fits one product in five; the rest get written by hand.", "es-MX": "Reusar la descripción existente más parecida le queda a uno de cada cinco productos; el resto se escribe a mano." }, "evidence": "assumption" },
+        "llm": { "coverage": 1, "accuracy": 0.67, "latencyMs": 3000, "tokens": { "model": "claude-haiku-5-5", "input": 500, "output": 120 }, "why": { "en": "Chapter 6's spec prompt passed every grader on 4 of 6 products. The rest invented claims or ran long.", "es-MX": "El prompt de especificación del capítulo 6 pasó todos los calificadores en 4 de 6 productos. El resto inventó afirmaciones o se alargó." }, "evidence": "evals" }
+      }
+    }
+  ],
+  "readNext": ["huyen-ai-engineering", "anthropic-building-agents", "husain-evals"]
+}

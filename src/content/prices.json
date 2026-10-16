@@ -3,8 +3,34 @@
   "source": "Anthropic list prices (first-party API), from the claude-api reference",
   "note": "Prices change. The cost shown before a live run uses this table; check your provider before relying on it.",
   "models": [
-    { "provider": "anthropic", "model": "claude-haiku-5-5", "label": "Claude Haiku 5.5", "inputPerMTok": 0.1, "outputPerMTok": 0.5 },
-    { "provider": "anthropic", "model": "claude-sonnet-5-5", "label": "Claude Sonnet 5.5", "inputPerMTok": 2, "outputPerMTok": 10 },
-    { "provider": "anthropic", "model": "claude-opus-5-5", "label": "Claude Opus 5.5", "inputPerMTok": 4, "outputPerMTok": 20 }
-  ]
+    {
+      "provider": "anthropic",
+      "model": "claude-haiku-5-5",
+      "label": "Claude Haiku 5.5",
+      "inputPerMTok": 0.1,
+      "outputPerMTok": 0.5,
+      "cacheWritePerMTok": 0.125,
+      "cacheReadPerMTok": 0.01
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-sonnet-5-5",
+      "label": "Claude Sonnet 5.5",
+      "inputPerMTok": 2,
+      "outputPerMTok": 10,
+      "cacheWritePerMTok": 2.5,
+      "cacheReadPerMTok": 0.1
+    },
+    {
+      "provider": "anthropic",
+      "model": "claude-opus-5-5",
+      "label": "Claude Opus 5.5",
+      "inputPerMTok": 4,
+      "outputPerMTok": 20,
+      "cacheWritePerMTok": 5,
+      "cacheReadPerMTok": 0.2
+    }
+  ],
+  "cacheCheckedAt": "2026-10-16",
+  "cacheNote": "Cache writes are the 5-minute duration. Cache reads are 0.1x base input on Haiku 5.5 and 0.05x on Sonnet 5.5 and Opus 5.5 (platform.claude.com pricing page)."
 }
