@@ -280,7 +280,32 @@ export const featuresChapterSchema = z.object({
     .min(1),
 });
 
+const range = z.tuple([z.number(), z.number()]);
+
+export const failureChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("commission-failure"),
+  model: z.object({
+    conversations: z.number().int().positive(),
+    seed: z.number().int(),
+    right: z.number().min(0).max(1),
+    wrong: z.number().min(0).max(1),
+    actionShare: z.number().min(0).max(1),
+    replySeconds: range,
+    firstTokenSeconds: z.number().positive(),
+    patienceSeconds: range,
+    guessRight: z.number().min(0).max(1),
+    flaggedWrong: z.number().min(0).max(1),
+    checkedWhenFlagged: z.number().min(0).max(1),
+    noticedForUndo: z.number().min(0).max(1),
+    caughtAtConfirm: z.number().min(0).max(1),
+  }),
+  assumptions: z.array(z.object({ key: z.string(), evidence: z.string() })),
+  sample: z.object({ customer: perLocale, reply: perLocale, refusal: perLocale }),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  failureChapterSchema,
   featuresChapterSchema,
   decisionChapterSchema,
   beforeAfterChapterSchema,
@@ -325,3 +350,4 @@ export type LedgerChapter = z.infer<typeof ledgerChapterSchema>;
 export type DecisionChapter = z.infer<typeof decisionChapterSchema>;
 export type BeforeAfterChapter = z.infer<typeof beforeAfterChapterSchema>;
 export type FeaturesChapter = z.infer<typeof featuresChapterSchema>;
+export type FailureChapter = z.infer<typeof failureChapterSchema>;

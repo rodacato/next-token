@@ -2485,3 +2485,49 @@
   border-top: 2px solid var(--ink);
   font-weight: 600;
 }
+
+.reply-preview {
+  display: grid;
+  gap: 8px;
+  max-width: 640px;
+}
+
+.reply-preview__customer {
+  margin: 0;
+  font: 400 17px/1.35 var(--face-display);
+}
+
+.reply-preview .slip p {
+  margin: 0;
+}
+
+.reply-preview__unsure {
+  font: 400 11.5px/1.4 var(--face-mono);
+  color: var(--vermilion);
+}
+
+.reply-preview__done,
+.reply-preview__undo {
+  font: 400 11.5px/1.4 var(--face-mono);
+  color: var(--slate);
+}
+
+.assumptions ul {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: 4px;
+  font-size: 12.5px;
+}
+
+.assumptions summary {
+  cursor: pointer;
+}
+
+td.is-key {
+  font-weight: 600;
+}
+
+tr.is-latest td {
+  background: color-mix(in oklab, var(--paper) 80%, var(--brass));
+}
