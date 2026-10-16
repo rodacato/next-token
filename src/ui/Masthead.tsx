@@ -5,7 +5,7 @@ import { useI18n } from "../i18n/I18nProvider";
 import { useCourse } from "./CourseProvider";
 import type { MessageKey } from "../i18n/catalog";
 
-const plannedActOneChapters = 4;
+const acts = [...new Set(chapters.map((chapter) => chapter.act))];
 
 export function Masthead({ currentChapterId, onOpenChapter }: { currentChapterId: string; onOpenChapter: (id: string) => void }) {
   const { t, locale } = useI18n();
@@ -22,35 +22,37 @@ export function Masthead({ currentChapterId, onOpenChapter }: { currentChapterId
         <span className="kicker">{t("course.subtitle")}</span>
       </div>
 
-      <nav className="ticket" aria-label={t("course.acts.compositor")}>
-        <span className="kicker ticket__act">{t("course.acts.compositor")}</span>
-        <ol>
-          {Array.from({ length: plannedActOneChapters }, (_, index) => {
-            const chapter = chapters[index];
-            if (!chapter) {
-              return (
-                <li key={index} className="ticket__item ticket__item--uncast">
-                  <span className="ticket__number">{index + 1}</span>
-                  <span>{t("shell.notCast")}</span>
-                </li>
-              );
-            }
-            const done = Boolean(progressOf(chapter.id).completedAt);
-            return (
-              <li key={chapter.id} className="ticket__item">
-                <button
-                  className={`ticket__link${chapter.id === currentChapterId ? " is-current" : ""}`}
-                  aria-current={chapter.id === currentChapterId ? "page" : undefined}
-                  onClick={() => onOpenChapter(chapter.id)}
-                >
-                  <span className="ticket__number">{chapter.number}</span>
-                  <span>{t(`chapters.${chapter.id}.title` as MessageKey)}</span>
-                  {done && <span className="ticket__set">{t("shell.set")}</span>}
-                </button>
-              </li>
-            );
-          })}
-        </ol>
+      <nav className="ticket" aria-label={t("course.title")}>
+        {acts.map((act) => (
+          <div key={act} className="ticket__act-group">
+            <span className="kicker ticket__act" title={t(`course.acts.${act}` as MessageKey)}>
+              {t(`course.actNumerals.${act}` as MessageKey)}
+            </span>
+            <ol>
+              {chapters
+                .filter((chapter) => chapter.act === act)
+                .map((chapter) => {
+                  const done = Boolean(progressOf(chapter.id).completedAt);
+                  const current = chapter.id === currentChapterId;
+                  const title = t(`chapters.${chapter.id}.title` as MessageKey);
+                  return (
+                    <li key={chapter.id} className="ticket__item">
+                      <button
+                        className={`ticket__link${current ? " is-current" : ""}${done ? " is-set" : ""}`}
+                        aria-current={current ? "page" : undefined}
+                        aria-label={`${chapter.number} ${title}${done ? ` · ${t("shell.set")}` : ""}`}
+                        title={title}
+                        onClick={() => onOpenChapter(chapter.id)}
+                      >
+                        <span className="ticket__number">{chapter.number}</span>
+                        {current && <span className="ticket__title">{title}</span>}
+                      </button>
+                    </li>
+                  );
+                })}
+            </ol>
+          </div>
+        ))}
       </nav>
 
       <div className="masthead__tools">

@@ -1,0 +1,440 @@
+{
+  "recipeId": "duel-mug-copy",
+  "recordedAt": "2026-10-16",
+  "via": "claude-code-cli",
+  "temperature": "provider-default",
+  "completions": [
+    {
+      "requestId": "spec--stoneware-350--en",
+      "requestHash": "091480aed1769a12",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: Talavera-blue mug. Material: stoneware. Capacity: 350 ml. Care: hand wash only. Not microwave safe.",
+      "output": "Hand-painted Talavera-blue mug crafted from durable stoneware, offering 350 ml of capacity for your favorite coffee, tea, or morning drink. Hand wash only to keep its glaze vibrant. Not microwave safe.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 83,
+        "cacheCreationTokens": 1365,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00031469999999999995,
+      "durationMs": 2199
+    },
+    {
+      "requestId": "spec--stoneware-350--es-MX",
+      "requestHash": "853be79d9ecdb5a7",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza azul talavera. Material: gres. Capacidad: 350 ml. Cuidado: lavar a mano. No apta para microondas.",
+      "output": "Taza azul de talavera, fabricada en gres con 350 ml de capacidad. Ideal para disfrutar tu bebida favorita con un diseño tradicional mexicano. Se recomienda lavar a mano. No es apta para microondas.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 85,
+        "cacheCreationTokens": 1387,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00032010000000000003,
+      "durationMs": 5971
+    },
+    {
+      "requestId": "spec--porcelain-250--en",
+      "requestHash": "8e62230b250da5d5",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: white espresso cup. Material: porcelain. Capacity: 250 ml. Care: dishwasher safe. Microwave safe.",
+      "output": "White espresso cup, crafted from durable porcelain with a 250 ml capacity. Its clean white finish suits any setting. The cup is dishwasher safe and microwave safe, so cleanup and reheating are simple.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 74,
+        "cacheCreationTokens": 1364,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00031,
+      "durationMs": 2426
+    },
+    {
+      "requestId": "spec--porcelain-250--es-MX",
+      "requestHash": "1dcc24dae62ee622",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza blanca para espresso. Material: porcelana. Capacidad: 250 ml. Cuidado: apta para lavavajillas. Apta para microondas.",
+      "output": "Taza blanca para espresso de porcelana, con capacidad de 250 ml. Es apta para lavavajillas y para microondas, para un uso práctico y cotidiano en casa u oficina.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 68,
+        "cacheCreationTokens": 1390,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003122,
+      "durationMs": 2868
+    },
+    {
+      "requestId": "spec--enamel-400--en",
+      "requestHash": "cff047c0d2fa73ba",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: camping mug. Material: enamelled steel. Capacity: 400 ml. Care: hand wash only. Not microwave safe.",
+      "output": "Our camping mug is made from enamelled steel and holds 400 ml, making it a practical companion for outdoor meals and hot drinks. For care, hand wash only. It is not microwave safe.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 185,
+        "cacheCreationTokens": 1363,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00036530000000000004,
+      "durationMs": 3350
+    },
+    {
+      "requestId": "spec--enamel-400--es-MX",
+      "requestHash": "956b733606173478",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza de campismo. Material: acero esmaltado. Capacidad: 400 ml. Cuidado: lavar a mano. No apta para microondas.",
+      "output": "Taza de campismo de acero esmaltado con capacidad de 400 ml, ideal para llevar en tus salidas al aire libre. Para su cuidado, lávala a mano. No es apta para microondas.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 72,
+        "cacheCreationTokens": 1392,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003146,
+      "durationMs": 4159
+    },
+    {
+      "requestId": "spec--barro-300--en",
+      "requestHash": "f1721a768c771b84",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: clay mug from Oaxaca. Material: clay (barro), handmade by artisans. Capacity: 300 ml. Care: hand wash only. Not microwave safe.",
+      "output": "Handmade in Oaxaca from barro (clay) by skilled artisans, this mug holds 300 ml of your favorite drink. Hand wash only. Not microwave safe.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 61,
+        "cacheCreationTokens": 1378,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003063,
+      "durationMs": 2459
+    },
+    {
+      "requestId": "spec--barro-300--es-MX",
+      "requestHash": "3987d84cff0e053e",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza de barro de Oaxaca. Material: barro, hecha a mano por artesanos. Capacidad: 300 ml. Cuidado: lavar a mano. No apta para microondas.",
+      "output": "Taza de barro de Oaxaca, hecha a mano por artesanos. Fabricada en barro, con capacidad de 300 ml, ideal para bebidas calientes o frías en el día a día. Lavar a mano. No apta para microondas.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 85,
+        "cacheCreationTokens": 1405,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003237,
+      "durationMs": 3474
+    },
+    {
+      "requestId": "spec--glass-450--en",
+      "requestHash": "9088c74de447e8d9",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: double-wall glass mug. Material: borosilicate glass. Capacity: 450 ml. Care: dishwasher safe. Not microwave safe.",
+      "output": "Crafted from durable borosilicate glass, this double-wall mug holds 450 ml and keeps your drinks comfortably insulated in hand. Its clear construction showcases your favorite beverage. Dishwasher safe for easy cleaning. Not microwave safe.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 91,
+        "cacheCreationTokens": 1370,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003197,
+      "durationMs": 2933
+    },
+    {
+      "requestId": "spec--glass-450--es-MX",
+      "requestHash": "b7da3c3be899e8a7",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza de vidrio de doble pared. Material: vidrio borosilicato. Capacidad: 450 ml. Cuidado: apta para lavavajillas. No apta para microondas.",
+      "output": "Taza de doble pared fabricada en vidrio borosilicato, con capacidad de 450 ml. Apta para lavavajillas. No es apta para microondas.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 57,
+        "cacheCreationTokens": 1398,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003083,
+      "durationMs": 2987
+    },
+    {
+      "requestId": "spec--bamboo-320--en",
+      "requestHash": "7184d81ec4187f74",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+      "prompt": "Product: travel mug. Material: bamboo fibre with a silicone lid. Capacity: 320 ml. Care: hand wash only. Not microwave safe.",
+      "output": "Keep your travel mug cool or hot on the go with this 320 ml mug, made from bamboo fibre with a leak-resistant silicone lid. Bamboo fibre offers a natural, lightweight feel. Hand wash only, and not microwave safe.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 87,
+        "cacheCreationTokens": 1374,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0003185,
+      "durationMs": 2608
+    },
+    {
+      "requestId": "spec--bamboo-320--es-MX",
+      "requestHash": "f6520678439052fe",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos.",
+      "prompt": "Producto: taza de viaje. Material: fibra de bambú con tapa de silicón. Capacidad: 320 ml. Cuidado: lavar a mano. No apta para microondas.",
+      "output": "Taza de viaje de fibra de bambú con tapa de silicón, con capacidad de 320 ml. Se recomienda lavarla a mano y no es apta para microondas.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 61,
+        "cacheCreationTokens": 1401,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00031089999999999997,
+      "durationMs": 3753
+    },
+    {
+      "requestId": "lovely--stoneware-350--en",
+      "requestHash": "31259b5e147b45b4",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: Talavera-blue mug. Material: stoneware. Capacity: 350 ml. Care: hand wash only. Not microwave safe.",
+      "output": "# Talavera Blue Mug\n\nEvery morning begins with a small ceremony. Lift this handmade stoneware mug, feel its weight settle into your palm, and watch the cobalt glaze catch the first light. Its hand-painted Talavera blue recalls sun-warmed tiles and the kilns of centuries-old workshops, where every line is drawn by hand.\n\nPour in 350 ml of coffee, tea, or cocoa. The stoneware holds warmth as you savor the first sip, while the glaze's cool, luminous blue turns an ordinary pause into a moment worth keeping.\n\n**Details**\n- **Material:** Stoneware\n- **Capacity:** 350 ml\n- **Finish:** Talavera-blue glaze\n- **Care:** Hand wash only\n- **Not microwave safe**\n\nHand wash with warm water and mild soap, and dry thoroughly. Keep it away from the microwave to protect the glaze and the piece.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 459,
+        "cacheCreationTokens": 1390,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005077,
+      "durationMs": 4585
+    },
+    {
+      "requestId": "lovely--stoneware-350--es-MX",
+      "requestHash": "cc2458b1da129ed9",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza azul talavera. Material: gres. Capacidad: 350 ml. Cuidado: lavar a mano. No apta para microondas.",
+      "output": "Aquí tienes la descripción:\n\n---\n\n**Taza Azul Talavera**\n\nHay tazas que se toman y tazas que se extrañan. Esta es de las segundas.\n\nModelada en gres y pintada a mano en el azul profundo de la talavera, cada pieza lleva el pulso de un oficio que sabe lo que hace. Sostenla y siente el peso justo, la curva tibia del asa, el borde liso que roza los labios como una caricia. Son 350 ml de espacio generoso para ese primer café que todavía huele a madrugada, para un té que se abre despacio, para el cacao espeso de una tarde de lluvia.\n\nImagina el ritual: la luz temprana entrando por la ventana, el vapor que se eleva en espirales, el aroma que llena la cocina antes de que tú termines de despertar. Cada sorbo sabe mejor en una taza que tiene historia, y esta la tiene.\n\n**Detalles:**\n- **Material:** gres\n- **Capacidad:** 350 ml\n- **Cuidado:** lavar a mano para conservar el esmalte y el color intenso\n- **No apta para microondas**\n\n---\n\n¿Quieres que la adapte a un tono más sobrio, a una tienda en línea específica o a una extensión concreta (por ejemplo, 150 o 300 palabras)?",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 451,
+        "cacheCreationTokens": 1432,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005120999999999999,
+      "durationMs": 4206
+    },
+    {
+      "requestId": "lovely--porcelain-250--en",
+      "requestHash": "a30ffb07cf5f6513",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: white espresso cup. Material: porcelain. Capacity: 250 ml. Care: dishwasher safe. Microwave safe.",
+      "output": "# The Morning, Poured in White\n\nEvery good day begins with a small ritual. Before the world asks anything of you, there is the hush of the kettle, the dark perfume of freshly pulled espresso, and the moment you lift a cup that feels like it was made for your hands.\n\nThis white porcelain espresso cup is that moment, distilled. Its smooth, luminous glaze catches the first light of the morning and holds it, a clean, bright canvas for crema the color of caramel and the bittersweet depth of a well-roasted bean. Porcelain's fine, dense body feels cool and silken against the lips, and it keeps the warmth of your coffee exactly where it belongs: in the cup, and in your day.\n\nIts generous 250 ml capacity gives you room to savor, whether you're lingering over a double shot, a cortado, or a second pour while the window light stretches across the table.\n\nThen comes the practical luxury. Dishwasher safe, so cleanup never interrupts the pleasure. Microwave safe, so your coffee can be revived after a phone call or a sudden knock at the door, never bitter, never cold.\n\n**Details**\n- **Material:** Fine porcelain\n- **Finish:** Classic white glaze\n- **Capacity:** 250 ml\n- **Care:** Dishwasher safe, microwave safe\n\nPour slowly. Sip deliberately. Begin again, every morning.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 726,
+        "cacheCreationTokens": 1385,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0006402000000000001,
+      "durationMs": 8889
+    },
+    {
+      "requestId": "lovely--porcelain-250--es-MX",
+      "requestHash": "40ded12ac4671584",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza blanca para espresso. Material: porcelana. Capacidad: 250 ml. Cuidado: apta para lavavajillas. Apta para microondas.",
+      "output": "# Taza blanca para espresso de porcelana\n\nHay cafés que se viven en silencio, y empiezan con una taza que sabe guardar el calor justo. Esta taza blanca de porcelana, con sus 250 ml de capacidad, está pensada para esos momentos: el primer sorbo de la mañana, el espresso recién extraído que humea mientras la casa todavía duerme.\n\nSu porcelana blanca es lisa, fina y luminosa. Al tacto se siente fresca y pulida, y al labio, delicada. Deja que el café muestre su color y su crema con total nitidez, así puedes apreciar cada matiz de tueste antes del primer trago.\n\nPensada para el uso diario sin complicaciones:\n\n- **Apta para lavavajillas:** después del último sorbo, la limpieza es rápida y sin esfuerzo.\n- **Apta para microondas:** si el café se enfría, recupera su temperatura en segundos, sin perder la calma del ritual.\n\nUna taza sencilla, elegante y lista para acompañarte cada día, desde la pausa de la oficina hasta la conversación lenta del domingo.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 386,
+        "cacheCreationTokens": 1428,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.00047880000000000004,
+      "durationMs": 5553
+    },
+    {
+      "requestId": "lovely--enamel-400--en",
+      "requestHash": "57832750dd081974",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: camping mug. Material: enamelled steel. Capacity: 400 ml. Care: hand wash only. Not microwave safe.",
+      "output": "# The Camp Mug\n\n**Dawn tastes better from steel.**\n\nBefore the sun clears the ridge, you're already awake: the crackle of kindling, the first breath of cold mountain air, the quiet pull of the kettle. Wrap both hands around this enamelled steel mug and let the warmth spread through your palms as the day begins.\n\nIts 400 ml capacity fills with enough coffee, cocoa, or broth to see you through a long morning on the trail, and the sturdy steel body is built for the rough and tumble of camp life. The smooth enamel finish wipes clean with ease and keeps every sip tasting like itself, not like the last thing you brewed.\n\nPack it, hang it from your pack, or set it beside the fire. Wherever you carry it, it belongs out there, under open skies, where the best mornings happen.\n\n**Details**\n- **Material:** Enamelled steel\n- **Capacity:** 400 ml\n- **Care:** Hand wash only\n- **Not microwave safe**",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 521,
+        "cacheCreationTokens": 1384,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005375,
+      "durationMs": 5378
+    },
+    {
+      "requestId": "lovely--enamel-400--es-MX",
+      "requestHash": "bafe402ad0a2b166",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza de campismo. Material: acero esmaltado. Capacidad: 400 ml. Cuidado: lavar a mano. No apta para microondas.",
+      "output": "# Taza de campismo de acero esmaltado: tu café, tu historia, tu montaña\n\nHay mañanas que piden algo más que una taza. Piden un ritual. Cuando el aire todavía huele a rocío y el primer rayo de sol toca la tienda, la **taza de campismo de 400 ml** te espera con su esmalte brillante, sólido y sereno, listo para acunar el café humeante que te devuelve el alma al cuerpo.\n\nFabricada en **acero esmaltado**, esta taza es pura resistencia con alma de clásico. Ligera pero firme, soporta el traqueteo de la mochila, el roce de las rocas y las mil aventuras de cada salida. Su superficie lisa y reluciente se siente fresca al tacto en la madrugada y reconfortante cuando el líquido caliente la llena de calor.\n\nCon sus **400 ml de capacidad**, tienes espacio generoso para el café de campamento, el chocolate caliente que te rescata del frío, la sopa que reconforta después de una jornada de senderismo o el té de hierbas que cierra la noche junto a la fogata.\n\nY porque las buenas historias se cuidan, su mantenimiento es sencillo: **lávala a mano** con agua tibia y jabón neutro para conservar su esmalte intacto durante muchas temporadas. Eso sí, **no es apta para microondas**, así que calienta tus bebidas en la estufa o en la hornilla de tu cocina de campaña.\n\nTu próxima aventura empieza con un sorbo. Llévala contigo y haz que cada amanecer en la naturaleza sea una pequeña celebración.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 563,
+        "cacheCreationTokens": 1427,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005671000000000001,
+      "durationMs": 7155
+    },
+    {
+      "requestId": "lovely--barro-300--en",
+      "requestHash": "8779690abc83fbda",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: clay mug from Oaxaca. Material: clay (barro), handmade by artisans. Capacity: 300 ml. Care: hand wash only. Not microwave safe.",
+      "output": "# Barro de Oaxaca\n\n**Hecho a mano. Hecho para tus mañanas.**\n\nCada mañana empieza con un gesto sencillo: tomar una taza entre las manos y sentir su peso tibio. Esta taza de barro, moldeada a mano por artesanos de Oaxaca, convierte ese momento en un ritual. La tierra conserva el calor del café, y su textura terrosa invita a sostenerla despacio, mientras el aroma sube y el día todavía es tuyo.\n\nCada pieza lleva la huella de quien la creó. Ninguna es idéntica a otra: pequeñas irregularidades en la forma, el grosor y el acabado dan a tu taza un carácter propio, la marca de una tradición alfarera que pasa de generación en generación.\n\n**Detalles**\n- **Material:** barro, moldeado a mano\n- **Capacidad:** 300 ml, una porción generosa para tu café, tu té o tu chocolate\n- **Origen:** Oaxaca, México\n\n**Cuidado**\n- Lavar únicamente a mano, con agua tibia y jabón suave.\n- No apta para microondas.\n- Secar por completo antes de guardarla para preservar el barro.\n\nLlévate a casa una pieza con historia. Tu primera taza de la mañana merece ser única.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 621,
+        "cacheCreationTokens": 1402,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005911,
+      "durationMs": 6516
+    },
+    {
+      "requestId": "lovely--barro-300--es-MX",
+      "requestHash": "cbad6f28bd3f3bb0",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza de barro de Oaxaca. Material: barro, hecha a mano por artesanos. Capacidad: 300 ml. Cuidado: lavar a mano. No apta para microondas.",
+      "output": "# Taza de barro de Oaxaca\n\nHay mañanas que piden un ritual, y esta taza lo convierte en uno. Cada pieza nace de las manos de artesanos oaxaqueños que trabajan el barro a la antigua, dando forma a mano a una taza única: ninguna es idéntica a la otra, y en su superficie queda, sutil y orgullosa, la huella de quien la creó.\n\nSostenla entre las palmas y siente el peso cálido y terroso del barro, la curva suave que se acomoda a tu mano como si siempre hubiera estado ahí. Al servir el café o el té de hierbas, el aroma se eleva desde la superficie y envuelve la cocina antes de que des el primer sorbo. Cada trago llega con la calidez profunda que solo el barro sabe conservar.\n\nSu capacidad de 300 ml es el tamaño perfecto para esa pausa necesaria: un café largo, un chocolate espeso, una infusión que te acompañe mientras la luz de la mañana entra por la ventana.\n\n**Detalles del producto**\n- **Material:** barro, modelado y terminado a mano\n- **Capacidad:** 300 ml\n- **Cuidado:** lavar a mano con agua tibia y jabón neutro, sin remojar prolongadamente\n- **No apta para microondas**\n\nUn objeto hecho con tiempo, tierra y paciencia. Llévala a tu mesa y haz de cada mañana un momento que valga la pena recordar.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 509,
+        "cacheCreationTokens": 1449,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005445000000000001,
+      "durationMs": 6166
+    },
+    {
+      "requestId": "lovely--glass-450--en",
+      "requestHash": "030228f9daab8057",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: double-wall glass mug. Material: borosilicate glass. Capacity: 450 ml. Care: dishwasher safe. Not microwave safe.",
+      "output": "# The Mug That Makes Mornings Worth Waking For\n\nHold it in both hands and feel the quiet hum of a double-wall heart. Borosilicate glass, clear as first light, cradles your coffee, tea, or golden turmeric latte in a 450 ml embrace. Watch the steam curl and the color deepen while the outer wall stays cool to the touch.\n\nEach morning becomes a small ceremony. Pour, breathe in the aroma, and watch the layers of your drink settle like a sunrise over still water. Borosilicate glass is known for resisting thermal shock, and it leaves no metallic aftertaste, so every sip tastes purely of what you chose to brew.\n\n**Features**\n- **Double-wall construction** insulates your drink and keeps the outside comfortable to hold.\n- **Premium borosilicate glass** is clean, durable, and free from flavor transfer.\n- **450 ml capacity** fits a generous cup of coffee, a steeped tea, or a slow-morning matcha.\n- **Dishwasher safe** for effortless cleanup, so you can savor the ritual, not the chores.\n\n**Care Instructions**\n- Dishwasher safe.\n- Not microwave safe. Heat your beverage on the stove or in a kettle, then pour.\n\nMake every morning feel like a moment you chose for yourself.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 596,
+        "cacheCreationTokens": 1390,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005762,
+      "durationMs": 6340
+    },
+    {
+      "requestId": "lovely--glass-450--es-MX",
+      "requestHash": "1dd5ce7f823d3191",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza de vidrio de doble pared. Material: vidrio borosilicato. Capacidad: 450 ml. Cuidado: apta para lavavajillas. No apta para microondas.",
+      "output": "# Taza de vidrio de doble pared\n\nHay mañanas que merecen empezar con algo hermoso entre las manos. Esta taza de vidrio de doble pared convierte cada café, cada té de hojas sueltas o cada chocolate caliente en un pequeño ritual de lujo.\n\nFabricada en **vidrio borosilicato**, resiste los cambios bruscos de temperatura y deja que el líquido luzca en toda su gloria: el ámbar dorado de un té, el marrón profundo de un espresso, la espuma cremosa de un cappuccino. Su transparencia es una invitación a mirar antes de beber.\n\nLa **doble pared** cumple una doble función. Mantiene tu bebida caliente por más tiempo mientras protege tus dedos del calor, así puedes sostenerla con la misma delicadeza con la que la sirves. Al tacto, el vidrio se siente ligero y sereno, sin perder solidez.\n\nCon **450 ml** de capacidad, tiene la medida perfecta para una taza generosa que te acompañe desde el desayuno hasta la media tarde, sin que nada se enfríe antes de que lo disfrutes.\n\n**Cuidado sencillo:** es apta para lavavajillas, así que el placer llega sin esfuerzo. Eso sí, no la uses en microondas; el calor debe llegar a ella con la suavidad que merece, no con prisa.\n\nRegálate el primer sorbo del día con algo que se ve, se siente y se disfruta como debe ser.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 517,
+        "cacheCreationTokens": 1440,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005467,
+      "durationMs": 5529
+    },
+    {
+      "requestId": "lovely--bamboo-320--en",
+      "requestHash": "4874a5f671f63752",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+      "prompt": "Write the product description.\n\nProduct: travel mug. Material: bamboo fibre with a silicone lid. Capacity: 320 ml. Care: hand wash only. Not microwave safe.",
+      "output": "# Bamboo Travel Mug, 320 ml\n\nYour morning deserves a little ceremony. Hold this mug and feel the warmth of natural bamboo fibre in your palm, smooth and quietly beautiful, with a soft, earthy character that no cold steel can match. Pour your first coffee, breathe in the rising steam, and step out the door with something that feels like it was made for you.\n\nThe 320 ml capacity is generous enough for a full cup of coffee, tea, or matcha, and compact enough to slip into a bag, a car cup holder, or a commuter's hand without a second thought.\n\nThe silicone lid is soft to the touch, easy to fit, and gives you a comfortable place to rest your lips as you sip through the quiet minutes before the day begins.\n\nBamboo fibre has a warm, natural look that changes the feel of the everyday. Every mug is a small reminder to slow down, savour the first sip, and carry a little calm with you wherever you go.\n\n**Details**\n- Material: bamboo fibre body, silicone lid\n- Capacity: 320 ml\n- Care: hand wash only\n- Not microwave safe",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 581,
+        "cacheCreationTokens": 1400,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005707,
+      "durationMs": 6281
+    },
+    {
+      "requestId": "lovely--bamboo-320--es-MX",
+      "requestHash": "ca98fa009d263418",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra.",
+      "prompt": "Escribe la descripción del producto.\n\nProducto: taza de viaje. Material: fibra de bambú con tapa de silicón. Capacidad: 320 ml. Cuidado: lavar a mano. No apta para microondas.",
+      "output": "# Taza de viaje de fibra de bambú\n\nCada mañana merece un comienzo que se sienta como un regalo. Esta taza de viaje de **320 ml** está hecha de fibra de bambú, un material natural, ligero y de tacto cálido que se siente bien desde el primer contacto con la mano. Su tapa de silicón cierra con suavidad y mantiene a salvo tu café, tu té o tu infusión favorita mientras te diriges a donde te espere el día.\n\nImagina el aroma del café recién hecho llenando la cocina, el vapor dibujando figuras en el aire y el primer sorbo que te devuelve la calma. Llévalo contigo al tren, a la oficina, al parque o a la carretera. Tu ritual te acompaña, sin prisas y sin derrames.\n\n**Lo que te ofrece:**\n- **Fibra de bambú:** ligera, resistente y con un acabado natural que la hace agradable de sostener.\n- **Tapa de silicón:** sellado práctico que ayuda a prevenir derrames y a conservar el aroma de tu bebida.\n- **320 ml:** la medida ideal para una taza generosa que cabe en la mayoría de los portavasos.\n\n**Cuidado:** lávala a mano con agua tibia y jabón neutro para conservar su acabado y prolongar su vida útil. **No es apta para microondas**, así que caliéntala siempre antes de servir o usa tu bebida ya tibia.\n\nTu mañana empieza aquí. Lleva contigo un pedazo de calma en cada viaje.",
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 537,
+        "cacheCreationTokens": 1438,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0005563,
+      "durationMs": 6046
+    }
+  ]
+}

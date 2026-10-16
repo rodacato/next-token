@@ -44,6 +44,20 @@
         "en": "Fluent is not true",
         "es-MX": "Fluido no es verdadero"
       }
+    },
+    {
+      "id": "prompt-spec",
+      "title": {
+        "en": "The prompt as a specification",
+        "es-MX": "El prompt como especificación"
+      }
+    },
+    {
+      "id": "evals",
+      "title": {
+        "en": "Evals",
+        "es-MX": "Evaluaciones"
+      }
     }
   ],
   "capabilities": [

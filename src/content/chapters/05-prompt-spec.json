@@ -1,0 +1,8 @@
+{
+  "id": "prompt-spec",
+  "kind": "duel",
+  "act": "craft",
+  "number": 5,
+  "duelId": "returns",
+  "readNext": ["anthropic-prompting", "openai-prompting", "husain-evals"]
+}

@@ -28,7 +28,8 @@
     "record:llm": "node scripts/record-llm.ts",
     "manifest": "node scripts/build-manifest.ts",
     "record:experiments": "node scripts/record-experiments.ts",
-    "record:serve": "vite --config vite.record.config.ts"
+    "record:serve": "vite --config vite.record.config.ts",
+    "recipes": "node scripts/build-recipes.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

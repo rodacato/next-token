@@ -6,11 +6,11 @@ export type GradeContext = {
   readonly evalCase: EvalCase;
   readonly output: string;
   readonly schemas: Readonly<Record<string, ZodType>>;
-  readonly judge: (rubric: string, evalCase: EvalCase, output: string) => Promise<{ pass: boolean; note: string }>;
+  readonly judge: (grader: Extract<Grader, { kind: "llm-judge" }>, evalCase: EvalCase, output: string) => Promise<{ pass: boolean; note: string }>;
 };
 
 const normalize = (text: string, caseInsensitive: boolean) => {
-  const trimmed = text.trim().replace(/[.!]+$/, "").replace(/\s+/g, " ");
+  const trimmed = text.trim().replace(/[.!]+$/, "").replace(/\s+/g, " ").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   return caseInsensitive ? trimmed.toLowerCase() : trimmed;
 };
 
@@ -23,6 +23,24 @@ export function parseJson(output: string): { ok: true; value: unknown } | { ok: 
   } catch (error) {
     return { ok: false, error: error instanceof Error ? error.message : String(error) };
   }
+}
+
+// "Not microwave safe" repeats the spec; it is not a claim that the mug is microwave safe.
+export function claims(output: string, term: string): boolean {
+  const text = output.toLowerCase();
+  const needle = term.toLowerCase();
+  for (let at = text.indexOf(needle); at !== -1; at = text.indexOf(needle, at + 1)) {
+    const before = text.slice(Math.max(0, at - 12), at);
+    if (!/\b(not|no|non|sin|ni)\b[\s-]*\S*\s*$/.test(before)) return true;
+  }
+  return false;
+}
+
+export function readOneWordVerdict(output: string): "yes" | "no" | null {
+  const word = normalize(output, true);
+  if (word === "yes" || word === "si") return "yes";
+  if (word === "no") return "no";
+  return null;
 }
 
 export async function grade(grader: Grader, context: GradeContext): Promise<Grade> {
@@ -51,6 +69,15 @@ export async function grade(grader: Grader, context: GradeContext): Promise<Grad
       const missing = terms.filter((t) => !found.includes(t));
       return result(pass, grader.mode === "all" ? (pass ? "all present" : `missing: ${missing.join(", ")}`) : pass ? "none present" : `found: ${found.join(", ")}`);
     }
+    case "case-facts": {
+      const terms = (grader.check === "must-mention" ? evalCase.mustMention : evalCase.mustNotMention)?.[locale] ?? [];
+      const found = terms.filter((term) => (grader.check === "must-mention" ? output.toLowerCase().includes(term.toLowerCase()) : claims(output, term)));
+      if (grader.check === "must-mention") {
+        const missing = terms.filter((t) => !found.includes(t));
+        return result(missing.length === 0, missing.length ? `missing: ${missing.join(", ")}` : "all facts present");
+      }
+      return result(found.length === 0, found.length ? `claims not in the specs: ${found.join(", ")}` : "no invented claims");
+    }
     case "json-schema": {
       const schema = context.schemas[grader.schemaId];
       if (!schema) return result(false, `unknown schema ${grader.schemaId}`);
@@ -60,7 +87,13 @@ export async function grade(grader: Grader, context: GradeContext): Promise<Grad
       return result(validated.success, validated.success ? "valid" : (validated.error.issues[0]?.message ?? "invalid"));
     }
     case "llm-judge": {
-      const verdict = await context.judge(grader.rubric[locale] ?? "", evalCase, output);
+      // Code decides when it can: the recorded judge once called a plain "yes" a refusal.
+      const direct = grader.expects === "expected-answer" ? readOneWordVerdict(output) : null;
+      if (direct) {
+        const expected = normalize(evalCase.expected?.[locale] ?? "", true) === "no" ? "no" : "yes";
+        return result(direct === expected, `${direct} · read directly`);
+      }
+      const verdict = await context.judge(grader, evalCase, output);
       return result(verdict.pass, verdict.note);
     }
   }

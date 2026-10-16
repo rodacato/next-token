@@ -4,6 +4,7 @@ import { localProgressStore } from "./host/course-state";
 import { App } from "./ui/App";
 import { CourseProvider } from "./ui/CourseProvider";
 import { HostSync } from "./ui/HostSync";
+import { LlmProvider } from "./ui/LlmProvider";
 import "./ui/theme.css";
 import "./ui/bench.css";
 import "./ui/layout.css";
@@ -15,7 +16,9 @@ createRoot(root).render(
   <StrictMode>
     <CourseProvider store={localProgressStore()}>
       <HostSync />
-      <App />
+      <LlmProvider>
+        <App />
+      </LlmProvider>
     </CourseProvider>
   </StrictMode>,
 );

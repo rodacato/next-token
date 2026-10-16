@@ -1,0 +1,142 @@
+{
+  "id": "returns-eligibility",
+  "cases": [
+    {
+      "id": "shoes-day-12",
+      "input": {
+        "en": "I got these running shoes 12 days ago and they're too small. Can I send them back?",
+        "es-MX": "Recibí estos tenis hace 12 días y me quedaron chicos. ¿Los puedo devolver?"
+      },
+      "expected": {
+        "en": "yes",
+        "es-MX": "sí"
+      }
+    },
+    {
+      "id": "shoes-day-45",
+      "input": {
+        "en": "The shoes arrived 45 days ago and I never wore them. I'd like a refund.",
+        "es-MX": "Los tenis llegaron hace 45 días y nunca los usé. Quiero un reembolso."
+      },
+      "expected": {
+        "en": "no",
+        "es-MX": "no"
+      }
+    },
+    {
+      "id": "coffee-unopened",
+      "input": {
+        "en": "I ordered ground coffee last week by mistake. It's unopened. Can I return it?",
+        "es-MX": "Pedí café molido la semana pasada por error. No lo he abierto. ¿Lo puedo devolver?"
+      },
+      "expected": {
+        "en": "no",
+        "es-MX": "no"
+      }
+    },
+    {
+      "id": "lipstick-opened",
+      "input": {
+        "en": "I tried the lipstick once and don't like the shade. It came 5 days ago.",
+        "es-MX": "Probé el labial una vez y no me gusta el tono. Llegó hace 5 días."
+      },
+      "expected": {
+        "en": "no",
+        "es-MX": "no"
+      }
+    },
+    {
+      "id": "lipstick-sealed",
+      "input": {
+        "en": "The lipstick is still sealed; it arrived three days ago and I changed my mind.",
+        "es-MX": "El labial sigue sellado; llegó hace tres días y cambié de opinión."
+      },
+      "expected": {
+        "en": "yes",
+        "es-MX": "sí"
+      }
+    },
+    {
+      "id": "gift-card",
+      "input": {
+        "en": "I bought a $500 gift card yesterday for my brother but he doesn't want it.",
+        "es-MX": "Compré ayer una tarjeta de regalo de $500 para mi hermano pero no la quiere."
+      },
+      "expected": {
+        "en": "no",
+        "es-MX": "no"
+      }
+    },
+    {
+      "id": "headphones-box",
+      "input": {
+        "en": "The headphones arrived 20 days ago. I still have the original box. They hurt my ears.",
+        "es-MX": "Los audífonos llegaron hace 20 días. Todavía tengo la caja original. Me lastiman los oídos."
+      },
+      "expected": {
+        "en": "yes",
+        "es-MX": "sí"
+      }
+    },
+    {
+      "id": "headphones-no-box",
+      "input": {
+        "en": "Headphones came 10 days ago, I threw away the box. Can I still return them?",
+        "es-MX": "Los audífonos llegaron hace 10 días y tiré la caja. ¿Todavía los puedo devolver?"
+      },
+      "expected": {
+        "en": "no",
+        "es-MX": "no"
+      }
+    },
+    {
+      "id": "blender-day-30",
+      "input": {
+        "en": "My blender was delivered exactly 30 days ago today. It's noisy. Return?",
+        "es-MX": "Mi licuadora se entregó hace exactamente 30 días, hoy. Hace mucho ruido. ¿Devolución?"
+      },
+      "expected": {
+        "en": "yes",
+        "es-MX": "sí"
+      }
+    },
+    {
+      "id": "mug-chipped",
+      "input": {
+        "en": "The mug arrived yesterday with a chip on the rim.",
+        "es-MX": "La taza llegó ayer con la orilla despostillada."
+      },
+      "expected": {
+        "en": "yes",
+        "es-MX": "sí"
+      }
+    }
+  ],
+  "graders": [
+    {
+      "id": "one-word",
+      "kind": "exact",
+      "caseInsensitive": true
+    },
+    {
+      "id": "correct",
+      "kind": "llm-judge",
+      "expects": "expected-answer",
+      "judgeRecipe": "returns-judge",
+      "rubric": {
+        "en": "You read a reply that a support assistant wrote to a customer who asked to return an item. Does the reply tell the customer the return is accepted? Answer YES or NO on the first line, then quote the words that decided it.",
+        "es-MX": "Lees una respuesta que un asistente de soporte le escribió a un cliente que pidió devolver un artículo. ¿La respuesta le dice al cliente que la devolución se acepta? Responde SÍ o NO en la primera línea y luego cita las palabras que lo decidieron."
+      },
+      "labels": {
+        "input": {
+          "en": "Customer message",
+          "es-MX": "Mensaje del cliente"
+        },
+        "output": {
+          "en": "Assistant reply",
+          "es-MX": "Respuesta del asistente"
+        }
+      }
+    }
+  ]
+}

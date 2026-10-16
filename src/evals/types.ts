@@ -6,6 +6,8 @@ export const evalCaseSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   input: perLocale,
   expected: perLocale.optional(),
+  mustMention: z.record(z.string(), z.array(z.string())).optional(),
+  mustNotMention: z.record(z.string(), z.array(z.string())).optional(),
   tags: z.array(z.string()).default([]),
 });
 
@@ -19,8 +21,16 @@ export const graderSchema = z.discriminatedUnion("kind", [
     terms: z.record(z.string(), z.array(z.string()).min(1)),
     mode: z.enum(["all", "none"]),
   }),
+  z.object({ id: z.string(), kind: z.literal("case-facts"), check: z.enum(["must-mention", "must-not-mention"]) }),
   z.object({ id: z.string(), kind: z.literal("json-schema"), schemaId: z.string() }),
-  z.object({ id: z.string(), kind: z.literal("llm-judge"), rubric: perLocale, judgeRecipe: z.string() }),
+  z.object({
+    id: z.string(),
+    kind: z.literal("llm-judge"),
+    rubric: perLocale,
+    labels: z.object({ input: perLocale, output: perLocale }),
+    expects: z.enum(["pass", "expected-answer"]),
+    judgeRecipe: z.string(),
+  }),
 ]);
 
 export const evalSetSchema = z.object({

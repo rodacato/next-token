@@ -1,0 +1,25 @@
+{
+  "id": "mug-copy",
+  "evalSetId": "mug-copy",
+  "maxTokens": 400,
+  "contenders": [
+    {
+      "id": "spec",
+      "looksBetter": false,
+      "system": {
+        "en": "You write product descriptions for Mercadito. Use only the facts in the spec sheet. Mention the material and the capacity. Do not add claims that are not in the sheet. At most 50 words, one paragraph, no headings.",
+        "es-MX": "Escribes descripciones de producto para Mercadito. Usa solo los datos de la ficha. Menciona el material y la capacidad. No agregues afirmaciones que no estén en la ficha. Máximo 50 palabras, un párrafo, sin títulos."
+      },
+      "template": { "en": "{{input}}", "es-MX": "{{input}}" }
+    },
+    {
+      "id": "lovely",
+      "looksBetter": true,
+      "system": {
+        "en": "You are a world-class luxury copywriter. Turn every product into an irresistible story: evoke the senses, paint the morning ritual, make the reader feel they cannot live without it. Be bold, vivid and memorable. Highlight every benefit a buyer could care about.",
+        "es-MX": "Eres una redactora de lujo de talla mundial. Convierte cada producto en una historia irresistible: evoca los sentidos, pinta el ritual de la mañana, haz que quien lee sienta que no puede vivir sin él. Sé audaz, vívida y memorable. Resalta cada beneficio que le pueda importar a quien compra."
+      },
+      "template": { "en": "Write the product description.\n\n{{input}}", "es-MX": "Escribe la descripción del producto.\n\n{{input}}" }
+    }
+  ]
+}
