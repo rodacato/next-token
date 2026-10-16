@@ -165,7 +165,7 @@ export function FabricationChapter({ chapter, progress, frame }: Props) {
                 <aside className="contrast-slip">
                   <h3 className="kicker">{t("fabrication.contrastHeading")}</h3>
                   <p>{t("fabrication.contrastBody")}</p>
-                  <pre>{contrast.output}</pre>
+                  <pre>{contrast.output.replace(/\*([^*]+)\*/g, "$1")}</pre>
                   <p className="note">{t("model.recorded", { model: contrast.model, date: findRecordedSet(chapter.contrastRecipe)?.recordedAt ?? "" })}</p>
                 </aside>
               )}

@@ -337,7 +337,7 @@
     "end": "final",
     "lowest": "Lo más bajo está en {depth} ({probability}). Predijiste: {guess}.",
     "contextSize": "Unos {tokens} tipos de contexto.",
-    "caveat": "Un modelo, un dato, una corrida. Liu et al. encontraron una forma de U en muchos modelos y tareas; un contexto chico como este puede no mostrarla. Lee las barras, no el artículo.",
+    "caveat": "Un modelo, un dato, una corrida por idioma. Liu et al. encontraron una forma de U en muchos modelos y tareas; los modelos chicos y los contextos cortos varían. Lee las barras, no el artículo.",
     "languages": "Latón es tu idioma; pizarra es el otro. Mismas notas, misma pregunta, mismo modelo."
   },
   "fabrication": {

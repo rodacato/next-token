@@ -337,7 +337,7 @@
     "end": "end",
     "lowest": "Lowest at {depth} ({probability}). You predicted: {guess}.",
     "contextSize": "About {tokens} sorts of context.",
-    "caveat": "One model, one fact, one run. Liu et al. found a U-shape across many models and tasks; a small context like this one may not show it. Read the bars, not the paper.",
+    "caveat": "One model, one fact, one run per language. Liu et al. found a U-shape across many models and tasks; small models and short contexts vary. Read the bars, not the paper.",
     "languages": "Brass is your language; slate is the other one. Same notes, same question, same model."
   },
   "fabrication": {
