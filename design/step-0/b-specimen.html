@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B · The Specimen Sheet</title>
+<link rel="stylesheet" href="shared/shop.css">
+<style>
+  body { overflow: hidden; }
+  .sheet { position: relative; width: 1600px; height: 1000px; margin: 0 auto; }
+  .marks, .fan { position: absolute; inset: 0; pointer-events: none; }
+  .fan { pointer-events: auto; }
+
+  .margin { position: absolute; left: 56px; top: 64px; width: 230px; }
+  .margin h1 {
+    font-family: var(--face-display); font-style: italic; font-weight: 400;
+    font-size: 30px; line-height: 1.05; margin: 10px 0 22px;
+  }
+  .margin p { font-size: 12px; line-height: 1.6; margin: 0 0 16px; }
+  .margin .key { border-top: 1px solid var(--ink); padding-top: 12px; margin-top: 30px; }
+  .margin .key div { display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; color: var(--slate); }
+
+  .line {
+    position: absolute; left: 340px; top: 96px; width: 960px;
+    font-family: var(--face-display); font-weight: 500; font-size: 104px; line-height: 1.08;
+    font-variation-settings: "opsz" 96; letter-spacing: -0.01em;
+  }
+  .line .tok { position: relative; display: inline-block; white-space: pre; filter: url(#ink); }
+  .line .tok::after {
+    content: attr(data-id); position: absolute; left: 0; right: 0; bottom: -14px;
+    font: 400 10px/1 var(--face-mono); letter-spacing: 0.04em; color: var(--slate);
+    border-top: 1px solid var(--slate-light); padding-top: 3px; filter: none;
+  }
+  .line .caret {
+    display: inline-block; width: 4px; height: 0.82em; margin-left: 10px;
+    background: var(--vermilion); vertical-align: -0.06em;
+  }
+
+  .colophon {
+    position: absolute; right: 56px; top: 64px; width: 220px; text-align: right;
+    font-family: var(--face-display); font-style: italic; font-size: 17px; line-height: 1.35;
+  }
+  .colophon .num { font-family: var(--face-mono); font-style: normal; font-size: 13px; }
+
+  .gauge { position: absolute; left: 340px; right: 56px; bottom: 58px; height: 64px; }
+  .gauge svg { position: absolute; inset: 0; overflow: visible; }
+  .gauge input { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .gauge-label { position: absolute; left: 0; top: -26px; }
+
+  .narrow { margin-top: 26px; }
+  .narrow input { width: 100%; accent-color: var(--brass); }
+  .actions { display: flex; gap: 8px; margin-top: 26px; }
+  button {
+    font: 500 11px/1 var(--face-mono); letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 10px 12px; border-radius: 0; cursor: pointer;
+    background: transparent; color: var(--ink); border: 1px solid var(--ink);
+  }
+  button.primary { background: var(--vermilion); border-color: var(--vermilion); color: var(--paper); }
+  .footer { position: absolute; left: 56px; bottom: 16px; }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <svg class="marks" viewBox="0 0 1600 1000" aria-hidden="true">
+    <g stroke="var(--ink)" stroke-width="0.7" fill="none">
+      <path d="M24 40 h18 M40 24 v18 M1576 40 h-18 M1560 24 v18 M24 960 h18 M40 976 v-18 M1576 960 h-18 M1560 976 v-18"/>
+      <circle cx="800" cy="26" r="7"/><path d="M790 26 h20 M800 16 v20"/>
+    </g>
+    <line x1="312" y1="64" x2="312" y2="940" stroke="var(--rule)" stroke-width="1"/>
+  </svg>
+
+  <aside class="margin">
+    <div class="kicker">Act I · 2</div>
+    <h1>A specimen of what usually comes next</h1>
+    <p>The compositor doesn't know what's true. It knows what usually comes next, and how sure it is.</p>
+    <p>Each candidate is set at a size proportional to the square root of its probability: area is chance.</p>
+    <div class="narrow">
+      <div class="kicker" style="display:flex;justify-content:space-between"><span>Top-p</span><span id="p-value">0.90</span></div>
+      <input id="top-p" type="range" min="0.1" max="1" step="0.01" value="0.9" aria-label="Top-p">
+    </div>
+    <div class="actions"><button class="primary" id="draw">Draw a sort</button><button id="reset">Clear</button></div>
+    <div class="key" id="key"></div>
+  </aside>
+
+  <div class="line" id="line"></div>
+
+  <div class="colophon">
+    Set at temperature <span class="num" id="t-value">0.80</span>,<br>
+    nucleus <span class="num" id="p-echo">0.90</span>,<br>
+    from <span class="num">49,152</span> sorts in the case.
+  </div>
+
+  <svg class="fan" id="fan" viewBox="0 0 1600 1000" aria-label="Probability fan"></svg>
+
+  <div class="gauge">
+    <div class="kicker gauge-label">Temperature · a line gauge</div>
+    <svg id="gauge" viewBox="0 0 1204 64" preserveAspectRatio="none"></svg>
+    <input id="temperature" type="range" min="0.1" max="2" step="0.01" value="0.8" aria-label="Temperature">
+  </div>
+
+  <div class="footer placeholder-note">Direction B · The Specimen Sheet — placeholder probabilities, not a model run. Token ids are illustrative.</div>
+</main>
+
+<script type="module">
+  import { context, distribution, openness, seededRandom, sample } from "./shared/fan-model.js";
+  import { escapeXml } from "./shared/sorts.js";
+  import { installTextures } from "./shared/textures.js";
+
+  installTextures();
+  const tInput = document.getElementById("temperature");
+  const pInput = document.getElementById("top-p");
+  const fanSvg = document.getElementById("fan");
+  const random = seededRandom(7);
+  const FAN_SIZE = 8;
+  let chosen = " door";
+
+  function fakeId(token) {
+    let h = 2166136261;
+    for (const ch of token) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
+    return String((h >>> 0) % 49152);
+  }
+
+  const line = document.getElementById("line");
+  line.innerHTML = context
+    .map((t) => `<span class="tok" data-id="${fakeId(t)}">${escapeXml(t)}</span>`)
+    .join("") + `<span class="caret" id="caret"></span>`;
+
+  function drawGauge(t) {
+    const width = 1204, min = 0.1, max = 2;
+    const xOf = (v) => ((v - min) / (max - min)) * width;
+    let out = `<line x1="0" x2="${width}" y1="40" y2="40" stroke="var(--ink)" stroke-width="1"/>`;
+    for (let v = min; v <= max + 1e-9; v += 0.05) {
+      const major = Math.abs((v * 10) % 5) < 1e-6 || Math.abs((v * 10) % 5 - 5) < 1e-6;
+      const tenth = Math.abs((v * 100) % 10) < 1e-6 || Math.abs((v * 100) % 10 - 10) < 1e-6;
+      const h = major ? 22 : tenth ? 12 : 6;
+      out += `<line x1="${xOf(v)}" x2="${xOf(v)}" y1="${40 - h}" y2="40" stroke="var(--ink)" stroke-width="${major ? 1.2 : 0.6}"/>`;
+      if (major) out += `<text x="${xOf(v)}" y="58" text-anchor="middle" font-size="11" font-family="IBM Plex Mono" fill="var(--ink)">${v.toFixed(1)}</text>`;
+    }
+    out += `<rect x="0" y="40" width="${xOf(0.7) }" height="2" fill="var(--slate-light)"/>`;
+    const x = xOf(t);
+    out += `<path d="M${x} 40 l-8 -22 h16 z" fill="var(--vermilion)"/>`;
+    out += `<line x1="${x}" x2="${x}" y1="0" y2="40" stroke="var(--vermilion)" stroke-width="1.5"/>`;
+    document.getElementById("gauge").innerHTML = out;
+  }
+
+  function drawFan(dist) {
+    const caret = document.getElementById("caret").getBoundingClientRect();
+    const sheet = document.querySelector(".sheet").getBoundingClientRect();
+    // The pivot sits behind the caret, so the words start on an arc just past
+    // it and sweep down across the empty sheet instead of piling up.
+    const caretPoint = { x: caret.right - sheet.left + 18, y: caret.bottom - sheet.top - 10 };
+    const REACH = 250;
+    const origin = { x: caretPoint.x - REACH, y: caretPoint.y };
+    const shown = dist.candidates.slice(0, FAN_SIZE);
+    const open = openness(dist.entropy, FAN_SIZE);
+    const span = 4 + 80 * open;
+    const start = 0;
+    let out = `<path d="M${origin.x + REACH - 30} ${origin.y} A ${REACH - 30} ${REACH - 30} 0 0 1 ${origin.x + (REACH - 30) * Math.cos((span * Math.PI) / 180)} ${origin.y + (REACH - 30) * Math.sin((span * Math.PI) / 180)}" fill="none" stroke="var(--slate-light)" stroke-width="0.8"/>`;
+    [...shown].reverse().forEach((c, ri) => {
+      const i = shown.length - 1 - ri;
+      const angle = start + (span * i) / (shown.length - 1);
+      const size = 12 + 96 * Math.sqrt(c.p);
+      const variant = c.token === chosen ? "chosen" : c.inNucleus ? "set" : "pulled";
+      const fill = variant === "chosen" ? "var(--vermilion)" : variant === "pulled" ? "none" : "var(--ink)";
+      const stroke = variant === "pulled" ? `stroke="var(--slate)" stroke-width="0.8"` : "";
+      const word = c.token.trim();
+      const approxWidth = word.length * size * 0.5;
+      out += `<g transform="rotate(${angle} ${origin.x} ${origin.y})" data-token="${encodeURIComponent(c.token)}" style="cursor:pointer">
+        <line x1="${origin.x + REACH - 36}" x2="${origin.x + REACH - 6}" y1="${origin.y}" y2="${origin.y}" stroke="${variant === "chosen" ? "var(--vermilion)" : "var(--slate-light)"}" stroke-width="0.8"/>
+        <text x="${origin.x + REACH}" y="${origin.y}" font-family="Bodoni Moda" font-weight="500" font-size="${size}"
+          fill="${fill}" ${stroke} ${variant === "pulled" ? "" : `filter="url(#ink)"`}>${escapeXml(word)}</text>
+        <text x="${origin.x + REACH + 10 + approxWidth}" y="${origin.y}" font-family="IBM Plex Mono" font-size="11"
+          fill="${variant === "chosen" ? "var(--vermilion)" : "var(--slate)"}">${(c.p * 100).toFixed(1)}%</text>
+      </g>`;
+    });
+    fanSvg.innerHTML = out;
+  }
+
+  function drawKey(dist) {
+    const tail = 1 - dist.candidates.slice(0, FAN_SIZE).reduce((s, c) => s + c.p, 0);
+    document.getElementById("key").innerHTML =
+      `<div><span>on the sheet</span><span>${FAN_SIZE}</span></div>` +
+      `<div><span>everything else</span><span>${(tail * 100).toFixed(1)}%</span></div>` +
+      `<div><span>effective choices</span><span>${(2 ** dist.entropy).toFixed(1)}</span></div>`;
+  }
+
+  function render() {
+    const t = parseFloat(tInput.value);
+    const topP = parseFloat(pInput.value);
+    document.getElementById("t-value").textContent = t.toFixed(2);
+    document.getElementById("p-value").textContent = topP.toFixed(2);
+    document.getElementById("p-echo").textContent = topP.toFixed(2);
+    const dist = distribution(t, topP);
+    if (!dist.candidates.find((c) => c.token === chosen && c.inNucleus)) chosen = dist.candidates[0].token;
+    drawGauge(t);
+    drawFan(dist);
+    drawKey(dist);
+  }
+
+  fanSvg.addEventListener("click", (event) => {
+    const group = event.target.closest("[data-token]");
+    if (!group) return;
+    const token = decodeURIComponent(group.dataset.token);
+    const dist = distribution(parseFloat(tInput.value), parseFloat(pInput.value));
+    if (dist.candidates.find((c) => c.token === token)?.inNucleus) { chosen = token; render(); }
+  });
+  document.getElementById("draw").addEventListener("click", () => {
+    chosen = sample(distribution(parseFloat(tInput.value), parseFloat(pInput.value)).candidates, random).token;
+    render();
+  });
+  document.getElementById("reset").addEventListener("click", () => { chosen = " door"; render(); });
+  tInput.addEventListener("input", render);
+  pInput.addEventListener("input", render);
+  await document.fonts.ready;
+  render();
+</script>
+</body>
+</html>

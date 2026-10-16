@@ -21,7 +21,7 @@ const defs = `
       values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.8 1.8"/>
     <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="1" seed="19" result="pores"/>
     <feColorMatrix in="pores" type="matrix" result="voids"
-      values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -5 3.6"/>
+      values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -4 3.2"/>
     <feComposite in="wobbled" in2="density" operator="in" result="patchy"/>
     <feComposite in="patchy" in2="voids" operator="in"/>
   </filter>

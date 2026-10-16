@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C · The Locked Forme</title>
+<link rel="stylesheet" href="shared/shop.css">
+<style>
+  body { overflow: hidden; background: var(--ink); color: var(--paper); }
+  .grain { mix-blend-mode: screen; opacity: 0.12; }
+  .bed { position: relative; width: 1600px; height: 1000px; margin: 0 auto; }
+  .bed > svg { position: absolute; inset: 0; }
+
+  .panel { position: absolute; left: 1170px; top: 70px; width: 374px; }
+  .panel h1 {
+    font-family: var(--face-display); font-weight: 400; font-size: 44px; line-height: 1;
+    margin: 10px 0 14px; color: var(--paper);
+  }
+  .panel p { font-size: 12px; line-height: 1.6; color: var(--slate-light); margin: 0; }
+  .panel .kicker { color: var(--brass); }
+
+  .dial { position: relative; width: 374px; height: 220px; margin-top: 18px; }
+  .dial svg { position: absolute; inset: 0; }
+  .dial input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+
+  .ledger { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+  .ledger th { font-weight: 400; color: var(--slate-light); text-align: right; padding: 4px 0; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--slate); }
+  .ledger th:first-child, .ledger td:first-child { text-align: left; }
+  .ledger td { text-align: right; padding: 4px 0; font-variant-numeric: tabular-nums; color: var(--paper); border-bottom: 1px solid color-mix(in oklab, var(--slate) 35%, var(--ink)); }
+  .ledger td.bar { width: 120px; padding-left: 12px; }
+  .ledger td.bar span { display: block; height: 6px; background: var(--brass); }
+  .ledger tr.chosen td { color: var(--vermilion); }
+  .ledger tr.chosen td.bar span { background: var(--vermilion); }
+  .ledger tr.pulled td { color: var(--slate); }
+  .ledger tr.pulled td.bar span { background: transparent; border: 1px dashed var(--slate); height: 4px; }
+
+  .actions { display: flex; gap: 10px; margin-top: 20px; }
+  button {
+    font: 500 12px/1 var(--face-mono); letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 11px 14px; border-radius: 0; cursor: pointer;
+    background: transparent; color: var(--brass); border: 1px solid var(--brass);
+  }
+  button.primary { background: var(--brass); color: var(--ink); }
+
+  .proof {
+    position: absolute; left: 56px; top: 724px; width: 1070px; height: 220px;
+    background: var(--paper); color: var(--ink); padding: 34px 44px; transform: rotate(-0.6deg);
+  }
+  .proof .kicker { color: var(--slate); }
+  .proof .impression {
+    font-family: var(--face-display); font-size: 62px; line-height: 1.1; margin-top: 14px;
+    filter: url(#ink); font-weight: 500;
+  }
+  .proof .impression em { font-style: normal; color: var(--vermilion); }
+  .footer { position: absolute; left: 1170px; bottom: 30px; width: 374px; color: var(--slate); }
+</style>
+</head>
+<body>
+<main class="bed">
+  <svg id="forme" viewBox="0 0 1600 1000" width="1600" height="1000" aria-label="The locked forme on the press bed"></svg>
+
+  <section class="panel">
+    <div class="kicker">Act I · Chapter 2 · On the bed</div>
+    <h1>The next token</h1>
+    <p>Type is locked into the forme backwards. The press puts it right. Rib length is probability.</p>
+
+    <div class="dial">
+      <svg id="dial" viewBox="0 0 374 220"></svg>
+      <input id="temperature" type="range" min="0.1" max="2" step="0.01" value="0.8" aria-label="Temperature">
+    </div>
+
+    <div class="kicker" style="display:flex;justify-content:space-between;margin-top:6px"><span>Top-p</span><span id="p-value">0.90</span></div>
+    <input id="top-p" type="range" min="0.1" max="1" step="0.01" value="0.9" aria-label="Top-p" style="width:100%;accent-color:var(--brass)">
+
+    <table class="ledger" id="ledger"></table>
+    <div class="actions"><button class="primary" id="draw">Let it draw</button><button id="reset">Unlock</button></div>
+  </section>
+
+  <section class="proof">
+    <div class="kicker">Pulled proof · reads right</div>
+    <div class="impression" id="impression"></div>
+  </section>
+
+  <div class="footer placeholder-note">Direction C · The Locked Forme — placeholder probabilities, not a model run.</div>
+</main>
+
+<script type="module">
+  import { context, distribution, openness, seededRandom, sample, tokenFace } from "./shared/fan-model.js";
+  import { sortSize, escapeXml } from "./shared/sorts.js";
+  import { installTextures } from "./shared/textures.js";
+
+  installTextures();
+  const svg = document.getElementById("forme");
+  const tInput = document.getElementById("temperature");
+  const pInput = document.getElementById("top-p");
+  const random = seededRandom(99);
+  const FAN_SIZE = 8;
+  let chosen = " door";
+
+  const CHASE = { x: 56, y: 56, w: 1070, h: 620 };
+  const LINE_Y = 470;
+  const SORT_H = 58;
+
+  function chase() {
+    const { x, y, w, h } = CHASE;
+    let out = `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="var(--metal)" stroke-width="22"/>`;
+    out += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="var(--slate)" stroke-width="1" />`;
+    out += `<rect x="${x + 11}" y="${y + 11}" width="${w - 22}" height="${h - 22}" fill="color-mix(in oklab, var(--ink) 92%, var(--slate))"/>`;
+    // Furniture: wooden spacers above and below the locked line.
+    const rand = seededRandom(5);
+    const rows = [[y + 11, LINE_Y - SORT_H / 2 - 14 - (y + 11)], [LINE_Y + SORT_H / 2 + 14, y + h - 11 - (LINE_Y + SORT_H / 2 + 14)]];
+    rows.forEach(([ry, rh], r) => {
+      let cx = x + 11;
+      while (cx < x + w - 11) {
+        const bw = Math.min(x + w - 11 - cx, 120 + rand() * 260);
+        out += `<rect x="${cx + 2}" y="${ry + 2}" width="${bw - 4}" height="${rh - 4}" fill="color-mix(in oklab, var(--brass-dark) ${r ? 38 : 30}%, var(--ink))" stroke="var(--ink)" stroke-width="2"/>`;
+        for (let g = 0; g < 4; g++) {
+          const gy = ry + 10 + rand() * (rh - 20);
+          out += `<path d="M${cx + 8} ${gy} q ${bw / 2} ${(rand() - 0.5) * 8} ${bw - 16} 0" stroke="color-mix(in oklab, var(--brass-dark) 55%, var(--ink))" stroke-width="0.8" fill="none"/>`;
+        }
+        cx += bw;
+      }
+    });
+    // Quoins: the wedges that lock it all tight.
+    [[x + w - 70, y + 24], [x + w - 70, y + h - 46], [x + 30, y + h - 46]].forEach(([qx, qy]) => {
+      out += `<path d="M${qx} ${qy} h44 l-8 22 h-36 z" fill="var(--brass)" stroke="var(--brass-dark)"/>`;
+      out += `<circle cx="${qx + 22}" cy="${qy + 11}" r="3" fill="var(--ink)"/>`;
+    });
+    out += `<text x="${x + 20}" y="${y - 18}" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="var(--slate-light)">CHASE · LOCKED · LINE 1 · 6 SORTS</text>`;
+    return out;
+  }
+
+  // Sorts are set right to left with mirrored faces, as on a real forme.
+  function lockedLine() {
+    let out = "";
+    let cursor = CHASE.x + CHASE.w - 40;
+    const gutter = 4;
+    context.forEach((token) => {
+      const face = tokenFace(token);
+      const { width, fontSize } = sortSize(face, SORT_H);
+      cursor -= width;
+      out += `<g>
+        <rect x="${cursor}" y="${LINE_Y - SORT_H / 2}" width="${width}" height="${SORT_H}" fill="var(--metal)" stroke="var(--ink)" filter="url(#worn)"/>
+        <text transform="translate(${cursor + width / 2} ${LINE_Y}) scale(-1 1)" text-anchor="middle" dominant-baseline="central"
+          font-family="IBM Plex Mono" font-weight="600" font-size="${fontSize}" fill="var(--paper)">${escapeXml(face)}</text>
+      </g>`;
+      cursor -= gutter;
+    });
+    // Leads fill the rest of the line to the left.
+    const slotRight = cursor;
+    const slotLeft = slotRight - 70;
+    out += `<rect x="${CHASE.x + 30}" y="${LINE_Y - SORT_H / 2 + 6}" width="${slotLeft - CHASE.x - 36}" height="${SORT_H - 12}" fill="var(--metal)" opacity="0.55"/>`;
+    out += `<rect x="${slotLeft}" y="${LINE_Y - SORT_H / 2}" width="70" height="${SORT_H}" fill="none" stroke="var(--vermilion)" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+    return { markup: out, slot: { x: slotLeft + 35, y: LINE_Y - SORT_H / 2 } };
+  }
+
+  function fan(dist, slot) {
+    const shown = dist.candidates.slice(0, FAN_SIZE);
+    const open = openness(dist.entropy, FAN_SIZE);
+    const span = (10 + 150 * open) * (Math.PI / 180);
+    const center = -90 * (Math.PI / 180);
+    let ribs = "", heads = "";
+    [...shown].reverse().forEach((c, ri) => {
+      const i = shown.length - 1 - ri;
+      const a = center - span / 2 + (span * i) / (shown.length - 1);
+      const length = Math.min(330, 200 + 420 * c.p);
+      const tip = { x: slot.x + Math.cos(a) * length, y: slot.y + Math.sin(a) * length };
+      const variant = c.token === chosen ? "chosen" : c.inNucleus ? "metal" : "pulled";
+      const color = variant === "chosen" ? "var(--vermilion)" : variant === "pulled" ? "var(--slate)" : "var(--brass)";
+      ribs += `<line x1="${slot.x}" y1="${slot.y}" x2="${tip.x}" y2="${tip.y}" stroke="${color}" stroke-width="${variant === "chosen" ? 5 : 3}" ${variant === "pulled" ? `stroke-dasharray="3 4" stroke-width="1"` : ""}/>`;
+      const face = c.face;
+      const { width, fontSize } = sortSize(face, 34);
+      const deg = (a * 180) / Math.PI + 90;
+      heads += `<g transform="translate(${tip.x} ${tip.y}) rotate(${deg})" data-token="${encodeURIComponent(c.token)}" style="cursor:pointer">
+        <rect x="${-width / 2}" y="-34" width="${width}" height="34" fill="${variant === "chosen" ? "var(--vermilion)" : variant === "pulled" ? "var(--ink)" : "var(--paper)"}" stroke="${color}"/>
+        <text x="0" y="-17" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-weight="500" font-size="${fontSize}"
+          fill="${variant === "chosen" ? "var(--paper)" : variant === "pulled" ? "var(--slate)" : "var(--ink)"}">${escapeXml(face)}</text>
+        <text x="0" y="-44" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="${color}">${(c.p * 100).toFixed(1)}</text>
+      </g>`;
+    });
+    const hub = `<circle cx="${slot.x}" cy="${slot.y}" r="7" fill="var(--vermilion)"/>`;
+    return ribs + hub + heads;
+  }
+
+  function dial(t) {
+    const cx = 110, cy = 120, r = 82, min = 0.1, max = 2;
+    const angleOf = (v) => (-225 + ((v - min) / (max - min)) * 270) * (Math.PI / 180);
+    let out = `<circle cx="${cx}" cy="${cy}" r="${r + 14}" fill="none" stroke="var(--metal)" stroke-width="10"/>`;
+    for (let v = min; v <= max + 1e-9; v += 0.1) {
+      const a = angleOf(v);
+      const major = Math.abs(v - Math.round(v * 2) / 2) < 1e-6;
+      out += `<line x1="${cx + Math.cos(a) * (r - (major ? 14 : 7))}" y1="${cy + Math.sin(a) * (r - (major ? 14 : 7))}" x2="${cx + Math.cos(a) * r}" y2="${cy + Math.sin(a) * r}" stroke="var(--slate-light)" stroke-width="${major ? 1.5 : 0.8}"/>`;
+      if (major) out += `<text x="${cx + Math.cos(a) * (r - 28)}" y="${cy + Math.sin(a) * (r - 28)}" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="10" fill="var(--slate-light)">${v.toFixed(1)}</text>`;
+    }
+    const a = angleOf(t);
+    out += `<line x1="${cx}" y1="${cy}" x2="${cx + Math.cos(a) * (r - 4)}" y2="${cy + Math.sin(a) * (r - 4)}" stroke="var(--brass)" stroke-width="8" stroke-linecap="square"/>`;
+    out += `<rect x="${cx - 16}" y="${cy - 16}" width="32" height="32" fill="var(--brass)" stroke="var(--brass-dark)" transform="rotate(${(a * 180) / Math.PI} ${cx} ${cy})"/>`;
+    out += `<text x="240" y="92" font-family="IBM Plex Mono" font-size="10" letter-spacing="1.4" fill="var(--brass)">TEMPERATURE</text>`;
+    out += `<text x="240" y="140" font-family="Bodoni Moda" font-size="52" fill="var(--paper)">${t.toFixed(2)}</text>`;
+    out += `<text x="240" y="168" font-family="IBM Plex Mono" font-size="10" fill="var(--slate-light)">quoin key · drag</text>`;
+    document.getElementById("dial").innerHTML = out;
+  }
+
+  function ledger(dist) {
+    const rows = dist.candidates.slice(0, FAN_SIZE).map((c) => {
+      const cls = c.token === chosen ? "chosen" : c.inNucleus ? "" : "pulled";
+      return `<tr class="${cls}"><td>${escapeXml(c.face)}</td><td>${c.logit.toFixed(2)}</td><td>${(c.p * 100).toFixed(1)}%</td><td class="bar"><span style="width:${Math.max(2, c.p * 100 * 1.4)}%"></span></td></tr>`;
+    });
+    document.getElementById("ledger").innerHTML = `<tr><th>sort</th><th>logit</th><th>p</th><th></th></tr>` + rows.join("");
+  }
+
+  function render() {
+    const t = parseFloat(tInput.value);
+    const topP = parseFloat(pInput.value);
+    document.getElementById("p-value").textContent = topP.toFixed(2);
+    const dist = distribution(t, topP);
+    if (!dist.candidates.find((c) => c.token === chosen && c.inNucleus)) chosen = dist.candidates[0].token;
+    const line = lockedLine();
+    svg.innerHTML = chase() + line.markup + fan(dist, line.slot);
+    dial(t);
+    ledger(dist);
+    document.getElementById("impression").innerHTML = escapeXml(context.join("")) + `<em>${escapeXml(chosen)}</em>`;
+  }
+
+  svg.addEventListener("click", (event) => {
+    const group = event.target.closest("[data-token]");
+    if (!group) return;
+    const token = decodeURIComponent(group.dataset.token);
+    const dist = distribution(parseFloat(tInput.value), parseFloat(pInput.value));
+    if (dist.candidates.find((c) => c.token === token)?.inNucleus) { chosen = token; render(); }
+  });
+  document.getElementById("draw").addEventListener("click", () => {
+    chosen = sample(distribution(parseFloat(tInput.value), parseFloat(pInput.value)).candidates, random).token;
+    render();
+  });
+  document.getElementById("reset").addEventListener("click", () => { chosen = " door"; render(); });
+  tInput.addEventListener("input", render);
+  pInput.addEventListener("input", render);
+  await document.fonts.ready;
+  render();
+</script>
+</body>
+</html>
