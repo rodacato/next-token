@@ -45,7 +45,8 @@
     "honor": "Aquí nada hace el ejercicio por ti. Primero predices; el banco comprueba después.",
     "sound": "Sonido de prensa",
     "soundOn": "sí",
-    "soundOff": "no"
+    "soundOff": "no",
+    "acts": "Actos"
   },
   "bench": {
     "copy": "Original",

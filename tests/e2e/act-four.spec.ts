@@ -114,3 +114,23 @@ test.describe("chapter 22 · the commission", () => {
     await expect(page.getByTestId("advance")).toBeEnabled();
   });
 });
+
+test.describe("the masthead", () => {
+  test("all 22 chapters fit one row at 1280 px", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("./?compositor=recorded");
+    const ticket = page.locator(".ticket__row");
+    const first = await ticket.getByRole("button", { name: /^1 / }).boundingBox();
+    const last = await ticket.getByRole("button", { name: /^22 / }).boundingBox();
+    expect(Math.abs((first?.y ?? 0) - (last?.y ?? 100))).toBeLessThan(4);
+  });
+
+  test("on a phone, an act switcher shows one act's chapters", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 800 });
+    await page.goto("./?compositor=recorded");
+    await expect(page.getByRole("button", { name: /^21 / })).toBeHidden();
+    await page.getByRole("button", { name: "IV", exact: true }).click();
+    await page.getByRole("button", { name: /^21 / }).click();
+    await expect(page.locator(".ticket__caption")).toContainText("21 The launch");
+  });
+});

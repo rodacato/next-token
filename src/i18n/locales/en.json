@@ -45,7 +45,8 @@
     "honor": "Nothing here does the exercise for you. You predict first; the bench checks after.",
     "sound": "Press sound",
     "soundOn": "on",
-    "soundOff": "off"
+    "soundOff": "off",
+    "acts": "Acts"
   },
   "bench": {
     "copy": "Copy",
