@@ -203,7 +203,34 @@ export const stagesChapterSchema = z.object({
   prompts: z.array(z.object({ id: z.string(), text: perLocale, check: perLocale.optional() })).min(1),
 });
 
+export const datasetSchema = z.object({
+  id: z.string(),
+  note: z.string(),
+  style: perLocale,
+  rows: z
+    .array(
+      z.object({
+        id: z.string(),
+        locale: z.string(),
+        planted: z.enum(["keep", "exact-duplicate", "near-duplicate", "contradiction", "bad-answer", "eval-leak"]),
+        customer: z.string().min(1),
+        reply: z.string().min(1),
+      }),
+    )
+    .min(1),
+});
+
+export const datasetChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("dataset"),
+  datasetId: z.string(),
+  evalSets: z.array(z.string()),
+  policy: perLocale,
+  judge: z.object({ system: perLocale, template: perLocale }),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  datasetChapterSchema,
   stagesChapterSchema,
   loraChapterSchema,
   trainerChapterSchema,
@@ -237,3 +264,5 @@ export type TrainerChapter = z.infer<typeof trainerChapterSchema>;
 export type Corpus = z.infer<typeof corpusSchema>;
 export type LoraChapter = z.infer<typeof loraChapterSchema>;
 export type StagesChapter = z.infer<typeof stagesChapterSchema>;
+export type DatasetChapter = z.infer<typeof datasetChapterSchema>;
+export type Dataset = z.infer<typeof datasetSchema>;

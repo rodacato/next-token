@@ -9,6 +9,7 @@ import { checkSheet, retryPrompt } from "../src/evals/structured.ts";
 import { requestHash } from "../src/llm/hash.ts";
 import { answerRequest, judgeRequest as ragJudgeRequest, rankRecorded, topKs, type EmbeddingRecording } from "../src/rag/answer.ts";
 import { chunkStrategies } from "../src/rag/chunking.ts";
+import { rowJudgeRequest } from "../src/evals/datasetChecks.ts";
 import { harnessText, refundPolicies, runHarness, toolList, type AgentsContent, type HarnessConfig, type ModelCall } from "../src/agents/harness.ts";
 import { connectShop, type OrderRow } from "../src/agents/shopServer.ts";
 import { branchId, parseTurn, resolveResult, turnRequest, type ResultChoice, type Step } from "../src/agents/toolProtocol.ts";
@@ -219,4 +220,17 @@ for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
   }
   write(chapter.id, `Chapter ${chapter.id}: every model call the harness makes, across policies, memory, sub-agent and human decisions.`, [...requests.values()]);
   console.log(`  ${missing} calls hit an unrecorded request (record with --extend, then run recipes again)`);
+}
+
+// Data workshop: a judge reads every row of the fine-tuning set against the policy sheet.
+type DatasetChapter = { id: string; kind: string; datasetId: string; policy: PerLocale; judge: { system: PerLocale; template: PerLocale } };
+for (const file of readdirSync(join(root, "src", "content", "chapters"))) {
+  const chapter = read<DatasetChapter>(join(root, "src", "content", "chapters", file));
+  if (chapter.kind !== "dataset") continue;
+  const dataset = read<{ rows: { id: string; locale: string; customer: string; reply: string }[] }>(join(root, "src", "content", "datasets", `${chapter.datasetId}.json`));
+  const requests = dataset.rows.map((row) => {
+    const { system, prompt, jsonSchema } = rowJudgeRequest(chapter.judge.system[row.locale] ?? "", chapter.judge.template[row.locale] ?? "", chapter.policy[row.locale] ?? "", row);
+    return { id: `row--${row.id}`, locale: row.locale, system, prompt, jsonSchema };
+  });
+  write(`${chapter.id}-judge`, `Chapter ${chapter.id}: a judge reads each dataset row against the policy sheet.`, requests);
 }

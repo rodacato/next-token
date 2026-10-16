@@ -1,0 +1,23 @@
+{
+  "id": "data-workshop",
+  "kind": "dataset",
+  "act": "foundry",
+  "number": 14,
+  "datasetId": "support-sft",
+  "evalSets": ["returns-eligibility", "mug-copy"],
+  "policy": {
+    "en": "Returns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.",
+    "es-MX": "Devoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente."
+  },
+  "judge": {
+    "system": {
+      "en": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "es-MX": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no)."
+    },
+    "template": {
+      "en": "Policy sheet:\n{{policy}}\n\nCustomer: {{customer}}\nReply: {{reply}}",
+      "es-MX": "Hoja de políticas:\n{{policy}}\n\nCliente: {{customer}}\nRespuesta: {{reply}}"
+    }
+  },
+  "readNext": ["huyen-ai-engineering", "lambert-2024-tulu3", "husain-evals"]
+}

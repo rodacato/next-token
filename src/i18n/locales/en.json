@@ -524,6 +524,34 @@
         },
         "voice": "Every pass through the press adds a colour. Sometimes it covers one you wanted."
       }
+    },
+    "data-workshop": {
+      "title": "The data workshop",
+      "kicker": "Curating a fine-tuning set",
+      "problem": {
+        "heading": "The model will learn every row, the bad ones too.",
+        "body": "Mercadito wants its support model to write in the house style. Before any training, someone collected sixty replies from the help desk's history. Some are fine. Some aren't.",
+        "task": "Clean the set before it goes to the press."
+      },
+      "bench": {
+        "heading": "Read every row. Mark what you'd remove.",
+        "body": "A fine-tune copies what it's shown: the style, the policy, and every mistake. Look for duplicates, replies that contradict the policy sheet, answers no customer should get, and rows that also sit in your eval sets.",
+        "observe": "Mark at least one row, then move on to measure."
+      },
+      "measure": {
+        "heading": "Then let the checks read it.",
+        "body": "Predict what the mechanical checks will catch, run them, then run the judge, and compare all three with what was planted."
+      },
+      "debrief": {
+        "heading": "Checks find copies. People and judges find mistakes.",
+        "points": {
+          "one": "Duplicates over-weight whatever they repeat. Exact ones are easy to find; reworded ones need fuzzier matching.",
+          "two": "A row that also appears in your eval set makes the eval a memory test. Check every training row against every eval case before you train.",
+          "three": "A contradiction in the data becomes a contradiction in the model. Text matching can't see it; a judge with the policy can, and it also raises false alarms.",
+          "four": "A model judge is a reviewer's first pass, not the last word. Read what it flags before you delete or keep."
+        },
+        "voice": "A forme set with one wrong sort prints the wrong sort a thousand times."
+      }
     }
   },
   "readNext": {
@@ -560,7 +588,8 @@
       "hu-2021-lora": "The LoRA paper: freeze the weights, train a low-rank update, merge it or swap it at will.",
       "dettmers-2023-qlora": "LoRA on a 4-bit base: the memory arithmetic that puts fine-tuning on one consumer GPU.",
       "minicpm5-card": "The model whose shapes and checkpoints this act uses: its training stages, data and licence.",
-      "ouyang-2022-instructgpt": "The paper that made the pipeline standard: pretrain, supervised fine-tune, then learn from human preferences."
+      "ouyang-2022-instructgpt": "The paper that made the pipeline standard: pretrain, supervised fine-tune, then learn from human preferences.",
+      "lambert-2024-tulu3": "A fully documented post-training recipe, including how the training data was mixed, cleaned and decontaminated against evals."
     }
   },
   "units": {
@@ -1005,5 +1034,64 @@
     "total": "Checks passed",
     "findingMatch": "As you predicted: {winners}, with {best} of {total}. Later is not always better on every check; read the release's Spanish answers.",
     "findingMiss": "Most checks passed: {winners}, with {best} of {total}. Later is not always better on every check; read the release's Spanish answers."
+  },
+  "dataset": {
+    "style": "The house style the set should teach",
+    "policy": "The policy sheet the replies must follow",
+    "row": "Row",
+    "customer": "Customer",
+    "reply": "Reply to learn",
+    "yourFlag": "Your call",
+    "flagFor": "Your call for row {id}",
+    "flags": {
+      "keep": "keep",
+      "duplicate": "duplicate",
+      "contradiction": "contradicts policy",
+      "bad-answer": "bad answer",
+      "eval-leak": "eval leak"
+    },
+    "planted": {
+      "keep": "planted: nothing",
+      "exact-duplicate": "planted: exact duplicate",
+      "near-duplicate": "planted: near duplicate",
+      "contradiction": "planted: contradiction",
+      "bad-answer": "planted: bad answer",
+      "eval-leak": "planted: eval leak"
+    },
+    "checks": "Mechanical checks",
+    "found": {
+      "exact-duplicate": "same as {of}",
+      "near-duplicate": "same reply or wording as {of}",
+      "eval-leak": "8 words shared with an eval case: \"{of}\""
+    },
+    "judge": "Judge",
+    "verdict": {
+      "policy": {
+        "consistent": "consistent",
+        "contradicts": "contradicts policy",
+        "not-covered": "not covered"
+      },
+      "tone": {
+        "ok": "tone ok",
+        "rude": "rude"
+      },
+      "language": {
+        "matches": "same language",
+        "wrong": "wrong language"
+      }
+    },
+    "unreadable": "unreadable",
+    "runChecks": "Run the mechanical checks",
+    "runJudge": "Run the judge on {count} rows",
+    "judging": "Judging…",
+    "problem": "Problem",
+    "plantedCount": "planted",
+    "you": "you",
+    "mechanical": "mechanical checks",
+    "falseAlarms": "Flags on good rows",
+    "kept": "{kept} of {total} rows are clean. Those go to the press in chapter 16.",
+    "predict": "{count} problems are planted. How many will the mechanical checks (duplicates and eval overlap) catch?",
+    "finding": "You predicted {guess}; the mechanical checks caught {actual} of {total}. They find copies, not mistakes.",
+    "findingJudge": "The judge caught {caught} of {total}. Good rows it flagged anyway, for a person to look at: {alarms}."
   }
 }

@@ -1,0 +1,1448 @@
+{
+  "recipeId": "data-workshop-judge",
+  "recordedAt": "2026-10-16",
+  "via": "claude-code-cli",
+  "temperature": "provider-default",
+  "completions": [
+    {
+      "requestId": "row--en-01",
+      "requestHash": "fb9af843ca837537",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: My blender from order 50211 arrived with the jar cracked.\nReply: I'm sorry the blender from order 50211 arrived cracked; send us a photo within 7 days and we'll refund or replace it, with free return shipping. — The Mercadito team",
+      "output": "{\"quote\":\"send us a photo within 7 days and we'll refund or replace it, with free return shipping\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "send us a photo within 7 days and we'll refund or replace it, with free return shipping",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 404,
+        "cacheCreationTokens": 2368,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0006758000000000001,
+      "durationMs": 2693
+    },
+    {
+      "requestId": "row--en-02",
+      "requestHash": "f1ceb101a9c70603",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Where do you ship from?\nReply: Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days. — The Mercadito team",
+      "output": "{\"quote\":\"Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 363,
+        "cacheCreationTokens": 2342,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0006501,
+      "durationMs": 1944
+    },
+    {
+      "requestId": "row--en-03",
+      "requestHash": "27aa004ab8e83bac",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Can I return headphones I bought 10 days ago? They're still sealed.\nReply: Yes: electronics can come back within 15 days of delivery as long as the seal is intact, so start the return from My orders. — The Mercadito team",
+      "output": "{\"quote\":\"Yes: electronics can come back within 15 days of delivery as long as the seal is intact, so start the return from My orders.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Yes: electronics can come back within 15 days of delivery as long as the seal is intact, so start the return from My orders.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 391,
+        "cacheCreationTokens": 2364,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0006685,
+      "durationMs": 3173
+    },
+    {
+      "requestId": "row--en-04",
+      "requestHash": "f8b3661c07f9e9f2",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: I paid cash on delivery for order 48720. How do I get my refund?\nReply: Refunds for cash on delivery orders like 48720 go to your Mercadito balance, usually within 5 to 10 business days. — The Mercadito team",
+      "output": "{\"quote\":\"Refunds for cash on delivery orders like 48720 go to your Mercadito balance, usually within 5 to 10 business days.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Refunds for cash on delivery orders like 48720 go to your Mercadito balance, usually within 5 to 10 business days.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 423,
+        "cacheCreationTokens": 2362,
+        "cacheReadTokens": 0
+      },
+      "listCostUsd": 0.0006841,
+      "durationMs": 2708
+    },
+    {
+      "requestId": "row--en-05",
+      "requestHash": "52d4f9c820bddcea",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: How much does a return label cost?\nReply: A return label costs 99 MXN, deducted from your refund, unless the item arrived damaged or wrong, in which case it's free. — The Mercadito team",
+      "output": "{\"quote\":\"A return label costs 99 MXN, deducted from your refund, unless the item arrived damaged or wrong, in which case it's free.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "A return label costs 99 MXN, deducted from your refund, unless the item arrived damaged or wrong, in which case it's free.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 368,
+        "cacheCreationTokens": 1662,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00052349,
+      "durationMs": 2534
+    },
+    {
+      "requestId": "row--en-06",
+      "requestHash": "ec4a1e857290d7e5",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Order 51003 still hasn't arrived and it's been a week.\nReply: I'm sorry order 51003 is late; orders leave Guadalajara within a day, so I've asked the carrier to trace it and we'll write back within 24 hours. — The Mercadito team",
+      "output": "{\"quote\":\"orders leave Guadalajara within a day, so I've asked the carrier to trace it and we'll write back within 24 hours\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "orders leave Guadalajara within a day, so I've asked the carrier to trace it and we'll write back within 24 hours",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 544,
+        "cacheCreationTokens": 1686,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00061629,
+      "durationMs": 4066
+    },
+    {
+      "requestId": "row--en-07",
+      "requestHash": "4707d56f3aa71f17",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Can I exchange my mug for a different color?\nReply: We don't hold stock for exchanges, so return the mug from My orders and place a new order for the color you want. — The Mercadito team",
+      "output": "{\"quote\":\"return the mug from My orders and place a new order for the color you want\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "return the mug from My orders and place a new order for the color you want",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 522,
+        "cacheCreationTokens": 1661,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.0006002900000000001,
+      "durationMs": 2944
+    },
+    {
+      "requestId": "row--en-08",
+      "requestHash": "56a6316e400a93d6",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: I opened a bag of coffee and don't like it. Can I return it?\nReply: I'm sorry it wasn't to your taste, but opened food can't be returned. — The Mercadito team",
+      "output": "{\"quote\":\"I'm sorry it wasn't to your taste, but opened food can't be returned.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "I'm sorry it wasn't to your taste, but opened food can't be returned.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 258,
+        "cacheCreationTokens": 1660,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00046809000000000005,
+      "durationMs": 1644
+    },
+    {
+      "requestId": "row--en-09",
+      "requestHash": "3d356c00544da276",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: My smartwatch from order 49915 stopped charging after 3 days.\nReply: A smartwatch that fails in its first days counts as damaged, so send a photo or short video within 7 days and we'll replace order 49915 at no cost. — The Mercadito team",
+      "output": "{\"quote\":\"A smartwatch that fails in its first days counts as damaged, so send a photo or short video within 7 days and we'll replace order 49915 at no cost.\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "A smartwatch that fails in its first days counts as damaged, so send a photo or short video within 7 days and we'll replace order 49915 at no cost.",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 1063,
+        "cacheCreationTokens": 1681,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00087479,
+      "durationMs": 5656
+    },
+    {
+      "requestId": "row--en-10",
+      "requestHash": "65e82adb45026d8d",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Do you deliver to Mérida?\nReply: Yes, we deliver across Mexico from our Guadalajara warehouse, and Mérida usually takes 3 to 4 business days. — The Mercadito team",
+      "output": "{\"quote\":\"Yes, we deliver across Mexico from our Guadalajara warehouse, and Mérida usually takes 3 to 4 business days.\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Yes, we deliver across Mexico from our Guadalajara warehouse, and Mérida usually takes 3 to 4 business days.",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 575,
+        "cacheCreationTokens": 1670,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00062859,
+      "durationMs": 3645
+    },
+    {
+      "requestId": "row--en-11",
+      "requestHash": "782a98acb73c23fe",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: I want to return a gift card I never used.\nReply: I'm sorry, gift cards can't be returned, but your card never expires. — The Mercadito team",
+      "output": "{\"quote\":\"I'm sorry, gift cards can't be returned\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "I'm sorry, gift cards can't be returned",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 652,
+        "cacheCreationTokens": 1645,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00066209,
+      "durationMs": 3763
+    },
+    {
+      "requestId": "row--en-12",
+      "requestHash": "ccfe128d595fdd9d",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: The speaker from order 50877 came 20 days ago and I don't like the sound.\nReply: Speakers are electronics, which have a 15-day window, so order 50877 can no longer be returned for a change of mind. — The Mercadito team",
+      "output": "{\"quote\":\"Speakers are electronics, which have a 15-day window, so order 50877 can no longer be returned for a change of mind.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Speakers are electronics, which have a 15-day window, so order 50877 can no longer be returned for a change of mind.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 472,
+        "cacheCreationTokens": 1674,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00057789,
+      "durationMs": 3872
+    },
+    {
+      "requestId": "row--en-13",
+      "requestHash": "938501a5124ab461",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: How long does a refund to my card take?\nReply: Card refunds reach your bank within 5 to 10 business days after we receive the item. — The Mercadito team",
+      "output": "{\"quote\":\"Card refunds reach your bank within 5 to 10 business days after we receive the item.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Card refunds reach your bank within 5 to 10 business days after we receive the item.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 601,
+        "cacheCreationTokens": 1653,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.0006381900000000001,
+      "durationMs": 3609
+    },
+    {
+      "requestId": "row--en-14",
+      "requestHash": "fde221a136251c43",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Order 50433 came with the wrong size of apron.\nReply: I'm sorry order 50433 had the wrong size; return it from My orders with a free label and we'll ship the right one from Guadalajara. — The Mercadito team",
+      "output": "{\"quote\":\"we'll ship the right one from Guadalajara\",\"policy\":\"contradicts\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "we'll ship the right one from Guadalajara",
+        "policy": "contradicts",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 558,
+        "cacheCreationTokens": 1673,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00062069,
+      "durationMs": 3122
+    },
+    {
+      "requestId": "row--en-15",
+      "requestHash": "79217391871becd5",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Can I return a lipstick I tried once?\nReply: I'm sorry, personal care items can't be returned once opened. — The Mercadito team",
+      "output": "{\"quote\":\"I'm sorry, personal care items can't be returned once opened.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "I'm sorry, personal care items can't be returned once opened.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 381,
+        "cacheCreationTokens": 1643,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.0005261900000000001,
+      "durationMs": 2292
+    },
+    {
+      "requestId": "row--en-16",
+      "requestHash": "c75b73d5b12d2173",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Is shipping free?\nReply: Shipping is free on orders over 499 MXN, and every order leaves our Guadalajara warehouse within a day. — The Mercadito team",
+      "output": "{\"quote\":\"every order leaves our Guadalajara warehouse within a day\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "every order leaves our Guadalajara warehouse within a day",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 769,
+        "cacheCreationTokens": 1654,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.0007223900000000001,
+      "durationMs": 4119
+    },
+    {
+      "requestId": "row--en-17",
+      "requestHash": "c23e60c8723af3f4",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: My order 51290 says delivered but I don't have it.\nReply: I'm sorry order 51290 hasn't reached you; I've opened a claim with the carrier and we'll refund or resend it if it isn't found within 3 business days. — The Mercadito team",
+      "output": "{\"quote\":\"\\\"I've opened a claim with the carrier and we'll refund or resend it if it isn't found within 3 business days.\\\"\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "\"I've opened a claim with the carrier and we'll refund or resend it if it isn't found within 3 business days.\"",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 390,
+        "cacheCreationTokens": 1682,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00053849,
+      "durationMs": 2337
+    },
+    {
+      "requestId": "row--en-18",
+      "requestHash": "6dd6116288aa36b0",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Can I cancel order 51344? I ordered it an hour ago.\nReply: If order 51344 hasn't left Guadalajara yet we can cancel it, so I've asked the warehouse and you'll get a confirmation by email. — The Mercadito team",
+      "output": "{\"quote\":\"If order 51344 hasn't left Guadalajara yet we can cancel it, so I've asked the warehouse and you'll get a confirmation by email.\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "If order 51344 hasn't left Guadalajara yet we can cancel it, so I've asked the warehouse and you'll get a confirmation by email.",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 375,
+        "cacheCreationTokens": 1683,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.0005311900000000001,
+      "durationMs": 2512
+    },
+    {
+      "requestId": "row--en-19",
+      "requestHash": "cf0bc7b796b802ef",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: The handle of my skillet from order 49002 broke the first time I used it.\nReply: I'm sorry the skillet from order 49002 broke; send a photo within 7 days and we'll replace it, with free return shipping. — The Mercadito team",
+      "output": "{\"quote\":\"send a photo within 7 days and we'll replace it, with free return shipping\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "send a photo within 7 days and we'll replace it, with free return shipping",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 339,
+        "cacheCreationTokens": 1677,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00051199,
+      "durationMs": 2281
+    },
+    {
+      "requestId": "row--en-20",
+      "requestHash": "06b75a5204609d90",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Do you have a phone number?\nReply: We answer by chat and email only, every day from 8 am to 10 pm. — The Mercadito team",
+      "output": "{\"quote\":\"We answer by chat and email only, every day from 8 am to 10 pm.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "We answer by chat and email only, every day from 8 am to 10 pm.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 295,
+        "cacheCreationTokens": 1644,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00048339000000000005,
+      "durationMs": 1787
+    },
+    {
+      "requestId": "row--en-21",
+      "requestHash": "f1ceb101a9c70603",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Where do you ship from?\nReply: Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days. — The Mercadito team",
+      "output": "{\"quote\":\"Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 344,
+        "cacheCreationTokens": 1041,
+        "cacheReadTokens": 1300
+      },
+      "listCostUsd": 0.0003934,
+      "durationMs": 2125
+    },
+    {
+      "requestId": "row--en-22",
+      "requestHash": "52d4f9c820bddcea",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: How much does a return label cost?\nReply: A return label costs 99 MXN, deducted from your refund, unless the item arrived damaged or wrong, in which case it's free. — The Mercadito team",
+      "output": "{\"quote\":\"A return label costs 99 MXN, deducted from your refund, unless the item arrived damaged or wrong, in which case it's free.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "A return label costs 99 MXN, deducted from your refund, unless the item arrived damaged or wrong, in which case it's free.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 332,
+        "cacheCreationTokens": 1043,
+        "cacheReadTokens": 1308
+      },
+      "listCostUsd": 0.00038788000000000006,
+      "durationMs": 2288
+    },
+    {
+      "requestId": "row--en-23",
+      "requestHash": "432737c94a64050f",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: From which city do you send orders?\nReply: Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days. — The Mercadito team",
+      "output": "{\"quote\":\"Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Every order ships from our warehouse in Guadalajara and usually arrives in 2 to 4 business days.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 366,
+        "cacheCreationTokens": 1654,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00052089,
+      "durationMs": 2716
+    },
+    {
+      "requestId": "row--en-24",
+      "requestHash": "df4913130503f893",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: I paid in cash when it was delivered (order 48720). How do I get my money back?\nReply: Refunds for cash on delivery orders like 48720 go to your Mercadito balance, usually within 5 to 10 business days. — The Mercadito team",
+      "output": "{\"quote\":\"Refunds for cash on delivery orders like 48720 go to your Mercadito balance, usually within 5 to 10 business days.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Refunds for cash on delivery orders like 48720 go to your Mercadito balance, usually within 5 to 10 business days.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 333,
+        "cacheCreationTokens": 1682,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00050999,
+      "durationMs": 2310
+    },
+    {
+      "requestId": "row--en-25",
+      "requestHash": "850b51c5850e1d17",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: I bought earbuds 20 days ago. Can I still return them?\nReply: Yes, you have 30 days for any item, earbuds included, so start the return from My orders. — The Mercadito team",
+      "output": "{\"quote\":\"Yes, you have 30 days for any item, earbuds included, so start the return from My orders.\",\"policy\":\"contradicts\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Yes, you have 30 days for any item, earbuds included, so start the return from My orders.",
+        "policy": "contradicts",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 298,
+        "cacheCreationTokens": 1665,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00048909,
+      "durationMs": 2321
+    },
+    {
+      "requestId": "row--en-26",
+      "requestHash": "fef0b9bfe3eb0497",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: Order 48990 was cash on delivery. Where will my refund go?\nReply: We'll send the refund for order 48990 back to the card on your account. — The Mercadito team",
+      "output": "{\"quote\":\"We'll send the refund for order 48990 back to the card on your account.\",\"policy\":\"contradicts\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "We'll send the refund for order 48990 back to the card on your account.",
+        "policy": "contradicts",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 297,
+        "cacheCreationTokens": 1654,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00048639000000000006,
+      "durationMs": 2135
+    },
+    {
+      "requestId": "row--en-27",
+      "requestHash": "e1c8139fdb1df1c9",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: My kettle from order 50120 leaks.\nReply: Did you even read the instructions? Kettles don't leak if you use them right.",
+      "output": "{\"quote\":\"Did you even read the instructions? Kettles don't leak if you use them right.\",\"policy\":\"not-covered\",\"tone\":\"rude\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Did you even read the instructions? Kettles don't leak if you use them right.",
+        "policy": "not-covered",
+        "tone": "rude",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 383,
+        "cacheCreationTokens": 1639,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.0005263900000000001,
+      "durationMs": 2730
+    },
+    {
+      "requestId": "row--en-28",
+      "requestHash": "529c1878239e70f8",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: When will I get my refund?\nReply: Refunds are instant: you'll have your money within two hours. — The Mercadito team",
+      "output": "{\"quote\":\"Refunds are instant: you'll have your money within two hours.\",\"policy\":\"contradicts\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Refunds are instant: you'll have your money within two hours.",
+        "policy": "contradicts",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 288,
+        "cacheCreationTokens": 1637,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00047849000000000004,
+      "durationMs": 1698
+    },
+    {
+      "requestId": "row--en-29",
+      "requestHash": "39b5d4e83cbf8ad0",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: I got these running shoes 12 days ago and they're too small. Can I send them back?\nReply: Yes, shoes can come back within 30 days of delivery, so start the return from My orders. — The Mercadito team",
+      "output": "{\"quote\":\"Yes, shoes can come back within 30 days of delivery, so start the return from My orders.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Yes, shoes can come back within 30 days of delivery, so start the return from My orders.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 368,
+        "cacheCreationTokens": 1661,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00052329,
+      "durationMs": 2051
+    },
+    {
+      "requestId": "row--en-30",
+      "requestHash": "6bf9a805e99af1d5",
+      "locale": "en",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "You review rows of a fine-tuning dataset for a shop's support assistant. Each row is a customer message and the reply the assistant should learn. Compare the reply with the policy sheet. Quote the words of the reply that decide it, then judge: policy (consistent, contradicts, not-covered), tone (ok, rude) and language (matches if the reply is in the customer's language, wrong otherwise).",
+      "prompt": "Policy sheet:\nReturns: most items within 30 days of delivery, full refund, started from My orders.\nElectronics (headphones, earbuds, speakers, smartwatches, chargers): 15 days from delivery, seal intact.\nDamaged items: report within 7 days with a photo; refunded or replaced regardless of the window.\nRefunds: to the original card in 5 to 10 business days; cash on delivery orders go to the Mercadito balance.\nReturn shipping: free for damaged or wrong items; otherwise the label costs 99 MXN, deducted from the refund.\nNot returnable: gift cards, opened food, opened personal care items.\nExchanges: return and place a new order.\nShipping: every order ships from the Guadalajara warehouse, 2 to 4 business days; free over 499 MXN.\nSupport: chat and email, every day 8 am to 10 pm. Replies are courteous and in the customer's language.\n\nCustomer: I tried the lipstick once and don't like the shade. It came 5 days ago.\nReply: I'm sorry, personal care items can't be returned once opened. — The Mercadito team",
+      "output": "{\"quote\":\"I'm sorry, personal care items can't be returned once opened.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "I'm sorry, personal care items can't be returned once opened.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 422,
+        "cacheCreationTokens": 1653,
+        "cacheReadTokens": 689
+      },
+      "listCostUsd": 0.00054869,
+      "durationMs": 3204
+    },
+    {
+      "requestId": "row--es-01",
+      "requestHash": "dbecc1df07b6d5e3",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: La licuadora de mi pedido 50211 llegó con el vaso estrellado.\nRespuesta: Lamento que la licuadora del pedido 50211 llegara estrellada; mándanos una foto dentro de 7 días y la reembolsamos o reemplazamos, con envío de devolución gratis. — El equipo de Mercadito",
+      "output": "{\"quote\":\"mándanos una foto dentro de 7 días y la reembolsamos o reemplazamos, con envío de devolución gratis\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "mándanos una foto dentro de 7 días y la reembolsamos o reemplazamos, con envío de devolución gratis",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 437,
+        "cacheCreationTokens": 2004,
+        "cacheReadTokens": 561
+      },
+      "listCostUsd": 0.00062511,
+      "durationMs": 2470
+    },
+    {
+      "requestId": "row--es-02",
+      "requestHash": "c91f8b8363742c01",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Desde dónde envían?\nRespuesta: Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 403,
+        "cacheCreationTokens": 1797,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0005683800000000001,
+      "durationMs": 3137
+    },
+    {
+      "requestId": "row--es-03",
+      "requestHash": "f0610f8ebcb9aacc",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Puedo devolver unos audífonos que compré hace 10 días? Siguen sellados.\nRespuesta: Sí: la electrónica se puede devolver dentro de 15 días desde la entrega si el sello está intacto, así que inicia la devolución en Mis pedidos. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Sí: la electrónica se puede devolver dentro de 15 días desde la entrega si el sello está intacto, así que inicia la devolución en Mis pedidos.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Sí: la electrónica se puede devolver dentro de 15 días desde la entrega si el sello está intacto, así que inicia la devolución en Mis pedidos.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 398,
+        "cacheCreationTokens": 1828,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00057208,
+      "durationMs": 2101
+    },
+    {
+      "requestId": "row--es-04",
+      "requestHash": "16fd337768951473",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Pagué contra entrega el pedido 48720. ¿Cómo recibo mi reembolso?\nRespuesta: Los reembolsos de pedidos contra entrega como el 48720 llegan a tu saldo de Mercadito, normalmente en 5 a 10 días hábiles. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Los reembolsos de pedidos contra entrega como el 48720 llegan a tu saldo de Mercadito, normalmente en 5 a 10 días hábiles.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Los reembolsos de pedidos contra entrega como el 48720 llegan a tu saldo de Mercadito, normalmente en 5 a 10 días hábiles.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 367,
+        "cacheCreationTokens": 1830,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00055698,
+      "durationMs": 2093
+    },
+    {
+      "requestId": "row--es-05",
+      "requestHash": "dcfab9f8601535a6",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Cuánto cuesta la guía de devolución?\nRespuesta: La guía cuesta 99 MXN y se descuenta del reembolso, salvo que el artículo llegue dañado o equivocado, en cuyo caso es gratis. — El equipo de Mercadito",
+      "output": "{\"quote\":\"\\\"La guía cuesta 99 MXN y se descuenta del reembolso, salvo que el artículo llegue dañado o equivocado, en cuyo caso es gratis.\\\"\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "\"La guía cuesta 99 MXN y se descuenta del reembolso, salvo que el artículo llegue dañado o equivocado, en cuyo caso es gratis.\"",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 419,
+        "cacheCreationTokens": 1818,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00058058,
+      "durationMs": 2551
+    },
+    {
+      "requestId": "row--es-06",
+      "requestHash": "f4a9ab149093e8a6",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Mi pedido 51003 no ha llegado y ya pasó una semana.\nRespuesta: Lamento el retraso del pedido 51003; los pedidos salen de Guadalajara en un día, así que pedí a la paquetería que lo rastree y te escribimos en 24 horas. — El equipo de Mercadito",
+      "output": "{\"quote\":\"los pedidos salen de Guadalajara en un día, así que pedí a la paquetería que lo rastree y te escribimos en 24 horas\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "los pedidos salen de Guadalajara en un día, así que pedí a la paquetería que lo rastree y te escribimos en 24 horas",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 942,
+        "cacheCreationTokens": 1827,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0008438800000000001,
+      "durationMs": 5070
+    },
+    {
+      "requestId": "row--es-07",
+      "requestHash": "ea42b31f07e60e7b",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Puedo cambiar mi taza por otro color?\nRespuesta: No apartamos inventario para cambios, así que devuelve la taza desde Mis pedidos y haz un pedido nuevo del color que quieras. — El equipo de Mercadito",
+      "output": "{\"quote\":\"No apartamos inventario para cambios, así que devuelve la taza desde Mis pedidos y haz un pedido nuevo del color que quieras.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "No apartamos inventario para cambios, así que devuelve la taza desde Mis pedidos y haz un pedido nuevo del color que quieras.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 470,
+        "cacheCreationTokens": 1808,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00060408,
+      "durationMs": 2758
+    },
+    {
+      "requestId": "row--es-08",
+      "requestHash": "227f5606d1f081a6",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Abrí una bolsa de café y no me gustó. ¿La puedo devolver?\nRespuesta: Lamento que no te gustara, pero los alimentos abiertos no se pueden devolver. — El equipo de Mercadito",
+      "output": "{\"quote\":\"los alimentos abiertos no se pueden devolver\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "los alimentos abiertos no se pueden devolver",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 384,
+        "cacheCreationTokens": 1796,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0005586800000000001,
+      "durationMs": 2733
+    },
+    {
+      "requestId": "row--es-09",
+      "requestHash": "36e12c79bbe8dac7",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Mi reloj inteligente del pedido 49915 dejó de cargar a los 3 días.\nRespuesta: Un reloj que falla en sus primeros días cuenta como dañado, así que manda una foto o un video corto dentro de 7 días y reemplazamos el pedido 49915 sin costo. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Un reloj que falla en sus primeros días cuenta como dañado, así que manda una foto o un video corto dentro de 7 días y reemplazamos el pedido 49915 sin costo.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Un reloj que falla en sus primeros días cuenta como dañado, así que manda una foto o un video corto dentro de 7 días y reemplazamos el pedido 49915 sin costo.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 842,
+        "cacheCreationTokens": 1833,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0007950800000000001,
+      "durationMs": 4323
+    },
+    {
+      "requestId": "row--es-10",
+      "requestHash": "dd513032c8149dca",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Entregan en Mérida?\nRespuesta: Sí, entregamos en todo México desde nuestro almacén de Guadalajara, y a Mérida suele tardar de 3 a 4 días hábiles. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Sí, entregamos en todo México desde nuestro almacén de Guadalajara, y a Mérida suele tardar de 3 a 4 días hábiles.\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Sí, entregamos en todo México desde nuestro almacén de Guadalajara, y a Mérida suele tardar de 3 a 4 días hábiles.",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 830,
+        "cacheCreationTokens": 1807,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00078388,
+      "durationMs": 3720
+    },
+    {
+      "requestId": "row--es-11",
+      "requestHash": "eda0d72ae0c62bce",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Quiero devolver una tarjeta de regalo que nunca usé.\nRespuesta: Lo siento, las tarjetas de regalo no se pueden devolver, pero tu tarjeta no vence. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Lo siento, las tarjetas de regalo no se pueden devolver\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Lo siento, las tarjetas de regalo no se pueden devolver",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 423,
+        "cacheCreationTokens": 1798,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00057858,
+      "durationMs": 4944
+    },
+    {
+      "requestId": "row--es-12",
+      "requestHash": "42b7a88c19687998",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: La bocina del pedido 50877 llegó hace 20 días y no me gusta cómo suena.\nRespuesta: Las bocinas son electrónica, con plazo de 15 días, así que el pedido 50877 ya no se puede devolver por gusto. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Las bocinas son electrónica, con plazo de 15 días, así que el pedido 50877 ya no se puede devolver por gusto.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Las bocinas son electrónica, con plazo de 15 días, así que el pedido 50877 ya no se puede devolver por gusto.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 503,
+        "cacheCreationTokens": 1819,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0006227800000000001,
+      "durationMs": 2961
+    },
+    {
+      "requestId": "row--es-13",
+      "requestHash": "5a169f232c041779",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Cuánto tarda un reembolso a mi tarjeta?\nRespuesta: Los reembolsos a tarjeta llegan a tu banco en 5 a 10 días hábiles después de que recibimos el artículo. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Los reembolsos a tarjeta llegan a tu banco en 5 a 10 días hábiles después de que recibimos el artículo.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Los reembolsos a tarjeta llegan a tu banco en 5 a 10 días hábiles después de que recibimos el artículo.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 627,
+        "cacheCreationTokens": 1807,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00068238,
+      "durationMs": 3128
+    },
+    {
+      "requestId": "row--es-14",
+      "requestHash": "b923994513e25469",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: El pedido 50433 llegó con el mandil de otra talla.\nRespuesta: Lamento que el pedido 50433 llegara con otra talla; devuélvelo desde Mis pedidos con guía gratis y te enviamos la correcta desde Guadalajara. — El equipo de Mercadito",
+      "output": "{\"quote\":\"devuélvelo desde Mis pedidos con guía gratis y te enviamos la correcta desde Guadalajara\",\"policy\":\"contradicts\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "devuélvelo desde Mis pedidos con guía gratis y te enviamos la correcta desde Guadalajara",
+        "policy": "contradicts",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 1120,
+        "cacheCreationTokens": 1820,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0009314799999999999,
+      "durationMs": 5837
+    },
+    {
+      "requestId": "row--es-15",
+      "requestHash": "b3ee0260c62bc7e4",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Puedo devolver un labial que probé una vez?\nRespuesta: Lo siento, los artículos de cuidado personal no se pueden devolver una vez abiertos. — El equipo de Mercadito",
+      "output": "{\"quote\":\"los artículos de cuidado personal no se pueden devolver una vez abiertos\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "los artículos de cuidado personal no se pueden devolver una vez abiertos",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 354,
+        "cacheCreationTokens": 1789,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00054228,
+      "durationMs": 2358
+    },
+    {
+      "requestId": "row--es-16",
+      "requestHash": "7434579576c2276b",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿El envío es gratis?\nRespuesta: El envío es gratis en pedidos de más de 499 MXN, y cada pedido sale de nuestro almacén de Guadalajara en un día. — El equipo de Mercadito",
+      "output": "{\"quote\":\"\\\"El envío es gratis en pedidos de más de 499 MXN, y cada pedido sale de nuestro almacén de Guadalajara en un día.\\\"\",\"policy\":\"contradicts\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "\"El envío es gratis en pedidos de más de 499 MXN, y cada pedido sale de nuestro almacén de Guadalajara en un día.\"",
+        "policy": "contradicts",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 672,
+        "cacheCreationTokens": 1798,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00070308,
+      "durationMs": 3954
+    },
+    {
+      "requestId": "row--es-17",
+      "requestHash": "46f384a37c5aa15d",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Mi pedido 51290 dice entregado pero no lo tengo.\nRespuesta: Lamento que el pedido 51290 no te haya llegado; abrí un reclamo con la paquetería y lo reembolsamos o reenviamos si no aparece en 3 días hábiles. — El equipo de Mercadito",
+      "output": "{\"quote\":\"\\\"abrí un reclamo con la paquetería y lo reembolsamos o reenviamos si no aparece en 3 días hábiles\\\"\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "\"abrí un reclamo con la paquetería y lo reembolsamos o reenviamos si no aparece en 3 días hábiles\"",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 503,
+        "cacheCreationTokens": 1827,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0006243800000000001,
+      "durationMs": 2740
+    },
+    {
+      "requestId": "row--es-18",
+      "requestHash": "47ec77063d0c0b9e",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Puedo cancelar el pedido 51344? Lo hice hace una hora.\nRespuesta: Si el pedido 51344 todavía no sale de Guadalajara lo podemos cancelar, así que ya le pregunté al almacén y recibirás la confirmación por correo. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Si el pedido 51344 todavía no sale de Guadalajara lo podemos cancelar, así que ya le pregunté al almacén y recibirás la confirmación por correo.\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Si el pedido 51344 todavía no sale de Guadalajara lo podemos cancelar, así que ya le pregunté al almacén y recibirás la confirmación por correo.",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 540,
+        "cacheCreationTokens": 1826,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0006426800000000001,
+      "durationMs": 2999
+    },
+    {
+      "requestId": "row--es-19",
+      "requestHash": "5d8535d02fdff3e0",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Al sartén del pedido 49002 se le rompió el mango la primera vez que lo usé.\nRespuesta: Lamento que el sartén del pedido 49002 se rompiera; manda una foto dentro de 7 días y lo reemplazamos, con envío de devolución gratis. — El equipo de Mercadito",
+      "output": "{\"quote\":\"manda una foto dentro de 7 días y lo reemplazamos, con envío de devolución gratis\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "manda una foto dentro de 7 días y lo reemplazamos, con envío de devolución gratis",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 380,
+        "cacheCreationTokens": 1826,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00056268,
+      "durationMs": 2667
+    },
+    {
+      "requestId": "row--es-20",
+      "requestHash": "e60c087ccbed096c",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Tienen teléfono?\nRespuesta: Atendemos solo por chat y correo, todos los días de 8 a 22 h. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Atendemos solo por chat y correo, todos los días de 8 a 22 h.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Atendemos solo por chat y correo, todos los días de 8 a 22 h.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 414,
+        "cacheCreationTokens": 1777,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00056988,
+      "durationMs": 3008
+    },
+    {
+      "requestId": "row--es-21",
+      "requestHash": "c91f8b8363742c01",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Desde dónde envían?\nRespuesta: Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 412,
+        "cacheCreationTokens": 1039,
+        "cacheReadTokens": 1481
+      },
+      "listCostUsd": 0.00042881,
+      "durationMs": 2395
+    },
+    {
+      "requestId": "row--es-22",
+      "requestHash": "dcfab9f8601535a6",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Cuánto cuesta la guía de devolución?\nRespuesta: La guía cuesta 99 MXN y se descuenta del reembolso, salvo que el artículo llegue dañado o equivocado, en cuyo caso es gratis. — El equipo de Mercadito",
+      "output": "{\"quote\":\"La guía cuesta 99 MXN y se descuenta del reembolso, salvo que el artículo llegue dañado o equivocado, en cuyo caso es gratis.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "La guía cuesta 99 MXN y se descuenta del reembolso, salvo que el artículo llegue dañado o equivocado, en cuyo caso es gratis.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 415,
+        "cacheCreationTokens": 1041,
+        "cacheReadTokens": 1500
+      },
+      "listCostUsd": 0.0004309,
+      "durationMs": 2795
+    },
+    {
+      "requestId": "row--es-23",
+      "requestHash": "87af2fb4880130ee",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿De qué ciudad mandan los pedidos?\nRespuesta: Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Todos los pedidos salen de nuestro almacén en Guadalajara y suelen llegar en 2 a 4 días hábiles.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 353,
+        "cacheCreationTokens": 1802,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00054438,
+      "durationMs": 2083
+    },
+    {
+      "requestId": "row--es-24",
+      "requestHash": "41fd36234f6adbcd",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Pagué en efectivo al recibir el pedido 48720. ¿Cómo me regresan mi dinero?\nRespuesta: Los reembolsos de pedidos contra entrega como el 48720 llegan a tu saldo de Mercadito, normalmente en 5 a 10 días hábiles. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Los reembolsos de pedidos contra entrega como el 48720 llegan a tu saldo de Mercadito, normalmente en 5 a 10 días hábiles.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Los reembolsos de pedidos contra entrega como el 48720 llegan a tu saldo de Mercadito, normalmente en 5 a 10 días hábiles.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 446,
+        "cacheCreationTokens": 1834,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0005972800000000001,
+      "durationMs": 2205
+    },
+    {
+      "requestId": "row--es-25",
+      "requestHash": "c698c8722b244f24",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Compré unos audífonos de botón hace 20 días. ¿Todavía los puedo devolver?\nRespuesta: Sí, tienes 30 días para cualquier artículo, audífonos incluidos, así que inicia la devolución en Mis pedidos. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Sí, tienes 30 días para cualquier artículo, audífonos incluidos, así que inicia la devolución en Mis pedidos.\",\"policy\":\"contradicts\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Sí, tienes 30 días para cualquier artículo, audífonos incluidos, así que inicia la devolución en Mis pedidos.",
+        "policy": "contradicts",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 407,
+        "cacheCreationTokens": 1818,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00057458,
+      "durationMs": 2198
+    },
+    {
+      "requestId": "row--es-26",
+      "requestHash": "089529203c4bd21e",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: El pedido 48990 fue contra entrega. ¿A dónde llega mi reembolso?\nRespuesta: Te regresamos el reembolso del pedido 48990 a la tarjeta registrada en tu cuenta. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Te regresamos el reembolso del pedido 48990 a la tarjeta registrada en tu cuenta.\",\"policy\":\"contradicts\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Te regresamos el reembolso del pedido 48990 a la tarjeta registrada en tu cuenta.",
+        "policy": "contradicts",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 376,
+        "cacheCreationTokens": 1807,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00055688,
+      "durationMs": 2295
+    },
+    {
+      "requestId": "row--es-27",
+      "requestHash": "1df0601dc7cd565b",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Mi hervidor del pedido 50120 gotea.\nRespuesta: ¿Siquiera leíste las instrucciones? Los hervidores no gotean si se usan bien.",
+      "output": "{\"quote\":\"\\\"¿Siquiera leíste las instrucciones?\\\" y \\\"Los hervidores no gotean si se usan bien.\\\"\",\"policy\":\"contradicts\",\"tone\":\"rude\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "\"¿Siquiera leíste las instrucciones?\" y \"Los hervidores no gotean si se usan bien.\"",
+        "policy": "contradicts",
+        "tone": "rude",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 589,
+        "cacheCreationTokens": 1786,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0006591800000000001,
+      "durationMs": 3476
+    },
+    {
+      "requestId": "row--es-28",
+      "requestHash": "a60d9a1701c53643",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: ¿Cuándo me llega mi reembolso?\nRespuesta: Your refund will arrive soon, thank you for shopping with us. — The Mercadito team",
+      "output": "{\"quote\":\"Your refund will arrive soon, thank you for shopping with us.\",\"policy\":\"not-covered\",\"tone\":\"ok\",\"language\":\"wrong\"}",
+      "structured": {
+        "quote": "Your refund will arrive soon, thank you for shopping with us.",
+        "policy": "not-covered",
+        "tone": "ok",
+        "language": "wrong"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 601,
+        "cacheCreationTokens": 1773,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.0006625800000000001,
+      "durationMs": 3740
+    },
+    {
+      "requestId": "row--es-29",
+      "requestHash": "5c31085336491db9",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Recibí estos tenis hace 12 días y me quedaron chicos. ¿Los puedo devolver?\nRespuesta: Sí, los tenis se pueden devolver dentro de 30 días desde la entrega, así que inicia la devolución en Mis pedidos. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Sí, los tenis se pueden devolver dentro de 30 días desde la entrega, así que inicia la devolución en Mis pedidos.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Sí, los tenis se pueden devolver dentro de 30 días desde la entrega, así que inicia la devolución en Mis pedidos.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 501,
+        "cacheCreationTokens": 1818,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00062158,
+      "durationMs": 2798
+    },
+    {
+      "requestId": "row--es-30",
+      "requestHash": "aa46f3f61c8fec66",
+      "locale": "es-MX",
+      "attempt": 1,
+      "model": "claude-haiku-5-5",
+      "system": "Revisas filas de un conjunto de datos de ajuste fino para el asistente de soporte de una tienda. Cada fila es un mensaje de cliente y la respuesta que el asistente debe aprender. Compara la respuesta con la hoja de políticas. Cita las palabras de la respuesta que lo deciden y luego juzga: policy (consistent, contradicts, not-covered), tone (ok, rude) y language (matches si la respuesta está en el idioma del cliente, wrong si no).",
+      "prompt": "Hoja de políticas:\nDevoluciones: la mayoría de los artículos dentro de 30 días desde la entrega, reembolso completo, desde Mis pedidos.\nElectrónica (audífonos, audífonos de botón, bocinas, relojes inteligentes, cargadores): 15 días desde la entrega, sello intacto.\nArtículos dañados: reportar dentro de 7 días con foto; se reembolsan o reemplazan sin importar el plazo.\nReembolsos: a la tarjeta original en 5 a 10 días hábiles; los pedidos contra entrega van al saldo de Mercadito.\nEnvío de devolución: gratis para artículos dañados o equivocados; si no, la guía cuesta 99 MXN y se descuenta del reembolso.\nNo se devuelven: tarjetas de regalo, alimentos abiertos, artículos de cuidado personal abiertos.\nCambios: devolver y hacer un pedido nuevo.\nEnvíos: todos los pedidos salen del almacén de Guadalajara, 2 a 4 días hábiles; gratis desde 499 MXN.\nAtención: chat y correo, todos los días de 8 a 22 h. Las respuestas son corteses y en el idioma del cliente.\n\nCliente: Probé el labial una vez y no me gusta el tono. Llegó hace 5 días.\nRespuesta: Lo siento, los artículos de cuidado personal no se pueden devolver una vez abiertos. — El equipo de Mercadito",
+      "output": "{\"quote\":\"Lo siento, los artículos de cuidado personal no se pueden devolver una vez abiertos.\",\"policy\":\"consistent\",\"tone\":\"ok\",\"language\":\"matches\"}",
+      "structured": {
+        "quote": "Lo siento, los artículos de cuidado personal no se pueden devolver una vez abiertos.",
+        "policy": "consistent",
+        "tone": "ok",
+        "language": "matches"
+      },
+      "usage": {
+        "inputTokens": 2,
+        "outputTokens": 470,
+        "cacheCreationTokens": 1801,
+        "cacheReadTokens": 728
+      },
+      "listCostUsd": 0.00060268,
+      "durationMs": 4466
+    }
+  ]
+}

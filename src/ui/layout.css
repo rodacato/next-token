@@ -2198,3 +2198,71 @@
     border-top: 1px solid var(--rule);
   }
 }
+
+/* ---- Chapter 14: the data workshop ------------------------------------ */
+.workshop-bench {
+  display: grid;
+  gap: 18px;
+}
+
+.workshop-bench__brief p {
+  margin: 4px 0 0;
+  font: 400 17px/1.4 var(--face-display);
+}
+
+.policy-sheet {
+  margin: 6px 0 0;
+  padding: 10px 12px;
+  font: 400 11.5px/1.55 var(--face-mono);
+  white-space: pre-wrap;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+
+.dataset-table td {
+  vertical-align: top;
+  text-align: left;
+  font-size: 12.5px;
+}
+
+.dataset-table__id {
+  font-family: var(--face-mono);
+  color: var(--slate);
+  white-space: nowrap;
+}
+
+.dataset-table select {
+  font: 400 12px/1.2 var(--face-mono);
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--brass-dark);
+  padding: 3px 4px;
+}
+
+.dataset-table__truth {
+  display: block;
+  margin-top: 4px;
+  font: 400 10.5px/1.3 var(--face-mono);
+  color: var(--slate);
+}
+
+.dataset-table tr.is-planted .dataset-table__truth {
+  color: var(--vermilion);
+}
+
+.dataset-table__finding {
+  font: 400 11px/1.4 var(--face-mono);
+  color: var(--slate);
+}
+
+.dataset-table__finding.is-flagged {
+  color: var(--vermilion);
+}
+
+.dataset-table__finding q {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-family: var(--face-display);
+  font-size: 13px;
+}

@@ -58,3 +58,17 @@ test.describe("chapter 15 · the LoRA plate", () => {
     await expect(page.getByTestId("lora-finding")).toBeVisible();
   });
 });
+
+test.describe("chapter 14 · the data workshop", () => {
+  test("mechanical checks find copies and leaks; the judge finds contradictions and raises false alarms", async ({ page }) => {
+    await open(page, /^14 The data workshop/);
+    await advance(page, 1);
+    await page.getByTestId("flag-en-25").selectOption("contradiction");
+    await advance(page, 1);
+    await page.getByTestId("predict-mechanical").fill("10");
+    await page.getByTestId("run-checks").click();
+    await expect(page.getByTestId("workshop-finding")).toContainText("You predicted 10; the mechanical checks caught 6 of 10.");
+    await page.getByTestId("run-judge").click();
+    await expect(page.getByTestId("workshop-finding")).toContainText("The judge caught 4 of 10. Good rows it flagged anyway, for a person to look at: 1.");
+  });
+});
