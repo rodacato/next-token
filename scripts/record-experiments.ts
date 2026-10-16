@@ -30,30 +30,38 @@ export function sameTitle(a: string, b: string): boolean {
   const x = words(a);
   const y = words(b);
   const shared = [...x].filter((w) => y.has(w)).length;
-  const shorter = Math.min(x.size, y.size);
-  // A truncated real title (all of its words inside the catalog title) still points at a real paper.
-  return shared / Math.max(x.size, y.size, 1) >= 0.8 || (shorter >= 4 && shared / shorter >= 0.9);
+  return shared / Math.max(x.size, y.size, 1) >= 0.8 || isTruncationOf(a, b) || isTruncationOf(b, a);
 }
 
-// A reference counts as found only when Semantic Scholar's best title match is the same title.
+const sequence = (text: string) => text.toLowerCase().normalize("NFD").replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
+
+// A truncated real title still points at a real paper, but only if its words appear in the same order.
+function isTruncationOf(short: string, long: string): boolean {
+  const s = sequence(short).join(" ");
+  return s.split(" ").length >= 4 && ` ${sequence(long).join(" ")} `.includes(` ${s} `);
+}
+
+// A reference counts as found only when one of OpenAlex's top title matches is the same title.
 async function check(reference: string): Promise<ReferenceCheck> {
   const title = titleOf(reference);
-  if (words(title).size < 3) return { text: reference, verdict: "not-found", checkedAt: today, checkedWith: "semantic-scholar-title-match", lookup: "no-title" };
-  const url = `https://api.semanticscholar.org/graph/v1/paper/search/match?query=${encodeURIComponent(title)}&fields=title,url`;
-  for (let attempt = 0; attempt < 8; attempt++) {
+  const base = { text: reference, checkedAt: today, checkedWith: "openalex-title-search" as const };
+  if (words(title).size < 3) return { ...base, verdict: "not-found", lookup: "no-title" };
+  const query = title.replace(/[,:?!]/g, " ");
+  const url = `https://api.openalex.org/works?filter=title.search:${encodeURIComponent(query)}&per-page=5&select=title,id`;
+  for (let attempt = 0; attempt < 4; attempt++) {
     const response = await fetch(url);
     if (response.status === 429) {
-      await pause(15_000 * (attempt + 1));
+      await pause(5_000 * (attempt + 1));
       continue;
     }
-    const base = { text: reference, checkedAt: today, checkedWith: "semantic-scholar-title-match" as const };
-    if (response.status === 404) return { ...base, verdict: "not-found" };
-    const body = (await response.json()) as { data?: { title: string; url: string }[] };
-    const match = body.data?.[0];
-    if (match && sameTitle(match.title, title)) return { ...base, verdict: "found", matchedTitle: match.title, matchedUrl: match.url };
-    return { ...base, verdict: "not-found", ...(match ? { matchedTitle: match.title } : {}) };
+    if (!response.ok) throw new Error(`OpenAlex answered ${response.status} for: ${title}`);
+    const body = (await response.json()) as { results?: { title: string | null; id: string }[] };
+    const candidates = (body.results ?? []).filter((r): r is { title: string; id: string } => Boolean(r.title));
+    const match = candidates.find((r) => sameTitle(r.title, title));
+    if (match) return { ...base, verdict: "found", matchedTitle: match.title, matchedUrl: match.id };
+    return { ...base, verdict: "not-found", ...(candidates[0] ? { matchedTitle: candidates[0].title } : {}) };
   }
-  throw new Error(`Semantic Scholar kept rate-limiting the check for: ${title}`);
+  throw new Error(`OpenAlex kept rate-limiting the check for: ${title}`);
 }
 
 // Full Chromium (not the headless shell) can reach the GPU, so WebGPU with shader-f16 is available.

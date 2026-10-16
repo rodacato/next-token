@@ -38,4 +38,4 @@ Still open:
 2. The ticket in the masthead wraps to two lines at 1440 px with four
    chapters; it needs a denser layout before Act II adds more.
 3. The phone fan is legible but leaves empty space below it.
-4. The Semantic Scholar check is slow without an API key (see ADR 6).
+4. Reference checks verify titles, not authors; the chapter says so.

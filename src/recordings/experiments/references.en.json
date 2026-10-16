@@ -581,19 +581,21 @@
       "text": "Pevon, S., Koivk, B. R., Torr, A. H. (2023). The COST of Languages Other Than English: A Computational Model for Generating Text",
       "verdict": "not-found",
       "checkedAt": "2026-10-16",
-      "checkedWith": "semantic-scholar-title-match"
+      "checkedWith": "openalex-title-search"
     },
     {
       "text": "Tsvetkov, A. R., Koivk, S., Mortensen, D. G. (2023). Language Tokenization: Do All Languages Cost The Same? In Advances in Neural Information Processing Systems 15.",
       "verdict": "not-found",
       "checkedAt": "2026-10-16",
-      "checkedWith": "semantic-scholar-title-match"
+      "checkedWith": "openalex-title-search",
+      "matchedTitle": "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models"
     },
     {
       "text": "Koivk, B., Tsvetkov, A. R., Kotev, V. (2023). Language Tokenizers: Do All Languages Cost The Same? In Advances in Neural Information Processing Systems 5.",
       "verdict": "not-found",
       "checkedAt": "2026-10-16",
-      "checkedWith": "semantic-scholar-title-match"
+      "checkedWith": "openalex-title-search",
+      "matchedTitle": "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models"
     }
   ]
 }

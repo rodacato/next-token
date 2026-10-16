@@ -15,7 +15,7 @@ describe("titleOf", () => {
 describe("sameTitle", () => {
   it("tolerates case, punctuation and truncation, not different words", () => {
     expect(sameTitle("Do all languages cost the same?", "Do All Languages Cost the Same? Tokenization in the Era")).toBe(true);
-    expect(sameTitle("Language Tokenization: Do All Languages Cost The Same?", "Do All Languages Cost the Same? Tokenization in the Era")).toBe(false);
+    expect(sameTitle("Language Tokenization: Do All Languages Cost The Same?", "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models")).toBe(false);
     expect(sameTitle("Language Model Tokenizers Introduce Unfairness Between Languages", "language model tokenizers introduce unfairness between languages")).toBe(true);
   });
 });

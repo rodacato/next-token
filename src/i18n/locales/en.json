@@ -355,7 +355,7 @@
     "check": "Check the catalog",
     "found": "In the catalog: {title}",
     "notFound": "No such title in the catalog.",
-    "checkedWith": "Checked by title against Semantic Scholar on {date}. Authors and venues are not checked: a real title can carry invented authors.",
+    "checkedWith": "Checked by title against OpenAlex on {date}. Authors and venues are not checked: a real title can carry invented authors.",
     "confidence": "average confidence {value}",
     "contrastHeading": "The same question to a larger model",
     "contrastBody": "Asked for three such papers, a larger instruction-tuned model named real ones and flagged what it could not verify.",

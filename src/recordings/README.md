@@ -11,7 +11,7 @@ All of them live here, and each kind has one command to refresh it.
 | --- | --- | --- | --- |
 | `next-token/<locale>.json` | Next-token logits for chapter 2's line and two levels of likely continuations | `npm run record:serve`, then `APP_URL=http://localhost:5350 npm run record:runs` | The in-browser model (Qwen2.5-0.5B) in headless Chromium. Free. |
 | `experiments/needle.<locale>.json` | Chapter 3: the probability of the right answer with one fact hidden at nine depths | `npm run record:serve`, then `APP_URL=http://localhost:5350 npm run record:experiments` | Same model, on WebGPU through full headless Chromium. Free. |
-| `experiments/references.<locale>.json` | Chapter 4: a greedy reference list with per-sort probability, each entry checked against Semantic Scholar's title match | Same command as above | Same model; the check calls Semantic Scholar's public API. |
+| `experiments/references.<locale>.json` | Chapter 4: a sampled reference list with per-sort probability, each entry checked against OpenAlex's title search | Same command as above | Same model; the check calls OpenAlex's public API. Add `--check-only` to redo just the lookups. |
 | `llm/<recipe>.json` | Claude answers for duels, evals and demos | `npm run record:llm -- <recipe>` | Your Claude subscription, through the Claude Code CLI (`claude -p`). No API key. |
 | `llm/recipes/<recipe>.json` | What to ask: model, system prompt, prompt per locale, repeats, optional JSON Schema | Edit by hand | — |
 

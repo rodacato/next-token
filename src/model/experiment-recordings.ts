@@ -16,7 +16,7 @@ export const referenceCheckSchema = z.object({
   text: z.string(),
   verdict: z.enum(["found", "not-found"]),
   checkedAt: z.iso.date(),
-  checkedWith: z.literal("semantic-scholar-title-match"),
+  checkedWith: z.literal("openalex-title-search"),
   matchedTitle: z.string().optional(),
   matchedUrl: z.url().optional(),
   lookup: z.literal("no-title").optional(),

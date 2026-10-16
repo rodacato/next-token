@@ -41,7 +41,7 @@ recording:
   disclosed here and in the recording's own settings, which are shown on
   screen.
 
-Each entry is checked against Semantic Scholar's title match. A truncated
+Each entry is checked against OpenAlex's title search. A truncated
 real title counts as found. Authors and venues are not checked, and the
 chapter says so; the Spanish run has a real title with invented authors.
 
@@ -49,7 +49,12 @@ chapter says so; the Spanish run has a real title with invented authors.
 
 - These are single runs of a 0.5B model, and the chapter says so. The
   numbers show this model's behavior, not a law.
-- Semantic Scholar's unauthenticated API rate-limits heavily. Raw model
-  output is saved first, and `--check-only` re-runs only the lookups.
+- The check moved from Semantic Scholar to OpenAlex. Semantic Scholar's
+  unauthenticated API rate-limited every run; OpenAlex answers in seconds
+  without a key. Raw model output is saved first, and `--check-only` re-runs
+  only the lookups.
+- A truncated title counts as found only if its words appear in the real
+  title in the same order. A first rule that ignored order produced a false
+  positive.
 - Measuring exposed that the q4f16 WebGPU weights were broken for writing;
   see ADR 2.

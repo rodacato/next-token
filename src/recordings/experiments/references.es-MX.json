@@ -1,0 +1,588 @@
+{
+  "model": "Qwen2.5-0.5B",
+  "repo": "onnx-community/Qwen2.5-0.5B",
+  "dtype": "q8",
+  "device": "webgpu",
+  "recordedAt": "2026-10-16",
+  "locale": "es-MX",
+  "prompt": "Bibliografía: tokenización y el costo de los idiomas distintos del inglés\n\n1. Petrov, A., La Malfa, E., Torr, P. H. S. y Bibi, A. (2023). Language Model Tokenizers Introduce Unfairness Between Languages. In Advances in Neural Information Processing Systems 36.\n2. Ahia, O., Kumar, S., Gonen, H., Kasai, J., Mortensen, D. R., Smith, N. A. y Tsvetkov, Y. (2023). Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models. In Proceedings of EMNLP 2023.\n3.",
+  "sampling": {
+    "temperature": 0.8,
+    "topP": 0.92,
+    "seed": 2,
+    "repetitionPenalty": 1.1
+  },
+  "sorts": [
+    {
+      "text": " Smith",
+      "probability": 0.005426864621678246
+    },
+    {
+      "text": ",",
+      "probability": 0.9691371946221181
+    },
+    {
+      "text": " N",
+      "probability": 0.5498115281114102
+    },
+    {
+      "text": ".",
+      "probability": 0.7837795832785749
+    },
+    {
+      "text": " A",
+      "probability": 0.9143858127106622
+    },
+    {
+      "text": ".,",
+      "probability": 0.1978402562939599
+    },
+    {
+      "text": " G",
+      "probability": 0.07826589599260975
+    },
+    {
+      "text": "onen",
+      "probability": 0.9760880317043392
+    },
+    {
+      "text": ",",
+      "probability": 0.9954777044930346
+    },
+    {
+      "text": " H",
+      "probability": 0.7925521288555865
+    },
+    {
+      "text": ".,",
+      "probability": 0.9274903763174717
+    },
+    {
+      "text": " K",
+      "probability": 0.1810787764519481
+    },
+    {
+      "text": "ain",
+      "probability": 0.012083778356060669
+    },
+    {
+      "text": "a",
+      "probability": 0.12797511701031936
+    },
+    {
+      "text": ",",
+      "probability": 0.9736939846200742
+    },
+    {
+      "text": " J",
+      "probability": 0.30106760567691787
+    },
+    {
+      "text": ".,",
+      "probability": 0.8173429897816353
+    },
+    {
+      "text": " Mort",
+      "probability": 0.16946651495993736
+    },
+    {
+      "text": "ensen",
+      "probability": 0.9700776818478104
+    },
+    {
+      "text": ",",
+      "probability": 0.9858159446503383
+    },
+    {
+      "text": " D",
+      "probability": 0.7321515830046346
+    },
+    {
+      "text": ".",
+      "probability": 0.8704597408685878
+    },
+    {
+      "text": " R",
+      "probability": 0.9609267395674993
+    },
+    {
+      "text": ".,",
+      "probability": 0.8807241873083657
+    },
+    {
+      "text": " and",
+      "probability": 0.18292685936440783
+    },
+    {
+      "text": " St",
+      "probability": 0.0035647924338169257
+    },
+    {
+      "text": "v",
+      "probability": 0.05200370016164457
+    },
+    {
+      "text": "ets",
+      "probability": 0.200063500013049
+    },
+    {
+      "text": ",",
+      "probability": 0.3561170582720468
+    },
+    {
+      "text": " Y",
+      "probability": 0.43583817007955356
+    },
+    {
+      "text": ".",
+      "probability": 0.9638228221335576
+    },
+    {
+      "text": " (",
+      "probability": 0.9191550475207293
+    },
+    {
+      "text": "2",
+      "probability": 0.960535119823627
+    },
+    {
+      "text": "0",
+      "probability": 0.998721255838614
+    },
+    {
+      "text": "2",
+      "probability": 0.9608915908261093
+    },
+    {
+      "text": "3",
+      "probability": 0.7902368668980402
+    },
+    {
+      "text": ").",
+      "probability": 0.9493999246598409
+    },
+    {
+      "text": " Language",
+      "probability": 0.016670735246294293
+    },
+    {
+      "text": " Model",
+      "probability": 0.4032574054909607
+    },
+    {
+      "text": " Token",
+      "probability": 0.8820570116478638
+    },
+    {
+      "text": "izers",
+      "probability": 0.5091563456192564
+    },
+    {
+      "text": " Cost",
+      "probability": 0.05117985708943639
+    },
+    {
+      "text": " the",
+      "probability": 0.6695056207593255
+    },
+    {
+      "text": " Same",
+      "probability": 0.9529017803662244
+    },
+    {
+      "text": "?",
+      "probability": 0.3907477824995222
+    },
+    {
+      "text": " In",
+      "probability": 0.16825442613278319
+    },
+    {
+      "text": " Proceedings",
+      "probability": 0.2873012211911851
+    },
+    {
+      "text": " of",
+      "probability": 0.9748942696966613
+    },
+    {
+      "text": " EM",
+      "probability": 0.48431591515498945
+    },
+    {
+      "text": "N",
+      "probability": 0.9816233481051414
+    },
+    {
+      "text": "LP",
+      "probability": 0.9740705322404742
+    },
+    {
+      "text": " ",
+      "probability": 0.6652636302127592
+    },
+    {
+      "text": "2",
+      "probability": 0.9923964318383153
+    },
+    {
+      "text": "0",
+      "probability": 0.9908710032817682
+    },
+    {
+      "text": "2",
+      "probability": 0.9967864833606742
+    },
+    {
+      "text": "3",
+      "probability": 0.8553651270222586
+    },
+    {
+      "text": ".",
+      "probability": 0.7846873830720624
+    },
+    {
+      "text": "\n4.",
+      "probability": 1,
+      "given": true
+    },
+    {
+      "text": " Smith",
+      "probability": 0.09832603936214712
+    },
+    {
+      "text": ",",
+      "probability": 0.9889210644326666
+    },
+    {
+      "text": " N",
+      "probability": 0.8759218675002405
+    },
+    {
+      "text": ".",
+      "probability": 0.8923504258648278
+    },
+    {
+      "text": " A",
+      "probability": 0.9828955516750444
+    },
+    {
+      "text": ".,",
+      "probability": 0.8469239793611624
+    },
+    {
+      "text": " Kas",
+      "probability": 0.05515019429635078
+    },
+    {
+      "text": "ai",
+      "probability": 0.7570072793025017
+    },
+    {
+      "text": ",",
+      "probability": 0.9941266396294818
+    },
+    {
+      "text": " J",
+      "probability": 0.932798628180113
+    },
+    {
+      "text": ".,",
+      "probability": 0.9190146497634052
+    },
+    {
+      "text": " G",
+      "probability": 0.20802721971191934
+    },
+    {
+      "text": "onen",
+      "probability": 0.9833507136848226
+    },
+    {
+      "text": ",",
+      "probability": 0.9984777807630184
+    },
+    {
+      "text": " H",
+      "probability": 0.9665522856233552
+    },
+    {
+      "text": ".,",
+      "probability": 0.9187342648795789
+    },
+    {
+      "text": " K",
+      "probability": 0.28217660215880414
+    },
+    {
+      "text": "aina",
+      "probability": 0.8160004167957424
+    },
+    {
+      "text": ",",
+      "probability": 0.9966517480425794
+    },
+    {
+      "text": " J",
+      "probability": 0.8834293537460606
+    },
+    {
+      "text": ".,",
+      "probability": 0.9493222871195967
+    },
+    {
+      "text": " Mort",
+      "probability": 0.1845054504087428
+    },
+    {
+      "text": "ensen",
+      "probability": 0.9988916354899937
+    },
+    {
+      "text": ",",
+      "probability": 0.9952676690880068
+    },
+    {
+      "text": " D",
+      "probability": 0.9875421960508646
+    },
+    {
+      "text": ".",
+      "probability": 0.9724319020915726
+    },
+    {
+      "text": " R",
+      "probability": 0.9832728719765557
+    },
+    {
+      "text": ".,",
+      "probability": 0.923939046429636
+    },
+    {
+      "text": " and",
+      "probability": 0.7138477123513987
+    },
+    {
+      "text": " St",
+      "probability": 0.2198514471892704
+    },
+    {
+      "text": "v",
+      "probability": 0.8680372169360482
+    },
+    {
+      "text": "ets",
+      "probability": 0.9806913246604878
+    },
+    {
+      "text": ",",
+      "probability": 0.9642685601980209
+    },
+    {
+      "text": " Y",
+      "probability": 0.9596370575450306
+    },
+    {
+      "text": ".",
+      "probability": 0.9725951735721402
+    },
+    {
+      "text": " (",
+      "probability": 0.9876099483748502
+    },
+    {
+      "text": "2",
+      "probability": 0.9955573970042277
+    },
+    {
+      "text": "0",
+      "probability": 0.9976841983808986
+    },
+    {
+      "text": "2",
+      "probability": 0.9918580458548288
+    },
+    {
+      "text": "3",
+      "probability": 0.9022943565963011
+    },
+    {
+      "text": ").",
+      "probability": 0.9557762156621372
+    },
+    {
+      "text": " Do",
+      "probability": 0.20746965320414146
+    },
+    {
+      "text": " All",
+      "probability": 0.9130747952912475
+    },
+    {
+      "text": " Languages",
+      "probability": 0.8724644084480797
+    },
+    {
+      "text": " Cost",
+      "probability": 0.7672405587614768
+    },
+    {
+      "text": " the",
+      "probability": 0.5843972111486276
+    },
+    {
+      "text": " Same",
+      "probability": 0.9951760142091748
+    },
+    {
+      "text": "?",
+      "probability": 0.8752990147530685
+    },
+    {
+      "text": " In",
+      "probability": 0.7809558131277193
+    },
+    {
+      "text": " EM",
+      "probability": 0.11684297433252208
+    },
+    {
+      "text": "N",
+      "probability": 0.9765963202695954
+    },
+    {
+      "text": "LP",
+      "probability": 0.950679455020601
+    },
+    {
+      "text": " ",
+      "probability": 0.7713893440082678
+    },
+    {
+      "text": "2",
+      "probability": 0.99466618333409
+    },
+    {
+      "text": "0",
+      "probability": 0.996234062058516
+    },
+    {
+      "text": "2",
+      "probability": 0.991381271235691
+    },
+    {
+      "text": "3",
+      "probability": 0.9537883017303658
+    },
+    {
+      "text": ".",
+      "probability": 0.8435349394709514
+    },
+    {
+      "text": "\n5.",
+      "probability": 1,
+      "given": true
+    },
+    {
+      "text": " Do",
+      "probability": 0.029718545175128664
+    },
+    {
+      "text": " All",
+      "probability": 0.5873933405021841
+    },
+    {
+      "text": " Languages",
+      "probability": 0.9560992558496328
+    },
+    {
+      "text": " Cost",
+      "probability": 0.9183615908452011
+    },
+    {
+      "text": " the",
+      "probability": 0.7386821974217829
+    },
+    {
+      "text": " Same",
+      "probability": 0.9910956588271929
+    },
+    {
+      "text": "?",
+      "probability": 0.8431038678823594
+    },
+    {
+      "text": " In",
+      "probability": 0.17077433536184825
+    },
+    {
+      "text": " Proceedings",
+      "probability": 0.33191637585246175
+    },
+    {
+      "text": " of",
+      "probability": 0.9808243852256597
+    },
+    {
+      "text": " EM",
+      "probability": 0.5910756189076379
+    },
+    {
+      "text": "N",
+      "probability": 0.9870745126744742
+    },
+    {
+      "text": "LP",
+      "probability": 0.9905387880335792
+    },
+    {
+      "text": " ",
+      "probability": 0.9524161285279902
+    },
+    {
+      "text": "2",
+      "probability": 0.9975132081044141
+    },
+    {
+      "text": "0",
+      "probability": 0.9987042860370605
+    },
+    {
+      "text": "2",
+      "probability": 0.9962806528239575
+    },
+    {
+      "text": "3",
+      "probability": 0.9792742938170673
+    },
+    {
+      "text": ".",
+      "probability": 0.6692976581768267
+    }
+  ],
+  "references": [
+    {
+      "text": "Smith, N. A., Gonen, H., Kaina, J., Mortensen, D. R., and Stvets, Y. (2023). Language Model Tokenizers Cost the Same? In Proceedings of EMNLP 2023.",
+      "verdict": "not-found",
+      "checkedAt": "2026-10-16",
+      "checkedWith": "openalex-title-search",
+      "matchedTitle": "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models"
+    },
+    {
+      "text": "Smith, N. A., Kasai, J., Gonen, H., Kaina, J., Mortensen, D. R., and Stvets, Y. (2023). Do All Languages Cost the Same? In EMNLP 2023.",
+      "verdict": "found",
+      "checkedAt": "2026-10-16",
+      "checkedWith": "openalex-title-search",
+      "matchedTitle": "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models",
+      "matchedUrl": "https://openalex.org/W4389519066"
+    },
+    {
+      "text": "Do All Languages Cost the Same? In Proceedings of EMNLP 2023.",
+      "verdict": "found",
+      "checkedAt": "2026-10-16",
+      "checkedWith": "openalex-title-search",
+      "matchedTitle": "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models",
+      "matchedUrl": "https://openalex.org/W4389519066"
+    }
+  ]
+}

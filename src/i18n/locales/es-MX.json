@@ -355,7 +355,7 @@
     "check": "Revisar el catálogo",
     "found": "En el catálogo: {title}",
     "notFound": "Ese título no está en el catálogo.",
-    "checkedWith": "Revisado por título contra Semantic Scholar el {date}. No se revisan autores ni revistas: un título real puede llevar autores inventados.",
+    "checkedWith": "Revisado por título contra OpenAlex el {date}. No se revisan autores ni revistas: un título real puede llevar autores inventados.",
     "confidence": "confianza promedio {value}",
     "contrastHeading": "La misma pregunta a un modelo más grande",
     "contrastBody": "Al pedirle tres artículos así, un modelo más grande y entrenado con instrucciones nombró artículos reales y marcó lo que no pudo verificar.",
