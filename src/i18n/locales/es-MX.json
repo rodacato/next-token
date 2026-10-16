@@ -7,6 +7,7 @@
   "course": {
     "title": "Next Token",
     "subtitle": "Modelos de lenguaje, compuestos a mano",
+    "description": "Un curso interactivo sobre modelos de lenguaje desde adentro: cómo elige un modelo el siguiente token, cómo construir cosas confiables con él, cómo se entrenan los modelos y cómo lanzar funciones de IA sin quemarse. Ambientado en un taller de imprenta tipográfica.",
     "acts": {
       "compositor": "Acto I · El cajista"
     }

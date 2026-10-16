@@ -7,6 +7,7 @@
   "course": {
     "title": "Next Token",
     "subtitle": "Large language models, set by hand",
+    "description": "An interactive course on large language models from the inside out: how a model picks the next token, how to build reliable things with it, how models are trained, and how to ship AI features without getting burned. Set in a letterpress print shop.",
     "acts": {
       "compositor": "Act I · The Compositor"
     }

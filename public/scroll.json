@@ -1,0 +1,45 @@
+{
+  "id": "next-token",
+  "version": "0.1.0",
+  "protocol": 0,
+  "entry": "./index.html",
+  "locales": [
+    "en",
+    "es-MX"
+  ],
+  "title": {
+    "en": "Next Token",
+    "es-MX": "Next Token"
+  },
+  "description": {
+    "en": "An interactive course on large language models from the inside out: how a model picks the next token, how to build reliable things with it, how models are trained, and how to ship AI features without getting burned. Set in a letterpress print shop.",
+    "es-MX": "Un curso interactivo sobre modelos de lenguaje desde adentro: cómo elige un modelo el siguiente token, cómo construir cosas confiables con él, cómo se entrenan los modelos y cómo lanzar funciones de IA sin quemarse. Ambientado en un taller de imprenta tipográfica."
+  },
+  "programmingLanguages": [],
+  "units": [
+    {
+      "id": "tokens",
+      "title": {
+        "en": "Sorts",
+        "es-MX": "Tipos"
+      }
+    },
+    {
+      "id": "next-token",
+      "title": {
+        "en": "The next sort",
+        "es-MX": "El siguiente tipo"
+      }
+    }
+  ],
+  "capabilities": [
+    "progress",
+    "llm"
+  ],
+  "requiredCapabilities": [
+    "progress"
+  ],
+  "optionalCapabilities": [
+    "llm"
+  ]
+}

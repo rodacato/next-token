@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run manifest && tsc && vite build",
     "preview": "vite preview",
     "typecheck": "tsc",
     "lint": "eslint .",
@@ -17,7 +17,8 @@
     "boards": "python3 -m http.server 4317",
     "boards:capture": "node design/step-0/capture.mjs",
     "record:runs": "node scripts/record-runs.ts",
-    "record:llm": "node scripts/record-llm.ts"
+    "record:llm": "node scripts/record-llm.ts",
+    "manifest": "node scripts/build-manifest.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
