@@ -356,6 +356,34 @@
         },
         "voice": "La prensa rechaza una hoja mal formada. No puede decirte que la hoja está equivocada."
       }
+    },
+    "tools": {
+      "title": "Herramientas",
+      "kicker": "Llamadas a funciones, desde el lado de quien ejecuta",
+      "problem": {
+        "heading": "El asistente reembolsó una licuadora. ¿Quién apretó el botón?",
+        "body": "El asistente de soporte de Mercadito ahora tiene dos herramientas: buscar un pedido y emitir un reembolso. La primera semana salió un reembolso de 2,450 MXN por un vaso estrellado. Finanzas preguntó qué parte del sistema decidió pagar.",
+        "task": "Lleva la conversación como quien ejecuta y mira qué controla de verdad el modelo."
+      },
+      "bench": {
+        "heading": "El modelo pide. Tú ejecutas.",
+        "body": "En cada turno el modelo pide una herramienta o responde. Cada solicitud llega primero a tu mesa: tú eliges qué devuelve la búsqueda y si el reembolso se ejecuta.",
+        "observe": "Prueba una fila equivocada, un pedido que no existe y un reembolso negado. Lee qué hace el modelo con cada uno."
+      },
+      "measure": {
+        "heading": "Dale la fila equivocada.",
+        "body": "Primero predice, luego devuelve el pedido de café en la primera búsqueda y lee el siguiente movimiento del modelo."
+      },
+      "debrief": {
+        "heading": "El modelo escribe solicitudes. Tu código tiene las llaves.",
+        "points": {
+          "one": "Una llamada a herramienta es texto: un nombre y argumentos. Nada se ejecuta hasta que tu código lo ejecuta, así que cada revisión de permisos va en tu código, no en el prompt.",
+          "two": "El modelo trata los resultados de las herramientas como hechos. Datos equivocados de tu herramienta se vuelven la respuesta del modelo, a menos que algo en el ciclo los revise.",
+          "three": "Niega en código las llamadas peligrosas y devuelve el motivo como resultado; así el modelo se lo puede explicar al cliente.",
+          "four": "Ponle tope al ciclo. Un arnés se detiene tras un número fijo de pasos, pida lo que pida el modelo."
+        },
+        "voice": "La prensa no escoge el papel. Lo escoge quien la alimenta."
+      }
     }
   },
   "readNext": {
@@ -379,7 +407,9 @@
       "huyen-ai-engineering": "Un libro completo sobre construir sobre modelos fundacionales, con una sección larga sobre evaluación.",
       "zheng-2023-judge": "Mide qué tanto coinciden los jueces LLM con las personas y sus sesgos (posición, largo, autopreferencia).",
       "anthropic-structured-outputs": "Cómo restringir la salida de Claude a un JSON Schema y qué partes del esquema se soportan.",
-      "zod-json-schema": "Cómo convertir esquemas de Zod a JSON Schema, el puente que se usa en este banco."
+      "zod-json-schema": "Cómo convertir esquemas de Zod a JSON Schema, el puente que se usa en este banco.",
+      "anthropic-tool-use": "Cómo Claude pide herramientas y cómo tu código devuelve resultados: el ciclo de este banco, en el formato nativo.",
+      "openai-function-calling": "El mismo contrato en la API de OpenAI: definiciones de funciones, llamadas y salidas."
     }
   },
   "units": {
@@ -573,6 +603,50 @@
       "right": "campos correctos",
       "calls": "llamadas",
       "tokens": "tokens"
+    }
+  },
+  "tools": {
+    "system": "Prompt de sistema y lista de herramientas",
+    "youRun": "Tú eres quien ejecuta",
+    "youRunBody": "El modelo no puede consultar nada ni reembolsarle a nadie. Escribe una solicitud; tu código decide si la ejecuta y qué le devuelve. Aquí, ese código eres tú.",
+    "protocolNote": "En este banco el modelo escribe cada turno como JSON restringido por un esquema. El uso nativo de herramientas (bloques tool_use, llamadas a funciones) lleva la misma solicitud en un campo estructurado; el ciclo es idéntico.",
+    "start": "Pasarle al modelo el mensaje del cliente",
+    "again": "Empezar de nuevo",
+    "waiting": "Esperando al modelo…",
+    "explored": "Ramas terminadas: {count}",
+    "modelAsks": "El modelo pide ejecutar",
+    "modelReplies": "El modelo le responde al cliente",
+    "unreadable": "El turno del modelo no se pudo leer",
+    "youReturned": "Tú devolviste",
+    "handBack": "¿Qué devuelve {tool}?",
+    "results": {
+      "right-row": "La fila correcta (pedido 50211, licuadora)",
+      "wrong-row": "Una fila equivocada (pedido 50112, café)",
+      "not-found": "Pedido no encontrado",
+      "run-it": "Ejecutar el reembolso",
+      "refuse": "Negarlo: más de 2,000 MXN requiere un supervisor"
+    },
+    "outcome": {
+      "step-limit": "Se alcanzó el límite de pasos. El arnés detiene el ciclo, pida lo que pida el modelo.",
+      "unreadable": "El turno no era una solicitud válida. Un arnés real lo rechazaría y volvería a pedirlo."
+    },
+    "predict": "Devuelves el pedido de café (50112) cuando el cliente preguntó por la licuadora (50211). ¿Qué hará el modelo?",
+    "predictions": {
+      "refund": "Reembolsar el pedido de café que le diste",
+      "recheck": "Notar que no coincide: volver a buscar o preguntar"
+    },
+    "runWrongRow": "Ahora corre esa rama: devuelve la fila equivocada en la primera búsqueda.",
+    "did": {
+      "refund": "reembolsó el pedido 50112",
+      "asked": "notó que no coincidía y le preguntó al cliente",
+      "lookedAgain": "notó que no coincidía y volvió a buscar el pedido"
+    },
+    "findingMatch": "Como predijiste: el modelo {did}. Confió lo suficiente en el resultado como para leerlo, y lo leyó.",
+    "findingMiss": "No es lo que predijiste: el modelo {did}.",
+    "stamp": {
+      "waiting": "te espera",
+      "run": "lo ejecutaste",
+      "refused": "lo negaste"
     }
   }
 }

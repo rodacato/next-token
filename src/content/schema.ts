@@ -102,7 +102,21 @@ export const structuredChapterSchema = z.object({
     .min(1),
 });
 
+const resultChoiceSchema = z.object({ id: z.string().regex(/^[a-z0-9-]+$/), result: z.record(z.string(), z.unknown()), echoInput: z.boolean().optional() });
+
+export const toolsChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("tools"),
+  maxTokens: z.number().int().positive(),
+  maxSteps: z.number().int().positive(),
+  system: perLocale,
+  customer: perLocale,
+  labels: z.record(z.string(), z.object({ customer: z.string(), call: z.string(), result: z.string() })),
+  toolResults: z.object({ lookup_order: z.array(resultChoiceSchema).min(1), issue_refund: z.array(resultChoiceSchema).min(1) }),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  toolsChapterSchema,
   structuredChapterSchema,
   tokensChapterSchema,
   nextTokenChapterSchema,
@@ -123,3 +137,4 @@ export type Duel = z.infer<typeof duelSchema>;
 export type DuelChapter = z.infer<typeof duelChapterSchema>;
 export type StructuredChapter = z.infer<typeof structuredChapterSchema>;
 export type EvalBuilderChapter = z.infer<typeof evalBuilderChapterSchema>;
+export type ToolsChapter = z.infer<typeof toolsChapterSchema>;

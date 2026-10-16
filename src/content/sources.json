@@ -150,5 +150,21 @@
     "year": 2017,
     "url": "https://arxiv.org/abs/1706.03762",
     "kind": "paper"
+  },
+  {
+    "id": "anthropic-tool-use",
+    "authors": "Anthropic",
+    "title": "Tool use with Claude",
+    "year": 2026,
+    "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
+    "kind": "docs"
+  },
+  {
+    "id": "openai-function-calling",
+    "authors": "OpenAI",
+    "title": "Function calling",
+    "year": 2026,
+    "url": "https://developers.openai.com/api/docs/guides/function-calling",
+    "kind": "docs"
   }
 ]

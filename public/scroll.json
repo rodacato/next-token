@@ -65,6 +65,13 @@
         "en": "Structured output",
         "es-MX": "Salida estructurada"
       }
+    },
+    {
+      "id": "tools",
+      "title": {
+        "en": "Tools",
+        "es-MX": "Herramientas"
+      }
     }
   ],
   "capabilities": [
