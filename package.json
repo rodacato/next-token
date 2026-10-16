@@ -2,8 +2,15 @@
   "name": "next-token",
   "version": "0.1.0",
   "private": true,
+  "description": "Learn how LLMs work, build with them, train them and ship them, in a letterpress print shop where every token is set by hand.",
   "type": "module",
   "license": "MIT",
+  "homepage": "https://rodacato.github.io/next-token/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodacato/next-token.git"
+  },
+  "bugs": "https://github.com/rodacato/next-token/issues",
   "scripts": {
     "dev": "vite",
     "build": "npm run manifest && tsc && vite build",
@@ -12,6 +19,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:e2e:smoke": "playwright test --grep @smoke",
     "i18n:check": "node scripts/check-i18n.ts",
     "check": "npm run typecheck && npm run lint && npm run test && npm run i18n:check",
     "boards": "python3 -m http.server 4317",

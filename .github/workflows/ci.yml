@@ -1,4 +1,4 @@
-name: CI
+name: CI · Test
 
 on:
   push:
@@ -8,12 +8,20 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
+    name: Check
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
           cache: npm
@@ -24,42 +32,51 @@ jobs:
       - run: npm run i18n:check
       - run: npm run build
 
-  e2e:
+  smoke:
+    name: Smoke
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     needs: check
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       # The bench runs on recorded runs here; no model is downloaded in CI.
-      - run: npm run test:e2e
+      - run: npm run test:e2e:smoke
         env:
           CI: true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: failure()
         with:
-          name: playwright-report
+          name: smoke-traces
           path: test-results/
 
   # Dojo's scroll conformance suite, run against the production build.
   conformance:
+    name: Conformance
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: check
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           repository: rodacato/dojo
           path: .dojo
-      - uses: actions/setup-node@v4
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: 24
           cache: npm
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
         with:
           package_json_file: .dojo/package.json
       - run: npm ci
@@ -73,5 +90,5 @@ jobs:
       - name: Run the suite
         run: |
           npx vite preview --port 5340 --strictPort &
-          for attempt in $(seq 30); do curl -sf http://localhost:5340/index.html > /dev/null && break; sleep 1; done
+          for _ in $(seq 30); do curl -sf http://localhost:5340/index.html > /dev/null && break; sleep 1; done
           node .dojo/packages/scroll-conformance/dist/bin.js --url http://localhost:5340/index.html --drive tests/conformance/drive.mjs
