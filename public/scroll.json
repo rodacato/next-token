@@ -93,6 +93,20 @@
         "en": "Casting from scratch",
         "es-MX": "Fundir desde cero"
       }
+    },
+    {
+      "id": "stages",
+      "title": {
+        "en": "The stages of a real model",
+        "es-MX": "Las etapas de un modelo real"
+      }
+    },
+    {
+      "id": "lora",
+      "title": {
+        "en": "The LoRA plate",
+        "es-MX": "La placa LoRA"
+      }
     }
   ],
   "capabilities": [

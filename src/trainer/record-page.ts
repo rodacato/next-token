@@ -10,6 +10,7 @@ export type TrainerRun = {
   points: Extract<TrainerResponse, { type: "progress" }>[];
   stops: { step: number; samples: Sample[] }[];
   checkpoint?: Checkpoint;
+  adapter?: { fingerprintBefore: string; fingerprintAfter: string; withAdapter: Sample[]; withoutAdapter: Sample[] };
 };
 
 type Job = {
@@ -25,6 +26,7 @@ type Job = {
   base?: Checkpoint;
   lora?: LoraShape;
   save?: boolean;
+  compareAdapter?: boolean;
 };
 
 declare global {
@@ -51,6 +53,11 @@ window.recordTraining = async (job) => {
     points.push(m);
     log(`step ${m.step} train ${m.train.toFixed(3)} val ${m.val.toFixed(3)} ${(m.elapsedMs / 1000).toFixed(1)}s${m.samples ? ` · ${m.samples.map((s) => s.text).join(" | ")}` : ""}`);
   });
+  const fingerprint = async () => {
+    client.send({ type: "fingerprint" });
+    return (await client.once("fingerprint")).value;
+  };
+  const fingerprintBefore = job.compareAdapter ? await fingerprint() : "";
   const stops: TrainerRun["stops"] = [];
   let at = 0;
   for (const step of job.stops) {
@@ -62,11 +69,21 @@ window.recordTraining = async (job) => {
     stops.push({ step: at, samples: [...samples] });
   }
   stop();
+  let adapter: TrainerRun["adapter"];
+  if (job.compareAdapter) {
+    const fingerprintAfter = await fingerprint();
+    const sample = async (loraOn: boolean) => {
+      client.send({ type: "sample", count: job.sampleCount, temperature: job.temperature, seed: job.sampleSeed, loraOn });
+      return [...(await client.once("samples")).samples];
+    };
+    adapter = { fingerprintBefore, fingerprintAfter, withAdapter: await sample(true), withoutAdapter: await sample(false) };
+    log(`base ${fingerprintBefore} → ${fingerprintAfter}`);
+  }
   let checkpoint: Checkpoint | undefined;
   if (job.save) {
     client.send({ type: "save" });
     checkpoint = (await client.once("saved")).checkpoint;
   }
   client.terminate();
-  return { backend: ready.backend, baseParams: ready.baseParams, loraParams: ready.loraParams, points, stops, ...(checkpoint ? { checkpoint } : {}) };
+  return { backend: ready.backend, baseParams: ready.baseParams, loraParams: ready.loraParams, points, stops, ...(checkpoint ? { checkpoint } : {}), ...(adapter ? { adapter } : {}) };
 };

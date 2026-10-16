@@ -1,0 +1,953 @@
+{
+  "locale": "en",
+  "recordedAt": "2026-10-16",
+  "machine": "Apple M2 Max",
+  "backend": "webgpu",
+  "ranks": [
+    {
+      "rank": 1,
+      "loraParams": 768,
+      "baseParams": 111104,
+      "points": [
+        {
+          "type": "progress",
+          "step": 25,
+          "train": 3.7901034355163574,
+          "val": 3.864325165748596,
+          "elapsedMs": 259.43999993801117
+        },
+        {
+          "type": "progress",
+          "step": 50,
+          "train": 3.090819835662842,
+          "val": 3.181711256504059,
+          "elapsedMs": 430.5049999952316
+        },
+        {
+          "type": "progress",
+          "step": 75,
+          "train": 2.873718023300171,
+          "val": 2.994001865386963,
+          "elapsedMs": 596.5049999952316
+        },
+        {
+          "type": "progress",
+          "step": 100,
+          "train": 2.609321355819702,
+          "val": 2.9015629291534424,
+          "elapsedMs": 1806.1000000238419,
+          "samples": [
+            {
+              "text": "Clire, 8, M, 47s M5Foir, M4, , s3 1l, 4s, X M r, NrNr - PFM7z08Fip ps s felppe pu, -30k, N",
+              "kind": "new"
+            },
+            {
+              "text": "Ery pre hire in the pupuNe pof ghors.",
+              "kind": "new"
+            },
+            {
+              "text": "p, -Men, MFoSpoele shicNre sis 8,  N N ne 1 ,  XNr , M720, 0M 9X5 8N LM2s He y s wat  .",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 125,
+          "train": 2.6147677898406982,
+          "val": 2.785721480846405,
+          "elapsedMs": 1983.1549999713898
+        },
+        {
+          "type": "progress",
+          "step": 150,
+          "train": 2.5545458793640137,
+          "val": 2.744571030139923,
+          "elapsedMs": 2163.4700000286102
+        },
+        {
+          "type": "progress",
+          "step": 175,
+          "train": 2.317162036895752,
+          "val": 2.694048523902893,
+          "elapsedMs": 2321.860000014305
+        },
+        {
+          "type": "progress",
+          "step": 200,
+          "train": 2.437091112136841,
+          "val": 2.63452285528183,
+          "elapsedMs": 2813.164999961853,
+          "samples": [
+            {
+              "text": "Don6r.t, 7XManut8Creinver, D0t70s9pt itbppt re, -MM0MN.",
+              "kind": "new"
+            },
+            {
+              "text": "Go, x3Me.",
+              "kind": "new"
+            },
+            {
+              "text": "Crr thrrest. thort.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 225,
+          "train": 2.2874302864074707,
+          "val": 2.604114830493927,
+          "elapsedMs": 3006.625
+        },
+        {
+          "type": "progress",
+          "step": 250,
+          "train": 2.2855207920074463,
+          "val": 2.5894270539283752,
+          "elapsedMs": 3165.289999961853
+        },
+        {
+          "type": "progress",
+          "step": 275,
+          "train": 2.2718167304992676,
+          "val": 2.5491077303886414,
+          "elapsedMs": 3326.2949999570847
+        },
+        {
+          "type": "progress",
+          "step": 300,
+          "train": 2.2699127197265625,
+          "val": 2.5388652682304382,
+          "elapsedMs": 4721.465000033379,
+          "samples": [
+            {
+              "text": "f Xof. tof t ree, n Mipn. , 12 7l 3X  -t Sre It l-. e nDrt t Murr. sRorere, N 3zX M 9 l4N.",
+              "kind": "new"
+            },
+            {
+              "text": "Creatir whor, M,M1N. Fas. eaderes. shin, 7 M11N. s, , M 3N. Freit llllis. ippweres. pinnnn",
+              "kind": "new"
+            },
+            {
+              "text": "ced, Mofasce t. tha en toroarr, Mirt Free sheN. mippw innnnnnBnoonter ttrre 2 n,  t - M t9",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 325,
+          "train": 2.2558438777923584,
+          "val": 2.567152678966522,
+          "elapsedMs": 4904.47000002861
+        },
+        {
+          "type": "progress",
+          "step": 350,
+          "train": 2.1046738624572754,
+          "val": 2.556052565574646,
+          "elapsedMs": 5063.009999990463
+        },
+        {
+          "type": "progress",
+          "step": 375,
+          "train": 2.1766715049743652,
+          "val": 2.5382019877433777,
+          "elapsedMs": 5250.549999952316
+        },
+        {
+          "type": "progress",
+          "step": 400,
+          "train": 2.15480899810791,
+          "val": 2.5241947174072266,
+          "elapsedMs": 5596.044999957085,
+          "samples": [
+            {
+              "text": "ck trower, 2 MM7N.",
+              "kind": "new"
+            },
+            {
+              "text": "be tows, 1wMXN.",
+              "kind": "new"
+            },
+            {
+              "text": "Ec, 4,o M0N 3N.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 425,
+          "train": 2.2290494441986084,
+          "val": 2.5236857533454895,
+          "elapsedMs": 5772.1849999427795
+        },
+        {
+          "type": "progress",
+          "step": 450,
+          "train": 2.114140033721924,
+          "val": 2.5187994241714478,
+          "elapsedMs": 5925.544999957085
+        },
+        {
+          "type": "progress",
+          "step": 475,
+          "train": 2.1385087966918945,
+          "val": 2.5246105194091797,
+          "elapsedMs": 6085.1050000190735
+        },
+        {
+          "type": "progress",
+          "step": 500,
+          "train": 2.038322687149048,
+          "val": 2.4828487038612366,
+          "elapsedMs": 6934.72000002861,
+          "samples": [
+            {
+              "text": "clest ada u trol r Ma has. toto apre soos inels, MMMMMMMXCPoAs7N.",
+              "kind": "new"
+            },
+            {
+              "text": "Mpooof , Mipr, M, MMMXN. Free shipping s.",
+              "kind": "new"
+            },
+            {
+              "text": "'pnce , 9 MMV8, 3r99Mo , M0M7 TN. St MN. TN. harrrom.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 525,
+          "train": 2.1260032653808594,
+          "val": 2.4941617846488953,
+          "elapsedMs": 7116.600000023842
+        },
+        {
+          "type": "progress",
+          "step": 550,
+          "train": 2.1970109939575195,
+          "val": 2.479765772819519,
+          "elapsedMs": 7277.0199999809265
+        },
+        {
+          "type": "progress",
+          "step": 575,
+          "train": 2.0871028900146484,
+          "val": 2.493142068386078,
+          "elapsedMs": 7433.669999957085
+        },
+        {
+          "type": "progress",
+          "step": 600,
+          "train": 2.1230697631835938,
+          "val": 2.4984049201011658,
+          "elapsedMs": 7921.985000014305,
+          "samples": [
+            {
+              "text": "ck toale feins, 9 M8N.",
+              "kind": "new"
+            },
+            {
+              "text": "cke,  3ton.",
+              "kind": "new"
+            },
+            {
+              "text": "le fhe chofe, MFhippl nols in thalaurns.Stomorrow.",
+              "kind": "new"
+            }
+          ]
+        }
+      ],
+      "adapter": {
+        "fingerprintBefore": "9850c2c5",
+        "fingerprintAfter": "9850c2c5",
+        "withAdapter": [
+          {
+            "text": "by lowkn, M9N. MN. TN. har. ber, M2 cde ds -32290, M, re M ut S. Pyomeer.",
+            "kind": "new"
+          },
+          {
+            "text": "th,e 03M1N. Freels. lipppinnk0  ce .",
+            "kind": "new"
+          },
+          {
+            "text": "lat trret. brrd, ickt, X  ipw XN 4No 9s s rerere bt t lo d mow in tow bellllees cto s rd c",
+            "kind": "new"
+          },
+          {
+            "text": "h hrre wpu4s.",
+            "kind": "new"
+          },
+          {
+            "text": "pot trr, MMipw4N.",
+            "kind": "new"
+          },
+          {
+            "text": "'t thorrs, 5 7MM0N. homipppinnny somorres, 9- -3.",
+            "kind": "new"
+          }
+        ],
+        "withoutAdapter": [
+          {
+            "text": "Beds o hat good thing.",
+            "kind": "new"
+          },
+          {
+            "text": "Bed oesn his hoes.",
+            "kind": "new"
+          },
+          {
+            "text": "Honesty is the best mokes.",
+            "kind": "new"
+          },
+          {
+            "text": "The best moke the mouth.",
+            "kind": "new"
+          },
+          {
+            "text": "The goes around comney.",
+            "kind": "new"
+          },
+          {
+            "text": "Honesty is the best mokes.",
+            "kind": "new"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 4,
+      "loraParams": 3072,
+      "baseParams": 111104,
+      "points": [
+        {
+          "type": "progress",
+          "step": 25,
+          "train": 3.1442270278930664,
+          "val": 3.186449408531189,
+          "elapsedMs": 266.3250000476837
+        },
+        {
+          "type": "progress",
+          "step": 50,
+          "train": 2.4291813373565674,
+          "val": 2.522856891155243,
+          "elapsedMs": 437.2450000047684
+        },
+        {
+          "type": "progress",
+          "step": 75,
+          "train": 2.137617826461792,
+          "val": 2.2992621064186096,
+          "elapsedMs": 626.0199999809265
+        },
+        {
+          "type": "progress",
+          "step": 100,
+          "train": 1.9525535106658936,
+          "val": 2.131897211074829,
+          "elapsedMs": 1578.375,
+          "samples": [
+            {
+              "text": "Crlree peer, 6 O M0N. SFree setrs, M- Me Se M3qMVips 4 1X29 z E ck. o h hase seexs.",
+              "kind": "new"
+            },
+            {
+              "text": "Ehil pott tre, MXN.",
+              "kind": "new"
+            },
+            {
+              "text": "Crras, hotttttomorow trer 8294XN reeee dly shilen, set Fat f Meee s.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 125,
+          "train": 1.825905203819275,
+          "val": 2.084446966648102,
+          "elapsedMs": 1752.9700000286102
+        },
+        {
+          "type": "progress",
+          "step": 150,
+          "train": 1.75839364528656,
+          "val": 2.058607757091522,
+          "elapsedMs": 1915.7200000286102
+        },
+        {
+          "type": "progress",
+          "step": 175,
+          "train": 1.5905613899230957,
+          "val": 2.0338387489318848,
+          "elapsedMs": 2079.9650000333786
+        },
+        {
+          "type": "progress",
+          "step": 200,
+          "train": 1.6626758575439453,
+          "val": 2.0168844163417816,
+          "elapsedMs": 3201.8949999809265,
+          "samples": [
+            {
+              "text": "Crers, MXN. Shiping ston stomorrow.",
+              "kind": "new"
+            },
+            {
+              "text": "Horn, M0N. Fret shipping over , X8XMXN. robralashakharncas horg hoorkess shipppping.",
+              "kind": "new"
+            },
+            {
+              "text": "Fater, g MXN. Fret shipping over Xayayhadaree, shor 849 M4 M2 Min MMXN. Fre s shippong oxk",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 225,
+          "train": 1.5348005294799805,
+          "val": 1.9776397049427032,
+          "elapsedMs": 3374.4550000429153
+        },
+        {
+          "type": "progress",
+          "step": 250,
+          "train": 1.5567309856414795,
+          "val": 2.0302058458328247,
+          "elapsedMs": 3534.9049999713898
+        },
+        {
+          "type": "progress",
+          "step": 275,
+          "train": 1.4616448879241943,
+          "val": 2.05668243765831,
+          "elapsedMs": 3698.7549999952316
+        },
+        {
+          "type": "progress",
+          "step": 300,
+          "train": 1.5377864837646484,
+          "val": 2.053887188434601,
+          "elapsedMs": 4573.784999966621,
+          "samples": [
+            {
+              "text": "Sast wott, o of 3Unconnncobncom, 3, , , , g, M99 M9 Me Mzs. MMe.. MXN.SgN. Ships, sen seto",
+              "kind": "new"
+            },
+            {
+              "text": "Cot tor totker, 4 9 M3N. Free shipping.",
+              "kind": "new"
+            },
+            {
+              "text": "Coot moker, , 77 M9N. Ships tomorrow.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 325,
+          "train": 1.455627202987671,
+          "val": 2.010642319917679,
+          "elapsedMs": 4803.850000023842
+        },
+        {
+          "type": "progress",
+          "step": 350,
+          "train": 1.391739845275879,
+          "val": 2.094992011785507,
+          "elapsedMs": 4987.615000009537
+        },
+        {
+          "type": "progress",
+          "step": 375,
+          "train": 1.4517706632614136,
+          "val": 1.98784339427948,
+          "elapsedMs": 5180.97000002861
+        },
+        {
+          "type": "progress",
+          "step": 400,
+          "train": 1.4398521184921265,
+          "val": 2.1017799079418182,
+          "elapsedMs": 5902.514999985695,
+          "samples": [
+            {
+              "text": "Pacorns, XX M4k MXN.",
+              "kind": "new"
+            },
+            {
+              "text": "Dorsss, z9X M6N.",
+              "kind": "new"
+            },
+            {
+              "text": "He thord bondes, 99 MXN. Free shipping over Unetws blabld moderd mobatca maker, .",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 425,
+          "train": 1.420157790184021,
+          "val": 2.064294457435608,
+          "elapsedMs": 6068.575000047684
+        },
+        {
+          "type": "progress",
+          "step": 450,
+          "train": 1.3657525777816772,
+          "val": 2.0968715846538544,
+          "elapsedMs": 6225.09500002861
+        },
+        {
+          "type": "progress",
+          "step": 475,
+          "train": 1.3533776998519897,
+          "val": 2.1393651962280273,
+          "elapsedMs": 6386.889999985695
+        },
+        {
+          "type": "progress",
+          "step": 500,
+          "train": 1.2390022277832031,
+          "val": 2.021150767803192,
+          "elapsedMs": 7306.995000004768,
+          "samples": [
+            {
+              "text": "Pollo, j, qD MMM9N. SFyei n lnsepin nday mans, set otler , 24XN MUloolid ndlay manere in b",
+              "kind": "new"
+            },
+            {
+              "text": "Dr ast reter, 9 nx M0N. Flor fke hips tom, 39 M7 M8N. Sho Frspi tkelvess.",
+              "kind": "new"
+            },
+            {
+              "text": "Der sippping.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 525,
+          "train": 1.2989296913146973,
+          "val": 2.0227265059947968,
+          "elapsedMs": 7494.825000047684
+        },
+        {
+          "type": "progress",
+          "step": 550,
+          "train": 1.3724031448364258,
+          "val": 2.0600576996803284,
+          "elapsedMs": 7653.674999952316
+        },
+        {
+          "type": "progress",
+          "step": 575,
+          "train": 1.2748390436172485,
+          "val": 2.1019800305366516,
+          "elapsedMs": 7817.90499997139
+        },
+        {
+          "type": "progress",
+          "step": 600,
+          "train": 1.3246201276779175,
+          "val": 2.1014583706855774,
+          "elapsedMs": 8341.65499997139,
+          "samples": [
+            {
+              "text": "Roben trabows.",
+              "kind": "new"
+            },
+            {
+              "text": "arge iven, 57 MXN. Free shipping.",
+              "kind": "new"
+            },
+            {
+              "text": "re holarer colola blay, set Show Unnnnnnes..",
+              "kind": "new"
+            }
+          ]
+        }
+      ],
+      "adapter": {
+        "fingerprintBefore": "9850c2c5",
+        "fingerprintAfter": "9850c2c5",
+        "withAdapter": [
+          {
+            "text": "Polers of cufiple ndon batay hips, 0 Fe eJd fay d nead d proard.",
+            "kind": "new"
+          },
+          {
+            "text": "lrer, 9X MXN. Ships tomorrow.",
+            "kind": "new"
+          },
+          {
+            "text": "Chot kef han chatkld botrrer, - MXN. Shod tututuroot bnes.",
+            "kind": "new"
+          },
+          {
+            "text": "Id, JM2N. 9Col hot bofcor babd manay msy in hatr dolay.",
+            "kind": "new"
+          },
+          {
+            "text": "x",
+            "kind": "new"
+          },
+          {
+            "text": "Pe tricer, -30S, M999 M89. MXN. SFret. shrow. tree tree tofcfsch, 0 e e f M5,ed MXN. Thala",
+            "kind": "new"
+          }
+        ],
+        "withoutAdapter": [
+          {
+            "text": "Beds o hat good thing.",
+            "kind": "new"
+          },
+          {
+            "text": "Bed oesn his hoes.",
+            "kind": "new"
+          },
+          {
+            "text": "Honesty is the best mokes.",
+            "kind": "new"
+          },
+          {
+            "text": "The best moke the mouth.",
+            "kind": "new"
+          },
+          {
+            "text": "The goes around comney.",
+            "kind": "new"
+          },
+          {
+            "text": "Honesty is the best mokes.",
+            "kind": "new"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 16,
+      "loraParams": 12288,
+      "baseParams": 111104,
+      "points": [
+        {
+          "type": "progress",
+          "step": 25,
+          "train": 2.3663105964660645,
+          "val": 2.5902657508850098,
+          "elapsedMs": 253.79999995231628
+        },
+        {
+          "type": "progress",
+          "step": 50,
+          "train": 1.7300885915756226,
+          "val": 2.0728999972343445,
+          "elapsedMs": 457.3400000333786
+        },
+        {
+          "type": "progress",
+          "step": 75,
+          "train": 1.5264008045196533,
+          "val": 1.9607403874397278,
+          "elapsedMs": 631.6299999952316
+        },
+        {
+          "type": "progress",
+          "step": 100,
+          "train": 1.3399933576583862,
+          "val": 2.0573453307151794,
+          "elapsedMs": 1861.6499999761581,
+          "samples": [
+            {
+              "text": "Corrorer coer, qFee ooolt bet rs, of 7, MXN. Fo Ureen's t tet colt maday in a bouadad day,",
+              "kind": "new"
+            },
+            {
+              "text": "Cot muicer, 3, 49 M6N. Freee shipping over 9.",
+              "kind": "new"
+            },
+            {
+              "text": "Con mucaer, 52 MXN. Free shipping over XN. Free shande, 3, M,89-N. Freee st pPoooo sppplt.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 125,
+          "train": 1.155703067779541,
+          "val": 1.9880924224853516,
+          "elapsedMs": 2035.820000052452
+        },
+        {
+          "type": "progress",
+          "step": 150,
+          "train": 1.1133062839508057,
+          "val": 2.049046039581299,
+          "elapsedMs": 2195.4500000476837
+        },
+        {
+          "type": "progress",
+          "step": 175,
+          "train": 1.010831356048584,
+          "val": 2.1123040318489075,
+          "elapsedMs": 2357.0499999523163
+        },
+        {
+          "type": "progress",
+          "step": 200,
+          "train": 0.892929196357727,
+          "val": 2.116823732852936,
+          "elapsedMs": 2783.460000038147,
+          "samples": [
+            {
+              "text": "Cotler, X3Cot pusing.",
+              "kind": "new"
+            },
+            {
+              "text": "xcoker, 808i MXN. Ships tomorrow.",
+              "kind": "new"
+            },
+            {
+              "text": "Der upsss.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 225,
+          "train": 0.8723152875900269,
+          "val": 2.2012503147125244,
+          "elapsedMs": 3002.185000061989
+        },
+        {
+          "type": "progress",
+          "step": 250,
+          "train": 0.8636435270309448,
+          "val": 2.244197368621826,
+          "elapsedMs": 3161.695000052452
+        },
+        {
+          "type": "progress",
+          "step": 275,
+          "train": 0.7781338691711426,
+          "val": 2.2596364617347717,
+          "elapsedMs": 3315.7400000095367
+        },
+        {
+          "type": "progress",
+          "step": 300,
+          "train": 0.8571252226829529,
+          "val": 2.296498417854309,
+          "elapsedMs": 3992.4550000429153,
+          "samples": [
+            {
+              "text": "N Fatoolt mug, 34XX1,97533, 4622520    w 0 6, MXN. Shipps tomorrow.",
+              "kind": "new"
+            },
+            {
+              "text": "Fas, j,7X0 MXN. Freen.",
+              "kind": "new"
+            },
+            {
+              "text": "Fas, j,X0 M0N. Free shippping.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 325,
+          "train": 0.7864238619804382,
+          "val": 2.3068222999572754,
+          "elapsedMs": 4159.225000023842
+        },
+        {
+          "type": "progress",
+          "step": 350,
+          "train": 0.710572361946106,
+          "val": 2.2328270077705383,
+          "elapsedMs": 4318.134999990463
+        },
+        {
+          "type": "progress",
+          "step": 375,
+          "train": 0.7401880025863647,
+          "val": 2.231797218322754,
+          "elapsedMs": 4484.924999952316
+        },
+        {
+          "type": "progress",
+          "step": 400,
+          "train": 0.7550594806671143,
+          "val": 2.346361994743347,
+          "elapsedMs": 5210.754999995232,
+          "samples": [
+            {
+              "text": "Frenc sook, set of 4, XMXN. Free shipping over 0.",
+              "kind": "new"
+            },
+            {
+              "text": "Cot holder, 9 MXN. Ships tomorrow.",
+              "kind": "new"
+            },
+            {
+              "text": "Sawo co ckettttle, X29 M20 M9 N. Free shipping oar.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 425,
+          "train": 0.668146014213562,
+          "val": 2.187067687511444,
+          "elapsedMs": 5382.4400000572205
+        },
+        {
+          "type": "progress",
+          "step": 450,
+          "train": 0.7201393842697144,
+          "val": 2.241619646549225,
+          "elapsedMs": 5543.585000038147
+        },
+        {
+          "type": "progress",
+          "step": 475,
+          "train": 0.6873652935028076,
+          "val": 2.162249445915222,
+          "elapsedMs": 5700.705000042915
+        },
+        {
+          "type": "progress",
+          "step": 500,
+          "train": 0.6398438811302185,
+          "val": 2.1982043981552124,
+          "elapsedMs": 6244.044999957085,
+          "samples": [
+            {
+              "text": "Cast in anladand dayareturns.",
+              "kind": "new"
+            },
+            {
+              "text": "Cast in asprowl.",
+              "kind": "new"
+            },
+            {
+              "text": "Cast in aspron, 1,6-Mj. M29 M3y w. N. Free shipping.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 525,
+          "train": 0.6937848925590515,
+          "val": 2.209944188594818,
+          "elapsedMs": 6446.325000047684
+        },
+        {
+          "type": "progress",
+          "step": 550,
+          "train": 0.6740571856498718,
+          "val": 2.204359233379364,
+          "elapsedMs": 6607.289999961853
+        },
+        {
+          "type": "progress",
+          "step": 575,
+          "train": 0.588295578956604,
+          "val": 2.182633101940155,
+          "elapsedMs": 6765.835000038147
+        },
+        {
+          "type": "progress",
+          "step": 600,
+          "train": 0.6151669025421143,
+          "val": 2.1385167241096497,
+          "elapsedMs": 7569.299999952316,
+          "samples": [
+            {
+              "text": "Coler banket, 93869 MXN. Keeeps it cold all therss, set of 3, 49 M-IpPt,6X69.",
+              "kind": "new"
+            },
+            {
+              "text": "Cottler ban, 99 MXN. Two colors.",
+              "kind": "new"
+            },
+            {
+              "text": "Steen watch charger, 699 M0 N. Free shipping.",
+              "kind": "new"
+            }
+          ]
+        }
+      ],
+      "adapter": {
+        "fingerprintBefore": "9850c2c5",
+        "fingerprintAfter": "9850c2c5",
+        "withAdapter": [
+          {
+            "text": "Coter cokel dol day, 4X2 M-day 4XN. Hand made in Yucatan.",
+            "kind": "new"
+          },
+          {
+            "text": "Freen mlorrow.",
+            "kind": "new"
+          },
+          {
+            "text": "Bat oooter, 28380 MXN. Free shipping.",
+            "kind": "new"
+          },
+          {
+            "text": "N peorr tweapon, X669 MXN. Ships tomorrow.",
+            "kind": "new"
+          },
+          {
+            "text": "Bat toot tokna, 4X71 MXN. Ships tomorrrow.",
+            "kind": "new"
+          },
+          {
+            "text": "Ealectric curiceoker, X9 M-ofw z9N.",
+            "kind": "new"
+          }
+        ],
+        "withoutAdapter": [
+          {
+            "text": "Beds o hat good thing.",
+            "kind": "new"
+          },
+          {
+            "text": "Bed oesn his hoes.",
+            "kind": "new"
+          },
+          {
+            "text": "Honesty is the best mokes.",
+            "kind": "new"
+          },
+          {
+            "text": "The best moke the mouth.",
+            "kind": "new"
+          },
+          {
+            "text": "The goes around comney.",
+            "kind": "new"
+          },
+          {
+            "text": "Honesty is the best mokes.",
+            "kind": "new"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -222,5 +222,61 @@
     "year": 2023,
     "url": "https://github.com/karpathy/nanoGPT",
     "kind": "code"
+  },
+  {
+    "id": "hu-2021-lora",
+    "authors": "Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, Chen",
+    "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+    "year": 2021,
+    "url": "https://arxiv.org/abs/2106.09685",
+    "kind": "paper"
+  },
+  {
+    "id": "dettmers-2023-qlora",
+    "authors": "Dettmers, Pagnoni, Holtzman, Zettlemoyer",
+    "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2305.14314",
+    "kind": "paper"
+  },
+  {
+    "id": "ouyang-2022-instructgpt",
+    "authors": "Ouyang et al.",
+    "title": "Training language models to follow instructions with human feedback",
+    "year": 2022,
+    "url": "https://arxiv.org/abs/2203.02155",
+    "kind": "paper"
+  },
+  {
+    "id": "rafailov-2023-dpo",
+    "authors": "Rafailov, Sharma, Mitchell, Ermon, Manning, Finn",
+    "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+    "year": 2023,
+    "url": "https://arxiv.org/abs/2305.18290",
+    "kind": "paper"
+  },
+  {
+    "id": "lambert-2024-tulu3",
+    "authors": "Lambert et al.",
+    "title": "Tulu 3: Pushing Frontiers in Open Language Model Post-Training",
+    "year": 2024,
+    "url": "https://arxiv.org/abs/2411.15124",
+    "kind": "paper"
+  },
+  {
+    "id": "hinton-2015-distillation",
+    "authors": "Hinton, Vinyals, Dean",
+    "title": "Distilling the Knowledge in a Neural Network",
+    "year": 2015,
+    "url": "https://arxiv.org/abs/1503.02531",
+    "kind": "paper"
+  },
+  {
+    "id": "minicpm5-card",
+    "authors": "OpenBMB",
+    "title": "MiniCPM5-2B model card",
+    "year": 2026,
+    "url": "https://huggingface.co/openbmb/MiniCPM5-2B",
+    "kind": "docs"
   }
 ]

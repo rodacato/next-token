@@ -468,6 +468,62 @@
         },
         "voice": "A new caster makes bad type for a while. Then, if no one stops it, it makes the same good letter forever."
       }
+    },
+    "lora": {
+      "title": "The LoRA plate",
+      "kicker": "Low-rank adaptation",
+      "problem": {
+        "heading": "Retraining every weight costs a foundry. Mercadito has a desk.",
+        "body": "Fine-tuning a 2B model in full needs about 40 GB just for weights and optimizer. Mercadito's machine has one 12 GB card. LoRA trains a thin plate laid over the weights instead, and leaves the casting alone.",
+        "task": "Count what the plate costs on a real model, then lay one on a small model and see what it changes."
+      },
+      "bench": {
+        "heading": "Freeze the casting. Train the plate.",
+        "body": "Above, the arithmetic on MiniCPM5-2B's real shapes. Below, an adapter trained live on chapter 11's model: proverbs in, taglines out, with the base weights fingerprinted before and after.",
+        "observe": "Switch the adapter off and on. Same base weights, different output."
+      },
+      "measure": {
+        "heading": "How thin can the plate be?",
+        "body": "Predict first, then train all three ranks and count the lines that carry a price."
+      },
+      "debrief": {
+        "heading": "A small plate changes behaviour, not the casting.",
+        "points": {
+          "one": "LoRA adds B·A to chosen weight matrices. With rank 16 on attention, that's about 0.3% of MiniCPM5-2B's parameters.",
+          "two": "The base never changes. One base can carry many adapters, swapped in per task, and switching one off restores the original exactly.",
+          "three": "QLoRA stores the frozen base in 4 bits, which is how a 2B or even a 7B model fine-tunes on a single home GPU.",
+          "four": "Here the plate moved the format (prices, 'Free shipping') more than the words. That's the pattern you'll see again: adapters teach behaviour more readily than facts."
+        },
+        "voice": "You don't recast the type to print a new job. You lock a new forme around it."
+      }
+    },
+    "stages": {
+      "title": "The stages of a real model",
+      "kicker": "Base, midtrain, SFT, RL",
+      "problem": {
+        "heading": "One model, four castings.",
+        "body": "A model you chat with is the last of several training runs. MiniCPM5-2B publishes four of them: the base model, a mid-training checkpoint, the supervised fine-tune and the release. Same architecture, same size, different training.",
+        "task": "Read what each stage writes for the same prompt, and tell them apart before you're told."
+      },
+      "bench": {
+        "heading": "Sort the answers by stage.",
+        "body": "Each prompt was sent, byte for byte, to all four checkpoints. The answers come back shuffled. Mark which stage wrote each one, then reveal.",
+        "observe": "Look for what changes from stage to stage: format, length, refusals, language, and mistakes that appear late."
+      },
+      "measure": {
+        "heading": "Check the answers.",
+        "body": "Predict which stage passes the most checks, then read the table."
+      },
+      "debrief": {
+        "heading": "Each stage changes behaviour, and each can break something.",
+        "points": {
+          "one": "Pretraining makes a model that predicts text. Today's pretraining data is full of questions and answers, so even this base model already answers like an assistant.",
+          "two": "Supervised fine-tuning teaches the format of a good answer from worked examples. RL then rewards outcomes: right answers on math and code, preferred replies elsewhere.",
+          "three": "Later isn't better at everything. Here the release answers a plain fact wrongly in Spanish, and several stages loop on a Spanish proverb.",
+          "four": "This is one small model, greedy, at one setting. Treat it as a look inside the pipeline, not a benchmark."
+        },
+        "voice": "Every pass through the press adds a colour. Sometimes it covers one you wanted."
+      }
     }
   },
   "readNext": {
@@ -500,7 +556,11 @@
       "anthropic-building-agents": "When to build an agent at all, and the simpler workflows that often do the job instead.",
       "mcp-spec": "The protocol between the harness and the tools: how tools are listed and called.",
       "xstate-docs": "The state machine library that runs this harness's loop: states, guards and invoked calls.",
-      "karpathy-nanogpt": "The smallest serious GPT trainer; the model on this bench is a toy version of the same idea."
+      "karpathy-nanogpt": "The smallest serious GPT trainer; the model on this bench is a toy version of the same idea.",
+      "hu-2021-lora": "The LoRA paper: freeze the weights, train a low-rank update, merge it or swap it at will.",
+      "dettmers-2023-qlora": "LoRA on a 4-bit base: the memory arithmetic that puts fine-tuning on one consumer GPU.",
+      "minicpm5-card": "The model whose shapes and checkpoints this act uses: its training stages, data and licence.",
+      "ouyang-2022-instructgpt": "The paper that made the pipeline standard: pretrain, supervised fine-tune, then learn from human preferences."
     }
   },
   "units": {
@@ -863,5 +923,87 @@
     },
     "predict": "Of {count} lines sampled at step {steps}, how many will be training lines copied whole?",
     "finding": "You predicted {guess}; {actual} of {total} were copied. The held-out loss was lowest at step {low}; after that the model got better at the lines it had seen and worse at everything else."
+  },
+  "lora": {
+    "frozen": "frozen",
+    "plateBody": "W is a weight matrix of the real model, left as cast. LoRA lays a thin plate over it: B·A, two narrow matrices whose product has W's shape. Only the plate is trained. Shapes from {name}'s config, checked {date}.",
+    "rankOption": "rank {rank}",
+    "targets": {
+      "attention": "attention only",
+      "all": "attention and MLP"
+    },
+    "realCounts": "Trainable: {adapter} M of {base} M parameters ({share}%).",
+    "memory": {
+      "how": "How it trains",
+      "gb": "GB for weights and optimizer",
+      "fits": "Under {gb} GB?",
+      "full": "Full fine-tune (bf16, Adam)",
+      "lora": "LoRA on bf16 weights",
+      "qlora": "QLoRA: LoRA on 4-bit weights",
+      "yes": "yes",
+      "no": "no",
+      "note": "Rough sizes: 16 bytes per trained parameter (weights, gradients, Adam's two moments, a 32-bit master copy), 2 bytes per frozen bf16 weight, half a byte per 4-bit weight. Activations and quantization constants come on top."
+    },
+    "runHeading": "A plate on the casting from chapter 11",
+    "runBody": "The base model learned proverbs. The adapter learns Mercadito's product taglines, with every base weight frozen. The fingerprint is a hash of all base weights, read before and after.",
+    "rank": "Rank",
+    "train": "Train a rank-{rank} adapter, {steps} steps",
+    "training": "Training the adapter…",
+    "recorded": "Recorded on {machine} ({backend}), {date}.",
+    "counts": "The adapter trains {lora} numbers; the base has {base} ({share}%).",
+    "untouched": "Base fingerprint before: {before}. After: {after}. Not one base weight changed.",
+    "touched": "Base fingerprint before: {before}. After: {after}. The base changed; this shouldn't happen.",
+    "switch": "Sample from",
+    "on": "base + adapter",
+    "off": "base alone",
+    "predict": "What is the smallest rank at which {half} of {count} sampled lines carry a price in MXN?",
+    "none": "none of them",
+    "allRanks": "Train all three ranks",
+    "trainable": "trainable numbers",
+    "withPrice": "lines with a price (of {count})",
+    "findingMatch": "As you predicted: {rank}. A small plate moved the format; look closely and the words are still half-cast.",
+    "findingMiss": "The answer was {rank}. A small plate moved the format; look closely and the words are still half-cast."
+  },
+  "stages": {
+    "names": {
+      "base": "Base",
+      "midtrain": "Midtrain",
+      "sft": "SFT",
+      "release": "Release"
+    },
+    "about": {
+      "base": "Pretraining only: stable training, then a decay phase, on filtered web, code and math.",
+      "midtrain": "More training on data closer to the target tasks, before any chat tuning.",
+      "sft": "Supervised fine-tuning on 400B tokens of worked answers and conversations.",
+      "release": "RL with specialised teachers, distilled back into one model (on-policy distillation)."
+    },
+    "recorded": "{model}, all four checkpoints, recorded with {via} ({dtype}, greedy, thinking off) on {date}. Every checkpoint got the same bytes: the chat template around your prompt.",
+    "prompt": "Prompt",
+    "prompts": {
+      "proverb": "A proverb",
+      "support": "A support reply",
+      "discount": "A discount",
+      "fact": "A capital",
+      "lock": "A lock",
+      "haiku": "A haiku"
+    },
+    "answer": "Answer {n}",
+    "empty": "(nothing: the model ended its turn at once)",
+    "truth": "Written by {stage} ({tokens} tokens).",
+    "reveal": "Reveal the stages",
+    "sortScore": "You placed {right} of {total}.",
+    "predict": "Four prompts in two languages, {count} checks. Which stage passes the most?",
+    "check": "Check",
+    "checks": {
+      "proverb": "Finishes the proverb ({lang})",
+      "discount": "Says 200 ({lang})",
+      "fact": "Names Canberra as the capital ({lang})",
+      "lock": "Declines and says so ({lang})"
+    },
+    "pass": "passes",
+    "fail": "fails",
+    "total": "Checks passed",
+    "findingMatch": "As you predicted: {winners}, with {best} of {total}. Later is not always better on every check; read the release's Spanish answers.",
+    "findingMiss": "Most checks passed: {winners}, with {best} of {total}. Later is not always better on every check; read the release's Spanish answers."
   }
 }

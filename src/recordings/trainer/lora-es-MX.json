@@ -1,0 +1,953 @@
+{
+  "locale": "es-MX",
+  "recordedAt": "2026-10-16",
+  "machine": "Apple M2 Max",
+  "backend": "webgpu",
+  "ranks": [
+    {
+      "rank": 1,
+      "loraParams": 768,
+      "baseParams": 111616,
+      "points": [
+        {
+          "type": "progress",
+          "step": 25,
+          "train": 3.744426727294922,
+          "val": 3.6289838552474976,
+          "elapsedMs": 265.7849999666214
+        },
+        {
+          "type": "progress",
+          "step": 50,
+          "train": 3.2213523387908936,
+          "val": 3.2913694977760315,
+          "elapsedMs": 437.375
+        },
+        {
+          "type": "progress",
+          "step": 75,
+          "train": 3.0923547744750977,
+          "val": 3.168454945087433,
+          "elapsedMs": 599.6349999904633
+        },
+        {
+          "type": "progress",
+          "step": 100,
+          "train": 2.960233211517334,
+          "val": 3.0785518288612366,
+          "elapsedMs": 1391.5349999666214,
+          "samples": [
+            {
+              "text": ", Xrim de la Tes de o.",
+              "kind": "new"
+            },
+            {
+              "text": "lla s úñchen des.",
+              "kind": "new"
+            },
+            {
+              "text": "U las pasco Sarades haro hodia, te , díaragragaratrato. de anaesjeca, que amanamasdpé.re..",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 125,
+          "train": 2.8474881649017334,
+          "val": 2.9522233605384827,
+          "elapsedMs": 1561.414999961853
+        },
+        {
+          "type": "progress",
+          "step": 150,
+          "train": 2.7866427898406982,
+          "val": 2.864405035972595,
+          "elapsedMs": 1720.9649999141693
+        },
+        {
+          "type": "progress",
+          "step": 175,
+          "train": 2.6470754146575928,
+          "val": 2.7999027967453003,
+          "elapsedMs": 1879.6499999761581
+        },
+        {
+          "type": "progress",
+          "step": 200,
+          "train": 2.6571455001831055,
+          "val": 2.7773977518081665,
+          "elapsedMs": 2685.564999938011,
+          "samples": [
+            {
+              "text": ", hAN6rio tos tue v nañanana tede.",
+              "kind": "new"
+            },
+            {
+              "text": "tosandorarle  de e pranajue.",
+              "kind": "new"
+            },
+            {
+              "text": "No co tislarídedal s , x Han c  go ee xuegse tiúnue ecue dele eOe.la aralago....s zo oe pr",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 225,
+          "train": 2.5228383541107178,
+          "val": 2.7033252716064453,
+          "elapsedMs": 2872.6749999523163
+        },
+        {
+          "type": "progress",
+          "step": 250,
+          "train": 2.4989590644836426,
+          "val": 2.743995785713196,
+          "elapsedMs": 3032.649999976158
+        },
+        {
+          "type": "progress",
+          "step": 275,
+          "train": 2.47117280960083,
+          "val": 2.680112302303314,
+          "elapsedMs": 3193.0349999666214
+        },
+        {
+          "type": "progress",
+          "step": 300,
+          "train": 2.5198981761932373,
+          "val": 2.6935147047042847,
+          "elapsedMs": 4568.975000023842,
+          "samples": [
+            {
+              "text": "r y  te x4in MUmasa lana tana de a ó  as rie amocae de ovtaé de.lalo de te de Yún, ge rale",
+              "kind": "new"
+            },
+            {
+              "text": ", N. Qieriié anajarija de de ae ge de a agae ai dee  oe de f ro ge, W.ay Airaíacerrte Oece",
+              "kind": "new"
+            },
+            {
+              "text": "or tano de de porana de ero de dee qamojlana dea ee s de ge g rosaratajtos de ae ,cae 3,ir",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 325,
+          "train": 2.4869160652160645,
+          "val": 2.68264102935791,
+          "elapsedMs": 4738.969999909401
+        },
+        {
+          "type": "progress",
+          "step": 350,
+          "train": 2.3077006340026855,
+          "val": 2.6499974727630615,
+          "elapsedMs": 4902.245000004768
+        },
+        {
+          "type": "progress",
+          "step": 375,
+          "train": 2.419160842895508,
+          "val": 2.649113118648529,
+          "elapsedMs": 5076.089999914169
+        },
+        {
+          "type": "progress",
+          "step": 400,
+          "train": 2.2617316246032715,
+          "val": 2.593922793865204,
+          "elapsedMs": 5531.414999961853,
+          "samples": [
+            {
+              "text": "Ti, jueno de de de cano.",
+              "kind": "new"
+            },
+            {
+              "text": "no  xruena dena tBa5d.",
+              "kind": "new"
+            },
+            {
+              "text": ", , n M8XN. MHie Xa.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 425,
+          "train": 2.3505983352661133,
+          "val": 2.55654239654541,
+          "elapsedMs": 5705.679999947548
+        },
+        {
+          "type": "progress",
+          "step": 450,
+          "train": 2.2530384063720703,
+          "val": 2.5737580060958862,
+          "elapsedMs": 5863.740000009537
+        },
+        {
+          "type": "progress",
+          "step": 475,
+          "train": 2.2004449367523193,
+          "val": 2.5389838814735413,
+          "elapsedMs": 6020.814999938011
+        },
+        {
+          "type": "progress",
+          "step": 500,
+          "train": 2.1566357612609863,
+          "val": 2.513222336769104,
+          "elapsedMs": 6962.804999947548,
+          "samples": [
+            {
+              "text": ", 7nt, 89 N. Nue n1al de finosce de  elaragrado  de de de caro , X Mpele Sacarrraví tis te",
+              "kind": "new"
+            },
+            {
+              "text": ",F no, Wmana de éo , ge F M8 teo M docarogado sade s92to Lalog125cers Mo N te de s dro des",
+              "kind": "new"
+            },
+            {
+              "text": ",",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 525,
+          "train": 2.206233263015747,
+          "val": 2.480223536491394,
+          "elapsedMs": 7146.009999990463
+        },
+        {
+          "type": "progress",
+          "step": 550,
+          "train": 2.292786121368408,
+          "val": 2.522141695022583,
+          "elapsedMs": 7316.044999957085
+        },
+        {
+          "type": "progress",
+          "step": 575,
+          "train": 2.204533576965332,
+          "val": 2.4892842173576355,
+          "elapsedMs": 7486.625
+        },
+        {
+          "type": "progress",
+          "step": 600,
+          "train": 2.137073040008545,
+          "val": 2.4676865339279175,
+          "elapsedMs": 8041.304999947548,
+          "samples": [
+            {
+              "text": ",  Nue chadostococo1e de eal;.",
+              "kind": "new"
+            },
+            {
+              "text": "nochocido, 82no dena.",
+              "kind": "new"
+            },
+            {
+              "text": "Nime s M5, M9L0N.tosados de scura9 M, Mé,,.",
+              "kind": "new"
+            }
+          ]
+        }
+      ],
+      "adapter": {
+        "fingerprintBefore": "b51329fd",
+        "fingerprintAfter": "b51329fd",
+        "withAdapter": [
+          {
+            "text": ",, no no de Fo de delarara naijarida de de , 7ciego.",
+            "kind": "new"
+          },
+          {
+            "text": ",;nocas.",
+            "kind": "new"
+          },
+          {
+            "text": "Nimitos, Xtanacha to de de cee to de 9 n",
+            "kind": "new"
+          },
+          {
+            "text": "En cra tanaras.",
+            "kind": "new"
+          },
+          {
+            "text": "Un si X9rano lo  tro de de ce de carara 5g o do , Un M9 Mtigr Den, MXie. do.",
+            "kind": "new"
+          },
+          {
+            "text": "Nochos de chet5al de  hara de, ó PTo de 9grgrl Caco.",
+            "kind": "new"
+          }
+        ],
+        "withoutAdapter": [
+          {
+            "text": "El que se fue ajariguer pa.",
+            "kind": "new"
+          },
+          {
+            "text": "El hay esperdin derro.",
+            "kind": "new"
+          },
+          {
+            "text": "La ropas y te se se cierro.",
+            "kind": "new"
+          },
+          {
+            "text": "Hierbas no vista n de puerta se se acuerve.",
+            "kind": "new"
+          },
+          {
+            "text": "No hay rosa se aprimale.",
+            "kind": "new"
+          },
+          {
+            "text": "Las aparies, devaso.",
+            "kind": "new"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 4,
+      "loraParams": 3072,
+      "baseParams": 111616,
+      "points": [
+        {
+          "type": "progress",
+          "step": 25,
+          "train": 3.2416491508483887,
+          "val": 3.3049908876419067,
+          "elapsedMs": 257.9650000333786
+        },
+        {
+          "type": "progress",
+          "step": 50,
+          "train": 2.357248067855835,
+          "val": 2.687502443790436,
+          "elapsedMs": 451.19000005722046
+        },
+        {
+          "type": "progress",
+          "step": 75,
+          "train": 2.0796613693237305,
+          "val": 2.3167054057121277,
+          "elapsedMs": 608.1100000143051
+        },
+        {
+          "type": "progress",
+          "step": 100,
+          "train": 1.860817313194275,
+          "val": 2.1330431699752808,
+          "elapsedMs": 1514.9900000095367,
+          "samples": [
+            {
+              "text": "Ojarro de de 7ro de cera, 3,8 zde M;",
+              "kind": "new"
+            },
+            {
+              "text": "jarrre mas, FW M5N. Envío gradetis.",
+              "kind": "new"
+            },
+            {
+              "text": "cocada,, F F M9N. Envío gratis dende 4devo Me tre desvira, 90; M; MFdeN. to de rdes víe gr",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 125,
+          "train": 1.7309236526489258,
+          "val": 2.06330269575119,
+          "elapsedMs": 1694.0299999713898
+        },
+        {
+          "type": "progress",
+          "step": 150,
+          "train": 1.8181132078170776,
+          "val": 2.0366732478141785,
+          "elapsedMs": 1855.085000038147
+        },
+        {
+          "type": "progress",
+          "step": 175,
+          "train": 1.5613206624984741,
+          "val": 2.0075806081295013,
+          "elapsedMs": 2016.2949999570847
+        },
+        {
+          "type": "progress",
+          "step": 200,
+          "train": 1.5502192974090576,
+          "val": 1.9828462600708008,
+          "elapsedMs": 2973.2849999666214,
+          "samples": [
+            {
+              "text": "N. Salo mantos he rejetelele no ro mos, F5 dol 1, M19;N. ma. ma.",
+              "kind": "new"
+            },
+            {
+              "text": "illna, XF,7ón e M9Um ds ded2d.",
+              "kind": "new"
+            },
+            {
+              "text": "mo fchininor tos é 7ecía dior frlegra, 49 M7N. Santo de de bresro cigo de agra,, 42, 92eX.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 225,
+          "train": 1.4887751340866089,
+          "val": 1.9700455367565155,
+          "elapsedMs": 3158.1599999666214
+        },
+        {
+          "type": "progress",
+          "step": 250,
+          "train": 1.5109971761703491,
+          "val": 1.9675109088420868,
+          "elapsedMs": 3328
+        },
+        {
+          "type": "progress",
+          "step": 275,
+          "train": 1.4131463766098022,
+          "val": 1.9476750493049622,
+          "elapsedMs": 3492.4500000476837
+        },
+        {
+          "type": "progress",
+          "step": 300,
+          "train": 1.5062106847763062,
+          "val": 1.9767734110355377,
+          "elapsedMs": 4413.414999961853,
+          "samples": [
+            {
+              "text": "r de valte de ce ro, XJa M0N. víuciál lo fsala. en;9.",
+              "kind": "new"
+            },
+            {
+              "text": "rlrtos de perélogete de 9úra e 4F.",
+              "kind": "new"
+            },
+            {
+              "text": "ra, Frro, 4W9 M9 M2N. Deloluca de ano e 449, M49 M9N. qy muvevíolos 7595X 2F91Uro pío cio",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 325,
+          "train": 1.4037050008773804,
+          "val": 1.9277724027633667,
+          "elapsedMs": 4595.685000061989
+        },
+        {
+          "type": "progress",
+          "step": 350,
+          "train": 1.3487825393676758,
+          "val": 1.9464356303215027,
+          "elapsedMs": 4755.794999957085
+        },
+        {
+          "type": "progress",
+          "step": 375,
+          "train": 1.4407196044921875,
+          "val": 1.930246353149414,
+          "elapsedMs": 4910.620000004768
+        },
+        {
+          "type": "progress",
+          "step": 400,
+          "train": 1.3429391384124756,
+          "val": 2.004889339208603,
+          "elapsedMs": 6050.960000038147,
+          "samples": [
+            {
+              "text": "rla de frasidido, 6 M2Ujrrrritiros de go de 44, 460.",
+              "kind": "new"
+            },
+            {
+              "text": "na manteos de tora, 9 M6N. Envío gratis desde 4F dero pío de pero cierro, 5 M9 Mja.",
+              "kind": "new"
+            },
+            {
+              "text": "na Za Mmiconinininor elucon e valilo, juegoluto de 9 dero , 1F 79X 2e He MXN. ma mañola.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 425,
+          "train": 1.347144603729248,
+          "val": 1.979662835597992,
+          "elapsedMs": 6239.649999976158
+        },
+        {
+          "type": "progress",
+          "step": 450,
+          "train": 1.3788961172103882,
+          "val": 1.9110241830348969,
+          "elapsedMs": 6397.435000061989
+        },
+        {
+          "type": "progress",
+          "step": 475,
+          "train": 1.3408408164978027,
+          "val": 2.0108685195446014,
+          "elapsedMs": 6557.514999985695
+        },
+        {
+          "type": "progress",
+          "step": 500,
+          "train": 1.3267453908920288,
+          "val": 1.9664815068244934,
+          "elapsedMs": 7504.850000023842,
+          "samples": [
+            {
+              "text": "na fun 9 1ón Zena Hioruns Zorio, Gononono a Mila, W79N. M2N. zonos.",
+              "kind": "new"
+            },
+            {
+              "text": "rino fa jote re grade blatos fsal, 893ñujEnvo n ér, 7X3 M3ó XUra do fi jas, xi459 y 0, M9",
+              "kind": "new"
+            },
+            {
+              "text": "é lo de jarde varrinin fas.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 525,
+          "train": 1.283880591392517,
+          "val": 1.9740025103092194,
+          "elapsedMs": 7689.024999976158
+        },
+        {
+          "type": "progress",
+          "step": 550,
+          "train": 1.3949569463729858,
+          "val": 1.9532131254673004,
+          "elapsedMs": 7853.435000061989
+        },
+        {
+          "type": "progress",
+          "step": 575,
+          "train": 1.3502156734466553,
+          "val": 1.9369094967842102,
+          "elapsedMs": 8013.384999990463
+        },
+        {
+          "type": "progress",
+          "step": 600,
+          "train": 1.233465313911438,
+          "val": 1.9441304802894592,
+          "elapsedMs": 8711.805000066757,
+          "samples": [
+            {
+              "text": "On djala de de de maño n ende po eno e zí.",
+              "kind": "new"
+            },
+            {
+              "text": "Hierrillllo de pla, 93, 05, M;N. Áeqnchima dro did frrdera, F no , 9X MF dos.",
+              "kind": "new"
+            },
+            {
+              "text": "On,a 25,.",
+              "kind": "new"
+            }
+          ]
+        }
+      ],
+      "adapter": {
+        "fingerprintBefore": "b51329fd",
+        "fingerprintAfter": "b51329fd",
+        "withAdapter": [
+          {
+            "text": "N.",
+            "kind": "new"
+          },
+          {
+            "text": "éna tes de alF7,9Udrdrrassss,sfndidddds, fndjasa, 2x, dión den9 Món pun puco íunN. es dódu",
+            "kind": "new"
+          },
+          {
+            "text": "ña de 87ro ce ce coluas s,lo 4Xgo Mde díuX.",
+            "kind": "new"
+          },
+          {
+            "text": "ñarro, 93F0 M9V M1Ucama din fla didla, F.",
+            "kind": "new"
+          },
+          {
+            "text": "ñada, 9859, Mú MFM9N.",
+            "kind": "new"
+          },
+          {
+            "text": "relra de ú 4, X9 MXN. Devolución en dían.",
+            "kind": "new"
+          }
+        ],
+        "withoutAdapter": [
+          {
+            "text": "El que se fue ajariguer pa.",
+            "kind": "new"
+          },
+          {
+            "text": "El hay esperdin derro.",
+            "kind": "new"
+          },
+          {
+            "text": "La ropas y te se se cierro.",
+            "kind": "new"
+          },
+          {
+            "text": "Hierbas no vista n de puerta se se acuerve.",
+            "kind": "new"
+          },
+          {
+            "text": "No hay rosa se aprimale.",
+            "kind": "new"
+          },
+          {
+            "text": "Las aparies, devaso.",
+            "kind": "new"
+          }
+        ]
+      }
+    },
+    {
+      "rank": 16,
+      "loraParams": 12288,
+      "baseParams": 111616,
+      "points": [
+        {
+          "type": "progress",
+          "step": 25,
+          "train": 2.5082297325134277,
+          "val": 2.6693774461746216,
+          "elapsedMs": 257.2300000190735
+        },
+        {
+          "type": "progress",
+          "step": 50,
+          "train": 1.693534255027771,
+          "val": 2.0693601071834564,
+          "elapsedMs": 453.10000002384186
+        },
+        {
+          "type": "progress",
+          "step": 75,
+          "train": 1.4531205892562866,
+          "val": 1.915634572505951,
+          "elapsedMs": 621.0750000476837
+        },
+        {
+          "type": "progress",
+          "step": 100,
+          "train": 1.3769080638885498,
+          "val": 1.776320993900299,
+          "elapsedMs": 1485.0550000667572,
+          "samples": [
+            {
+              "text": "allele de jue ele, 3W8F M9 Lo évido, M5N. S mancin, ía 0F",
+              "kind": "new"
+            },
+            {
+              "text": "fitelare de por fundido, juego de ú ret, F.",
+              "kind": "new"
+            },
+            {
+              "text": "dale ana rio, juego de úsde 9 Xño Se mañano, 9 M, q.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 125,
+          "train": 1.1780304908752441,
+          "val": 1.8356360495090485,
+          "elapsedMs": 1674.210000038147
+        },
+        {
+          "type": "progress",
+          "step": 150,
+          "train": 1.1447529792785645,
+          "val": 1.9034014344215393,
+          "elapsedMs": 1838.3799999952316
+        },
+        {
+          "type": "progress",
+          "step": 175,
+          "train": 1.050661563873291,
+          "val": 1.9824445843696594,
+          "elapsedMs": 2005.0400000810623
+        },
+        {
+          "type": "progress",
+          "step": 200,
+          "train": 0.915373682975769,
+          "val": 1.9746477603912354,
+          "elapsedMs": 2683.2699999809265,
+          "samples": [
+            {
+              "text": "Sarrin etos.",
+              "kind": "new"
+            },
+            {
+              "text": "Osolara dorchera.",
+              "kind": "new"
+            },
+            {
+              "text": "botrelarra desiesalalario h conerielgrador, Jón, 1,7X M49 M9 M9 MYi M;MN. Envíotr. de furo",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 225,
+          "train": 0.8670427203178406,
+          "val": 1.9976529777050018,
+          "elapsedMs": 2860.8450000286102
+        },
+        {
+          "type": "progress",
+          "step": 250,
+          "train": 0.8938104510307312,
+          "val": 2.049878418445587,
+          "elapsedMs": 3018.7000000476837
+        },
+        {
+          "type": "progress",
+          "step": 275,
+          "train": 0.8047325611114502,
+          "val": 1.914325773715973,
+          "elapsedMs": 3171.7450000047684
+        },
+        {
+          "type": "progress",
+          "step": 300,
+          "train": 0.8859736323356628,
+          "val": 1.9561964571475983,
+          "elapsedMs": 3573.0400000810623,
+          "samples": [
+            {
+              "text": "o de gradada, 555X M6N.",
+              "kind": "new"
+            },
+            {
+              "text": "Sa, 5844, MXN. Sale mañana.",
+              "kind": "new"
+            },
+            {
+              "text": "orastos.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 325,
+          "train": 0.7906238436698914,
+          "val": 1.9479757845401764,
+          "elapsedMs": 3775.3700000047684
+        },
+        {
+          "type": "progress",
+          "step": 350,
+          "train": 0.7248142957687378,
+          "val": 2.0835983753204346,
+          "elapsedMs": 3938.0950000286102
+        },
+        {
+          "type": "progress",
+          "step": 375,
+          "train": 0.8528900146484375,
+          "val": 2.0901039242744446,
+          "elapsedMs": 4123.625
+        },
+        {
+          "type": "progress",
+          "step": 400,
+          "train": 0.7692548632621765,
+          "val": 2.006526678800583,
+          "elapsedMs": 4861.660000085831,
+          "samples": [
+            {
+              "text": "ho mieréctrica, 7F86 MXN. Envío gratis.",
+              "kind": "new"
+            },
+            {
+              "text": "Ilame de ierro, X99 M9 MFXN. Envío gratis.",
+              "kind": "new"
+            },
+            {
+              "text": "ho luelima de ierro, juego de 5cerXNollla, 9 M5 M64X9N. MámcéN.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 425,
+          "train": 0.6660805940628052,
+          "val": 2.101850986480713,
+          "elapsedMs": 5031.129999995232
+        },
+        {
+          "type": "progress",
+          "step": 450,
+          "train": 0.7411662936210632,
+          "val": 2.04661625623703,
+          "elapsedMs": 5187.795000076294
+        },
+        {
+          "type": "progress",
+          "step": 475,
+          "train": 0.7054919600486755,
+          "val": 2.079520106315613,
+          "elapsedMs": 5346.09500002861
+        },
+        {
+          "type": "progress",
+          "step": 500,
+          "train": 0.7350311279296875,
+          "val": 2.0380306243896484,
+          "elapsedMs": 5629.8150000572205,
+          "samples": [
+            {
+              "text": "Ian, 1, 60F,8;9.",
+              "kind": "new"
+            },
+            {
+              "text": "oleras.",
+              "kind": "new"
+            },
+            {
+              "text": "Tosta.",
+              "kind": "new"
+            }
+          ]
+        },
+        {
+          "type": "progress",
+          "step": 525,
+          "train": 0.6742261648178101,
+          "val": 2.122771143913269,
+          "elapsedMs": 5824.375
+        },
+        {
+          "type": "progress",
+          "step": 550,
+          "train": 0.6878449320793152,
+          "val": 2.0584980845451355,
+          "elapsedMs": 5986.530000090599
+        },
+        {
+          "type": "progress",
+          "step": 575,
+          "train": 0.650568425655365,
+          "val": 2.006508708000183,
+          "elapsedMs": 6152.865000009537
+        },
+        {
+          "type": "progress",
+          "step": 600,
+          "train": 0.6430352926254272,
+          "val": 1.9836338460445404,
+          "elapsedMs": 7016.795000076294,
+          "samples": [
+            {
+              "text": ", 059 M; d vvvvverocni, 99 M1N. Devolución es.",
+              "kind": "new"
+            },
+            {
+              "text": "ora de ceránica, 47,0 MÁosrarra fratosasasara, 7rv soa, jo MU, dlo dllemo, 9 Endto ño fula",
+              "kind": "new"
+            },
+            {
+              "text": ",9 4F,19 M7N. Envío gratis.",
+              "kind": "new"
+            }
+          ]
+        }
+      ],
+      "adapter": {
+        "fingerprintBefore": "b51329fd",
+        "fingerprintAfter": "b51329fd",
+        "withAdapter": [
+          {
+            "text": ",; za dvica, X,0 M;tvibroca, M;0n, M;4818X DN. s al, 4X molovaviras de bidro, juego de 47,",
+            "kind": "new"
+          },
+          {
+            "text": "oteligero de ajugos, F,F9Bo MiM9 Múnd.",
+            "kind": "new"
+          },
+          {
+            "text": "Savilla portos, 6F1,94F, MXN. Devolución en 28 díadía a oras de ías.",
+            "kind": "new"
+          },
+          {
+            "text": ",0go de 4, FÁre, Áosalara barrra de unilrara, 50 bra.",
+            "kind": "new"
+          },
+          {
+            "text": "outr de cero, F,4390 M3M8N. Envío gratis.",
+            "kind": "new"
+          },
+          {
+            "text": "otelameta, Jrica, 68é M2N. Sale mañana.",
+            "kind": "new"
+          }
+        ],
+        "withoutAdapter": [
+          {
+            "text": "El que se fue ajariguer pa.",
+            "kind": "new"
+          },
+          {
+            "text": "El hay esperdin derro.",
+            "kind": "new"
+          },
+          {
+            "text": "La ropas y te se se cierro.",
+            "kind": "new"
+          },
+          {
+            "text": "Hierbas no vista n de puerta se se acuerve.",
+            "kind": "new"
+          },
+          {
+            "text": "No hay rosa se aprimale.",
+            "kind": "new"
+          },
+          {
+            "text": "Las aparies, devaso.",
+            "kind": "new"
+          }
+        ]
+      }
+    }
+  ]
+}

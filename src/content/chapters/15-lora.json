@@ -1,0 +1,32 @@
+{
+  "id": "lora",
+  "kind": "lora",
+  "act": "foundry",
+  "number": 15,
+  "base": { "corpus": { "en": "proverbs", "es-MX": "refranes" }, "steps": 800 },
+  "adapter": {
+    "corpus": { "en": "taglines-en", "es-MX": "taglines-es" },
+    "ranks": [1, 4, 16],
+    "alphaPerRank": 2,
+    "steps": 600,
+    "learningRate": 0.01
+  },
+  "every": 25,
+  "sampleEvery": 4,
+  "temperature": 0.6,
+  "sampleCount": 6,
+  "sampleSeed": 9,
+  "real": {
+    "name": "MiniCPM5-2B",
+    "checkedAt": "2026-10-16",
+    "hiddenSize": 2048,
+    "layers": 42,
+    "heads": 16,
+    "kvHeads": 2,
+    "headDim": 128,
+    "intermediateSize": 6144,
+    "vocabSize": 130560,
+    "tiedEmbeddings": false
+  },
+  "readNext": ["hu-2021-lora", "dettmers-2023-qlora", "minicpm5-card"]
+}

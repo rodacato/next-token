@@ -62,6 +62,10 @@ async function handle(request: TrainerRequest) {
       session.model.loraOn = was;
       break;
     }
+    case "fingerprint":
+      if (!session) throw new Error("trainer-not-initialized");
+      reply({ type: "fingerprint", value: await session.model.fingerprint() });
+      break;
     case "save":
       if (!session) throw new Error("trainer-not-initialized");
       reply({ type: "saved", checkpoint: await session.model.save() });
