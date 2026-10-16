@@ -440,6 +440,34 @@
         },
         "voice": "A press runs as fast as it's fed. Someone still has to count the sheets."
       }
+    },
+    "casting": {
+      "title": "Casting from scratch",
+      "kicker": "Training a model, live",
+      "problem": {
+        "heading": "Before it could set a line, it had to learn the alphabet.",
+        "body": "Every model in this course started as random numbers. Training nudges those numbers, a step at a time, to make the next character more likely. Here you cast a tiny one from nothing, on a page of proverbs.",
+        "task": "Watch noise turn into style, and then into something worse."
+      },
+      "bench": {
+        "heading": "Loss goes down. Watch what else happens.",
+        "body": "The model trains on most of the proverbs and never sees the rest. Training loss measures the lines it learns from; held-out loss measures the lines it never sees. Samples show what it has learned, three lines at a time.",
+        "observe": "Find the step where the two curves part. Read the samples on each side of it."
+      },
+      "measure": {
+        "heading": "Count the copies.",
+        "body": "Predict first, then cast the full run and count how many sampled lines are training lines copied whole."
+      },
+      "debrief": {
+        "heading": "Training lowers loss on what it sees. That's all it does.",
+        "points": {
+          "one": "Training is next-token prediction plus a nudge: compare the predicted character with the real one, and move every weight a little to make the real one likelier.",
+          "two": "Style comes before content. Early samples have the shape of a proverb (capital, short clauses, a full stop) and none of the words.",
+          "three": "Held-out loss is the honest number. When it turns up while training loss keeps falling, the model is memorizing, not learning.",
+          "four": "Big models face the same trade-off with far more data. Memorized training text is why models can quote their sources word for word."
+        },
+        "voice": "A new caster makes bad type for a while. Then, if no one stops it, it makes the same good letter forever."
+      }
     }
   },
   "readNext": {
@@ -471,7 +499,8 @@
       "anthropic-contextual-retrieval": "Chunks lose their context when cut. One fix: write that context back into each chunk before embedding it.",
       "anthropic-building-agents": "When to build an agent at all, and the simpler workflows that often do the job instead.",
       "mcp-spec": "The protocol between the harness and the tools: how tools are listed and called.",
-      "xstate-docs": "The state machine library that runs this harness's loop: states, guards and invoked calls."
+      "xstate-docs": "The state machine library that runs this harness's loop: states, guards and invoked calls.",
+      "karpathy-nanogpt": "The smallest serious GPT trainer; the model on this bench is a toy version of the same idea."
     }
   },
   "units": {
@@ -801,5 +830,38 @@
       "person": "A person",
       "subagent": "Sub-agent"
     }
+  },
+  "trainer": {
+    "corpus": "What it learns from",
+    "corpora": {
+      "proverbs": "English proverbs ({count} lines)",
+      "refranes": "Mexican refranes ({count} lines)"
+    },
+    "where": "Where it trains",
+    "modes": {
+      "recorded": "Replay the recorded run",
+      "live": "Train it in this browser (results drift a little from the recording)"
+    },
+    "model": "A {params}-parameter character model: {layers} layers, {dim} wide, {block} characters of context. About a millionth of a 2B model; an intuition tool, not real training.",
+    "cast": "Cast {steps} steps",
+    "casting": "Casting…",
+    "stop": "Stop",
+    "sourceRecorded": "Recorded on {machine} ({backend}), {date}: {seconds} s of training. Replayed faster.",
+    "sourceLive": "Training here on {backend}: {seconds} s so far.",
+    "chartLabel": "Loss per step: training loss in ink, held-out loss in red",
+    "trainLoss": "training loss",
+    "valLoss": "held-out loss (lines it never trains on)",
+    "now": "step {step}: training {train}, held-out {val}",
+    "lowest": "held-out lowest at {step}",
+    "samples": "Three lines sampled every 200 steps",
+    "stops": "{count} lines sampled at each stop",
+    "stopsEmpty": "Nothing sampled yet.",
+    "stopHead": "Step {step}: {copied} of {total} copied whole from the training lines",
+    "kinds": {
+      "copied": "copied",
+      "held-out": "a held-out line"
+    },
+    "predict": "Of {count} lines sampled at step {steps}, how many will be training lines copied whole?",
+    "finding": "You predicted {guess}; {actual} of {total} were copied. The held-out loss was lowest at step {low}; after that the model got better at the lines it had seen and worse at everything else."
   }
 }

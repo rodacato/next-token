@@ -1,0 +1,22 @@
+{
+  "id": "casting",
+  "kind": "trainer",
+  "act": "foundry",
+  "number": 11,
+  "corpus": { "en": "proverbs", "es-MX": "refranes" },
+  "config": {
+    "shape": { "block": 48, "dim": 64, "heads": 4, "layers": 2 },
+    "batch": 32,
+    "learningRate": 0.003,
+    "seed": 11,
+    "valShare": 0.1
+  },
+  "steps": 2000,
+  "every": 50,
+  "sampleEvery": 4,
+  "temperature": 0.8,
+  "stops": [250, 2000],
+  "sampleCount": 12,
+  "sampleSeed": 5,
+  "readNext": ["karpathy-gpt", "karpathy-nanogpt", "vaswani-2017"]
+}

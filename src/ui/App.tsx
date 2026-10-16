@@ -14,6 +14,7 @@ import { StructuredChapter } from "./chapters/StructuredChapter";
 import { ToolsChapter } from "./chapters/ToolsChapter";
 import { RagChapter } from "./chapters/RagChapter";
 import { AgentsChapter } from "./chapters/AgentsChapter";
+import { TrainerChapter } from "./chapters/TrainerChapter";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
@@ -78,6 +79,7 @@ function Course() {
       {chapter.kind === "tools" && <ToolsChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "rag" && <RagChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "agents" && <AgentsChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      {chapter.kind === "trainer" && <TrainerChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "eval-builder" && <EvalBuilderChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
     </div>
   );

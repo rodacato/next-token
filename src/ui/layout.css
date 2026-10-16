@@ -1797,3 +1797,170 @@
     transform: rotate(-2deg);
   }
 }
+
+/* ---- Chapter 11: the type foundry ------------------------------------- */
+.foundry-bench {
+  display: grid;
+  gap: 20px;
+}
+
+.foundry-bench__controls {
+  display: grid;
+  gap: 14px;
+}
+
+.foundry-bench__controls .note {
+  margin: 0;
+  max-width: 70ch;
+}
+
+.foundry-bench__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.loss-chart {
+  margin: 0;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  padding: 8px 10px 10px;
+}
+
+.loss-chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.loss-chart__grid {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.loss-chart__tick,
+.loss-chart__label {
+  font: 400 10px/1 var(--face-mono);
+  fill: var(--slate);
+}
+
+.loss-chart__label {
+  fill: var(--brass-dark);
+}
+
+.loss-chart__lowest {
+  stroke: var(--brass);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.loss-chart__train,
+.loss-chart__val {
+  fill: none;
+  stroke-width: 2;
+}
+
+.loss-chart__train {
+  stroke: var(--ink);
+}
+
+.loss-chart__val {
+  stroke: var(--vermilion);
+}
+
+.loss-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font: 400 11px/1.4 var(--face-mono);
+  color: var(--slate);
+}
+
+.loss-chart__legend .is-train::before,
+.loss-chart__legend .is-val::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  margin: 0 6px 3px 0;
+  vertical-align: middle;
+  background: var(--ink);
+}
+
+.loss-chart__legend .is-val::before {
+  background: var(--vermilion);
+}
+
+.sample-log {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.sample-log > li {
+  display: grid;
+  grid-template-columns: 5ch 1fr;
+  gap: 8px;
+}
+
+.sample-log__step {
+  font: 400 15px/1.3 var(--face-display);
+  color: var(--brass-dark);
+}
+
+.sample-lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.sample-line {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font: 400 15px/1.35 var(--face-display);
+}
+
+.sample-line.is-copied {
+  color: var(--slate);
+  text-decoration: underline var(--vermilion) 1.5px;
+  text-underline-offset: 3px;
+}
+
+.sample-line__mark {
+  font: 600 9.5px/1 var(--face-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  white-space: nowrap;
+}
+
+.stop-sheet {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.stop-sheet + .stop-sheet {
+  margin-top: 14px;
+}
+
+.stop-sheet__head {
+  margin: 0 0 6px;
+  font: 400 11px/1.4 var(--face-mono);
+  color: var(--slate);
+}
+
+@media (max-width: 900px) {
+  .foundry-bench__columns {
+    grid-template-columns: 1fr;
+  }
+}

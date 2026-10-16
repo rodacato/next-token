@@ -440,6 +440,34 @@
         },
         "voice": "Una prensa corre tan rápido como la alimentan. Alguien tiene que contar los pliegos."
       }
+    },
+    "casting": {
+      "title": "Fundir desde cero",
+      "kicker": "Entrenar un modelo, en vivo",
+      "problem": {
+        "heading": "Antes de formar una línea, tuvo que aprenderse el alfabeto.",
+        "body": "Cada modelo de este curso empezó como números al azar. Entrenar es empujar esos números, un paso a la vez, para que el siguiente carácter sea más probable. Aquí fundes uno diminuto desde la nada, con una página de refranes.",
+        "task": "Mira cómo el ruido se vuelve estilo, y luego algo peor."
+      },
+      "bench": {
+        "heading": "La pérdida baja. Mira qué más pasa.",
+        "body": "El modelo entrena con la mayoría de los refranes y nunca ve el resto. La pérdida de entrenamiento mide las líneas de las que aprende; la pérdida en líneas apartadas mide las que nunca ve. Las muestras enseñan lo que ha aprendido, tres líneas a la vez.",
+        "observe": "Encuentra el paso en el que las dos curvas se separan. Lee las muestras de cada lado."
+      },
+      "measure": {
+        "heading": "Cuenta las copias.",
+        "body": "Primero predice, luego funde la corrida completa y cuenta cuántas líneas muestreadas son líneas de entrenamiento copiadas completas."
+      },
+      "debrief": {
+        "heading": "Entrenar baja la pérdida en lo que ve. Es todo lo que hace.",
+        "points": {
+          "one": "Entrenar es predecir el siguiente token más un empujón: compara el carácter predicho con el real y mueve cada peso un poco para que el real sea más probable.",
+          "two": "El estilo llega antes que el contenido. Las primeras muestras tienen forma de refrán (mayúscula, frases cortas, punto final) y ninguna de sus palabras.",
+          "three": "La pérdida en líneas apartadas es el número honesto. Cuando sube mientras la de entrenamiento sigue bajando, el modelo está memorizando, no aprendiendo.",
+          "four": "Los modelos grandes enfrentan el mismo dilema con muchísimos más datos. El texto de entrenamiento memorizado es la razón por la que un modelo puede citar sus fuentes palabra por palabra."
+        },
+        "voice": "Una fundidora nueva hace tipos malos por un rato. Luego, si nadie la detiene, hace la misma letra buena para siempre."
+      }
     }
   },
   "readNext": {
@@ -471,7 +499,8 @@
       "anthropic-contextual-retrieval": "Los fragmentos pierden su contexto al cortarlos. Un remedio: volver a escribir ese contexto en cada fragmento antes de hacer su embedding.",
       "anthropic-building-agents": "Cuándo construir un agente y cuándo bastan flujos más simples.",
       "mcp-spec": "El protocolo entre el arnés y las herramientas: cómo se listan y se llaman.",
-      "xstate-docs": "La biblioteca de máquinas de estados que corre el ciclo de este arnés: estados, guardas y llamadas invocadas."
+      "xstate-docs": "La biblioteca de máquinas de estados que corre el ciclo de este arnés: estados, guardas y llamadas invocadas.",
+      "karpathy-nanogpt": "El entrenador de GPT serio más pequeño; el modelo de este banco es una versión de juguete de la misma idea."
     }
   },
   "units": {
@@ -801,5 +830,38 @@
       "person": "Una persona",
       "subagent": "Subagente"
     }
+  },
+  "trainer": {
+    "corpus": "De qué aprende",
+    "corpora": {
+      "proverbs": "Proverbios en inglés ({count} líneas)",
+      "refranes": "Refranes mexicanos ({count} líneas)"
+    },
+    "where": "Dónde entrena",
+    "modes": {
+      "recorded": "Ver la corrida grabada",
+      "live": "Entrenarlo en este navegador (los resultados varían un poco respecto a la grabación)"
+    },
+    "model": "Un modelo de caracteres de {params} parámetros: {layers} capas, {dim} de ancho, {block} caracteres de contexto. Más o menos una millonésima parte de un modelo de 2B; una herramienta de intuición, no entrenamiento real.",
+    "cast": "Fundir {steps} pasos",
+    "casting": "Fundiendo…",
+    "stop": "Detener",
+    "sourceRecorded": "Grabado en {machine} ({backend}), {date}: {seconds} s de entrenamiento. Se reproduce más rápido.",
+    "sourceLive": "Entrenando aquí en {backend}: {seconds} s hasta ahora.",
+    "chartLabel": "Pérdida por paso: pérdida de entrenamiento en tinta, pérdida en líneas apartadas en rojo",
+    "trainLoss": "pérdida de entrenamiento",
+    "valLoss": "pérdida en líneas apartadas (las que nunca entrena)",
+    "now": "paso {step}: entrenamiento {train}, apartadas {val}",
+    "lowest": "apartadas en su mínimo en {step}",
+    "samples": "Tres líneas muestreadas cada 200 pasos",
+    "stops": "{count} líneas muestreadas en cada parada",
+    "stopsEmpty": "Todavía no se ha muestreado nada.",
+    "stopHead": "Paso {step}: {copied} de {total} copiadas completas de las líneas de entrenamiento",
+    "kinds": {
+      "copied": "copiada",
+      "held-out": "una línea apartada"
+    },
+    "predict": "De {count} líneas muestreadas en el paso {steps}, ¿cuántas serán líneas de entrenamiento copiadas completas?",
+    "finding": "Predijiste {guess}; {actual} de {total} fueron copiadas. La pérdida en líneas apartadas tocó su mínimo en el paso {low}; después el modelo mejoró en las líneas que ya había visto y empeoró en todo lo demás."
   }
 }

@@ -30,7 +30,8 @@
     "record:experiments": "node scripts/record-experiments.ts",
     "record:serve": "vite --config vite.record.config.ts",
     "recipes": "node scripts/build-recipes.ts",
-    "record:embeddings": "node scripts/record-embeddings.ts"
+    "record:embeddings": "node scripts/record-embeddings.ts",
+    "record:trainer": "node scripts/record-trainer.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -57,6 +58,10 @@
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@huggingface/transformers": "^4.3.1",
     "@modelcontextprotocol/sdk": "^1.32.1",
+    "@tensorflow/tfjs-backend-cpu": "^4.22.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.22.0",
+    "@tensorflow/tfjs-backend-webgpu": "^4.22.0",
+    "@tensorflow/tfjs-core": "^4.22.0",
     "@xstate/react": "^6.1.0",
     "@xyflow/react": "^12.12.0",
     "codemirror": "^6.0.2",

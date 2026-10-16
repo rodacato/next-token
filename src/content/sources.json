@@ -214,5 +214,13 @@
     "year": 2026,
     "url": "https://stately.ai/docs/xstate",
     "kind": "docs"
+  },
+  {
+    "id": "karpathy-nanogpt",
+    "authors": "Andrej Karpathy",
+    "title": "nanoGPT",
+    "year": 2023,
+    "url": "https://github.com/karpathy/nanoGPT",
+    "kind": "code"
   }
 ]

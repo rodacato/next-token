@@ -146,7 +146,30 @@ export const agentsChapterSchema = z.object({
   harnessResults: z.object({ blocked: perLocale, declined: perLocale }),
 });
 
+export const corpusSchema = z.object({ id: z.string().regex(/^[a-z0-9-]+$/), locale: z.string(), note: z.string(), lines: z.array(z.string().min(1)).min(20) });
+
+export const trainerChapterSchema = z.object({
+  ...chapterBase,
+  kind: z.literal("trainer"),
+  corpus: z.record(z.string(), z.string()),
+  config: z.object({
+    shape: z.object({ block: z.number().int().positive(), dim: z.number().int().positive(), heads: z.number().int().positive(), layers: z.number().int().positive() }),
+    batch: z.number().int().positive(),
+    learningRate: z.number().positive(),
+    seed: z.number().int(),
+    valShare: z.number().min(0).max(0.5),
+  }),
+  steps: z.number().int().positive(),
+  every: z.number().int().positive(),
+  sampleEvery: z.number().int().positive(),
+  temperature: z.number().positive(),
+  stops: z.array(z.number().int().positive()).min(1),
+  sampleCount: z.number().int().positive(),
+  sampleSeed: z.number().int(),
+});
+
 export const chapterSchema = z.discriminatedUnion("kind", [
+  trainerChapterSchema,
   agentsChapterSchema,
   ragChapterSchema,
   toolsChapterSchema,
@@ -173,3 +196,5 @@ export type EvalBuilderChapter = z.infer<typeof evalBuilderChapterSchema>;
 export type ToolsChapter = z.infer<typeof toolsChapterSchema>;
 export type RagChapter = z.infer<typeof ragChapterSchema>;
 export type AgentsChapter = z.infer<typeof agentsChapterSchema>;
+export type TrainerChapter = z.infer<typeof trainerChapterSchema>;
+export type Corpus = z.infer<typeof corpusSchema>;

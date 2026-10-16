@@ -146,3 +146,28 @@ docs/adr/    one ADR per decision
    to read `init.theme` only for light or dark, and later offer an "inked
    forme" dark variant (direction C) instead of adopting Dojo's colours. Does
    that work for you?
+
+## 8. Phase C plan (Act III, written 2026-10-16)
+
+Verified before planning:
+- **MiniCPM5-2B** ships four checkpoints, all Apache-2.0, plain
+  `LlamaForCausalLM`: Base (pretraining only), Midtrain, SFT, and the
+  release (RL + on-policy distillation). Its datasets (Ultra-FineWeb,
+  UltraX, UltraData-SFT/RL) are Apache-2.0 too, English and Chinese only.
+- **TF.js** last shipped 4.22.0 in January 2025. It still brings autograd
+  and a WebGPU backend; ADR 8 records the risk and the fallback.
+- **Recording machine:** M2 Max, 32 GB. MiniCPM5 runs through mlx-lm (via
+  `uv`), so recordings say "mlx-lm, bf16, M2 Max" instead of the Claude CLI.
+
+| Ch | Bench | Real data behind it |
+| --- | --- | --- |
+| 11 Casting from scratch | Trainer worker: a tiny char-level transformer learns proverbs live; loss curves (train/val), samples per step, a memorization marker; a small corpus overfits | Live training (TF.js, seeded); recorded curves and samples for machines without a GPU |
+| 12 Stages of a real model | The same prompts through Base → Midtrain → SFT → release; the learner sorts unlabeled answers by stage before the reveal | MiniCPM5-2B, four checkpoints, recorded with mlx-lm |
+| 13 Kinds of training | Match each method to the data it needs, what it changes and what it can't do; MiniCPM5's own pipeline as the worked example | Sources: InstructGPT, DPO, Tülu 3 (RLVR), distillation, the MiniCPM5 card |
+| 14 The data workshop | A Mercadito fine-tuning set with planted contradictions, duplicates, bad answers and eval leakage; flag first, then run the checks | Exact and near duplicates (recorded e5 vectors), n-gram leakage against the Act II eval sets |
+| 15 The LoRA plate | W + BA with a rank slider; parameter and memory counts for MiniCPM5-2B's real shapes; a LoRA adapter on chapter 11's model, switchable on and off | Live adapter training in the trainer worker on a shipped base checkpoint |
+| 16 Train or not | Cases: prompt, RAG, fine-tune or distill; facts versus behaviour | A LoRA fine-tune of MiniCPM5-2B on chapter 14's cleaned set (mlx-lm), probed for a taught fact and a taught behaviour |
+| 17 Before and after | The Act II runner on the base and fine-tuned model, including what got worse | Same fine-tune; graders and a recorded Claude judge |
+
+The fine-tune in 16–17 is a small local LoRA run for the course; the
+QLoRA-on-a-12-GB-GPU recipe stays in phase E (next-token-foundry).
