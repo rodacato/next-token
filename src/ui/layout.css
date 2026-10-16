@@ -1678,3 +1678,122 @@
 .case-bench .measure-sheet > .button {
   justify-self: start;
 }
+
+/* ---- Chapter 10: the harness on the shop floor ------------------------- */
+.floor-bench {
+  display: grid;
+  gap: 20px;
+}
+
+.floor-bench__controls {
+  display: grid;
+  gap: 14px;
+}
+
+.harness-diagram {
+  height: 280px;
+  border: 1px solid var(--rule);
+  background: color-mix(in oklab, var(--paper) 92%, var(--brass));
+  --xy-edge-stroke: var(--slate);
+  --xy-edge-stroke-width: 1.5;
+  --xy-handle-background-color: transparent;
+  --xy-handle-border-color: transparent;
+  --xy-attribution-background-color: transparent;
+}
+
+.harness-diagram .react-flow__attribution a {
+  color: var(--slate);
+  font: 400 9px/1 var(--face-mono);
+}
+
+.harness-diagram .react-flow__edge.animated path {
+  stroke: var(--vermilion);
+}
+
+.harness-part {
+  width: 150px;
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--rule);
+  font: 400 10.5px/1.35 var(--face-mono);
+  color: var(--slate);
+  transition: background 120ms steps(2);
+}
+
+.harness-part strong {
+  font: 400 15px/1.1 var(--face-display);
+  color: var(--ink);
+}
+
+.harness-part.is-active {
+  background: var(--vermilion);
+  border-color: var(--vermilion);
+  color: var(--paper);
+}
+
+.harness-part.is-active strong {
+  color: var(--paper);
+}
+
+.harness-part.is-off {
+  border-style: dashed;
+  border-color: var(--slate);
+  box-shadow: none;
+  opacity: 0.55;
+}
+
+.till {
+  margin: 0;
+  font: 400 19px/1.2 var(--face-display);
+}
+
+.night-log {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 26px;
+  align-items: start;
+}
+
+.ticket-trace {
+  display: grid;
+  gap: 10px;
+}
+
+.slip--memory {
+  border-left: 3px solid var(--slate);
+  background: color-mix(in oklab, var(--paper) 85%, var(--slate));
+}
+
+.slip__stamp.via--blocked,
+.slip__stamp.via--declined {
+  color: var(--ink);
+}
+
+.slip__stamp.via--tool,
+.slip__stamp.via--subagent {
+  color: var(--brass-dark);
+}
+
+.slip details pre {
+  margin-top: 4px;
+  color: var(--slate);
+}
+
+.slip--call {
+  padding-right: 170px;
+}
+
+@media (max-width: 700px) {
+  .slip--call {
+    padding-right: 14px;
+  }
+
+  .slip--call .slip__stamp {
+    position: static;
+    justify-self: start;
+    transform: rotate(-2deg);
+  }
+}

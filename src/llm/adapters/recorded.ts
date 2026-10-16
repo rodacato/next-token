@@ -1,5 +1,6 @@
 import { requestHash } from "../hash";
 import { NoRecordedRunError, type Completion, type CompletionRequest, type LlmPort } from "../port";
+import { roughTokenCount } from "../pricing";
 import type { RecordedCompletion, RecordedSet } from "../recorded-schema";
 
 export function lastUserPrompt(request: CompletionRequest): string {
@@ -37,7 +38,8 @@ export function recordedAdapter(sets: readonly RecordedSet[]): LlmPort {
       return {
         text: completion.output,
         toolCalls: [],
-        usage: { inputTokens: completion.usage.inputTokens, outputTokens: completion.usage.outputTokens },
+        // The CLI reports nearly all input as cache, padded with its own overhead; estimate from the request instead.
+        usage: { inputTokens: roughTokenCount(request.system + request.messages.map((m) => m.content).join("")), outputTokens: completion.usage.outputTokens },
         source: { kind: "recorded", model: completion.model, recordedAt },
       };
     },

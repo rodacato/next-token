@@ -190,5 +190,29 @@
     "year": 2024,
     "url": "https://www.anthropic.com/engineering/contextual-retrieval",
     "kind": "docs"
+  },
+  {
+    "id": "anthropic-building-agents",
+    "authors": "Anthropic",
+    "title": "Building effective agents",
+    "year": 2024,
+    "url": "https://www.anthropic.com/engineering/building-effective-agents",
+    "kind": "docs"
+  },
+  {
+    "id": "mcp-spec",
+    "authors": "Model Context Protocol",
+    "title": "Model Context Protocol specification",
+    "year": 2026,
+    "url": "https://modelcontextprotocol.io/specification/latest",
+    "kind": "docs"
+  },
+  {
+    "id": "xstate-docs",
+    "authors": "Stately",
+    "title": "XState documentation",
+    "year": 2026,
+    "url": "https://stately.ai/docs/xstate",
+    "kind": "docs"
   }
 ]

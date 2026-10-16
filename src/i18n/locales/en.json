@@ -412,6 +412,34 @@
         },
         "voice": "A compositor can only set the sorts in the stick. Fill it with the wrong ones and the line reads wrong."
       }
+    },
+    "agents": {
+      "title": "Agents",
+      "kicker": "The loop, the harness, MCP",
+      "problem": {
+        "heading": "The night shift paid for one blender twice.",
+        "body": "Mercadito left its assistant on overnight to work the returns queue alone. In the morning the till was 4,900 MXN short for a 2,450 MXN blender. The customer had written twice; each ticket looked new.",
+        "task": "Run the night yourself, then build a harness that wouldn't have paid twice."
+      },
+      "bench": {
+        "heading": "The agent is a loop. The harness is everything around it.",
+        "body": "The agent asks for a tool; the harness decides. Each request passes a gate (your refund rule) on its way to a real MCP server. You choose the parts: a step limit, a person who approves big refunds, notes carried between tickets, a sub-agent that reads records so the agent doesn't have to.",
+        "observe": "Run the queue with refunds allowed. Then switch one part at a time and read where the run changes."
+      },
+      "measure": {
+        "heading": "Make the till balance.",
+        "body": "Predict what tonight costs as it stands, then change the harness until the blender is paid for exactly once."
+      },
+      "debrief": {
+        "heading": "The model proposes. The harness disposes.",
+        "points": {
+          "one": "An agent is a model calling tools in a loop. MCP plugs the tools in; it doesn't decide what's allowed. That happens outside the model: at the gate, at the step limit, and with the people the harness asks.",
+          "two": "The agent knows only its context. Without notes carried between tickets, a repeat ticket looks new, and it pays again.",
+          "three": "A person in the loop is only as good as what the person sees. Approve twice without the notes and the till is just as short.",
+          "four": "A sub-agent keeps raw records out of the agent's context, at the price of extra calls and a summary that can drop the detail you needed."
+        },
+        "voice": "A press runs as fast as it's fed. Someone still has to count the sheets."
+      }
     }
   },
   "readNext": {
@@ -440,7 +468,10 @@
       "openai-function-calling": "The same contract on OpenAI's API: function definitions, calls and outputs.",
       "lewis-2020-rag": "The paper that named retrieval-augmented generation: retrieve passages, then generate from them.",
       "wang-2024-me5": "The embedder on this bench: how it was trained and why queries and passages get different prefixes.",
-      "anthropic-contextual-retrieval": "Chunks lose their context when cut. One fix: write that context back into each chunk before embedding it."
+      "anthropic-contextual-retrieval": "Chunks lose their context when cut. One fix: write that context back into each chunk before embedding it.",
+      "anthropic-building-agents": "When to build an agent at all, and the simpler workflows that often do the job instead.",
+      "mcp-spec": "The protocol between the harness and the tools: how tools are listed and called.",
+      "xstate-docs": "The state machine library that runs this harness's loop: states, guards and invoked calls."
     }
   },
   "units": {
@@ -716,5 +747,59 @@
     "findingMatch": "As you predicted. All three right: {strategies}.",
     "findingMiss": "Not what you predicted. All three right: {strategies}.",
     "askNone": "Ask with no chunks"
+  },
+  "agents": {
+    "policy": "Refunds over {threshold} MXN",
+    "policies": {
+      "allow": "Run them",
+      "ask": "Ask a person",
+      "deny": "Block them"
+    },
+    "steps": "Tool calls per ticket, at most",
+    "parts": "Parts of the harness",
+    "memory": "Notes between tickets",
+    "subagent": "Lookups by a sub-agent",
+    "on": "on",
+    "off": "off",
+    "run": "Run tonight's queue",
+    "again": "Run the queue again",
+    "running": "Working the queue…",
+    "till": "Out of the till tonight: {amount} MXN. Refunds run: {count}.",
+    "askPerson": "The agent wants to refund {amount} MXN on order {order}. You are the person.",
+    "notesForPerson": "The harness notes say: {notes}",
+    "approve": "Approve",
+    "decline": "Decline",
+    "ticket": "Ticket {number}",
+    "notesHeading": "The harness hands over its notes",
+    "via": {
+      "tool": "run by the harness",
+      "subagent": "sent to the sub-agent",
+      "blocked": "blocked by the harness",
+      "declined": "declined by you"
+    },
+    "harnessReturned": "The harness returned",
+    "subagentSays": "The sub-agent read the record and returned",
+    "rawRecord": "The record the sub-agent read",
+    "tokens": "Tokens the agent read and wrote on this ticket: about {agent}. The sub-agent's, kept out of the agent's context: about {subagent}.",
+    "mxn": "{amount} MXN",
+    "predict": "Refunds run, no notes between tickets. How much leaves the till tonight?",
+    "task": "Then build a harness that pays for the blender exactly once: 2,450 MXN, one refund.",
+    "baselineMatch": "As you predicted: {amount} MXN. The second ticket looked new to the agent, so it paid again.",
+    "baselineMiss": "You predicted {guess} MXN; {amount} MXN left. The second ticket looked new to the agent, so it paid again.",
+    "fixed": "One refund, 2,450 MXN. Your harness: refunds over the limit {policy}, notes between tickets {memory}.",
+    "diagram": {
+      "label": "The harness: the ticket queue feeds the agent; every tool call passes the gate before the MCP server runs it",
+      "queue": "Ticket queue",
+      "queueDetail": "2 tickets tonight",
+      "agent": "Agent",
+      "agentDetail": "the model, in a loop",
+      "gate": "Gate",
+      "server": "MCP server",
+      "till": "Till",
+      "tillDetail": "money out",
+      "memory": "Notes",
+      "person": "A person",
+      "subagent": "Sub-agent"
+    }
   }
 }
