@@ -1,0 +1,22 @@
+{
+  "id": "tokens",
+  "kind": "tokens",
+  "act": "compositor",
+  "number": 1,
+  "pairs": [
+    {
+      "id": "order-shipped",
+      "en": "Your order has shipped and should arrive on Thursday. You can follow it from your account, under Orders. If anything looks wrong, reply to this message and we will fix it.",
+      "es": "Tu pedido ya fue enviado y debería llegar el jueves. Puedes seguirlo desde tu cuenta, en Pedidos. Si algo no se ve bien, responde a este mensaje y lo resolvemos."
+    },
+    {
+      "id": "refund-window",
+      "en": "Returns are accepted within thirty days of delivery. The refund goes back to the original payment method within five business days.",
+      "es": "Aceptamos devoluciones dentro de los treinta días posteriores a la entrega. El reembolso regresa al método de pago original en un plazo de cinco días hábiles."
+    }
+  ],
+  "defaultPricePerMillion": 1,
+  "defaultConversationsPerDay": 50000,
+  "sortsPerConversation": 1200,
+  "readNext": ["petrov-2023", "karpathy-tokenizer", "tiktoken", "anthropic-token-counting"]
+}

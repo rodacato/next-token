@@ -1,0 +1,17 @@
+{
+  "id": "next-token",
+  "kind": "next-token",
+  "act": "compositor",
+  "number": 2,
+  "defaultCopy": {
+    "en": "Every morning the baker opens the",
+    "es-MX": "Cada mañana el panadero abre la"
+  },
+  "measurement": {
+    "draws": 20,
+    "coldTemperature": 0.2,
+    "hotTemperature": 1.2,
+    "seed": 1729
+  },
+  "readNext": ["holtzman-2019", "karpathy-gpt", "vaswani-2017"]
+}

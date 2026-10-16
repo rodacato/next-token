@@ -1,0 +1,221 @@
+{
+  "_meta": {
+    "name": "Español (México)",
+    "short": "ES",
+    "htmlLang": "es-MX"
+  },
+  "course": {
+    "title": "Next Token",
+    "subtitle": "Modelos de lenguaje, compuestos a mano",
+    "acts": {
+      "compositor": "Acto I · El cajista"
+    }
+  },
+  "shell": {
+    "skipToBench": "Ir al banco",
+    "chapterLabel": "Capítulo {number}",
+    "notCast": "Aún sin fundir",
+    "set": "Compuesto",
+    "language": "Idioma",
+    "reset": "Distribuir los tipos",
+    "resetTitle": "¿Distribuir los tipos?",
+    "resetBody": "Cada tipo vuelve a su caja: progreso, predicciones y ajustes en este dispositivo. El modelo descargado se queda en la caché de tu navegador.",
+    "resetConfirm": "Distribuirlos",
+    "resetCancel": "Dejarlos compuestos",
+    "resetDone": "El banco está limpio.",
+    "next": "Sigue: {title}",
+    "back": "Volver a {title}",
+    "stages": {
+      "problem": "El encargo",
+      "bench": "En el banco",
+      "measure": "Medir",
+      "debrief": "Repaso"
+    },
+    "stageNumber": "{number} de 4",
+    "honor": "Aquí nada hace el ejercicio por ti. Primero predices; el banco comprueba después."
+  },
+  "bench": {
+    "copy": "Original",
+    "copyHint": "Escribe unas palabras. El cajista las parte en tipos.",
+    "copyPlaceholder": "Escribe aquí",
+    "stick": "Componedor",
+    "stickCount": "{count} tipos",
+    "case": "Caja · {count} tipos",
+    "caseUnknown": "Caja",
+    "next": "Sigue",
+    "press": "Prensa",
+    "proof": "Prueba",
+    "proofEmpty": "Nada compuesto todavía. El papel espera.",
+    "impression": "Impresión {count}",
+    "slip": "Boleta",
+    "slipHead": {
+      "sort": "tipo",
+      "logit": "logit",
+      "probability": "p"
+    },
+    "space": "Un punto al inicio es un espacio. Viaja con el tipo.",
+    "byteFragment": "Parte de un carácter. Hace falta más de un tipo para imprimirlo.",
+    "tokenId": "id {id}"
+  },
+  "tokenizers": {
+    "o200k": "o200k_base",
+    "o200kNote": "el tokenizador de OpenAI para la familia GPT-4o, vía js-tiktoken",
+    "qwen": "Qwen2.5",
+    "qwenNote": "el tokenizador del modelo de este banco",
+    "fetchCase": "Traer la caja de {name} · {size}",
+    "fetching": "Trayendo la caja… {loaded} de {total}",
+    "claudeNote": "Claude usa su propio tokenizador. Los conteos exactos de Claude solo salen de la API de conteo de tokens de Anthropic, así que aquí no se muestran."
+  },
+  "model": {
+    "title": "El cajista todavía no está en el banco",
+    "body": "Los abanicos en vivo necesitan un modelo pequeño corriendo en tu navegador. Nada sale de tu dispositivo. Se descarga una vez y se queda en la caché del navegador.",
+    "license": "licencia {license}",
+    "device": {
+      "webgpu": "WebGPU",
+      "wasm": "WASM (más lento, sin GPU)"
+    },
+    "size": "descarga de {size}",
+    "multilingual": "Lee inglés y español",
+    "englishOnly": "Casi solo inglés. Los abanicos en español se verán raros, y eso también enseña.",
+    "load": "Cargar {name}",
+    "loading": "Fundiendo al cajista… {loaded} de {total}",
+    "loadingUnknown": "Fundiendo al cajista…",
+    "ready": "{name} en el banco · {device}",
+    "failed": "El cajista no llegó: {reason}",
+    "retry": "Intentar otra vez",
+    "thinking": "El cajista está leyendo la línea…",
+    "elapsed": "{ms} ms para {tokens} tipos de contexto",
+    "recorded": "Corrida grabada · {model} · {date}. Los modelos cambian; los resultados también.",
+    "noRecording": "No hay grabación para esta línea. Carga al cajista para componer tus propias palabras.",
+    "useRecorded": "Quedarme con la corrida grabada"
+  },
+  "fan": {
+    "label": "El abanico: lo que podría seguir",
+    "temperature": "Temperatura",
+    "topP": "Top-p",
+    "cold": "frío",
+    "hot": "caliente",
+    "narrow": "estrecho",
+    "all": "todo",
+    "remark": {
+      "greedy": "Cero. El cajista toma siempre el tipo más probable. Mismo original, misma línea.",
+      "cold": "Frío. El cajista toma casi siempre el mismo tipo.",
+      "warm": "Tibio. Casi siempre el tipo probable; de vez en cuando, el segundo.",
+      "hot": "Caliente. Los tipos improbables tienen una oportunidad real. Los errores también.",
+      "scalding": "Hirviendo. La caja está abierta de par en par y el cajista adivina."
+    },
+    "draw": "Que el cajista saque uno",
+    "greedy": "Tomar el más probable",
+    "pickHint": "O elige un tipo a mano.",
+    "pulled": "Fuera de top-p: el cajista no lo toca",
+    "tail": "+ {count} tipos más · {share}",
+    "choices": "{value} opciones efectivas",
+    "setIt": "Componerlo",
+    "clearLine": "Limpiar la línea"
+  },
+  "chapters": {
+    "tokens": {
+      "title": "Tipos",
+      "kicker": "Tokens",
+      "problem": {
+        "heading": "La cuenta subió en español.",
+        "body": "Mercadito tradujo su asistente de ayuda para clientes en México. Mismas respuestas, mismo tráfico, mismo modelo. Aun así, la factura del asistente en español llegó más alta. Nadie movió un ajuste. Algo en las palabras mismas cuesta más.",
+        "task": "Averigua qué es lo que realmente se le cobra al modelo."
+      },
+      "bench": {
+        "heading": "Compón un original.",
+        "body": "El modelo nunca ve letras ni palabras. Ve tipos: pedazos de texto de una caja fija, cada uno con un número. Escribe lo que quieras y mira cómo dos cajas distintas lo parten.",
+        "observe": "Busca: palabras que ocupan un tipo, palabras que ocupan varios, y cómo los espacios viajan con el tipo que les sigue."
+      },
+      "measure": {
+        "heading": "Mismo mensaje, dos idiomas.",
+        "body": "Aquí hay una respuesta con la forma de las de Mercadito, en inglés y en español. Primero predice, luego compón ambas.",
+        "predict": "¿Qué versión ocupará más tipos?",
+        "options": {
+          "english": "Inglés",
+          "spanish": "Español",
+          "same": "Más o menos igual"
+        },
+        "run": "Componer ambas versiones",
+        "resultAgree": "Dijiste {guess}. El componedor coincide.",
+        "resultDisagree": "Dijiste {guess}. El componedor no coincide.",
+        "ratio": "El español ocupa {ratio}× los tipos del inglés en {tokenizer}.",
+        "table": {
+          "copy": "original",
+          "english": "Inglés",
+          "spanish": "Español",
+          "ratio": "razón"
+        },
+        "cost": {
+          "heading": "Lo que eso le hace a la cuenta",
+          "price": "Precio por millón de tipos de entrada (USD)",
+          "priceNote": "Una tarifa de ejemplo. Pon el precio actual de tu proveedor; cambian.",
+          "volume": "Conversaciones al día",
+          "perConversation": "Los tipos por conversación se escalan a partir de la muestra.",
+          "monthly": "{language}: {cost} al mes",
+          "difference": "Mismas conversaciones, {difference} más al mes en español."
+        }
+      },
+      "debrief": {
+        "heading": "La caja se cortó para el inglés.",
+        "points": {
+          "one": "Los modelos leen y cobran por token, no por palabra ni por carácter. Un token es lo que diga el vocabulario fijo del tokenizador.",
+          "two": "Los tokenizadores aprenden su vocabulario del texto de entrenamiento. Cuando casi todo ese texto es inglés, las palabras comunes en inglés tienen tipo propio y las del español se parten.",
+          "three": "Cada modelo usa su propia caja. El mismo original tiene otro conteo, y otro precio, en cada uno.",
+          "four": "Cuenta con el tokenizador del modelo por el que vas a pagar. Para Claude, eso significa la API de conteo de tokens."
+        },
+        "voice": "El cajista no lee palabras. Lee lo que la caja se cortó para contener."
+      }
+    },
+    "next-token": {
+      "title": "El siguiente tipo",
+      "kicker": "Predicción del siguiente token",
+      "problem": {
+        "heading": "Cuarenta tazas, una descripción.",
+        "body": "El redactor de fichas de producto de Mercadito escribió descripciones para cuarenta tazas distintas. Las cuarenta salieron idénticas, palabra por palabra. El prompt estaba bien. Alguien había puesto la temperatura en cero.",
+        "task": "Ve qué cambia realmente la temperatura, con un modelo de verdad."
+      },
+      "bench": {
+        "heading": "Abre el abanico.",
+        "body": "En cada paso el cajista califica cada tipo de la caja. El abanico muestra los más probables, cada uno compuesto a un tamaño que corresponde a su probabilidad. Mueve la temperatura y mira cómo el abanico se abre y se cierra.",
+        "observe": "Elige un tipo a mano o deja que el cajista saque uno. Luego compón el siguiente."
+      },
+      "measure": {
+        "heading": "Veinte sorteos.",
+        "body": "Desde la misma línea, el cajista saca veinte veces en frío y veinte en caliente. Primero predice.",
+        "predictCold": "Tipos distintos a temperatura {temperature}",
+        "predictHot": "Tipos distintos a temperatura {temperature}",
+        "run": "Sacar cuarenta veces",
+        "drawsAt": "{draws} sorteos a {temperature}",
+        "distinct": "{count} distintos",
+        "predicted": "predijiste {count}",
+        "seed": "Los sorteos usan semilla, así que esta corrida se repite exactamente."
+      },
+      "debrief": {
+        "heading": "La temperatura reacomoda; no sabe más.",
+        "points": {
+          "one": "El modelo produce una calificación (un logit) para cada tipo de su caja. Softmax convierte las calificaciones en probabilidades.",
+          "two": "La temperatura divide las calificaciones antes de softmax. Valores bajos afilan el abanico hacia el primer tipo; valores altos lo aplanan.",
+          "three": "Top-p conserva el conjunto más pequeño de tipos cuyas probabilidades suman p y descarta la cola larga.",
+          "four": "El tipo más probable no es el verdadero. El cajista sabe qué suele seguir, no qué es correcto."
+        },
+        "voice": "Fluido no es lo mismo que correcto."
+      }
+    }
+  },
+  "readNext": {
+    "heading": "Qué leer después",
+    "why": {
+      "petrov-2023": "Mide cuánto más pagan algunos idiomas, en muchos tokenizadores.",
+      "karpathy-tokenizer": "Construye un tokenizador de pares de bytes desde cero; la intuición más clara de dónde salen los tipos.",
+      "tiktoken": "La biblioteca detrás de la caja o200k_base que se usa en este banco.",
+      "anthropic-token-counting": "Cómo obtener conteos exactos de tokens de Claude antes de enviar una solicitud.",
+      "holtzman-2019": "De dónde viene top-p (nucleus sampling) y por qué el texto puramente codicioso se degenera.",
+      "karpathy-gpt": "Construye un GPT pequeño y muestra logits, softmax y muestreo en unos cientos de líneas.",
+      "vaswani-2017": "El artículo del transformer. Denso, pero aquí empieza la maquinaria del cajista."
+    }
+  },
+  "units": {
+    "megabytes": "{value} MB"
+  }
+}

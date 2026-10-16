@@ -1,0 +1,221 @@
+{
+  "_meta": {
+    "name": "English",
+    "short": "EN",
+    "htmlLang": "en"
+  },
+  "course": {
+    "title": "Next Token",
+    "subtitle": "Large language models, set by hand",
+    "acts": {
+      "compositor": "Act I · The Compositor"
+    }
+  },
+  "shell": {
+    "skipToBench": "Skip to the bench",
+    "chapterLabel": "Chapter {number}",
+    "notCast": "Not cast yet",
+    "set": "Set",
+    "language": "Language",
+    "reset": "Distribute the type",
+    "resetTitle": "Distribute the type?",
+    "resetBody": "Every sort goes back to its case: progress, predictions and settings on this device. The downloaded model stays in your browser's cache.",
+    "resetConfirm": "Distribute it",
+    "resetCancel": "Keep it set",
+    "resetDone": "The bench is clear.",
+    "next": "Next: {title}",
+    "back": "Back to {title}",
+    "stages": {
+      "problem": "The job",
+      "bench": "At the bench",
+      "measure": "Measure",
+      "debrief": "Debrief"
+    },
+    "stageNumber": "{number} of 4",
+    "honor": "Nothing here does the exercise for you. You predict first; the bench checks after."
+  },
+  "bench": {
+    "copy": "Copy",
+    "copyHint": "Type a few words. The compositor breaks them into sorts.",
+    "copyPlaceholder": "Type here",
+    "stick": "Composing stick",
+    "stickCount": "{count} sorts",
+    "case": "Case · {count} sorts",
+    "caseUnknown": "Case",
+    "next": "Next",
+    "press": "Press",
+    "proof": "Proof",
+    "proofEmpty": "Nothing set yet. The paper waits.",
+    "impression": "Impression {count}",
+    "slip": "Slip",
+    "slipHead": {
+      "sort": "sort",
+      "logit": "logit",
+      "probability": "p"
+    },
+    "space": "A leading dot is a space. It belongs to the sort.",
+    "byteFragment": "Part of a character. It takes more than one sort to print it.",
+    "tokenId": "id {id}"
+  },
+  "tokenizers": {
+    "o200k": "o200k_base",
+    "o200kNote": "OpenAI's tokenizer for the GPT-4o family, via js-tiktoken",
+    "qwen": "Qwen2.5",
+    "qwenNote": "the tokenizer of the model on this bench",
+    "fetchCase": "Fetch the {name} case · {size}",
+    "fetching": "Fetching the case… {loaded} of {total}",
+    "claudeNote": "Claude uses its own tokenizer. Exact Claude counts come only from Anthropic's token-counting API, so they are not shown here."
+  },
+  "model": {
+    "title": "The compositor is not on the bench yet",
+    "body": "Live fans need a small model running in your browser. Nothing leaves your device. It downloads once and stays in your browser's cache.",
+    "license": "{license} license",
+    "device": {
+      "webgpu": "WebGPU",
+      "wasm": "WASM (slower, no GPU)"
+    },
+    "size": "{size} download",
+    "multilingual": "Reads English and Spanish",
+    "englishOnly": "Mostly English. Spanish fans will look strange, and that is a lesson too.",
+    "load": "Load {name}",
+    "loading": "Casting the compositor… {loaded} of {total}",
+    "loadingUnknown": "Casting the compositor…",
+    "ready": "{name} on the bench · {device}",
+    "failed": "The compositor didn't arrive: {reason}",
+    "retry": "Try again",
+    "thinking": "The compositor is reading the line…",
+    "elapsed": "{ms} ms for {tokens} sorts of context",
+    "recorded": "Recorded run · {model} · {date}. Models change; so do results.",
+    "noRecording": "No recording for this line. Load the compositor to set your own words.",
+    "useRecorded": "Stay with the recorded run"
+  },
+  "fan": {
+    "label": "The fan: what could come next",
+    "temperature": "Temperature",
+    "topP": "Top-p",
+    "cold": "cold",
+    "hot": "hot",
+    "narrow": "narrow",
+    "all": "all",
+    "remark": {
+      "greedy": "Zero. The compositor takes the likeliest sort every time. Same copy, same line.",
+      "cold": "Cold. The compositor reaches for the same sort almost every time.",
+      "warm": "Warm. Usually the likely sort; now and then the second.",
+      "hot": "Hot. Unlikely sorts get a real chance. So do mistakes.",
+      "scalding": "Scalding. The case is wide open and the compositor is guessing."
+    },
+    "draw": "Let the compositor draw",
+    "greedy": "Take the likeliest",
+    "pickHint": "Or pick a sort by hand.",
+    "pulled": "Outside top-p: the compositor won't touch it",
+    "tail": "+ {count} more sorts · {share}",
+    "choices": "{value} effective choices",
+    "setIt": "Set it",
+    "clearLine": "Clear the line"
+  },
+  "chapters": {
+    "tokens": {
+      "title": "Sorts",
+      "kicker": "Tokens",
+      "problem": {
+        "heading": "The bill went up in Spanish.",
+        "body": "Mercadito translated its help assistant for customers in Mexico. Same answers, same traffic, same model. The invoice for the Spanish assistant came in higher anyway. Nobody changed a setting. Something about the words themselves costs more.",
+        "task": "Find out what the model is actually charged for."
+      },
+      "bench": {
+        "heading": "Set some copy.",
+        "body": "The model never sees letters or words. It sees sorts: pieces of text from a fixed case, each with a number. Type anything and watch two different cases break it up.",
+        "observe": "Look for: words that take one sort, words that take several, and how spaces travel with the sort after them."
+      },
+      "measure": {
+        "heading": "Same message, two languages.",
+        "body": "Here is one of Mercadito's real-shaped replies, in English and in Spanish. Predict first, then set both.",
+        "predict": "Which version will take more sorts?",
+        "options": {
+          "english": "English",
+          "spanish": "Spanish",
+          "same": "About the same"
+        },
+        "run": "Set both versions",
+        "resultAgree": "You said {guess}. The stick agrees.",
+        "resultDisagree": "You said {guess}. The stick disagrees.",
+        "ratio": "Spanish takes {ratio}× the sorts of English on {tokenizer}.",
+        "table": {
+          "copy": "copy",
+          "english": "English",
+          "spanish": "Spanish",
+          "ratio": "ratio"
+        },
+        "cost": {
+          "heading": "What that does to the bill",
+          "price": "Price per million input sorts (USD)",
+          "priceNote": "An example rate. Put in your provider's current price; they change.",
+          "volume": "Conversations a day",
+          "perConversation": "Sorts per conversation are scaled from the sample.",
+          "monthly": "{language}: {cost} a month",
+          "difference": "Same conversations, {difference} more a month in Spanish."
+        }
+      },
+      "debrief": {
+        "heading": "The case was cut for English.",
+        "points": {
+          "one": "Models read and bill by token, not by word or character. A token is whatever the tokenizer's fixed vocabulary says it is.",
+          "two": "Tokenizers learn their vocabulary from training text. When most of that text is English, common English words get a sort of their own and Spanish words get split.",
+          "three": "Different models use different cases. The same copy has a different count, and a different price, on each.",
+          "four": "Count with the tokenizer of the model you will pay for. For Claude, that means the token-counting API."
+        },
+        "voice": "The compositor doesn't read words. It reads whatever the case was cut to hold."
+      }
+    },
+    "next-token": {
+      "title": "The next sort",
+      "kicker": "Next-token prediction",
+      "problem": {
+        "heading": "Forty mugs, one description.",
+        "body": "Mercadito's product-copy writer produced descriptions for forty different mugs. All forty came back word for word identical. The prompt was fine. Someone had set the temperature to zero.",
+        "task": "See what temperature actually changes, with a real model."
+      },
+      "bench": {
+        "heading": "Open the fan.",
+        "body": "At every step the compositor scores every sort in the case. The fan shows the likeliest ones, each set at a size that matches its probability. Move the temperature and watch the fan open and close.",
+        "observe": "Pick a sort by hand, or let the compositor draw. Then set the next one."
+      },
+      "measure": {
+        "heading": "Twenty draws.",
+        "body": "From the same line, the compositor draws twenty times at a cold setting and twenty times at a hot one. Predict first.",
+        "predictCold": "Distinct sorts at temperature {temperature}",
+        "predictHot": "Distinct sorts at temperature {temperature}",
+        "run": "Draw forty times",
+        "drawsAt": "{draws} draws at {temperature}",
+        "distinct": "{count} distinct",
+        "predicted": "you predicted {count}",
+        "seed": "Draws are seeded, so this run repeats exactly."
+      },
+      "debrief": {
+        "heading": "Temperature reshapes; it doesn't know more.",
+        "points": {
+          "one": "The model produces one score (a logit) for every sort in its case. Softmax turns the scores into probabilities.",
+          "two": "Temperature divides the scores before softmax. Low values sharpen the fan toward the top sort; high values flatten it.",
+          "three": "Top-p keeps the smallest set of sorts whose probabilities add up to p, and drops the long tail.",
+          "four": "The likeliest sort is not the true one. The compositor knows what usually comes next, not what is correct."
+        },
+        "voice": "Fluent is not the same as correct."
+      }
+    }
+  },
+  "readNext": {
+    "heading": "What to read next",
+    "why": {
+      "petrov-2023": "Measures how much more some languages pay, across many tokenizers.",
+      "karpathy-tokenizer": "Builds a byte-pair tokenizer from scratch; the clearest intuition for where sorts come from.",
+      "tiktoken": "The tokenizer library behind the o200k_base case used on this bench.",
+      "anthropic-token-counting": "How to get exact Claude token counts before you send a request.",
+      "holtzman-2019": "Where top-p (nucleus sampling) comes from, and why pure greedy text degenerates.",
+      "karpathy-gpt": "Builds a small GPT and shows logits, softmax and sampling in a few hundred lines.",
+      "vaswani-2017": "The transformer paper. Dense, but this is where the compositor's machinery starts."
+    }
+  },
+  "units": {
+    "megabytes": "{value} MB"
+  }
+}
