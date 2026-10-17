@@ -15,6 +15,7 @@
     "dev": "vite",
     "build": "npm run manifest && tsc && vite build",
     "preview": "vite preview",
+    "demo": "npm run build && node scripts/record-demo.mjs",
     "typecheck": "tsc",
     "lint": "eslint .",
     "test": "vitest run",
