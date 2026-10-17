@@ -12,7 +12,7 @@ APP_URL=http://localhost:5317 node scripts/capture-phase-c.ts
 
 | Capture | What it shows |
 | --- | --- |
-| `ch11-recorded-{en,es}.png` | The same run, replayed from the recording |
+| `ch11-recorded-{en,es}.png` | The recorded run: held-out loss turns up at step 250; by step 2,000, 7 of 12 English samples (9 of 12 Spanish) are training lines copied whole |
 | `ch12-sorted-{en,es}.png` | MiniCPM5-2B's four checkpoints answer the same question, sorted blind; the release names Sydney ("Sídney") as the capital in Spanish |
 | `ch13-ledger-{en,es}.png` | Seven training methods: the data each needs, what it changes, what it can't do |
 | `ch14-workshop-{en,es}.png` | The data workshop after the checks and the judge: copies and leaks found by text matching, contradictions by the judge, plus its false alarms |
