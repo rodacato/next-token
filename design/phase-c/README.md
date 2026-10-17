@@ -3,9 +3,15 @@
 Every screen runs on a recording by default, with its machine, tool and
 date on screen. Chapters 11 and 15 also train live in the browser.
 
+The captures aren't kept in the repo. Regenerate them into this folder
+against a running dev server:
+
+```bash
+APP_URL=http://localhost:5317 node scripts/capture-phase-c.ts
+```
+
 | Capture | What it shows |
 | --- | --- |
-| `ch11-live-en.png` | Training live on WebGPU: held-out loss turns up at step 250; by step 2,000, 7 of 12 samples are training lines copied whole |
 | `ch11-recorded-{en,es}.png` | The same run, replayed from the recording |
 | `ch12-sorted-{en,es}.png` | MiniCPM5-2B's four checkpoints answer the same question, sorted blind; the release names Sydney ("Sídney") as the capital in Spanish |
 | `ch13-ledger-{en,es}.png` | Seven training methods: the data each needs, what it changes, what it can't do |
