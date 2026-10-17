@@ -4,6 +4,13 @@ Seeded simulations: the same plan replays the same weeks. Every number is
 on the page, as a measurement from an earlier chapter, a dated price or an
 assumption.
 
+The captures aren't kept in the repo. Regenerate them into this folder
+against a running dev server:
+
+```bash
+APP_URL=http://localhost:5317 node scripts/capture-phase-d.ts
+```
+
 | Capture | What it shows |
 | --- | --- |
 | `ch18-month-{en,es}.png` | An LLM for every feature: 1.34M MXN in a month, almost all of it wrong answers; the API costs 511 MXN |

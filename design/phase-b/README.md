@@ -4,6 +4,13 @@ Every screen runs on recorded Claude Haiku 5.5 answers (2026-10-16), with the
 model and date shown on screen. With a key in Outside work, the same benches
 run live and show the cost first.
 
+The captures aren't kept in the repo. Regenerate them into this folder
+against a running dev server:
+
+```bash
+APP_URL=http://localhost:5317 node scripts/capture-phase-b.ts
+```
+
 | Capture | What it shows |
 | --- | --- |
 | `ch5-tickets-en.png`, `ch5-duel-en.png` | The prompt duel: the lovely prompt reads better and scores 0 of 10 on the format |
