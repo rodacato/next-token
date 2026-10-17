@@ -41,6 +41,7 @@ try {
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.evaluate(() => document.fonts.ready);
+  await course.ready?.(page);
   const skipSeconds = (Date.now() - started) / 1000;
 
   await course.default(page);

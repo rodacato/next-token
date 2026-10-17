@@ -11,6 +11,10 @@ async function open(page, title) {
   await pause(page, 1800);
 }
 
+export async function ready(page) {
+  await page.getByTestId("stick-o200k").filter({ hasNotText: "Opening the case" }).waitFor();
+}
+
 export default async function tour(page) {
   await pause(page, 2500);
   const copy = page.getByTestId("copy");
