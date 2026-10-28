@@ -126,7 +126,8 @@
     "tail": "+ {count} more sorts · {share}",
     "choices": "{value} effective choices",
     "setIt": "Set it",
-    "clearLine": "Clear the line"
+    "clearLine": "Clear the line",
+    "outside": "The draw landed in the tail, past the {count} sorts this bench lists. A real model would set one of them; the bench can't show which, so draw again."
   },
   "chapters": {
     "tokens": {
@@ -205,7 +206,8 @@
         "drawsAt": "{draws} draws at {temperature}",
         "distinct": "{count} distinct",
         "predicted": "you predicted {count}",
-        "seed": "Draws are seeded, so this run repeats exactly."
+        "seed": "Draws are seeded, so this run repeats exactly.",
+        "outside": "plus {count} from the tail, past the listed sorts"
       },
       "debrief": {
         "heading": "Temperature reshapes; it doesn't know more.",

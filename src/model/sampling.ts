@@ -82,7 +82,24 @@ export function seededRandom(seed: number): RandomSource {
   };
 }
 
+export const OUTSIDE = "outside";
+export type Draw = ShapedCandidate | typeof OUTSIDE;
+
+// Draws over the whole vocabulary: when the nucleus reaches past the shortlist, its tail share can be drawn too,
+// and comes back as OUTSIDE because the shortlist doesn't know which sort it was.
+export function drawSort(distribution: ShapedDistribution, random: RandomSource): Draw {
+  if (distribution.temperature <= MIN_TEMPERATURE) return greedyCandidate(distribution);
+  const nucleus = distribution.candidates.filter((c) => c.inNucleus);
+  const shownMass = nucleus.reduce((sum, c) => sum + c.probability, 0);
+  const listedMass = distribution.candidates.reduce((sum, c) => sum + c.probability, 0);
+  const tailInNucleus = nucleus.length === distribution.candidates.length ? Math.min(distribution.tailMass, Math.max(0, distribution.topP - listedMass)) : 0;
+  if (random() * (shownMass + tailInNucleus) >= shownMass) return OUTSIDE;
+  return drawCandidate(distribution, random);
+}
+
+// Draws among the shortlist only, renormalized; drawSort is the faithful version.
 export function drawCandidate(distribution: ShapedDistribution, random: RandomSource): ShapedCandidate {
+  if (distribution.temperature <= MIN_TEMPERATURE) return greedyCandidate(distribution);
   const nucleus = distribution.candidates.filter((c) => c.inNucleus);
   const first = nucleus[0];
   if (!first) throw new Error("Cannot draw from an empty distribution.");
@@ -103,11 +120,15 @@ export function greedyCandidate(distribution: ShapedDistribution): ShapedCandida
 
 export type DrawTally = { readonly text: string; readonly count: number };
 
-export function tallyDraws(distribution: ShapedDistribution, draws: number, random: RandomSource): DrawTally[] {
+export type Tally = { readonly sorts: DrawTally[]; readonly outside: number };
+
+export function tallyDraws(distribution: ShapedDistribution, draws: number, random: RandomSource): Tally {
   const counts = new Map<string, number>();
+  let outside = 0;
   for (let i = 0; i < draws; i++) {
-    const { text } = drawCandidate(distribution, random);
-    counts.set(text, (counts.get(text) ?? 0) + 1);
+    const drawn = drawSort(distribution, random);
+    if (drawn === OUTSIDE) outside++;
+    else counts.set(drawn.text, (counts.get(drawn.text) ?? 0) + 1);
   }
-  return [...counts.entries()].map(([text, count]) => ({ text, count })).sort((a, b) => b.count - a.count);
+  return { sorts: [...counts.entries()].map(([text, count]) => ({ text, count })).sort((a, b) => b.count - a.count), outside };
 }

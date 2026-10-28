@@ -126,7 +126,8 @@
     "tail": "+ {count} tipos más · {share}",
     "choices": "{value} opciones efectivas",
     "setIt": "Componerlo",
-    "clearLine": "Limpiar la línea"
+    "clearLine": "Limpiar la línea",
+    "outside": "El sorteo cayó en la cola, más allá de los {count} tipos que lista esta mesa. Un modelo real pondría uno de ellos; la mesa no puede mostrar cuál, así que sortea otra vez."
   },
   "chapters": {
     "tokens": {
@@ -205,7 +206,8 @@
         "drawsAt": "{draws} sorteos a {temperature}",
         "distinct": "{count} distintos",
         "predicted": "predijiste {count}",
-        "seed": "Los sorteos usan semilla, así que esta corrida se repite exactamente."
+        "seed": "Los sorteos usan semilla, así que esta corrida se repite exactamente.",
+        "outside": "más {count} de la cola, fuera de los tipos listados"
       },
       "debrief": {
         "heading": "La temperatura reacomoda; no sabe más.",
