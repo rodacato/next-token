@@ -300,7 +300,7 @@ export const failureChapterSchema = z.object({
     noticedForUndo: z.number().min(0).max(1),
     caughtAtConfirm: z.number().min(0).max(1),
   }),
-  assumptions: z.array(z.object({ key: z.string(), evidence: z.string() })),
+  assumptions: z.array(z.object({ key: z.string(), evidence: z.string(), of: z.number().int().positive().optional() })),
   sample: z.object({ customer: perLocale, reply: perLocale, refusal: perLocale }),
 });
 

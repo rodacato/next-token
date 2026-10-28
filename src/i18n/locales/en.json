@@ -679,7 +679,7 @@
       "bench": {
         "heading": "Five safeguards. Try them alone and together.",
         "body": "Each safeguard changes what happens after the model answers. The preview shows the same wrong answer under your design. Every number behind the simulation is on the page.",
-        "observe": "Turn on streaming alone and run it. Read the harm column."
+        "observe": "Turn on streaming alone and run it. Read the harm column, then who gave up waiting."
       },
       "measure": {
         "heading": "Which one matters most?",
@@ -690,7 +690,7 @@
         "points": {
           "one": "An honest \"I don't know\" turns guesses into hand-offs. It costs people's time and saves customers from wrong answers.",
           "two": "Before an action, put a confirmation or an undo between the model and the money. Show what will happen in plain words.",
-          "three": "Faster isn't safer. Streaming keeps people waiting, which also means more of them read, and act on, the wrong answers.",
+          "three": "Faster isn't safer, and it isn't more dangerous either. Streaming keeps people who would have left, so more of them meet the wrong answers; the share that's wrong doesn't move. Count the people who give up as a cost of their own.",
           "four": "Visible uncertainty only helps if the model's uncertainty tracks its errors, and if people read it. Measure both."
         },
         "voice": "Every proof has errors. The shop that catches them before the run keeps its customers."
@@ -1461,8 +1461,9 @@
     },
     "predict": "Alone, which safeguard cuts the harm the most?",
     "alone": "Safeguard, alone",
-    "findingMatch": "As you predicted: {best}, from {from} to {to}. And streaming alone raises harm to {streaming}: people who stop leaving stay to read the wrong answers.",
-    "findingMiss": "The biggest cut alone: {best}, from {from} to {to}. And streaming alone raises harm to {streaming}: people who stop leaving stay to read the wrong answers."
+    "findingMatch": "As you predicted: {best}, from {from} to {to}. Streaming alone moves harm to {streaming}, but only because {kept} more people stay to read an answer: without it {before} of the answers hurt someone, with it {after}.",
+    "findingMiss": "The biggest cut alone: {best}, from {from} to {to}. Streaming alone moves harm to {streaming}, but only because {kept} more people stay to read an answer: without it {before} of the answers hurt someone, with it {after}.",
+    "measuredOf": "{count} of {of} answers, measured in “{chapter}”"
   },
   "bill": {
     "usd": "${amount}",
