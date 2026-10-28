@@ -130,18 +130,21 @@ test.describe("chapter 9 · retrieval", () => {
 });
 
 test.describe("chapter 10 · agents", () => {
-  test("the night pays twice without notes; a person and notes make it pay once", async ({ page }) => {
+  test("the night pays twice without notes; notes alone leave it to the model; a person and notes make the harness pay once", async ({ page }) => {
     await open(page, /^10 Agents/);
     await advance(page, 1);
     await expect(page.getByTestId("harness-diagram")).toContainText("MCP server");
     await page.getByTestId("run-night").click();
     await expect(page.getByTestId("till")).toContainText("4,900 MXN. Refunds run: 2.");
     await advance(page, 1);
-    await page.getByRole("radio", { name: "4,900 MXN" }).check();
-    await page.getByTestId("run-night").click();
-    await expect(page.getByTestId("agents-baseline")).toContainText("As you predicted: 4,900 MXN.");
-    await page.getByRole("radio", { name: "Ask a person" }).check();
+    await expect(page.getByTestId("run-night")).toBeDisabled();
+    await page.getByRole("radio", { name: "2,450 MXN" }).check();
     await page.getByTestId("toggle-memory").check();
+    await page.getByTestId("run-night").click();
+    await expect(page.getByTestId("agents-baseline")).toContainText("As you predicted: 2,450 MXN with the notes on. The agent read the note from ticket 1");
+    await expect(page.getByTestId("agents-fixed")).toHaveCount(0);
+    await expect(page.getByTestId("advance")).toBeDisabled();
+    await page.getByRole("radio", { name: "Ask a person" }).check();
     await page.getByTestId("run-night").click();
     await page.getByTestId("approve").click();
     await expect(page.getByTestId("till")).toContainText("2,450 MXN. Refunds run: 1.");

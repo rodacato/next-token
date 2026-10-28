@@ -425,11 +425,11 @@
       "bench": {
         "heading": "The agent is a loop. The harness is everything around it.",
         "body": "The agent asks for a tool; the harness decides. Each request passes a gate (your refund rule) on its way to a real MCP server. You choose the parts: a step limit, a person who approves big refunds, notes carried between tickets, a sub-agent that reads records so the agent doesn't have to.",
-        "observe": "Run the queue with refunds allowed. Then switch one part at a time and read where the run changes."
+        "observe": "Run the queue with refunds allowed. Read the second ticket: what did the agent know about the first?"
       },
       "measure": {
         "heading": "Make the till balance.",
-        "body": "Predict what tonight costs as it stands, then change the harness until the blender is paid for exactly once."
+        "body": "Predict what tonight costs once the harness carries notes between tickets, then make the harness, not the model, the reason the blender is paid for once."
       },
       "debrief": {
         "heading": "The model proposes. The harness disposes.",
@@ -705,11 +705,11 @@
       "bench": {
         "heading": "Every token, every turn, every day.",
         "body": "Change the traffic, the prompt sizes, the routing and the cache, and watch each line of the bill. Prices come from the dated table; the cache hit rate and the reply times are assumptions you can see.",
-        "observe": "Shrink the system prompt by half. Then turn on caching instead. Compare."
+        "observe": "Predict the bill before you see it. Then shrink the system prompt by half, turn on caching instead, and compare."
       },
       "measure": {
         "heading": "Get under budget.",
-        "body": "Predict the bill as it stands, then bring it under $1,000 a month with the hard tickets still on the strong model."
+        "body": "Bring it under $1,000 a month with the hard tickets still on the strong model."
       },
       "debrief": {
         "heading": "Input is the bill. Route it, and cache what repeats.",
@@ -733,11 +733,11 @@
       "bench": {
         "heading": "Plan, defend, launch, wait.",
         "body": "Switch on the parts of your plan, set your defenses in the lab, and launch. Each week shows what happened; mistakes are paid for the week after. Every number lives in the chapter's content, and earlier chapters supplied the costs.",
-        "observe": "Launch with nothing switched on. Watch week 3, then week 5."
+        "observe": "Predict the cost first, then launch with nothing switched on. Watch week 3, then week 5."
       },
       "measure": {
         "heading": "Make it survive.",
-        "body": "Predict the cost of launching as it stands, then find a plan that stays under budget and stops every harmful injection."
+        "body": "Find a plan that stays under budget and stops every harmful injection."
       },
       "debrief": {
         "heading": "Plan for the bill, the mistakes and the attacker before launch day.",
@@ -1132,10 +1132,10 @@
     "rawRecord": "The record the sub-agent read",
     "tokens": "Tokens the agent read and wrote on this ticket: about {agent}. The sub-agent's, kept out of the agent's context: about {subagent}.",
     "mxn": "{amount} MXN",
-    "predict": "Refunds run, no notes between tickets. How much leaves the till tonight?",
-    "task": "Then build a harness that pays for the blender exactly once: 2,450 MXN, one refund.",
-    "baselineMatch": "As you predicted: {amount} MXN. The second ticket looked new to the agent, so it paid again.",
-    "baselineMiss": "You predicted {guess} MXN; {amount} MXN left. The second ticket looked new to the agent, so it paid again.",
+    "predict": "Refunds still run, but now the harness carries notes between tickets. How much leaves the till tonight?",
+    "task": "Then make the harness stop the second payment: 2,450 MXN, one refund, and refunds over the limit no longer run unchecked.",
+    "baselineMatch": "As you predicted: {amount} MXN with the notes on.",
+    "baselineMiss": "You predicted {guess} MXN; {amount} MXN left with the notes on.",
     "fixed": "One refund, 2,450 MXN. Your harness: refunds over the limit {policy}, notes between tickets {memory}.",
     "diagram": {
       "label": "The harness: the ticket queue feeds the agent; every tool call passes the gate before the MCP server runs it",
@@ -1150,7 +1150,9 @@
       "memory": "Notes",
       "person": "A person",
       "subagent": "Sub-agent"
-    }
+    },
+    "notesHeld": "The agent read the note from ticket 1 and didn't pay again. That was the model's choice: nothing in the harness would have stopped it.",
+    "notesIgnored": "The note was in its context, and the agent paid again anyway. Notes inform; they don't stop anything."
   },
   "trainer": {
     "corpus": "What it learns from",

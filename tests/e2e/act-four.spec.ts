@@ -43,10 +43,12 @@ test.describe("chapter 20 · the bill", () => {
   test("everything on the strong model costs thousands; routing and caching bring it under budget", async ({ page }) => {
     await open(page, /^20 The bill/);
     await advance(page, 1);
+    await expect(page.getByText("$3,744")).toHaveCount(0);
+    await expect(page.getByTestId("advance")).toBeDisabled();
+    await page.getByRole("radio", { name: "$2,000 to $5,000" }).click();
+    await expect(page.getByTestId("bill-finding")).toContainText("As you predicted: $3,744 a month.");
     await expect(page.getByTestId("bill-month")).toContainText("$3,744 a month");
     await advance(page, 1);
-    await page.getByRole("radio", { name: "$2,000 to $5,000" }).check();
-    await expect(page.getByTestId("bill-finding")).toContainText("As you predicted: $3,744 a month.");
     await page.getByTestId("strong-share").fill("25");
     await page.getByTestId("caching").check();
     await expect(page.getByTestId("bill-target")).toContainText("84% less");
@@ -58,12 +60,15 @@ test.describe("chapter 21 · the launch", () => {
   test("launching bare costs a fortune; a plan with architectural defenses survives", async ({ page }) => {
     await open(page, /^21 The launch/);
     await advance(page, 1);
+    await expect(page.getByTestId("run-launch")).toBeDisabled();
+    await page.getByRole("radio", { name: "over 1,000,000 MXN" }).check();
+    await expect(page.getByTestId("launch-finding")).toHaveCount(0);
     await page.getByTestId("run-launch").click();
+    await expect(page.getByTestId("launch-finding")).toContainText("As you predicted");
+    await expect(page.getByRole("radio", { name: "over 1,000,000 MXN" })).toBeDisabled();
     await expect(page.getByTestId("week-chart")).toBeVisible();
     await expect(page.getByTestId("launch-log")).toContainText("The November sale: traffic ×3.");
     await advance(page, 1);
-    await page.getByRole("radio", { name: "over 1,000,000 MXN" }).check();
-    await expect(page.getByTestId("launch-finding")).toContainText("As you predicted");
     await expect(page.getByTestId("injection-matrix")).toBeVisible();
     await page.getByTestId("defense-system-rule").check();
     await expect(page.getByTestId("attack-direct-refund")).toContainText("gets through sometimes");

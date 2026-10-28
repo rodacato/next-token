@@ -131,8 +131,25 @@ export function LaunchChapter({ chapter, progress, frame }: Props) {
         )}
       </section>
 
+      <section className="measure-sheet" data-testid="predict">
+        <fieldset className="rule-plates">
+          <legend className="kicker">{t("launch.predict", { weeks: world.weeks })}</legend>
+          {Array.from({ length: brackets.length + 1 }, (_, i) => (
+            <label key={i} className={`rule-plate${guess === i ? " is-chosen" : ""}`}>
+              <input type="radio" name="launch-bracket" checked={guess === i} disabled={result !== null} onChange={() => updateChapter(chapter.id, { predictions: { ...progress.predictions, launchBracket: i } })} />
+              {bracketLabel(i)}
+            </label>
+          ))}
+        </fieldset>
+        {guess !== null && result && (
+          <p className="measure-sheet__finding" data-testid="launch-finding">
+            {t(guess === actualBracket ? "launch.findingMatch" : "launch.findingMiss", { baseline: mxn(baselineTotal), goal: mxn(chapter.goalMxn) })}
+          </p>
+        )}
+      </section>
+
       <div className="actions actions--row">
-        <button className="button button--primary" disabled={measuring && guess === null} onClick={run} data-testid="run-launch">
+        <button className="button button--primary" disabled={guess === null} onClick={run} data-testid="run-launch">
           {t("launch.run", { weeks: world.weeks })}
         </button>
         {result && (
@@ -165,29 +182,11 @@ export function LaunchChapter({ chapter, progress, frame }: Props) {
         </>
       )}
 
-      {measuring && (
+      {measuring && result && (
         <section className="measure-sheet" data-testid="measure">
-          <fieldset className="rule-plates">
-            <legend className="kicker">{t("launch.predict", { weeks: world.weeks })}</legend>
-            {Array.from({ length: brackets.length + 1 }, (_, i) => (
-              <label key={i} className={`rule-plate${guess === i ? " is-chosen" : ""}`}>
-                <input type="radio" name="launch-bracket" checked={guess === i} onChange={() => updateChapter(chapter.id, { predictions: { ...progress.predictions, launchBracket: i } })} />
-                {bracketLabel(i)}
-              </label>
-            ))}
-          </fieldset>
-          {guess !== null && (
-            <>
-              <p className="measure-sheet__finding" data-testid="launch-finding">
-                {t(guess === actualBracket ? "launch.findingMatch" : "launch.findingMiss", { baseline: mxn(baselineTotal), goal: mxn(chapter.goalMxn) })}
-              </p>
-              {result && (
-                <p className={goalMet ? "measure-sheet__finding" : "note"} data-testid="launch-goal">
-                  {goalMet ? t("launch.met", { total: mxn(total) }) : t("launch.notYet", { total: mxn(total), through: formatNumber(harmfulThrough) })}
-                </p>
-              )}
-            </>
-          )}
+          <p className={goalMet ? "measure-sheet__finding" : "note"} data-testid="launch-goal">
+            {goalMet ? t("launch.met", { total: mxn(total) }) : t("launch.notYet", { total: mxn(total), through: formatNumber(harmfulThrough) })}
+          </p>
         </section>
       )}
     </div>
