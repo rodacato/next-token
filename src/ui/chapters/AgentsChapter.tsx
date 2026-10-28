@@ -60,8 +60,8 @@ export function AgentsChapter({ chapter, progress, frame }: Props) {
   const failure = context?.error ? (context.error === "no-recorded-run" ? t("evals.failed.no-recording") : context.error) : null;
   const guess = typeof progress.predictions.outflow === "number" ? progress.predictions.outflow : null;
   const measuring = progress.stage === "measure" || progress.stage === "debrief";
-  const baseline = nights.find((n) => n.config.refundPolicy === "allow" && !n.config.memory);
-  const fixed = nights.find((n) => n.paid === 2450 && n.refunds === 1);
+  const withNotes = nights.find((n) => n.config.refundPolicy === "allow" && n.config.memory);
+  const fixed = nights.find((n) => n.paid === 2450 && n.refunds === 1 && n.config.refundPolicy !== "allow");
 
   const set = (change: Partial<HarnessConfig>) => setConfig((c) => ({ ...c, ...change }));
   const bench = (
@@ -146,9 +146,9 @@ export function AgentsChapter({ chapter, progress, frame }: Props) {
             ))}
           </fieldset>
           <p className="note">{t("agents.task")}</p>
-          {baseline && guess !== null && (
+          {withNotes && guess !== null && (
             <p className="measure-sheet__finding" data-testid="agents-baseline">
-              {t(baseline.paid === guess ? "agents.baselineMatch" : "agents.baselineMiss", { amount: formatNumber(baseline.paid), guess: formatNumber(guess) })}
+              {t(withNotes.paid === guess ? "agents.baselineMatch" : "agents.baselineMiss", { amount: formatNumber(withNotes.paid), guess: formatNumber(guess) })} {t(withNotes.refunds > 1 ? "agents.notesIgnored" : "agents.notesHeld")}
             </p>
           )}
           {fixed && (
@@ -161,7 +161,7 @@ export function AgentsChapter({ chapter, progress, frame }: Props) {
     </div>
   );
 
-  const canAdvance = progress.stage === "bench" ? nights.length > 0 : progress.stage === "measure" ? baseline !== undefined && fixed !== undefined : true;
+  const canAdvance = progress.stage === "bench" ? nights.length > 0 : progress.stage === "measure" ? withNotes !== undefined && fixed !== undefined : true;
   return frame(canAdvance, bench);
 }
 

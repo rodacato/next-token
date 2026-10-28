@@ -425,11 +425,11 @@
       "bench": {
         "heading": "El agente es un ciclo. El arnés es todo lo que lo rodea.",
         "body": "El agente pide una herramienta; el arnés decide. Cada solicitud pasa por una compuerta (tu regla de reembolsos) camino a un servidor MCP real. Tú eliges las partes: un límite de pasos, una persona que aprueba los reembolsos grandes, notas que pasan de un ticket a otro, un subagente que lee los registros para que el agente no tenga que hacerlo.",
-        "observe": "Corre la fila con los reembolsos permitidos. Luego cambia una parte a la vez y lee dónde cambia la corrida."
+        "observe": "Corre la fila con los reembolsos permitidos. Lee el segundo ticket: ¿qué sabía el agente del primero?"
       },
       "measure": {
         "heading": "Que cuadre la caja.",
-        "body": "Predice cuánto cuesta la noche tal como está y luego cambia el arnés hasta que la licuadora se pague exactamente una vez."
+        "body": "Predice cuánto cuesta la noche cuando el arnés pasa notas entre tickets y luego haz que sea el arnés, no el modelo, lo que impide pagar la licuadora dos veces."
       },
       "debrief": {
         "heading": "El modelo propone. El arnés dispone.",
@@ -705,11 +705,11 @@
       "bench": {
         "heading": "Cada token, cada turno, cada día.",
         "body": "Cambia el tráfico, el tamaño de los prompts, el enrutamiento y la caché, y mira cada línea de la cuenta. Los precios vienen de la tabla fechada; la tasa de aciertos de caché y los tiempos de respuesta son supuestos a la vista.",
-        "observe": "Reduce el prompt de sistema a la mitad. Luego, en lugar de eso, prende la caché. Compara."
+        "observe": "Predice la cuenta antes de verla. Luego reduce el prompt de sistema a la mitad; después, en lugar de eso, prende la caché, y compara."
       },
       "measure": {
         "heading": "Ponla bajo presupuesto.",
-        "body": "Predice la cuenta tal como está y luego bájala de 1,000 USD al mes con los tickets difíciles todavía en el modelo fuerte."
+        "body": "Bájala de 1,000 USD al mes con los tickets difíciles todavía en el modelo fuerte."
       },
       "debrief": {
         "heading": "La entrada es la cuenta. Enrútala y guarda en caché lo que se repite.",
@@ -733,11 +733,11 @@
       "bench": {
         "heading": "Planea, defiende, lanza, espera.",
         "body": "Prende las partes de tu plan, pon tus defensas en el laboratorio y lanza. Cada semana muestra lo que pasó; los errores se pagan la semana siguiente. Cada número vive en el contenido del capítulo, y los capítulos anteriores pusieron los costos.",
-        "observe": "Lanza sin nada encendido. Mira la semana 3 y luego la 5."
+        "observe": "Predice primero el costo y luego lanza sin nada encendido. Mira la semana 3 y luego la 5."
       },
       "measure": {
         "heading": "Haz que sobreviva.",
-        "body": "Predice cuánto cuesta lanzar tal como está y luego encuentra un plan que quede bajo presupuesto y detenga cada inyección dañina."
+        "body": "Encuentra un plan que quede bajo presupuesto y detenga cada inyección dañina."
       },
       "debrief": {
         "heading": "Planea la cuenta, los errores y al atacante antes del lanzamiento.",
@@ -1132,10 +1132,10 @@
     "rawRecord": "El registro que leyó el subagente",
     "tokens": "Tokens que el agente leyó y escribió en este ticket: unos {agent}. Los del subagente, fuera del contexto del agente: unos {subagent}.",
     "mxn": "{amount} MXN",
-    "predict": "Los reembolsos se ejecutan, sin notas entre tickets. ¿Cuánto sale de caja esta noche?",
-    "task": "Luego arma un arnés que pague la licuadora exactamente una vez: 2,450 MXN, un reembolso.",
-    "baselineMatch": "Como predijiste: {amount} MXN. El segundo ticket le pareció nuevo al agente, así que volvió a pagar.",
-    "baselineMiss": "Predijiste {guess} MXN; salieron {amount} MXN. El segundo ticket le pareció nuevo al agente, así que volvió a pagar.",
+    "predict": "Los reembolsos se siguen ejecutando, pero ahora el arnés pasa notas entre tickets. ¿Cuánto sale de caja esta noche?",
+    "task": "Luego haz que el arnés detenga el segundo pago: 2,450 MXN, un reembolso, y que los reembolsos sobre el límite ya no se ejecuten sin revisión.",
+    "baselineMatch": "Como predijiste: {amount} MXN con las notas encendidas.",
+    "baselineMiss": "Predijiste {guess} MXN; salieron {amount} MXN con las notas encendidas.",
     "fixed": "Un reembolso, 2,450 MXN. Tu arnés: reembolsos sobre el límite {policy}, notas entre tickets {memory}.",
     "diagram": {
       "label": "El arnés: la fila de tickets alimenta al agente; cada llamada a herramienta pasa por la compuerta antes de que el servidor MCP la ejecute",
@@ -1150,7 +1150,9 @@
       "memory": "Notas",
       "person": "Una persona",
       "subagent": "Subagente"
-    }
+    },
+    "notesHeld": "El agente leyó la nota del ticket 1 y no volvió a pagar. Eso lo decidió el modelo: nada en el arnés lo habría detenido.",
+    "notesIgnored": "La nota estaba en su contexto y el agente volvió a pagar de todos modos. Las notas informan; no detienen nada."
   },
   "trainer": {
     "corpus": "De qué aprende",

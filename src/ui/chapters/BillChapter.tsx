@@ -68,56 +68,57 @@ export function BillChapter({ chapter, progress, frame }: Props) {
         </fieldset>
       </div>
 
-      <section className="bill-sheet" data-testid="bill-sheet">
-        <p className="bill-sheet__total" data-testid="bill-month">
-          {t("bill.month", { month: usd(month), mxn: formatNumber(Math.round(month * chapter.mxnPerUsd)), day: usd(bill.totalPerDay), conversation: (bill.perConversation * 100).toFixed(2) })}
-        </p>
-        <ul className="bill-bars">
-          {parts.map((p) => (
-            <li key={p}>
-              <span>{t(`bill.parts.${p}` as MessageKey)}</span>
-              <span className="bill-bars__bar" style={{ width: `${(100 * bill.perDay[p]) / widest}%` }} />
-              <span>{usd(bill.perDay[p] * chapter.daysPerMonth)}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="note">
-          {t("bill.latency", {
-            cheap: cheap.label,
-            strong: strong.label,
-            cheapSeconds: replySeconds(chapter.latency[chapter.cheap] ?? { firstTokenMs: 0, tokensPerSecond: 1 }, traffic.outputTokens).toFixed(1),
-            strongSeconds: replySeconds(chapter.latency[chapter.strong] ?? { firstTokenMs: 0, tokensPerSecond: 1 }, traffic.outputTokens).toFixed(1),
-          })}
-        </p>
-        <p className="note">{t("bill.prices", { date: priceTable.asOf, cacheDate: priceTable.cacheCheckedAt })}</p>
-      </section>
-
-      {measuring && (
-        <section className="measure-sheet" data-testid="measure">
+      {guess === null ? (
+        <section className="measure-sheet" data-testid="predict">
           <fieldset className="rule-plates">
             <legend className="kicker">{t("bill.predict", { model: strong.label, conversations: formatNumber(chapter.traffic.conversationsPerDay) })}</legend>
             {Array.from({ length: chapter.brackets.length + 1 }, (_, i) => (
-              <label key={i} className={`rule-plate${guess === i ? " is-chosen" : ""}`}>
-                <input type="radio" name="bill-bracket" checked={guess === i} onChange={() => updateChapter(chapter.id, { predictions: { ...progress.predictions, bracket: i } })} />
+              <label key={i} className="rule-plate">
+                <input type="radio" name="bill-bracket" onChange={() => updateChapter(chapter.id, { predictions: { ...progress.predictions, bracket: i } })} />
                 {bracketLabel(i)}
               </label>
             ))}
           </fieldset>
-          {guess !== null && (
-            <>
-              <p className="measure-sheet__finding" data-testid="bill-finding">
-                {t(guess === bracketOf ? "bill.findingMatch" : "bill.findingMiss", { baseline: usd(baselineMonth), budget: usd(chapter.budgetUsdPerMonth), share: Math.round(chapter.hardShare * 100) })}
-              </p>
-              <p className={underBudget && hardCovered ? "measure-sheet__finding" : "note"} data-testid="bill-target">
-                {underBudget && hardCovered ? t("bill.met", { month: usd(month), saved: Math.round(100 * (1 - month / baselineMonth)) }) : t("bill.notYet", { month: usd(month) })}
-              </p>
-            </>
-          )}
+        </section>
+      ) : (
+        <section className="bill-sheet" data-testid="bill-sheet">
+          <p className="measure-sheet__finding" data-testid="bill-finding">
+            {t(guess === bracketOf ? "bill.findingMatch" : "bill.findingMiss", { baseline: usd(baselineMonth), budget: usd(chapter.budgetUsdPerMonth), share: Math.round(chapter.hardShare * 100) })}
+          </p>
+          <p className="bill-sheet__total" data-testid="bill-month">
+            {t("bill.month", { month: usd(month), mxn: formatNumber(Math.round(month * chapter.mxnPerUsd)), day: usd(bill.totalPerDay), conversation: (bill.perConversation * 100).toFixed(2) })}
+          </p>
+          <ul className="bill-bars">
+            {parts.map((p) => (
+              <li key={p}>
+                <span>{t(`bill.parts.${p}` as MessageKey)}</span>
+                <span className="bill-bars__bar" style={{ width: `${(100 * bill.perDay[p]) / widest}%` }} />
+                <span>{usd(bill.perDay[p] * chapter.daysPerMonth)}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="note">
+            {t("bill.latency", {
+              cheap: cheap.label,
+              strong: strong.label,
+              cheapSeconds: replySeconds(chapter.latency[chapter.cheap] ?? { firstTokenMs: 0, tokensPerSecond: 1 }, traffic.outputTokens).toFixed(1),
+              strongSeconds: replySeconds(chapter.latency[chapter.strong] ?? { firstTokenMs: 0, tokensPerSecond: 1 }, traffic.outputTokens).toFixed(1),
+            })}
+          </p>
+          <p className="note">{t("bill.prices", { date: priceTable.asOf, cacheDate: priceTable.cacheCheckedAt })}</p>
+        </section>
+      )}
+
+      {measuring && guess !== null && (
+        <section className="measure-sheet" data-testid="measure">
+          <p className={underBudget && hardCovered ? "measure-sheet__finding" : "note"} data-testid="bill-target">
+            {underBudget && hardCovered ? t("bill.met", { month: usd(month), saved: Math.round(100 * (1 - month / baselineMonth)) }) : t("bill.notYet", { month: usd(month) })}
+          </p>
         </section>
       )}
     </div>
   );
 
-  const canAdvance = progress.stage === "measure" ? guess !== null && underBudget && hardCovered : true;
+  const canAdvance = progress.stage === "bench" ? guess !== null : progress.stage === "measure" ? guess !== null && underBudget && hardCovered : true;
   return frame(canAdvance, bench);
 }
