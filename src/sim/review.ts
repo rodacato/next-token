@@ -1,4 +1,5 @@
 // The review board's rubric: deterministic checks on what the learner wrote. No model grades the finale.
+// The prompt is free text and never scored: a keyword check can't tell "use the tool" from "never use the tool".
 export type CaseTag = "normal" | "edge" | "regression";
 export type Submission = {
   readonly goal: string;
@@ -6,6 +7,10 @@ export type Submission = {
   readonly nonGoals: string;
   readonly metric: string;
   readonly prompt: string;
+  readonly source: string;
+  readonly whenUnsure: string;
+  readonly maxSentences: number;
+  readonly couponCeilingMxn: number;
   readonly cases: readonly { readonly input: string; readonly expect: string; readonly tag: CaseTag }[];
   readonly graders: readonly string[];
   readonly guardrails: readonly string[];
@@ -17,23 +22,19 @@ export type Submission = {
 
 export type Member = "product" | "support" | "security" | "finance";
 export type Check = { readonly id: string; readonly member: Member; readonly pass: boolean };
-export type Keywords = Readonly<Record<"source" | "unsure" | "format" | "compensation" | "limit", readonly string[]>>;
 
 const words = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
-const fold = (s: string) => s.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
-const mentions = (text: string, terms: readonly string[]) => terms.some((t) => fold(text).includes(fold(t)));
 
-export function review(s: Submission, k: Keywords): Check[] {
-  const compensation = mentions(s.prompt, k.compensation);
+export function review(s: Submission): Check[] {
   return [
     { id: "goal", member: "product", pass: words(s.goal) >= 12 },
     { id: "users", member: "product", pass: words(s.users) >= 3 },
     { id: "non-goals", member: "product", pass: s.nonGoals.split("\n").some((l) => words(l) >= 2) },
     { id: "metric", member: "product", pass: /\d/.test(s.metric) },
-    { id: "source", member: "support", pass: mentions(s.prompt, k.source) },
-    { id: "unsure", member: "support", pass: mentions(s.prompt, k.unsure) },
-    { id: "format", member: "support", pass: mentions(s.prompt, k.format) || /\b\d+\b/.test(s.prompt) },
-    { id: "compensation", member: "support", pass: !compensation || mentions(s.prompt, k.limit) },
+    { id: "source", member: "support", pass: s.source === "order-lookup" },
+    { id: "unsure", member: "support", pass: s.whenUnsure === "hand-off" },
+    { id: "format", member: "support", pass: s.maxSentences >= 1 && s.maxSentences <= 5 },
+    { id: "compensation", member: "support", pass: s.couponCeilingMxn > 0 && s.couponCeilingMxn <= 150 },
     { id: "cases", member: "support", pass: s.cases.filter((c) => words(c.input) >= 3 && words(c.expect) >= 2).length >= 5 },
     { id: "edge", member: "support", pass: s.cases.some((c) => c.tag === "edge") },
     { id: "regression", member: "support", pass: s.cases.some((c) => c.tag === "regression") },

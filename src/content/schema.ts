@@ -356,15 +356,14 @@ export const launchChapterSchema = z.object({
     .min(1),
 });
 
-const keywordSet = z.object({ source: z.array(z.string()), unsure: z.array(z.string()), format: z.array(z.string()), compensation: z.array(z.string()), limit: z.array(z.string()) });
-
 export const finaleChapterSchema = z.object({
   ...chapterBase,
   kind: z.literal("finale"),
   members: z.array(z.enum(["product", "support", "security", "finance"])).min(1),
   graders: z.array(z.string()).min(1),
   guardrails: z.array(z.string()).min(1),
-  keywords: z.record(z.string(), keywordSet),
+  sources: z.array(z.string()).min(2),
+  whenUnsure: z.array(z.string()).min(2),
 });
 
 export const chapterSchema = z.discriminatedUnion("kind", [

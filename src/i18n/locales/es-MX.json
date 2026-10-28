@@ -760,7 +760,7 @@
       },
       "bench": {
         "heading": "Cinco partes, con tus palabras.",
-        "body": "Nada de esto se califica mientras escribes. El comité lo lee solo cuando entregas, y cada revisión que hace es una lección de un capítulo anterior.",
+        "body": "Nada de esto se califica mientras escribes. Al entregar, el comité revisa que cada parte esté y que tus decisiones sean las que defendieron los capítulos anteriores. No puede leer el sentido, así que no califica la prosa: tu objetivo y tu prompt los juzgas tú.",
         "observe": "Escribe primero el objetivo. Todo lo demás sale de ahí."
       },
       "measure": {
@@ -1585,7 +1585,11 @@
       "firstStage": "Primera etapa del lanzamiento, % del tráfico",
       "cap": "Tope de gasto diario, USD",
       "rollback": "Cuándo das marcha atrás",
-      "monitor": "Qué revisas cada día"
+      "monitor": "Qué revisas cada día",
+      "source": "De dónde saca el estado del pedido",
+      "whenUnsure": "Cuando el registro no lo dice",
+      "maxSentences": "Respuesta más larga, en oraciones",
+      "couponCeiling": "Cupón más grande que puede ofrecer por su cuenta, MXN"
     },
     "tags": {
       "normal": "normal",
@@ -1641,19 +1645,19 @@
       },
       "source": {
         "pass": "Responde con el registro del pedido, no de memoria.",
-        "fail": "¿De dónde saca el estado del pedido? Nombra la herramienta o el registro."
+        "fail": "¿De dónde saca el estado del pedido? Con lo que ya sabe, se lo va a inventar."
       },
       "unsure": {
         "pass": "Sabe cuándo pasar a una persona.",
-        "fail": "¿Qué hace cuando el registro no lo dice? Dile que lo diga y pase a una persona."
+        "fail": "Cuando el registro no lo dice, adivina o da largas. Deja que lo diga y pase a una persona."
       },
       "format": {
         "pass": "La respuesta tiene forma.",
-        "fail": "¿Qué tan larga es una respuesta? Dale un formato o un largo."
+        "fail": "¿Qué tan larga es una respuesta? Ponle un límite de unas cuantas oraciones."
       },
       "compensation": {
-        "pass": "La compensación tiene techo.",
-        "fail": "Puede ofrecer compensación sin límite en el prompt. Escribe el límite."
+        "pass": "El cupón tiene techo.",
+        "fail": "¿Qué tan grande puede ser el cupón que ofrece por su cuenta? Ponle un techo de hasta 150 MXN; arriba de eso decide una persona."
       },
       "cases": {
         "pass": "Suficientes casos para empezar.",
@@ -1703,6 +1707,17 @@
         "pass": "Alguien lo revisa a diario.",
         "fail": "¿Qué revisa alguien cada mañana?"
       }
-    }
+    },
+    "sources": {
+      "order-lookup": "La herramienta de consulta de pedidos",
+      "model-knowledge": "Lo que el modelo ya sabe",
+      "customer-message": "Lo que dice el cliente"
+    },
+    "whenUnsure": {
+      "hand-off": "Dice que no sabe y pasa a una persona",
+      "best-guess": "Da la respuesta más probable",
+      "ask-later": "Le pide al cliente que vuelva a revisar mañana"
+    },
+    "promptNote": "El comité lee las decisiones de abajo, no el prompt. Escribe el prompt que mandarías a producción; nada lo califica."
   }
 }

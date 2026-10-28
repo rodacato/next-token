@@ -10,7 +10,7 @@ import { PromptEditor } from "../evals/PromptEditor";
 
 type Props = { readonly chapter: FinaleContent; readonly progress: ChapterProgress; readonly frame: FrameRenderer };
 const tags: CaseTag[] = ["normal", "edge", "regression"];
-const blank: Submission = { goal: "", users: "", nonGoals: "", metric: "", prompt: "", cases: [], graders: [], guardrails: [], firstStagePercent: 0, dailyCapUsd: 0, rollback: "", monitor: "" };
+const blank: Submission = { goal: "", users: "", nonGoals: "", metric: "", prompt: "", source: "", whenUnsure: "", maxSentences: 0, couponCeilingMxn: 0, cases: [], graders: [], guardrails: [], firstStagePercent: 0, dailyCapUsd: 0, rollback: "", monitor: "" };
 
 function saved(progress: ChapterProgress): Submission {
   const raw = progress.predictions.finale;
@@ -23,11 +23,10 @@ function saved(progress: ChapterProgress): Submission {
 }
 
 export function FinaleChapter({ chapter, progress, frame }: Props) {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
   const { updateChapter } = useCourse();
   const [form, setForm] = useState<Submission>(() => saved(progress));
   const [checks, setChecks] = useState<Check[] | null>(null);
-  const keywords = chapter.keywords[locale] ?? chapter.keywords.en;
   const guess = typeof progress.predictions.approvals === "number" ? progress.predictions.approvals : null;
   const measuring = progress.stage === "measure" || progress.stage === "debrief";
   const set = <K extends keyof Submission>(key: K, value: Submission[K]) => setForm((f) => ({ ...f, [key]: value }));
@@ -35,9 +34,8 @@ export function FinaleChapter({ chapter, progress, frame }: Props) {
   const approvals = checks ? chapter.members.filter((m) => approves(checks, m as Member)).length : 0;
 
   const submit = () => {
-    if (!keywords) return;
     updateChapter(chapter.id, { predictions: { ...progress.predictions, finale: JSON.stringify(form) } });
-    setChecks(review(form, keywords));
+    setChecks(review(form));
   };
 
   const bench = (
@@ -64,6 +62,33 @@ export function FinaleChapter({ chapter, progress, frame }: Props) {
 
       <section className="finale-section">
         <h3>{t("finale.sections.prompt")}</h3>
+        <p className="note">{t("finale.promptNote")}</p>
+        <fieldset className="rule-plates">
+          <legend className="kicker">{t("finale.fields.source")}</legend>
+          {chapter.sources.map((id) => (
+            <label key={id} className={`rule-plate rule-plate--small${form.source === id ? " is-chosen" : ""}`}>
+              <input type="radio" name="finale-source" checked={form.source === id} onChange={() => set("source", id)} />
+              {t(`finale.sources.${id}` as MessageKey)}
+            </label>
+          ))}
+        </fieldset>
+        <fieldset className="rule-plates">
+          <legend className="kicker">{t("finale.fields.whenUnsure")}</legend>
+          {chapter.whenUnsure.map((id) => (
+            <label key={id} className={`rule-plate rule-plate--small${form.whenUnsure === id ? " is-chosen" : ""}`}>
+              <input type="radio" name="finale-unsure" checked={form.whenUnsure === id} onChange={() => set("whenUnsure", id)} />
+              {t(`finale.whenUnsure.${id}` as MessageKey)}
+            </label>
+          ))}
+        </fieldset>
+        <label>
+          <span>{t("finale.fields.maxSentences")}</span>
+          <input type="number" min={0} value={form.maxSentences} onChange={(e) => set("maxSentences", Number(e.target.value) || 0)} data-testid="field-max-sentences" />
+        </label>
+        <label>
+          <span>{t("finale.fields.couponCeiling")}</span>
+          <input type="number" min={0} value={form.couponCeilingMxn} onChange={(e) => set("couponCeilingMxn", Number(e.target.value) || 0)} data-testid="field-coupon-ceiling" />
+        </label>
         <PromptEditor label={t("finale.fields.prompt")} readOnly={false} testId="finale-prompt" value={form.prompt} onChange={(v) => set("prompt", v)} />
       </section>
 

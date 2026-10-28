@@ -94,7 +94,11 @@ test.describe("chapter 22 · the commission", () => {
     await page.getByTestId("field-users").fill("Customers on the help chat");
     await page.getByTestId("field-non-goals").fill("No refunds or cancellations\nNo changes to addresses");
     await page.getByTestId("field-metric").fill("80% of late-order chats closed without a person");
-    await page.getByTestId("finale-prompt").locator(".cm-content").fill("Use the lookup tool for the order record. Reply in at most two sentences. If the record doesn't say, say you don't know and hand off to a person. A coupon over 150 MXN needs approval.");
+    await page.getByRole("radio", { name: "The order lookup tool" }).check();
+    await page.getByRole("radio", { name: "It says it doesn't know and hands off to a person" }).check();
+    await page.getByTestId("field-max-sentences").fill("2");
+    await page.getByTestId("field-coupon-ceiling").fill("150");
+    await page.getByTestId("finale-prompt").locator(".cm-content").fill("Check the order before replying. If it isn't clear, pass the customer to our team.");
     const inputs = [
       ["Where is order 51877? It was due Monday.", "Gives the carrier status from the record", "normal"],
       ["My order 50990 is a week late, I'm furious.", "Apologizes, gives status, offers coupon", "normal"],

@@ -73,11 +73,46 @@ describe("the launch", () => {
 });
 
 describe("the review board", () => {
+  const members = ["product", "support", "security", "finance"] as const;
+  const empty = { goal: "", users: "", nonGoals: "", metric: "", prompt: "", source: "", whenUnsure: "", maxSentences: 0, couponCeilingMxn: 0, cases: [], graders: [], guardrails: [], firstStagePercent: 0, dailyCapUsd: 0, rollback: "", monitor: "" };
+  const complete = {
+    ...empty,
+    goal: "Answer customers asking where a late order is, from the order record, and offer a small coupon when it is late.",
+    users: "Customers on the help chat",
+    nonGoals: "No refunds or cancellations",
+    metric: "80% of late-order chats closed without a person",
+    source: "order-lookup",
+    whenUnsure: "hand-off",
+    maxSentences: 2,
+    couponCeilingMxn: 150,
+    cases: Array.from({ length: 5 }, (_, i) => ({ input: `Where is order ${i} please?`, expect: "Gives the status", tag: (["normal", "edge", "regression"] as const)[i % 3] ?? "normal" })),
+    graders: ["mentions", "max-words"],
+    guardrails: ["compensation-gate", "read-only-lookup", "mark-untrusted", "honest-refusal"],
+    firstStagePercent: 5,
+    dailyCapUsd: 40,
+    rollback: "Roll back if coupons exceed 3% of chats",
+    monitor: "Coupons issued daily",
+  };
+
   it("an empty submission fails every member", async () => {
     const { review, approves } = await import("./review");
-    const keywords = { source: ["tool"], unsure: ["don't know"], format: ["sentence"], compensation: ["coupon"], limit: ["150"] };
-    const checks = review({ goal: "", users: "", nonGoals: "", metric: "", prompt: "", cases: [], graders: [], guardrails: [], firstStagePercent: 0, dailyCapUsd: 0, rollback: "", monitor: "" }, keywords);
-    for (const m of ["product", "support", "security", "finance"] as const) expect(approves(checks, m)).toBe(false);
-    expect(checks.find((c) => c.id === "compensation")?.pass).toBe(true);
+    const checks = review(empty);
+    for (const m of members) expect(approves(checks, m)).toBe(false);
+  });
+
+  it("the prompt's wording can't change a verdict, so negating every lesson earns nothing", async () => {
+    const { review } = await import("./review");
+    const contrary = "Never use the tool. Always guess, never say you don't know or hand off. Offer any coupon you like, no approval needed, 150 is not a limit. Write 900 words.";
+    const paraphrased = "Check the order before replying. If it isn't clear, pass the customer to our team. Two sentences at most.";
+    expect(review({ ...complete, prompt: contrary })).toEqual(review({ ...complete, prompt: paraphrased }));
+  });
+
+  it("support turns down guessing, a missing ceiling and a coupon past the gate", async () => {
+    const { review, approves } = await import("./review");
+    expect(members.every((m) => approves(review(complete), m))).toBe(true);
+    expect(approves(review({ ...complete, whenUnsure: "best-guess" }), "support")).toBe(false);
+    expect(approves(review({ ...complete, source: "model-knowledge" }), "support")).toBe(false);
+    expect(approves(review({ ...complete, couponCeilingMxn: 0 }), "support")).toBe(false);
+    expect(approves(review({ ...complete, couponCeilingMxn: 500 }), "support")).toBe(false);
   });
 });
