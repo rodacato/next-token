@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   drawCandidate,
+  drawSort,
+  OUTSIDE,
   fanOpenness,
   perplexity,
   seededRandom,
@@ -63,10 +65,36 @@ describe("drawing", () => {
     expect(tallyDraws(d, 20, seededRandom(9))).toEqual(tallyDraws(d, 20, seededRandom(9)));
   });
 
+  it("at temperature 0 takes the likeliest sort every time", () => {
+    const close: Candidate[] = [
+      { tokenId: 1, text: " door", logit: 4 },
+      { tokenId: 2, text: " shop", logit: 3.99 },
+    ];
+    const d = shapeDistribution(close, [4, 3.99], { temperature: 0, topP: 1 });
+    const random = seededRandom(5);
+    for (let i = 0; i < 500; i++) expect(drawSort(d, random)).toMatchObject({ tokenId: 1 });
+  });
+
+  it("draws from the tail past the shortlist as often as the tail's probability", () => {
+    const tail = Array.from({ length: 2000 }, () => 1);
+    const d = shapeDistribution(candidates, [4, 3, 2, ...tail], { temperature: 2, topP: 1 });
+    const random = seededRandom(11);
+    let outside = 0;
+    for (let i = 0; i < 10_000; i++) if (drawSort(d, random) === OUTSIDE) outside++;
+    expect(d.tailMass).toBeGreaterThan(0.5);
+    expect(Math.abs(outside / 10_000 - d.tailMass)).toBeLessThan(0.03);
+  });
+
+  it("never reaches the tail when top-p closes inside the shortlist", () => {
+    const d = shapeDistribution(candidates, allLogits, { temperature: 1, topP: 0.5 });
+    const random = seededRandom(3);
+    for (let i = 0; i < 500; i++) expect(drawSort(d, random)).not.toBe(OUTSIDE);
+  });
+
   it("finds more distinct sorts when it is hot", () => {
     const cold = shapeDistribution(candidates, allLogits, { temperature: 0.1, topP: 1 });
     const hot = shapeDistribution(candidates, allLogits, { temperature: 1.5, topP: 1 });
-    expect(tallyDraws(cold, 20, seededRandom(1))).toHaveLength(1);
-    expect(tallyDraws(hot, 20, seededRandom(1)).length).toBeGreaterThan(1);
+    expect(tallyDraws(cold, 20, seededRandom(1)).sorts).toHaveLength(1);
+    expect(tallyDraws(hot, 20, seededRandom(1)).sorts.length).toBeGreaterThan(1);
   });
 });

@@ -3,14 +3,15 @@ import type { NextTokenChapter as NextTokenContent } from "../../content/schema"
 import type { ChapterProgress } from "../../host/course-state";
 import type { MessageKey } from "../../i18n/catalog";
 import { useI18n } from "../../i18n/I18nProvider";
-import { NoRecordingError, type Compositor, type Reading } from "../../model/compositor";
+import { NoRecordingError, SHORTLIST, type Compositor, type Reading } from "../../model/compositor";
 import {
-  drawCandidate,
+  drawSort,
+  OUTSIDE,
   perplexity,
   seededRandom,
   shapeDistribution,
   tallyDraws,
-  type DrawTally,
+  type Tally,
   type RandomSource,
   type ShapedCandidate,
   type ShapedDistribution,
@@ -54,7 +55,8 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
   const [chosenTokenId, setChosenTokenId] = useState<number | null>(null);
   const [outcome, setOutcome] = useState<ReadOutcome | null>(null);
   const [lastReading, setLastReading] = useState<Reading | null>(null);
-  const [tallies, setTallies] = useState<{ cold: DrawTally[]; hot: DrawTally[] } | null>(null);
+  const [tallies, setTallies] = useState<{ cold: Tally; hot: Tally } | null>(null);
+  const [drewOutside, setDrewOutside] = useState(false);
   const random = useRef<RandomSource | null>(null);
   const settledCopy = useDebounced(copy, 220);
 
@@ -97,6 +99,7 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
 
   const commit = useCallback((candidate: ShapedCandidate) => {
     setChosenTokenId(candidate.tokenId);
+    setDrewOutside(false);
     setTimeout(() => {
       setCopy((c) => c + candidate.text);
       setLastSet(candidate.text);
@@ -108,7 +111,9 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
   const draw = () => {
     if (!distribution) return;
     random.current ??= seededRandom(Date.now());
-    commit(drawCandidate(distribution, random.current));
+    const drawn = drawSort(distribution, random.current);
+    setDrewOutside(drawn === OUTSIDE);
+    if (drawn !== OUTSIDE) commit(drawn);
   };
 
   const fanArea = useRef<HTMLDivElement>(null);
@@ -256,6 +261,11 @@ export function NextTokenChapter({ chapter, progress, frame }: Props) {
           </button>
           <span className="note">{t("fan.pickHint")}</span>
         </div>
+        {drewOutside && (
+          <p className="note" data-testid="drew-outside">
+            {t("fan.outside", { count: SHORTLIST })}
+          </p>
+        )}
         {distribution && <Slip distribution={distribution} chosenTokenId={chosenTokenId} percent={percent} />}
         <CompositorPanel
           state={compositor.state}
@@ -315,7 +325,7 @@ function Slip({ distribution, chosenTokenId, percent }: { distribution: ShapedDi
 type DrawMeasurementProps = {
   readonly chapter: NextTokenContent;
   readonly progress: ChapterProgress;
-  readonly tallies: { cold: DrawTally[]; hot: DrawTally[] } | null;
+  readonly tallies: { cold: Tally; hot: Tally } | null;
   readonly canRun: boolean;
   readonly onRun: () => void;
 };
@@ -355,11 +365,12 @@ function DrawMeasurement({ chapter, progress, tallies, canRun, onRun }: DrawMeas
             <figure key={key} className="galley" data-testid={`tally-${key}`}>
               <figcaption>
                 <span className="kicker">{t("chapters.next-token.measure.drawsAt", { draws, temperature: formatNumber(temperature) })}</span>
-                <strong>{t("chapters.next-token.measure.distinct", { count: tallies[key].length })}</strong>
+                <strong>{t("chapters.next-token.measure.distinct", { count: tallies[key].sorts.length })}</strong>
+                {tallies[key].outside > 0 && <span className="note" data-testid={`outside-${key}`}>{t("chapters.next-token.measure.outside", { count: tallies[key].outside })}</span>}
                 <span className="note">{t("chapters.next-token.measure.predicted", { count: prediction(key) })}</span>
               </figcaption>
               <div className="galley__columns">
-                {tallies[key].map((tally) => (
+                {tallies[key].sorts.map((tally) => (
                   <div key={tally.text} className="galley__column" title={`${tally.count}`}>
                     {Array.from({ length: tally.count }, (_, i) => (
                       <span key={i} className="galley__sort" />
