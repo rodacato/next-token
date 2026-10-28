@@ -679,7 +679,7 @@
       "bench": {
         "heading": "Cinco salvaguardas. Pruébalas solas y juntas.",
         "body": "Cada salvaguarda cambia lo que pasa después de que el modelo responde. La vista previa muestra la misma respuesta equivocada con tu diseño. Cada número detrás de la simulación está a la vista.",
-        "observe": "Prende solo mostrar la respuesta mientras se escribe y córrelo. Lee la columna de daño."
+        "observe": "Prende solo el streaming y córrelo. Lee la columna de daño y luego la de quienes se cansaron de esperar."
       },
       "measure": {
         "heading": "¿Cuál importa más?",
@@ -690,7 +690,7 @@
         "points": {
           "one": "Un \"no lo sé\" honesto convierte adivinanzas en traspasos. Cuesta tiempo de personas y les ahorra a los clientes respuestas equivocadas.",
           "two": "Antes de una acción, pon una confirmación o un deshacer entre el modelo y el dinero. Muestra en palabras simples qué va a pasar.",
-          "three": "Más rápido no es más seguro. El streaming hace que la gente espere, lo que también significa que más gente lee, y actúa sobre, las respuestas equivocadas.",
+          "three": "Más rápido no es más seguro, ni más peligroso. El streaming retiene a quien se habría ido, así que más gente se topa con las respuestas equivocadas; la proporción de errores no cambia. Cuenta a quien se cansa de esperar como un costo aparte.",
           "four": "Mostrar la incertidumbre solo ayuda si la incertidumbre del modelo sigue a sus errores y si la gente la lee. Mide las dos cosas."
         },
         "voice": "Toda prueba trae errores. El taller que los atrapa antes del tiraje conserva a sus clientes."
@@ -1461,8 +1461,9 @@
     },
     "predict": "Sola, ¿qué salvaguarda reduce más el daño?",
     "alone": "Salvaguarda, sola",
-    "findingMatch": "Como predijiste: {best}, de {from} a {to}. Y mostrar la respuesta mientras se escribe, sola, sube el daño a {streaming}: la gente que deja de irse se queda a leer las respuestas equivocadas.",
-    "findingMiss": "La que más reduce sola: {best}, de {from} a {to}. Y mostrar la respuesta mientras se escribe, sola, sube el daño a {streaming}: la gente que deja de irse se queda a leer las respuestas equivocadas."
+    "findingMatch": "Como predijiste: {best}, de {from} a {to}. Mostrar la respuesta mientras se escribe, sola, lleva el daño a {streaming}, pero solo porque {kept} personas más se quedan a leer una respuesta: sin eso, {before} de las respuestas dañan a alguien; con eso, {after}.",
+    "findingMiss": "La que más reduce sola: {best}, de {from} a {to}. Mostrar la respuesta mientras se escribe, sola, lleva el daño a {streaming}, pero solo porque {kept} personas más se quedan a leer una respuesta: sin eso, {before} de las respuestas dañan a alguien; con eso, {after}.",
+    "measuredOf": "{count} de {of} respuestas, medido en “{chapter}”"
   },
   "bill": {
     "usd": "${amount} USD",

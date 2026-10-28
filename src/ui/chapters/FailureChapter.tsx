@@ -19,6 +19,8 @@ export function FailureChapter({ chapter, progress, frame }: Props) {
   const measuring = progress.stage === "measure" || progress.stage === "debrief";
   const baseline = simulateFailure(chapter.model, none);
   const singles = measuring && guess ? safeguards.map((s) => ({ s, outcome: simulateFailure(chapter.model, only(s)) })) : [];
+  const streaming = simulateFailure(chapter.model, only("streaming"));
+  const harmShare = (o: FailureOutcome) => `${Math.round((100 * o.harm) / Math.max(1, chapter.model.conversations - o.abandoned))}%`;
   const bestSingle = singles.reduce<{ s: Safeguard; outcome: FailureOutcome } | null>((a, x) => (!a || x.outcome.harm < a.outcome.harm ? x : a), null);
 
   const run = () => setRuns((r) => [{ design, outcome: simulateFailure(chapter.model, design) }, ...r].slice(0, 4));
@@ -46,7 +48,13 @@ export function FailureChapter({ chapter, progress, frame }: Props) {
             return (
               <li key={a.key}>
                 {t(`failure.assumptions.${a.key}` as MessageKey, { value: shown })}{" "}
-                <span className="feature-table__evidence">{a.evidence === "assumption" ? t("features.assumed") : t("features.measured", { chapter: t(`chapters.${a.evidence}.title` as MessageKey) })}</span>
+                <span className="feature-table__evidence">
+                  {a.evidence === "assumption"
+                    ? t("features.assumed")
+                    : a.of && typeof value === "number"
+                      ? t("failure.measuredOf", { count: Math.round(value * a.of), of: a.of, chapter: t(`chapters.${a.evidence}.title` as MessageKey) })
+                      : t("features.measured", { chapter: t(`chapters.${a.evidence}.title` as MessageKey) })}
+                </span>
               </li>
             );
           })}
@@ -130,7 +138,10 @@ export function FailureChapter({ chapter, progress, frame }: Props) {
                   best: t(`failure.safeguards.${bestSingle.s}` as MessageKey),
                   from: formatNumber(baseline.harm),
                   to: formatNumber(bestSingle.outcome.harm),
-                  streaming: formatNumber(singles.find((x) => x.s === "streaming")?.outcome.harm ?? 0),
+                  streaming: formatNumber(streaming.harm),
+                  kept: formatNumber(baseline.abandoned - streaming.abandoned),
+                  before: harmShare(baseline),
+                  after: harmShare(streaming),
                 })}
               </p>
             </>

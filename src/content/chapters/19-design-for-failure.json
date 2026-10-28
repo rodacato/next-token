@@ -19,8 +19,8 @@
     "caughtAtConfirm": 0.7
   },
   "assumptions": [
-    { "key": "right", "evidence": "rag" },
-    { "key": "wrong", "evidence": "rag" },
+    { "key": "right", "evidence": "rag", "of": 9 },
+    { "key": "wrong", "evidence": "rag", "of": 9 },
     { "key": "actionShare", "evidence": "assumption" },
     { "key": "replySeconds", "evidence": "assumption" },
     { "key": "patienceSeconds", "evidence": "assumption" },
