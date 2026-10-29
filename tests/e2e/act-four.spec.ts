@@ -32,10 +32,12 @@ test.describe("chapter 19 · designing for failure", () => {
     await expect(page.locator(".assumptions")).toContainText("Right answers: 67% 6 of 9 answers, measured in “Retrieval”");
     await page.getByTestId("safeguard-refusal").check();
     await expect(page.getByTestId("reply-preview")).toContainText("I'm not sure");
+    await expect(page.getByTestId("run-conversations")).toBeDisabled();
+    await page.getByRole("radio", { name: "Stream the reply" }).check();
     await page.getByTestId("run-conversations").click();
     await expect(page.getByTestId("failure-ledger")).toBeVisible();
+    await expect(page.getByRole("radio", { name: "Stream the reply" })).toBeDisabled();
     await advance(page, 1);
-    await page.getByRole("radio", { name: "Stream the reply" }).check();
     await expect(page.getByTestId("failure-finding")).toContainText("The biggest cut alone: Let it say \"I don't know\", from 155 to 79. Streaming alone moves harm to 220, but only because 298 more people stay to read an answer: without it 22% of the answers hurt someone, with it 22%.");
   });
 });

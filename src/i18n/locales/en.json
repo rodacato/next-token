@@ -371,7 +371,7 @@
       "bench": {
         "heading": "The model asks. You run.",
         "body": "Each turn the model either asks for a tool or replies. Every request lands on your desk first: you choose what the lookup returns, and whether the refund runs.",
-        "observe": "Try a wrong row, a missing order and a refused refund. Read what the model does with each."
+        "observe": "Try the right row, a missing order and a refused refund. Read what the model does with each. The wrong row waits for the measurement."
       },
       "measure": {
         "heading": "Hand it the wrong row.",
@@ -679,11 +679,11 @@
       "bench": {
         "heading": "Five safeguards. Try them alone and together.",
         "body": "Each safeguard changes what happens after the model answers. The preview shows the same wrong answer under your design. Every number behind the simulation is on the page.",
-        "observe": "Turn on streaming alone and run it. Read the harm column, then who gave up waiting."
+        "observe": "Predict first. Then turn on streaming alone and run it. Read the harm column, then who gave up waiting."
       },
       "measure": {
         "heading": "Which one matters most?",
-        "body": "Predict, then see each safeguard alone against none."
+        "body": "Each safeguard alone, against none."
       },
       "debrief": {
         "heading": "Design for the wrong answer, not the right one.",
@@ -1061,7 +1061,9 @@
       "waiting": "awaiting you",
       "run": "run by you",
       "refused": "refused by you"
-    }
+    },
+    "wrongRowLater": "The wrong row is saved for the measurement, after you predict.",
+    "predictFirst": "Predict below before you hand back the wrong row."
   },
   "rag": {
     "embedder": "Embedder",

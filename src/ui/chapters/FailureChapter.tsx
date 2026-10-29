@@ -61,8 +61,18 @@ export function FailureChapter({ chapter, progress, frame }: Props) {
         </ul>
       </details>
 
+      <fieldset className="rule-plates" disabled={runs.length > 0} data-testid="predict">
+        <legend className="kicker">{t("failure.predict")}</legend>
+        {safeguards.map((s) => (
+          <label key={s} className={`rule-plate${guess === s ? " is-chosen" : ""}`}>
+            <input type="radio" name="best-safeguard" checked={guess === s} onChange={() => updateChapter(chapter.id, { predictions: { ...progress.predictions, safeguard: s } })} />
+            {t(`failure.safeguards.${s}` as MessageKey)}
+          </label>
+        ))}
+      </fieldset>
+
       <div className="actions actions--row">
-        <button className="button button--primary" onClick={run} data-testid="run-conversations">
+        <button className="button button--primary" disabled={guess === null} onClick={run} data-testid="run-conversations">
           {t("failure.run", { count: formatNumber(chapter.model.conversations) })}
         </button>
       </div>
@@ -100,15 +110,6 @@ export function FailureChapter({ chapter, progress, frame }: Props) {
 
       {measuring && (
         <section className="measure-sheet" data-testid="measure">
-          <fieldset className="rule-plates">
-            <legend className="kicker">{t("failure.predict")}</legend>
-            {safeguards.map((s) => (
-              <label key={s} className={`rule-plate${guess === s ? " is-chosen" : ""}`}>
-                <input type="radio" name="best-safeguard" checked={guess === s} onChange={() => updateChapter(chapter.id, { predictions: { ...progress.predictions, safeguard: s } })} />
-                {t(`failure.safeguards.${s}` as MessageKey)}
-              </label>
-            ))}
-          </fieldset>
           {bestSingle && (
             <>
               <table className="galley-table" data-testid="singles">
@@ -151,7 +152,7 @@ export function FailureChapter({ chapter, progress, frame }: Props) {
     </div>
   );
 
-  const canAdvance = progress.stage === "bench" ? runs.length > 0 : progress.stage === "measure" ? guess !== null : true;
+  const canAdvance = progress.stage === "bench" ? runs.length > 0 && guess !== null : true;
   return frame(canAdvance, bench);
 }
 

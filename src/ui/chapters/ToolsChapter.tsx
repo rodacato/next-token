@@ -67,6 +67,7 @@ export function ToolsChapter({ chapter, progress, frame }: Props) {
   const guess = typeof progress.predictions.wrongRow === "string" ? progress.predictions.wrongRow : null;
   const measuring = progress.stage === "measure" || progress.stage === "debrief";
   const wrongRowRun = Object.entries(finished).find(([id]) => id.startsWith("wrong-row"));
+  const wrongRowLocked = !measuring || guess === null;
 
   const bench = (
     <div className="tools-bench">
@@ -101,11 +102,12 @@ export function ToolsChapter({ chapter, progress, frame }: Props) {
           <legend className="kicker">{t("tools.handBack", { tool: awaiting.tool })}</legend>
           <div className="actions actions--row">
             {chapter.toolResults[awaiting.tool].map((choice) => (
-              <button key={choice.id} className="button" onClick={() => handBack(awaiting, choice)} data-testid={`result-${choice.id}`}>
+              <button key={choice.id} className="button" disabled={choice.id === "wrong-row" && wrongRowLocked} onClick={() => handBack(awaiting, choice)} data-testid={`result-${choice.id}`}>
                 {t(`tools.results.${choice.id}` as MessageKey)}
               </button>
             ))}
           </div>
+          {wrongRowLocked && chapter.toolResults[awaiting.tool].some((c) => c.id === "wrong-row") && <p className="note">{t(measuring ? "tools.predictFirst" : "tools.wrongRowLater")}</p>}
         </fieldset>
       )}
       {outcome && outcome !== "reply" && <p className="error-line">{t(`tools.outcome.${outcome}` as MessageKey)}</p>}
@@ -120,7 +122,7 @@ export function ToolsChapter({ chapter, progress, frame }: Props) {
 
       {measuring && (
         <section className="measure-sheet" data-testid="measure">
-          <fieldset className="rule-plates">
+          <fieldset className="rule-plates" disabled={wrongRowRun !== undefined}>
             <legend className="kicker">{t("tools.predict")}</legend>
             {predictions.map((p) => (
               <label key={p} className={`rule-plate${guess === p ? " is-chosen" : ""}`}>

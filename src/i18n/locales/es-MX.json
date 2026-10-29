@@ -371,7 +371,7 @@
       "bench": {
         "heading": "El modelo pide. Tú ejecutas.",
         "body": "En cada turno el modelo pide una herramienta o responde. Cada solicitud llega primero a tu mesa: tú eliges qué devuelve la búsqueda y si el reembolso se ejecuta.",
-        "observe": "Prueba una fila equivocada, un pedido que no existe y un reembolso negado. Lee qué hace el modelo con cada uno."
+        "observe": "Prueba la fila correcta, un pedido que no existe y un reembolso negado. Lee qué hace el modelo con cada uno. La fila equivocada espera a la medición."
       },
       "measure": {
         "heading": "Dale la fila equivocada.",
@@ -679,11 +679,11 @@
       "bench": {
         "heading": "Cinco salvaguardas. Pruébalas solas y juntas.",
         "body": "Cada salvaguarda cambia lo que pasa después de que el modelo responde. La vista previa muestra la misma respuesta equivocada con tu diseño. Cada número detrás de la simulación está a la vista.",
-        "observe": "Prende solo el streaming y córrelo. Lee la columna de daño y luego la de quienes se cansaron de esperar."
+        "observe": "Primero predice. Luego prende solo el streaming y córrelo. Lee la columna de daño y luego la de quienes se cansaron de esperar."
       },
       "measure": {
         "heading": "¿Cuál importa más?",
-        "body": "Predice y luego mira cada salvaguarda sola contra ninguna."
+        "body": "Cada salvaguarda sola, contra ninguna."
       },
       "debrief": {
         "heading": "Diseña para la respuesta equivocada, no para la correcta.",
@@ -1061,7 +1061,9 @@
       "waiting": "te espera",
       "run": "lo ejecutaste",
       "refused": "lo negaste"
-    }
+    },
+    "wrongRowLater": "La fila equivocada se guarda para la medición, después de que predigas.",
+    "predictFirst": "Predice abajo antes de devolver la fila equivocada."
   },
   "rag": {
     "embedder": "Modelo de embeddings",
