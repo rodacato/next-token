@@ -661,7 +661,7 @@
         "heading": "Use an LLM where the input is fuzzy and a mistake is cheap.",
         "points": {
           "one": "If the answer is a lookup or a table, code is cheaper, faster and right every time it applies. Send the rest to a person.",
-          "two": "The API bill is usually the smallest line. Wrong answers and the people who fix them are the real cost.",
+          "two": "In this month the API bill was the smallest line. Wrong answers and the people who fixed them cost more. Check whether that holds with your own numbers.",
           "three": "An LLM earns its place where requests are open-ended (\"a gift for my dad\") and a wrong answer costs little.",
           "four": "Change an assumption and the answer changes. Write yours down before the meeting, not after."
         },
@@ -744,7 +744,7 @@
       "debrief": {
         "heading": "Plan for the bill, the mistakes and the attacker before launch day.",
         "points": {
-          "one": "Traffic isn't flat. A sale triples it, and a per-conversation cost triples with it unless something caps the spend.",
+          "one": "Traffic isn't flat. Here the November sale tripled it, and the week's spend tripled with it because nothing capped it. Find your own peak and put the cap in before it.",
           "two": "Mistakes cost more than tokens, and they arrive late. Ground the answers that commit money, and check them before they reach a customer.",
           "three": "Telling the model to ignore injected instructions only weakens an attack. What stops it is architecture: gates on actions, agents without tools for untrusted text, filters on what leaves.",
           "four": "Untrusted text, private data and a way to send things out, together in one agent, is the dangerous combination. Break at least one link."
