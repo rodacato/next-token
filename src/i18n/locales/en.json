@@ -904,7 +904,7 @@
     "contrastHeading": "The same question to a larger model",
     "contrastBody": "Asked for three such papers, a larger instruction-tuned model named real ones and flagged what it could not verify.",
     "summary": "{invented} of {total} references are not in the catalog. Average confidence on those: {confidence}.",
-    "samplingNote": "Sampled at temperature {temperature}, top-p {topP}, repetition penalty {penalty}, seed {seed}. Numbers in brass were set by the shop; the compositor wrote the rest."
+    "samplingNote": "Sampled from the {topK} likeliest sorts at temperature {temperature}, top-p {topP}, repetition penalty {penalty}, seed {seed}. Numbers in brass were set by the shop; the compositor wrote the rest."
   },
   "llm": {
     "title": "Outside work",

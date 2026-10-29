@@ -904,7 +904,7 @@
     "contrastHeading": "La misma pregunta a un modelo más grande",
     "contrastBody": "Al pedirle tres artículos así, un modelo más grande y entrenado con instrucciones nombró artículos reales y marcó lo que no pudo verificar.",
     "summary": "{invented} de {total} referencias no están en el catálogo. Confianza promedio en esas: {confidence}.",
-    "samplingNote": "Muestreado a temperatura {temperature}, top-p {topP}, penalización por repetición {penalty}, semilla {seed}. Los números en latón los puso el taller; el cajista escribió el resto."
+    "samplingNote": "Muestreado entre los {topK} tipos más probables a temperatura {temperature}, top-p {topP}, penalización por repetición {penalty}, semilla {seed}. Los números en latón los puso el taller; el cajista escribió el resto."
   },
   "llm": {
     "title": "Trabajo de fuera",
