@@ -661,7 +661,7 @@
         "heading": "Usa un LLM donde la entrada es difusa y un error sale barato.",
         "points": {
           "one": "Si la respuesta es una consulta o una tabla, el código es más barato, más rápido y acierta cada vez que aplica. Lo demás, con una persona.",
-          "two": "La cuenta de la API suele ser la línea más chica. Las respuestas equivocadas y las personas que las arreglan son el costo real.",
+          "two": "En este mes la cuenta de la API fue la línea más chica. Las respuestas equivocadas y las personas que las arreglaron costaron más. Revisa si se sostiene con tus propios números.",
           "three": "Un LLM se gana su lugar donde las solicitudes son abiertas (\"un regalo para mi papá\") y una respuesta equivocada cuesta poco.",
           "four": "Cambia un supuesto y cambia la respuesta. Escribe los tuyos antes de la junta, no después."
         },
@@ -744,7 +744,7 @@
       "debrief": {
         "heading": "Planea la cuenta, los errores y al atacante antes del lanzamiento.",
         "points": {
-          "one": "El tráfico no es plano. Una venta lo triplica, y el costo por conversación se triplica con él a menos que algo le ponga tope al gasto.",
+          "one": "El tráfico no es plano. Aquí la venta de noviembre lo triplicó, y el gasto de esa semana se triplicó con él porque nada le ponía tope. Encuentra tu propio pico y pon el tope antes.",
           "two": "Los errores cuestan más que los tokens, y llegan tarde. Fundamenta las respuestas que comprometen dinero y revísalas antes de que lleguen al cliente.",
           "three": "Decirle al modelo que ignore instrucciones inyectadas solo debilita un ataque. Lo que lo detiene es la arquitectura: compuertas en las acciones, agentes sin herramientas para texto no confiable, filtros en lo que sale.",
           "four": "Texto no confiable, datos privados y una forma de mandar cosas fuera, juntos en un agente, es la combinación peligrosa. Rompe al menos un eslabón."
