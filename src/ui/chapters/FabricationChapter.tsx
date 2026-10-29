@@ -4,6 +4,7 @@ import type { FabricationChapter as FabricationContent } from "../../content/sch
 import type { ChapterProgress } from "../../host/course-state";
 import type { MessageKey } from "../../i18n/catalog";
 import { useI18n } from "../../i18n/I18nProvider";
+import { SHORTLIST } from "../../model/compositor";
 import { compositionRecordingSchema, type CompositionRecording } from "../../model/experiment-recordings";
 import { findRecordedSet } from "../../llm/recorded";
 import { firstEntryNumber } from "../../model/experiments";
@@ -94,7 +95,7 @@ export function FabricationChapter({ chapter, progress, frame }: Props) {
           {recording && (visible > 0 || written) && (
             <p className="note ink-galley__source">
               {t("model.recorded", { model: recording.model, date: recording.recordedAt })}{" "}
-              {t("fabrication.samplingNote", { temperature: recording.sampling.temperature, topP: recording.sampling.topP, penalty: recording.sampling.repetitionPenalty, seed: recording.sampling.seed })}
+              {t("fabrication.samplingNote", { topK: SHORTLIST, temperature: recording.sampling.temperature, topP: recording.sampling.topP, penalty: recording.sampling.repetitionPenalty, seed: recording.sampling.seed })}
             </p>
           )}
         </div>
