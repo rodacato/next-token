@@ -14,6 +14,8 @@
   /* Tints are mixes of the five hues, never new hues. */
   --paper-deep: color-mix(in oklab, var(--paper) 88%, var(--brass));
   --brass-dark: color-mix(in oklab, var(--brass) 70%, var(--ink));
+  /* Vermilion as text: 4.5:1 on paper and paper-deep, which the pure hue misses. */
+  --vermilion-ink: color-mix(in oklab, var(--vermilion) 80%, var(--ink));
   --brass-light: color-mix(in oklab, var(--brass) 55%, var(--paper));
   --slate-light: color-mix(in oklab, var(--slate) 45%, var(--paper));
   --metal: color-mix(in oklab, var(--slate) 55%, var(--ink));
@@ -74,7 +76,7 @@ select {
 
 .kicker {
   font-family: var(--face-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--slate);

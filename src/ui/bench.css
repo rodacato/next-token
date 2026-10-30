@@ -114,7 +114,7 @@
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--vermilion);
+  color: var(--vermilion-ink);
 }
 
 .stick__gauge {
@@ -249,7 +249,7 @@
 
 .blade--chosen .blade__word,
 .blade--chosen .blade__percent {
-  fill: var(--vermilion);
+  fill: var(--vermilion-ink);
 }
 
 .blade--chosen .blade__rib {
@@ -309,7 +309,7 @@
 }
 
 .slip tr.is-chosen td {
-  color: var(--vermilion);
+  color: var(--vermilion-ink);
   font-weight: 600;
 }
 
@@ -381,7 +381,7 @@
 }
 
 .proof__impression .is-new {
-  color: var(--vermilion);
+  color: var(--vermilion-ink);
 }
 
 .proof__empty {
