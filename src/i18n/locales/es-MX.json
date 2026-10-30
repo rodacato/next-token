@@ -46,7 +46,8 @@
     "sound": "Sonido de prensa",
     "soundOn": "sí",
     "soundOff": "no",
-    "acts": "Actos"
+    "acts": "Actos",
+    "loading": "Armando la mesa…"
   },
   "bench": {
     "copy": "Original",

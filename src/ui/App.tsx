@@ -1,34 +1,35 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { chapters } from "../content";
 import type { Stage } from "../host/course-state";
 import { detectLocale, type MessageKey } from "../i18n/catalog";
 import { I18nProvider, useI18n } from "../i18n/I18nProvider";
 import { ChapterFrame } from "./ChapterFrame";
-import { NextTokenChapter } from "./chapters/NextTokenChapter";
-import { TokensChapter } from "./chapters/TokensChapter";
-import { StickChapter } from "./chapters/StickChapter";
-import { FabricationChapter } from "./chapters/FabricationChapter";
-import { DuelChapter } from "./chapters/DuelChapter";
-import { EvalBuilderChapter } from "./chapters/EvalBuilderChapter";
-import { StructuredChapter } from "./chapters/StructuredChapter";
-import { ToolsChapter } from "./chapters/ToolsChapter";
-import { RagChapter } from "./chapters/RagChapter";
-import { AgentsChapter } from "./chapters/AgentsChapter";
-import { TrainerChapter } from "./chapters/TrainerChapter";
-import { LoraChapter } from "./chapters/LoraChapter";
-import { StagesChapter } from "./chapters/StagesChapter";
-import { DatasetChapter } from "./chapters/DatasetChapter";
-import { LedgerChapter } from "./chapters/LedgerChapter";
-import { DecisionChapter } from "./chapters/DecisionChapter";
-import { BeforeAfterChapter } from "./chapters/BeforeAfterChapter";
-import { FeaturesChapter } from "./chapters/FeaturesChapter";
-import { FailureChapter } from "./chapters/FailureChapter";
-import { BillChapter } from "./chapters/BillChapter";
-import { LaunchChapter } from "./chapters/LaunchChapter";
-import { FinaleChapter } from "./chapters/FinaleChapter";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
+
+const NextTokenChapter = lazy(() => import("./chapters/NextTokenChapter").then((m) => ({ default: m.NextTokenChapter })));
+const TokensChapter = lazy(() => import("./chapters/TokensChapter").then((m) => ({ default: m.TokensChapter })));
+const StickChapter = lazy(() => import("./chapters/StickChapter").then((m) => ({ default: m.StickChapter })));
+const FabricationChapter = lazy(() => import("./chapters/FabricationChapter").then((m) => ({ default: m.FabricationChapter })));
+const DuelChapter = lazy(() => import("./chapters/DuelChapter").then((m) => ({ default: m.DuelChapter })));
+const EvalBuilderChapter = lazy(() => import("./chapters/EvalBuilderChapter").then((m) => ({ default: m.EvalBuilderChapter })));
+const StructuredChapter = lazy(() => import("./chapters/StructuredChapter").then((m) => ({ default: m.StructuredChapter })));
+const ToolsChapter = lazy(() => import("./chapters/ToolsChapter").then((m) => ({ default: m.ToolsChapter })));
+const RagChapter = lazy(() => import("./chapters/RagChapter").then((m) => ({ default: m.RagChapter })));
+const AgentsChapter = lazy(() => import("./chapters/AgentsChapter").then((m) => ({ default: m.AgentsChapter })));
+const TrainerChapter = lazy(() => import("./chapters/TrainerChapter").then((m) => ({ default: m.TrainerChapter })));
+const LoraChapter = lazy(() => import("./chapters/LoraChapter").then((m) => ({ default: m.LoraChapter })));
+const StagesChapter = lazy(() => import("./chapters/StagesChapter").then((m) => ({ default: m.StagesChapter })));
+const DatasetChapter = lazy(() => import("./chapters/DatasetChapter").then((m) => ({ default: m.DatasetChapter })));
+const LedgerChapter = lazy(() => import("./chapters/LedgerChapter").then((m) => ({ default: m.LedgerChapter })));
+const DecisionChapter = lazy(() => import("./chapters/DecisionChapter").then((m) => ({ default: m.DecisionChapter })));
+const BeforeAfterChapter = lazy(() => import("./chapters/BeforeAfterChapter").then((m) => ({ default: m.BeforeAfterChapter })));
+const FeaturesChapter = lazy(() => import("./chapters/FeaturesChapter").then((m) => ({ default: m.FeaturesChapter })));
+const FailureChapter = lazy(() => import("./chapters/FailureChapter").then((m) => ({ default: m.FailureChapter })));
+const BillChapter = lazy(() => import("./chapters/BillChapter").then((m) => ({ default: m.BillChapter })));
+const LaunchChapter = lazy(() => import("./chapters/LaunchChapter").then((m) => ({ default: m.LaunchChapter })));
+const FinaleChapter = lazy(() => import("./chapters/FinaleChapter").then((m) => ({ default: m.FinaleChapter })));
 
 export function App() {
   const { state } = useCourse();
@@ -81,6 +82,7 @@ function Course() {
   return (
     <div className="course">
       <Masthead currentChapterId={chapter.id} onOpenChapter={openChapter} />
+      <Suspense fallback={<p className="note chapter-loading">{t("shell.loading")}</p>}>
       {chapter.kind === "tokens" && <TokensChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "next-token" && <NextTokenChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "stick" && <StickChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
@@ -103,6 +105,7 @@ function Course() {
       {chapter.kind === "commission-launch" && <LaunchChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "finale" && <FinaleChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "eval-builder" && <EvalBuilderChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
+      </Suspense>
     </div>
   );
 }
