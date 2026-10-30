@@ -1,10 +1,11 @@
-import OpenAI from "openai";
+import type OpenAI from "openai";
 import type { Completion, CompletionRequest, CostEstimate, LlmPort } from "../port";
 import { roughTokenCount } from "../pricing";
 
 // One adapter for OpenAI and for any OpenAI-compatible server (a base URL is the only difference).
 export function openAiAdapter(apiKey: string, model: string, baseURL?: string): LlmPort {
-  const client = new OpenAI({ apiKey, dangerouslyAllowBrowser: true, ...(baseURL ? { baseURL } : {}) });
+  let sdk: Promise<OpenAI> | undefined;
+  const connect = () => (sdk ??= import("openai").then(({ default: OpenAI }) => new OpenAI({ apiKey, dangerouslyAllowBrowser: true, ...(baseURL ? { baseURL } : {}) })));
   const provider = baseURL ? "openai-compatible" : "openai";
 
   const messages = (request: CompletionRequest) => [
@@ -22,6 +23,7 @@ export function openAiAdapter(apiKey: string, model: string, baseURL?: string): 
       return { inputTokens: roughTokenCount(text), maxOutputTokens: request.maxTokens, maxUsd: null, exactInputCount: false };
     },
     async complete(request, signal): Promise<Completion> {
+      const client = await connect();
       const response = await client.chat.completions.create(
         {
           model,

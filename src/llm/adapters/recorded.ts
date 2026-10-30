@@ -8,16 +8,9 @@ export function lastUserPrompt(request: CompletionRequest): string {
 }
 
 // Replays real answers recorded for exactly this system prompt and user prompt; repeats come back in order.
-export function recordedAdapter(sets: readonly RecordedSet[]): LlmPort {
-  const byHash = new Map<string, { completion: RecordedCompletion; recordedAt: string }[]>();
-  for (const set of sets) {
-    for (const completion of set.completions) {
-      const hash = completion.requestHash;
-      const list = byHash.get(hash) ?? [];
-      list.push({ completion, recordedAt: set.recordedAt });
-      byHash.set(hash, list);
-    }
-  }
+export function recordedAdapter(load: () => Promise<readonly RecordedSet[]>): LlmPort {
+  let index: Promise<Map<string, { completion: RecordedCompletion; recordedAt: string }[]>> | undefined;
+  const byHash = () => (index ??= load().then(indexByHash));
   const served = new Map<string, number>();
 
   return {
@@ -28,7 +21,7 @@ export function recordedAdapter(sets: readonly RecordedSet[]): LlmPort {
     },
     async complete(request): Promise<Completion> {
       const hash = requestHash({ system: request.system, prompt: lastUserPrompt(request), jsonSchema: request.jsonSchema });
-      const runs = byHash.get(hash);
+      const runs = (await byHash()).get(hash);
       if (!runs?.length) throw new NoRecordedRunError(hash);
       const index = served.get(hash) ?? 0;
       served.set(hash, index + 1);
@@ -44,4 +37,16 @@ export function recordedAdapter(sets: readonly RecordedSet[]): LlmPort {
       };
     },
   };
+}
+
+function indexByHash(sets: readonly RecordedSet[]) {
+  const byHash = new Map<string, { completion: RecordedCompletion; recordedAt: string }[]>();
+  for (const set of sets) {
+    for (const completion of set.completions) {
+      const list = byHash.get(completion.requestHash) ?? [];
+      list.push({ completion, recordedAt: set.recordedAt });
+      byHash.set(completion.requestHash, list);
+    }
+  }
+  return byHash;
 }

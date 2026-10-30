@@ -8,8 +8,9 @@ import { recordedAdapter } from "../llm/adapters/recorded";
 import { guarded, SessionBudget } from "../llm/costGuard";
 import type { LlmPort } from "../llm/port";
 import { listedPrice, type Price } from "../llm/pricing";
-import { recordedSets } from "../llm/recorded";
 import { forgetLlmSettings, loadLlmSettings, saveLlmSettings, type LlmSettings } from "../llm/settings";
+
+const loadRecordedSets = () => import("../llm/recorded").then((m) => m.recordedSets);
 
 type Llm = {
   readonly settings: LlmSettings;
@@ -42,7 +43,7 @@ export function LlmProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<Llm>(() => {
-    const recorded = recordedAdapter(recordedSets);
+    const recorded = recordedAdapter(loadRecordedSets);
     const price = settings.provider === "anthropic" ? listedPrice(settings.model) : settings.customPrice;
     const raw = rawPort(settings, host);
     return {
