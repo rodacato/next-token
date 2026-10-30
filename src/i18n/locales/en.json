@@ -68,7 +68,7 @@
       "logit": "logit",
       "probability": "p"
     },
-    "space": "A leading dot is a space. It belongs to the sort.",
+    "space": "A leading dot is a space that belongs to the sort. ␣ is a sort made only of spaces.",
     "byteFragment": "Part of a character. It takes more than one sort to print it.",
     "tokenId": "id {id}"
   },
@@ -225,7 +225,7 @@
       "kicker": "The context window",
       "problem": {
         "heading": "The refund nobody approved.",
-        "body": "A long chat with Mercadito's support assistant ended in an automatic refund of $2,450. The system prompt says refunds over $2,000 need a supervisor. The model had followed that rule all week. On this chat it didn't.",
+        "body": "A long chat with Mercadito's support assistant ended in an automatic refund of 2,450 MXN. The system prompt says refunds over 2,000 MXN need a supervisor. The model had followed that rule all week. On this chat it didn't.",
         "task": "Find out where the rule went."
       },
       "bench": {
@@ -393,7 +393,7 @@
       "kicker": "Embeddings, chunking and RAG",
       "problem": {
         "heading": "The handbook said 15 days. The assistant said 30.",
-        "body": "Mercadito's assistant answers from the returns handbook: it searches the handbook, pastes the closest passages into the prompt, and answers from them. A customer was told sealed headphones could come back after 20 days. The handbook says electronics get 15.",
+        "body": "Mercadito's assistant answers from the returns handbook: it searches the handbook, pastes the closest passages into the prompt, and answers from them. A customer was told sealed headphones could come back on day 20. The handbook says electronics get 15.",
         "task": "Find out what the model was handed, and why."
       },
       "bench": {
@@ -593,7 +593,7 @@
         "task": "Look at what a real fine-tune learned, then make six calls."
       },
       "bench": {
-        "heading": "Behaviour sticks. Facts don't.",
+        "heading": "Here, behaviour stuck. Facts barely moved.",
         "body": "A small fine-tune on forty rows: the sign-off appeared everywhere; the facts in those rows barely moved. Read the example answer.",
         "observe": "Ask yourself which of Mercadito's problems are behaviour and which are facts."
       },
@@ -604,7 +604,7 @@
       "debrief": {
         "heading": "Train behaviour. Retrieve facts. Prompt first.",
         "points": {
-          "one": "Fine-tuning teaches format, tone and task behaviour far more reliably than facts. A fact seen in training is recalled in its training wording, not on demand.",
+          "one": "On this fine-tune the sign-off stuck and the facts barely moved: a fact seen in training came back in its training wording, not on demand. Forty rows show the direction, not how strong it is.",
           "two": "Facts that change, or must be quoted exactly, belong in retrieval, where you can update them and show the source.",
           "three": "Prompt first, with an eval. Fine-tune when a measured prompt has stopped improving and the behaviour still matters.",
           "four": "Distill when a big model already solves a narrow task and the volume makes it too expensive."
@@ -851,9 +851,9 @@
     "summaryNote": "The summary was written for this exercise, not by a model.",
     "factsHeading": "What the reply needs",
     "facts": {
-      "refund-rule": "Refunds over $2,000 need a supervisor",
+      "refund-rule": "Refunds over 2,000 MXN need a supervisor",
       "order-number": "The order number",
-      "amount": "The amount: $2,450"
+      "amount": "The amount: 2,450 MXN"
     },
     "onStick": "still on the stick",
     "offStick": "fell off",
