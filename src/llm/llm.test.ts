@@ -58,7 +58,7 @@ describe("recorded adapter", () => {
   };
 
   it("replays repeats in order and labels them", async () => {
-    const port = recordedAdapter([set]);
+    const port = recordedAdapter(async () => [set]);
     expect((await port.complete(request)).text).toBe("answer 1");
     const second = await port.complete(request);
     expect(second.text).toBe("answer 2");
@@ -66,7 +66,7 @@ describe("recorded adapter", () => {
   });
 
   it("says so when nothing was recorded for a request", async () => {
-    await expect(recordedAdapter([set]).complete({ ...request, system: "other" })).rejects.toBeInstanceOf(NoRecordedRunError);
+    await expect(recordedAdapter(async () => [set]).complete({ ...request, system: "other" })).rejects.toBeInstanceOf(NoRecordedRunError);
   });
 
   it("hashes independently of key order", () => {

@@ -1,9 +1,10 @@
-import Anthropic from "@anthropic-ai/sdk";
+import type Anthropic from "@anthropic-ai/sdk";
 import type { Completion, CompletionRequest, CostEstimate, LlmPort } from "../port";
 
 // BYOK in the browser: the key goes from this device straight to Anthropic, which the learner opted into.
 export function anthropicAdapter(apiKey: string, model: string): LlmPort {
-  const client = new Anthropic({ apiKey, dangerouslyAllowBrowser: true });
+  let sdk: Promise<Anthropic> | undefined;
+  const connect = () => (sdk ??= import("@anthropic-ai/sdk").then(({ default: Anthropic }) => new Anthropic({ apiKey, dangerouslyAllowBrowser: true })));
 
   const params = (request: CompletionRequest) => ({
     model,
@@ -26,10 +27,12 @@ export function anthropicAdapter(apiKey: string, model: string): LlmPort {
     model,
     async estimate(request): Promise<CostEstimate> {
       const { system, messages, tools } = params(request);
+      const client = await connect();
       const counted = await client.messages.countTokens({ model, system, messages, ...(tools ? { tools } : {}) });
       return { inputTokens: counted.input_tokens, maxOutputTokens: request.maxTokens, maxUsd: null, exactInputCount: true };
     },
     async complete(request, signal): Promise<Completion> {
+      const client = await connect();
       const response = await client.messages.create(
         {
           ...params(request),
