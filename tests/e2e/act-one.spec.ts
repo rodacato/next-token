@@ -17,7 +17,7 @@ test.describe("chapter 3 · the composing stick", () => {
     await page.getByTestId("all-messages").click();
     await expect(page.getByTestId("fallen")).toContainText("The stick is full. Something falls off the end.");
     await expect(page.getByTestId("fact-refund-rule")).toContainText("fell off");
-    await expect(page.getByTestId("stick-verdict")).toContainText("Refunds over $2,000 need a supervisor");
+    await expect(page.getByTestId("stick-verdict")).toContainText("Refunds over 2,000 MXN need a supervisor");
 
     await page.getByLabel("Clamp the system message", { exact: true }).check();
     await expect(page.getByTestId("fact-refund-rule")).toContainText("still on the stick");

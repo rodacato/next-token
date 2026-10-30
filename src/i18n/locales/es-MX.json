@@ -68,7 +68,7 @@
       "logit": "logit",
       "probability": "p"
     },
-    "space": "Un punto al inicio es un espacio. Viaja con el tipo.",
+    "space": "Un punto al inicio es un espacio que viaja con el tipo. ␣ es un tipo hecho solo de espacios.",
     "byteFragment": "Parte de un carácter. Hace falta más de un tipo para imprimirlo.",
     "tokenId": "id {id}"
   },
@@ -393,7 +393,7 @@
       "kicker": "Embeddings, fragmentación y RAG",
       "problem": {
         "heading": "El manual decía 15 días. El asistente dijo 30.",
-        "body": "El asistente de Mercadito responde con el manual de devoluciones: busca en el manual, pega los pasajes más cercanos en el prompt y responde con ellos. A un cliente le dijo que podía devolver unos audífonos sellados después de 20 días. El manual le da 15 a la electrónica.",
+        "body": "El asistente de Mercadito responde con el manual de devoluciones: busca en el manual, pega los pasajes más cercanos en el prompt y responde con ellos. A un cliente le dijo que podía devolver unos audífonos sellados en el día 20. El manual le da 15 a la electrónica.",
         "task": "Averigua qué recibió el modelo, y por qué."
       },
       "bench": {
@@ -593,7 +593,7 @@
         "task": "Mira qué aprendió un ajuste fino real y luego toma seis decisiones."
       },
       "bench": {
-        "heading": "El comportamiento se queda. Los hechos no.",
+        "heading": "Aquí, el comportamiento se quedó. Los hechos apenas se movieron.",
         "body": "Un ajuste fino pequeño con cuarenta filas: la firma apareció en todas partes; los hechos de esas filas casi no se movieron. Lee la respuesta de ejemplo.",
         "observe": "Pregúntate cuáles de los problemas de Mercadito son de comportamiento y cuáles de hechos."
       },
@@ -604,7 +604,7 @@
       "debrief": {
         "heading": "Entrena comportamiento. Recupera hechos. Prueba primero el prompt.",
         "points": {
-          "one": "El ajuste fino enseña formato, tono y comportamiento en la tarea con mucha más confianza que hechos. Un hecho visto en el entrenamiento se recuerda con las palabras del entrenamiento, no cuando se le pide.",
+          "one": "En este ajuste la firma se quedó y los hechos apenas se movieron: un hecho visto en el entrenamiento volvió con las palabras del entrenamiento, no cuando se le pidió. Cuarenta renglones muestran la dirección, no qué tan fuerte es.",
           "two": "Los hechos que cambian, o que hay que citar con exactitud, van en la recuperación, donde puedes actualizarlos y mostrar la fuente.",
           "three": "Primero el prompt, con una evaluación. Ajusta cuando un prompt medido ya no mejora y el comportamiento sigue importando.",
           "four": "Destila cuando un modelo grande ya resuelve una tarea acotada y el volumen lo vuelve demasiado caro."
