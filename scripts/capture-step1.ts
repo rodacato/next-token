@@ -26,7 +26,7 @@ async function sweepTemperature(page: Page, from: number, to: number, steps: num
 
 async function shots(locale: string, suffix: string) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, locale });
-  await page.goto(`${base}/?compositor=recorded`);
+  await page.goto(`${base}/?compositor=recorded&walkthrough=off`);
   await page.evaluate(() => document.fonts.ready);
   await page.getByTestId("copy").fill(locale === "en" ? "The compositor doesn't know what's true. Mañana llegará tu pedido." : "El cajista no sabe qué es verdad. Tomorrow your order arrives.");
   await pause(page, 1500);
@@ -54,7 +54,7 @@ async function shots(locale: string, suffix: string) {
 
 async function mobile() {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 }, locale: "en", isMobile: true });
-  await page.goto(`${base}/?compositor=recorded`);
+  await page.goto(`${base}/?compositor=recorded&walkthrough=off`);
   await page.locator(".ticket__link").nth(1).click();
   await page.getByTestId("fan").waitFor();
   await pause(page, 600);
@@ -66,7 +66,7 @@ async function walkthrough() {
   const videoDir = join(out, "video-tmp");
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: "en", recordVideo: { dir: videoDir, size: { width: 1440, height: 900 } } });
   const page = await context.newPage();
-  await page.goto(`${base}/?compositor=recorded`);
+  await page.goto(`${base}/?compositor=recorded&walkthrough=off`);
   await page.locator(".ticket__link").nth(1).click();
   await page.getByTestId("fan").waitFor();
   await pause(page, 900);

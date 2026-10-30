@@ -119,6 +119,52 @@
   background: color-mix(in oklab, var(--ink) 40%, transparent);
 }
 
+.walkthrough {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.walkthrough__shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.walkthrough__shade path {
+  fill: color-mix(in oklab, var(--ink) 55%, transparent);
+}
+
+.walkthrough__ring {
+  fill: none;
+  stroke: var(--vermilion);
+  stroke-width: 2;
+  stroke-dasharray: 8 5;
+}
+
+.walkthrough__note {
+  position: absolute;
+  width: min(320px, calc(100vw - 2 * var(--gutter)));
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 18px 20px 16px;
+}
+
+.walkthrough__note h2 {
+  font-size: 24px;
+  margin: 6px 0 8px;
+}
+
+.walkthrough__note p {
+  margin: 0 0 14px;
+}
+
+.walkthrough__note .actions {
+  margin-bottom: 0;
+}
+
 .reset-dialog h2 {
   font-size: 30px;
   margin-bottom: 12px;

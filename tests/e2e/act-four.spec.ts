@@ -1,7 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
 async function open(page: Page, title: RegExp) {
-  await page.goto("./?compositor=recorded");
+  await page.goto("./?compositor=recorded&walkthrough=off");
   await page.getByRole("button", { name: title }).click();
 }
 
@@ -130,7 +130,7 @@ test.describe("chapter 22 · the commission", () => {
 test.describe("the masthead", () => {
   test("all 22 chapters fit one row at 1280 px", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto("./?compositor=recorded");
+    await page.goto("./?compositor=recorded&walkthrough=off");
     const ticket = page.locator(".ticket__row");
     const first = await ticket.getByRole("button", { name: /^1 / }).boundingBox();
     const last = await ticket.getByRole("button", { name: /^22 / }).boundingBox();
@@ -139,7 +139,7 @@ test.describe("the masthead", () => {
 
   test("on a phone, an act switcher shows one act's chapters", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 800 });
-    await page.goto("./?compositor=recorded");
+    await page.goto("./?compositor=recorded&walkthrough=off");
     await expect(page.getByRole("button", { name: /^21 / })).toBeHidden();
     await page.getByRole("button", { name: "IV", exact: true }).click();
     await page.getByRole("button", { name: /^21 / }).click();

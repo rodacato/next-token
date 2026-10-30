@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { chapters } from "../content";
 import type { Stage } from "../host/course-state";
 import { detectLocale, type MessageKey } from "../i18n/catalog";
@@ -7,6 +7,7 @@ import { ChapterFrame } from "./ChapterFrame";
 import { useCourse } from "./CourseProvider";
 import { Masthead } from "./Masthead";
 import { Textures } from "./props/Textures";
+import { Walkthrough, walkthroughDisabled } from "./Walkthrough";
 
 const NextTokenChapter = lazy(() => import("./chapters/NextTokenChapter").then((m) => ({ default: m.NextTokenChapter })));
 const TokensChapter = lazy(() => import("./chapters/TokensChapter").then((m) => ({ default: m.TokensChapter })));
@@ -45,6 +46,13 @@ export function App() {
 function Course() {
   const { t, locale } = useI18n();
   const { state, update, progressOf, updateChapter } = useCourse();
+  const [guideRequested, setGuideRequested] = useState(false);
+  const [guideOff] = useState(() => walkthroughDisabled(window.location.search));
+  const showGuide = guideRequested || (!state.walkthroughSeen && !guideOff);
+  const closeGuide = () => {
+    setGuideRequested(false);
+    update((s) => ({ ...s, walkthroughSeen: true }));
+  };
   const chapter = chapters.find((c) => c.id === state.currentChapter) ?? chapters[0];
   if (!chapter) throw new Error("The course has no chapters.");
   const progress = progressOf(chapter.id);
@@ -81,7 +89,7 @@ function Course() {
 
   return (
     <div className="course">
-      <Masthead currentChapterId={chapter.id} onOpenChapter={openChapter} />
+      <Masthead currentChapterId={chapter.id} onOpenChapter={openChapter} onGuide={() => setGuideRequested(true)} />
       <Suspense fallback={<p className="note chapter-loading">{t("shell.loading")}</p>}>
       {chapter.kind === "tokens" && <TokensChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "next-token" && <NextTokenChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
@@ -106,6 +114,7 @@ function Course() {
       {chapter.kind === "finale" && <FinaleChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       {chapter.kind === "eval-builder" && <EvalBuilderChapter key={`${chapter.id}:${locale}`} chapter={chapter} progress={progress} frame={frame} />}
       </Suspense>
+      {showGuide && <Walkthrough onDone={closeGuide} />}
     </div>
   );
 }

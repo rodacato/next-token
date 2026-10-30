@@ -10,7 +10,7 @@ mkdirSync(out, { recursive: true });
 const browser = await chromium.launch();
 
 async function openChapter(page: Page, index: number) {
-  await page.goto(`${base}/?compositor=recorded`);
+  await page.goto(`${base}/?compositor=recorded&walkthrough=off`);
   await page.evaluate(() => document.fonts.ready);
   await page.locator(".ticket__link").nth(index).click();
 }

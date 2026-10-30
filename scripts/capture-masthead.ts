@@ -13,7 +13,7 @@ const browser = await chromium.launch();
 for (const [locale, suffix] of [["en", "en"], ["es-MX", "es"]] as const) {
   for (const width of [1440, 1280, 390]) {
     const page = await browser.newPage({ viewport: { width, height: 700 }, locale, reducedMotion: "reduce" });
-    await page.goto(`${base}/?compositor=recorded`);
+    await page.goto(`${base}/?compositor=recorded&walkthrough=off`);
     await page.evaluate(() => document.fonts.ready);
     if (width < 900) await page.locator(".ticket__acts button").nth(3).click();
     await page.getByRole("button", { name: /^21 / }).click();

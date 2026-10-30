@@ -1,7 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
 async function open(page: Page, title: RegExp) {
-  await page.goto("./?compositor=recorded");
+  await page.goto("./?compositor=recorded&walkthrough=off");
   await page.getByRole("button", { name: title }).click();
 }
 

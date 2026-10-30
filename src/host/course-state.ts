@@ -19,6 +19,7 @@ export const courseStateSchema = z.object({
   pricePerMillion: z.number().positive().nullable(),
   conversationsPerDay: z.number().int().positive().nullable(),
   pressSound: z.boolean().default(false),
+  walkthroughSeen: z.boolean().default(false),
 });
 
 export type ChapterProgress = z.infer<typeof chapterProgressSchema>;
@@ -34,6 +35,7 @@ export const initialCourseState: CourseState = {
   pricePerMillion: null,
   conversationsPerDay: null,
   pressSound: false,
+  walkthroughSeen: false,
 };
 
 export const freshChapter: ChapterProgress = { stage: "problem", predictions: {} };

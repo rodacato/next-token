@@ -7,7 +7,7 @@ import type { MessageKey } from "../i18n/catalog";
 
 const acts = [...new Set(chapters.map((chapter) => chapter.act))];
 
-export function Masthead({ currentChapterId, onOpenChapter }: { currentChapterId: string; onOpenChapter: (id: string) => void }) {
+export function Masthead({ currentChapterId, onOpenChapter, onGuide }: { currentChapterId: string; onOpenChapter: (id: string) => void; onGuide: () => void }) {
   const { t, locale } = useI18n();
   const { state, update, reset, progressOf } = useCourse();
   const dialog = useRef<HTMLDialogElement>(null);
@@ -92,6 +92,9 @@ export function Masthead({ currentChapterId, onOpenChapter }: { currentChapterId
           ))}
         </div>
         <div className="masthead__quiet-tools">
+        <button className="button button--quiet" onClick={onGuide} data-testid="guide">
+          {t("shell.guide")}
+        </button>
         <button
           className="sound-toggle"
           aria-pressed={state.pressSound}

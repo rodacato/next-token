@@ -47,7 +47,8 @@
     "soundOn": "on",
     "soundOff": "off",
     "acts": "Acts",
-    "loading": "Setting the bench…"
+    "loading": "Setting the bench…",
+    "guide": "Guide"
   },
   "bench": {
     "copy": "Copy",
@@ -1725,5 +1726,26 @@
       "ask-later": "It asks the customer to check again tomorrow"
     },
     "promptNote": "The board reads the decisions below, not the prompt. Write the prompt you'd ship; nothing scores it."
+  },
+  "walkthrough": {
+    "kicker": "{n} of {total}",
+    "next": "Next",
+    "back": "Back",
+    "skip": "Skip",
+    "done": "Start",
+    "steps": {
+      "job": {
+        "title": "Start with the job",
+        "body": "Each chapter opens with a problem from Mercadito's shop. This column says what went wrong and what you're here to find out."
+      },
+      "bench": {
+        "title": "Work at the bench",
+        "body": "What you change runs here, and the results show up here too. No API key needed: runs come from recordings unless you connect a model."
+      },
+      "move": {
+        "title": "Go at your own pace",
+        "body": "Four stages per chapter. The button under the text opens the next one once the task is done; these numbers take you back. The chapter numbers at the top go anywhere, and Guide brings this tour back."
+      }
+    }
   }
 }
