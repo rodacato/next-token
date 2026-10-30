@@ -46,7 +46,8 @@
     "sound": "Press sound",
     "soundOn": "on",
     "soundOff": "off",
-    "acts": "Acts"
+    "acts": "Acts",
+    "loading": "Setting the bench…"
   },
   "bench": {
     "copy": "Copy",
