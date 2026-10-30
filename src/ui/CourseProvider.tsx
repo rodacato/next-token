@@ -30,7 +30,7 @@ export function CourseProvider({ store, children }: { store: ProgressStore; chil
   );
   const reset = useCallback(() => {
     store.clear();
-    setState(initialCourseState);
+    setState((s) => ({ ...initialCourseState, walkthroughSeen: s.walkthroughSeen }));
   }, [store]);
 
   const value = useMemo<Course>(

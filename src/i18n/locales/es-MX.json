@@ -47,7 +47,8 @@
     "soundOn": "sí",
     "soundOff": "no",
     "acts": "Actos",
-    "loading": "Preparando el banco…"
+    "loading": "Preparando el banco…",
+    "guide": "Guía"
   },
   "bench": {
     "copy": "Original",
@@ -1725,5 +1726,26 @@
       "ask-later": "Le pide al cliente que vuelva a revisar mañana"
     },
     "promptNote": "El comité lee las decisiones de abajo, no el prompt. Escribe el prompt que mandarías a producción; nada lo califica."
+  },
+  "walkthrough": {
+    "kicker": "{n} de {total}",
+    "next": "Siguiente",
+    "back": "Atrás",
+    "skip": "Saltar",
+    "done": "Empezar",
+    "steps": {
+      "job": {
+        "title": "Empieza por el encargo",
+        "body": "Cada capítulo abre con un problema de la tienda de Mercadito. Esta columna te dice qué salió mal y qué vienes a averiguar."
+      },
+      "bench": {
+        "title": "Trabaja en el banco",
+        "body": "Lo que cambies corre aquí, y aquí mismo ves los resultados. No necesitas clave de API: las corridas salen de grabaciones, salvo que conectes un modelo."
+      },
+      "move": {
+        "title": "Avanza a tu ritmo",
+        "body": "Cuatro etapas por capítulo. El botón bajo el texto abre la siguiente cuando terminas la tarea; estos números te regresan. Los números de arriba te llevan a cualquier capítulo, y Guía vuelve a mostrar este recorrido."
+      }
+    }
   }
 }

@@ -29,6 +29,16 @@ describe("localProgressStore", () => {
     expect(localProgressStore(storage).load()).toEqual(initialCourseState);
   });
 
+  it("loads a save from before the walkthrough as healthy, with the walkthrough unseen", () => {
+    const storage = memoryStorage();
+    const older: Record<string, unknown> = { ...withChapter(initialCourseState, "tokens", { stage: "bench" }) };
+    delete older.walkthroughSeen;
+    storage.setItem("next-token:v1", JSON.stringify(older));
+    const loaded = localProgressStore(storage).load();
+    expect(chapterProgress(loaded, "tokens").stage).toBe("bench");
+    expect(loaded.walkthroughSeen).toBe(false);
+  });
+
   it("clears everything on reset", () => {
     const store = localProgressStore(memoryStorage());
     store.save(withChapter(initialCourseState, "tokens", { stage: "debrief" }));

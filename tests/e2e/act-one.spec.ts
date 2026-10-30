@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 
 async function open(page: Page, title: RegExp) {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("./?compositor=recorded");
+  await page.goto("./?compositor=recorded&walkthrough=off");
   await page.getByRole("button", { name: title }).click();
 }
 
@@ -74,7 +74,7 @@ test.describe("capítulos 3 y 4", () => {
 });
 
 test("the press sound is off by default and can be switched on", async ({ page }) => {
-  await page.goto("./?compositor=recorded");
+  await page.goto("./?compositor=recorded&walkthrough=off");
   const toggle = page.getByTestId("sound-toggle");
   await expect(toggle).toHaveAttribute("aria-pressed", "false");
   await toggle.click();
